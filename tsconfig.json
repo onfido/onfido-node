@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveConstEnums": true,
+    "target": "es5",
+    "sourceMap": true,
+    "declaration": true,
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": {
+      "onfido-node/*": ["src/*"]
+    }
+  },
+  "include": ["src/"]
+}

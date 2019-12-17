@@ -1,0 +1,43 @@
+{
+  "name": "@onfido/api",
+  "version": "0.1.0",
+  "description": "Node.js library for the Onfido API",
+  "keywords": ["onfido", "identity", "verification", "api"],
+  "homepage": "https://github.com/onfido/onfido-node#readme",
+  "license": "MIT",
+  "author": "Onfido <api@onfido.com> (https://documentation.onfido.com)",
+  "repository": "github:onfido/onfido-node",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "types": "dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c rollup.config.ts",
+    "test": "jest",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "inspect": "tslint 'src/**/*.ts' 'test/**/*.ts'",
+    "format": "tslint 'src/**/*.ts' 'test/**/*.ts' --fix && prettier --write README.md"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "onfido-node/(.*)": "<rootDir>/src/$1"
+    }
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.19",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "rollup": "^1.24.0",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "ts-jest": "^24.1.0",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.6.4"
+  }
+}
