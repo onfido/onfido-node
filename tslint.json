@@ -5,6 +5,7 @@
     "prettier": true,
     "interface-over-type-literal": false,
     "member-ordering": [true, { "order": "fields-first" }],
-    "object-literal-sort-keys": false
+    "object-literal-sort-keys": false,
+    "typedef": [true, "call-signature", "arrow-call-signature"]
   }
 }

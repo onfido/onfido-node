@@ -6,3 +6,4 @@ node_js:
 script:
   - yarn test
   - yarn inspect
+  - yarn build
