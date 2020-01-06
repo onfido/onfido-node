@@ -20,7 +20,7 @@ const deepMapObjectKeys = (value: unknown, f: (key: string) => string): any => {
 };
 
 export const convertObjectToSnakeCase = (requestBody: unknown): unknown => {
-  // Convert to JSON and back first to simplify.
+  // Converting to JSON and back first handles things like dates, circular references etc.
   requestBody = JSON.parse(JSON.stringify(requestBody));
 
   return deepMapObjectKeys(requestBody, snakeCase);

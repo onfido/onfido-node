@@ -56,14 +56,13 @@ export class Resource<T extends SimpleObject> {
       params: query && convertObjectToSnakeCase(query)
     });
 
-    let response;
     try {
-      response = await promise;
+      const response = await promise;
+
+      const data = response.data;
+      return isJson(response) ? convertObjectToCamelCase(data) : data;
     } catch (error) {
       throw convertAxiosErrorToOnfidoError(error);
     }
-
-    const data = response.data;
-    return isJson(response) ? convertObjectToCamelCase(data) : data;
   }
 }

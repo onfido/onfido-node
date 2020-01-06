@@ -6,7 +6,7 @@ The official Node.js library for integrating with the Onfido API.
 
 Documentation can be found at <https://documentation.onfido.com>
 
-This library is only for use with Node on the backend, as it uses Onfido API tokens which must be kept secret. If you do need to collect applicant data in the frontend of your application, we recommend that you use one of [the Onfido SDKs](https://developers.onfido.com/sdks/).
+This library is only for use on the backend, as it uses Onfido API tokens which must be kept secret. If you do need to collect applicant data in the frontend of your application, we recommend that you use one of [the Onfido SDKs](https://developers.onfido.com/sdks/).
 
 ## Installation
 
@@ -16,7 +16,7 @@ For npm:
 npm install @onfido/api
 ```
 
-For yarn:
+For Yarn:
 
 ```sh
 yarn add @onfido/api
@@ -89,7 +89,7 @@ onfido.applicant
     })
   )
   .then(check =>
-    ...
+    // Handle successfully created check.
   )
   .catch(error => {
     // Handle error.
