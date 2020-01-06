@@ -1,7 +1,11 @@
 import { AxiosInstance, AxiosResponse } from "axios";
 import { OnfidoApiError } from "./errors/OnfidoApiError";
 import { OnfidoError } from "./errors/OnfidoError";
-import { formatRequest, formatResponse, SimpleObject } from "./formatting";
+import {
+  convertObjectToCamelCase,
+  convertObjectToSnakeCase,
+  SimpleObject
+} from "./formatting";
 
 export enum Method {
   GET = "get",
@@ -48,8 +52,8 @@ export class Resource<T extends SimpleObject> {
     const promise = this.axiosInstance({
       method,
       url: `${this.name}/${path}`,
-      data: body && formatRequest(body),
-      params: query && formatRequest(query)
+      data: body && convertObjectToSnakeCase(body),
+      params: query && convertObjectToSnakeCase(query)
     });
 
     let response;
@@ -60,6 +64,6 @@ export class Resource<T extends SimpleObject> {
     }
 
     const data = response.data;
-    return isJson(response) ? formatResponse(data) : data;
+    return isJson(response) ? convertObjectToCamelCase(data) : data;
   }
 }

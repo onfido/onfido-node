@@ -19,12 +19,13 @@ const deepMapObjectKeys = (value: unknown, f: (key: string) => string): any => {
   }
 };
 
-export const formatRequest = (requestBody: unknown): unknown => {
+export const convertObjectToSnakeCase = (requestBody: unknown): unknown => {
   // Convert to JSON and back first to simplify.
   requestBody = JSON.parse(JSON.stringify(requestBody));
 
   return deepMapObjectKeys(requestBody, snakeCase);
 };
 
-export const formatResponse = (responseBody: SimpleObject): SimpleObject =>
-  deepMapObjectKeys(responseBody, camelCase);
+export const convertObjectToCamelCase = (
+  responseBody: SimpleObject
+): SimpleObject => deepMapObjectKeys(responseBody, camelCase);
