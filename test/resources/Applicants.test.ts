@@ -122,8 +122,8 @@ it("lists applicants", async () => {
     .get("/applicants/")
     .query({
       page: 1,
-      perPage: 20,
-      includeDeleted: true
+      per_page: 20,
+      include_deleted: true
     })
     .reply(200, { applicants: [exampleApplicantJson, exampleApplicantJson] });
 
@@ -131,7 +131,7 @@ it("lists applicants", async () => {
     page: 1,
     perPage: 20,
     includeDeleted: true
-  });
+  } as any);
 
   expect(applicants).toEqual([exampleApplicant, exampleApplicant]);
 });

@@ -34,15 +34,22 @@ export class Resource<T extends SimpleObject> {
     this.axiosInstance = axiosInstance;
   }
 
-  protected async request(
-    method: Method,
-    path: string,
-    body?: T
-  ): Promise<any> {
+  protected async request({
+    method,
+    path = "",
+    body,
+    query
+  }: {
+    method: Method;
+    path?: string;
+    body?: T;
+    query?: SimpleObject;
+  }): Promise<any> {
     const promise = this.axiosInstance({
       method,
       url: `${this.name}/${path}`,
-      data: body && formatRequest(body)
+      data: body && formatRequest(body),
+      params: query && formatRequest(query)
     });
 
     let response;

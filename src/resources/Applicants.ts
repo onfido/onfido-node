@@ -1,5 +1,4 @@
 import { AxiosInstance } from "axios";
-import { toQueryString } from "../formatting";
 import { Method, Resource } from "../Resource";
 import { Address, AddressRequest } from "./Addresses";
 import { IdNumber, IdNumberRequest } from "./IdNumbers";
@@ -33,26 +32,30 @@ export class Applicants extends Resource<ApplicantRequest> {
   }
 
   public async create(applicantRequest: ApplicantRequest): Promise<Applicant> {
-    return this.request(Method.POST, "", applicantRequest);
+    return this.request({ method: Method.POST, body: applicantRequest });
   }
 
   public async find(id: string): Promise<Applicant> {
-    return this.request(Method.GET, id);
+    return this.request({ method: Method.GET, path: id });
   }
 
   public async update(
     id: string,
     applicantRequest: ApplicantRequest
   ): Promise<Applicant> {
-    return this.request(Method.PUT, id, applicantRequest);
+    return this.request({
+      method: Method.PUT,
+      path: id,
+      body: applicantRequest
+    });
   }
 
   public async delete(id: string): Promise<void> {
-    await this.request(Method.DELETE, id);
+    await this.request({ method: Method.DELETE, path: id });
   }
 
   public async restore(id: string): Promise<void> {
-    await this.request(Method.POST, `${id}/restore`);
+    await this.request({ method: Method.POST, path: `${id}/restore` });
   }
 
   public async list({
@@ -64,10 +67,11 @@ export class Applicants extends Resource<ApplicantRequest> {
     perPage?: number;
     includeDeleted?: boolean;
   } = {}): Promise<Applicant[]> {
-    const { applicants } = await this.request(
-      Method.GET,
-      toQueryString({ page, perPage, includeDeleted })
-    );
+    const { applicants } = await this.request({
+      method: Method.GET,
+      query: { page, perPage, includeDeleted }
+    });
+
     return applicants;
   }
 }
