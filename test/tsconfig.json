@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.json",
+  "include": ["./**/*"],
+  "compilerOptions": {
+    "baseUrl": "../",
+    "paths": {
+      "onfido-node": ["src/index"]
+    }
+  }
+}

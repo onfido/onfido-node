@@ -4,15 +4,11 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "preserveConstEnums": true,
-    "target": "es5",
+    "target": "ES2017",
+    "moduleResolution": "node",
     "sourceMap": true,
     "declaration": true,
-    "esModuleInterop": true,
-    "baseUrl": "./",
-    "paths": {
-      "onfido-node/*": ["src/*"]
-    }
+    "esModuleInterop": true
   },
-  "include": ["src/"]
+  "include": ["src/**/*"]
 }
