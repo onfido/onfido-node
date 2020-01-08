@@ -3,7 +3,7 @@ import {
   convertObjectToSnakeCase
 } from "../src/formatting";
 
-describe("formatRequest", () => {
+describe("convertObjectToSnakeCase", () => {
   it("converts keys to snake_case, even if nested", () => {
     expect(
       convertObjectToSnakeCase({
@@ -14,7 +14,7 @@ describe("formatRequest", () => {
   });
 });
 
-describe("formatResponse", () => {
+describe("convertObjectToCamelCase", () => {
   it("converts keys to camelCase, even if nested", () => {
     expect(
       convertObjectToCamelCase({

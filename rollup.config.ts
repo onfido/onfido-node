@@ -15,5 +15,5 @@ export default {
     }
   ],
   plugins: [typescript()],
-  external: ["axios"]
+  external: ["axios", "form-data", "stream"]
 };
