@@ -1,3 +1,5 @@
+import FormData from "form-data";
+
 export type SimpleObject = { [key: string]: unknown };
 
 const snakeCase = (s: string): string =>
@@ -29,3 +31,10 @@ export const convertObjectToSnakeCase = (requestBody: unknown): unknown => {
 export const convertObjectToCamelCase = (
   responseBody: SimpleObject
 ): SimpleObject => deepMapObjectKeys(responseBody, camelCase);
+
+export const toFormData = (object: SimpleObject): FormData => {
+  return Object.entries(object).reduce((formData, [key, value]) => {
+    formData.append(snakeCase(key), value);
+    return formData;
+  }, new FormData());
+};
