@@ -34,7 +34,9 @@ export const convertObjectToCamelCase = (
 
 export const toFormData = (object: SimpleObject): FormData => {
   return Object.entries(object).reduce((formData, [key, value]) => {
-    formData.append(snakeCase(key), value);
+    if (value !== undefined && value !== null) {
+      formData.append(snakeCase(key), value);
+    }
     return formData;
   }, new FormData());
 };
