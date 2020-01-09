@@ -28,6 +28,7 @@ const readFullStream = (stream: Readable): Promise<unknown> =>
     stream.on("data", data => (all += data));
     stream.on("error", () => resolve("An error occurred reading the response"));
     stream.on("end", () => {
+      // Try to parse as JSON, but fall back to just returning the raw text.
       try {
         resolve(JSON.parse(all));
       } catch {
@@ -113,6 +114,7 @@ export class Resource<T extends SimpleObject> {
       method: Method.GET,
       url: `${this.name}/${id}/download`,
       responseType: "stream",
+      // Accept a response with any content type (e.g. image/png, application/pdf, video/mp4)
       headers: { Accept: "*/*" }
     });
 
