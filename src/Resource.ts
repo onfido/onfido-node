@@ -1,11 +1,15 @@
-import { AxiosInstance, AxiosResponse } from "axios";
+import { AxiosInstance, AxiosPromise, AxiosResponse } from "axios";
+import { IncomingMessage } from "http";
+import { Readable } from "stream";
 import { OnfidoApiError } from "./errors/OnfidoApiError";
 import { OnfidoError } from "./errors/OnfidoError";
 import {
   convertObjectToCamelCase,
   convertObjectToSnakeCase,
-  SimpleObject
+  SimpleObject,
+  toFormData
 } from "./formatting";
+import { OnfidoDownload } from "./OnfidoDownload";
 
 export enum Method {
   GET = "get",
@@ -17,15 +21,48 @@ export enum Method {
 const isJson = (response: AxiosResponse<unknown>): boolean =>
   (response.headers["content-type"] || "").includes("application/json");
 
-const convertAxiosErrorToOnfidoError = (error: any): OnfidoError => {
-  if (error.response) {
-    // Received a 4XX or 5XX response.
-    const response: AxiosResponse = error.response;
-    return OnfidoApiError.fromResponse(response.data, response.status);
-  } else if (error.message) {
-    return new OnfidoError(error.message);
-  } else {
-    return new OnfidoError("An unknown error occurred making the request");
+const readFullStream = (stream: Readable): Promise<unknown> =>
+  new Promise((resolve): void => {
+    let all = "";
+
+    stream.on("data", data => (all += data));
+    stream.on("error", () => resolve("An error occurred reading the response"));
+    stream.on("end", () => {
+      // Try to parse as JSON, but fall back to just returning the raw text.
+      try {
+        resolve(JSON.parse(all));
+      } catch {
+        resolve(all);
+      }
+    });
+  });
+
+const convertAxiosErrorToOnfidoError = async (
+  error: any
+): Promise<OnfidoError> => {
+  if (!error.response) {
+    return new OnfidoError(
+      error.message || "An unknown error occurred making the request"
+    );
+  }
+
+  // Received a 4XX or 5XX response.
+  const response: AxiosResponse = error.response;
+  const data = response.data;
+
+  // If we were downloading a file, we will have a stream instead of a string.
+  const body = data instanceof Readable ? await readFullStream(data) : data;
+
+  return OnfidoApiError.fromResponse(body, response.status);
+};
+
+const handleResponse = async (request: AxiosPromise<any>): Promise<any> => {
+  try {
+    const response = await request;
+    const data = response.data;
+    return isJson(response) ? convertObjectToCamelCase(data) : data;
+  } catch (error) {
+    throw await convertAxiosErrorToOnfidoError(error);
   }
 };
 
@@ -49,20 +86,39 @@ export class Resource<T extends SimpleObject> {
     body?: T;
     query?: SimpleObject;
   }): Promise<any> {
-    const promise = this.axiosInstance({
+    const request = this.axiosInstance({
       method,
       url: `${this.name}/${path}`,
       data: body && convertObjectToSnakeCase(body),
       params: query && convertObjectToSnakeCase(query)
     });
 
-    try {
-      const response = await promise;
+    return handleResponse(request);
+  }
 
-      const data = response.data;
-      return isJson(response) ? convertObjectToCamelCase(data) : data;
-    } catch (error) {
-      throw convertAxiosErrorToOnfidoError(error);
-    }
+  protected async upload(body: T): Promise<any> {
+    const formData = toFormData(body);
+
+    const request = this.axiosInstance({
+      method: Method.POST,
+      url: `${this.name}/`,
+      data: formData,
+      headers: formData.getHeaders()
+    });
+
+    return handleResponse(request);
+  }
+
+  protected async download(id: string): Promise<OnfidoDownload> {
+    const request = this.axiosInstance({
+      method: Method.GET,
+      url: `${this.name}/${id}/download`,
+      responseType: "stream",
+      // Accept a response with any content type (e.g. image/png, application/pdf, video/mp4)
+      headers: { Accept: "*/*" }
+    });
+
+    const stream: IncomingMessage = await handleResponse(request);
+    return new OnfidoDownload(stream);
   }
 }

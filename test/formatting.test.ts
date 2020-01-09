@@ -1,9 +1,10 @@
 import {
   convertObjectToCamelCase,
-  convertObjectToSnakeCase
+  convertObjectToSnakeCase,
+  toFormData
 } from "../src/formatting";
 
-describe("formatRequest", () => {
+describe("convertObjectToSnakeCase", () => {
   it("converts keys to snake_case, even if nested", () => {
     expect(
       convertObjectToSnakeCase({
@@ -14,7 +15,7 @@ describe("formatRequest", () => {
   });
 });
 
-describe("formatResponse", () => {
+describe("convertObjectToCamelCase", () => {
   it("converts keys to camelCase, even if nested", () => {
     expect(
       convertObjectToCamelCase({
@@ -22,5 +23,11 @@ describe("formatResponse", () => {
         a: [{ nested_in_array: 1 }]
       })
     ).toEqual({ keyName: { nestedKey: 2 }, a: [{ nestedInArray: 1 }] });
+  });
+});
+
+describe("toFormData", () => {
+  it("omits undefined and null values", () => {
+    expect(() => toFormData({ a: null, b: undefined })).not.toThrow();
   });
 });
