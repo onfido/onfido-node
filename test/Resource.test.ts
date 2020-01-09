@@ -17,7 +17,7 @@ class TestResource extends Resource<{}> {
   }
 
   public async download(id: string): Promise<OnfidoDownload> {
-    return super.download(id);
+    return super.download(`${id}/download`);
   }
 }
 

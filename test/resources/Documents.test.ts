@@ -53,3 +53,24 @@ it("downloads a document", async () => {
 
   expect(file).toBeInstanceOf(OnfidoDownload);
 });
+
+it("finds a document", async () => {
+  nock("https://api.onfido.com/v3")
+    .get("/documents/123-abc")
+    .reply(200, exampleDocumentJson);
+
+  const document = await onfido.document.find("123-abc");
+
+  expect(document).toEqual(exampleDocument);
+});
+
+it("lists documents", async () => {
+  nock("https://api.onfido.com/v3")
+    .get("/documents/")
+    .query({ applicant_id: "applicant-123" })
+    .reply(200, { documents: [exampleDocumentJson, exampleDocumentJson] });
+
+  const documents = await onfido.document.list("applicant-123");
+
+  expect(documents).toEqual([exampleDocument, exampleDocument]);
+});
