@@ -109,10 +109,10 @@ export class Resource<T extends SimpleObject> {
     return handleResponse(request);
   }
 
-  protected async download(id: string): Promise<OnfidoDownload> {
+  protected async download(path: string): Promise<OnfidoDownload> {
     const request = this.axiosInstance({
       method: Method.GET,
-      url: `${this.name}/${id}/download`,
+      url: `${this.name}/${path}`,
       responseType: "stream",
       // Accept a response with any content type (e.g. image/png, application/pdf, video/mp4)
       headers: { Accept: "*/*" }

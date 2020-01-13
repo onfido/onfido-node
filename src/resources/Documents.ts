@@ -1,7 +1,7 @@
 import { AxiosInstance } from "axios";
 import { ReadStream } from "fs";
 import { OnfidoDownload } from "../OnfidoDownload";
-import { Resource } from "../Resource";
+import { Method, Resource } from "../Resource";
 
 export type DocumentRequest = {
   applicantId?: string | null;
@@ -35,6 +35,19 @@ export class Documents extends Resource<DocumentRequest> {
   }
 
   public async download(id: string): Promise<OnfidoDownload> {
-    return super.download(id);
+    return super.download(`${id}/download`);
+  }
+
+  public async find(id: string): Promise<Document> {
+    return this.request({ method: Method.GET, path: id });
+  }
+
+  public async list(applicantId: string): Promise<Document[]> {
+    const { documents } = await this.request({
+      method: Method.GET,
+      query: { applicantId }
+    });
+
+    return documents;
   }
 }

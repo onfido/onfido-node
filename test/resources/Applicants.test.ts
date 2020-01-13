@@ -131,7 +131,7 @@ it("lists applicants", async () => {
     page: 1,
     perPage: 20,
     includeDeleted: true
-  } as any);
+  });
 
   expect(applicants).toEqual([exampleApplicant, exampleApplicant]);
 });
