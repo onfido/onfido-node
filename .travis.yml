@@ -7,3 +7,11 @@ script:
   - yarn test
   - yarn inspect
   - yarn build
+deploy:
+  provider: npm
+  email: info@onfido.com
+  api_key:
+    secure: Q/yqVt+CajcAOhSZ9jdsZYbE5llHmz+HrmS07zRnatsPdPZBGNH+FG3V6slJQUaWg6aoGdIyWhNR5a7Xi7nKHnM6He5lpnhneTlkwpPhy5+dW5l24htRaGETpYjA4OKhE0nuFDBIu8oyYZtBEuqOFdkZmGf1rDbQoU/FlN+ouWoAgBMu7MhdnoW/6BUT2JC6uzLRHDmdnMedAcd+PIpFB5YdXsdY171p8UTgdMB6o2WmRSm7tSvaASXrIWHzFy4U+ashkvoLZx5BrN/j5/1kzkS8OufjDAvzrtjNa8q44oAtODEw4sQanNjhUzhdoUi5OT4pSFhN3JhKUT6ZvrP/h2v1WC2GXY8NLUM39hCft5FVCnG70vvr0BNyqn9D04/+gBEFw3vBH6GW5zzsuU/ZZg0sI33r1Exa+6ML3ZPgokRfHu7YQ50rQV4WxyH9S9Jv7t97bEprBf0L8MJAcGPjh0M0peqsp0Cgn7qCHqy0aqCxPjyXIEPn6L6pFvfaCHYtuEVCCnIR6CyUZzv0ykvpRvJ3+MWpRxFESnyegr79kFpphLiGCRkaFjhDyFhovZMJtefTbg+Td+ArTkphqHJGKA8qDJel9ZPMvu3WMpZ+faIOejvad9cCt7TXEmmLdTfJ0+hat4vx9yjQ9ANKBZPikuv4ZNJ7Mqu0WhU8nIhN9sw=
+  on:
+    tags: true
+    branch: master

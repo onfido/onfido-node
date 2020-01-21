@@ -1,6 +1,4 @@
-# Work In Progress - Onfido Node.js Library
-
-:warning: **Under development**
+# Onfido Node.js Library
 
 The official Node.js library for integrating with the Onfido API.
 
