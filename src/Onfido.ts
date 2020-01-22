@@ -46,6 +46,10 @@ export class Onfido {
     timeout = 30_000,
     unknownApiUrl
   }: OnfidoOptions) {
+    if (!apiToken) {
+      throw new Error("No apiToken provided");
+    }
+
     const regionUrl = apiUrls[region];
     if (!regionUrl) {
       throw new Error("Unknown region " + region);
