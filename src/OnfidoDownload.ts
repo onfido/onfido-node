@@ -8,7 +8,7 @@ export class OnfidoDownload {
     this.incomingMessage = incomingMessage;
   }
 
-  public asReadStream(): Readable {
+  public asStream(): Readable {
     // Use a PassThrough stream so the IncomingMessage isn't exposed.
     const passThroughStream = new PassThrough();
     this.incomingMessage.pipe(passThroughStream);

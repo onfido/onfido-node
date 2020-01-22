@@ -96,6 +96,63 @@ onfido.applicant
   });
 ```
 
+## Response format
+
+Most responses will be normal JavaScript objects. Property names will be in camelCase rather than snake_case, including property names in nested objects.
+
+```js
+const applicant = await onfido.applicant.create({
+  firstName: "Jane",
+  lastName: "Doe",
+  address: {
+    flatNumber: "12",
+    postcode: "S2 2DF",
+    country: "GBR",
+  }
+});
+
+console.log(applicant);
+{
+  id: "<APPLICANT_ID>",
+  createdAt: "2020-01-22T10:44:01Z",
+  firstName: "Jane",
+  lastName: "Doe",
+  email: null,
+  dob: null,
+  deleteAt: null,
+  href: "/v3/applicants/<APPLICANT_ID>",
+  address: {
+    flatNumber: "12",
+    buildingNumber: null,
+    buildingName: null,
+    street: null,
+    subStreet: null,
+    town: null,
+    state: null,
+    postcode: "S2 2DF",
+    country: "GBR",
+    line1: null,
+    line2: null,
+    line3: null
+  },
+  idNumbers: []
+}
+```
+
+File downloads, for example `onfido.document.download(documentId)`, will return instances of `OnfidoDownload`.
+
+These objects will have a content type, e.g. `image/png`.
+
+```js
+download.contentType;
+```
+
+Call `asStream()` to get a `Readable` stream of the download. You can read more about [`Readable` streams](https://nodejs.org/api/stream.html#stream_readable_streams).
+
+```js
+const readableStream = download.asStream();
+```
+
 ## More Documentation
 
 More documentation and code examples can be found at <https://documentation.onfido.com>

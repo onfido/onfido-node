@@ -27,6 +27,11 @@ it("throws an error for unknown regions", () => {
   );
 });
 
+it("throws an error if no api token is provided", () => {
+  expect(() => new Onfido({ apiToken: "" } as any)).toThrow("apiToken");
+  expect(() => new Onfido({ wrongName: "token" } as any)).toThrow("apiToken");
+});
+
 it("allows changing the default timeout", () => {
   const onfido = new Onfido({ apiToken: "token", timeout: 123 });
   expect(onfido.axiosInstance.defaults.timeout).toBe(123);
