@@ -34,7 +34,7 @@ For TypeScript users, types are available as well:
 import { Onfido, Region, Applicant, OnfidoApiError } from "@onfido/api";
 ```
 
-Configure with you API token, and region if necessary:
+Configure with your API token, and region if necessary:
 
 ```js
 const onfido = new Onfido({
