@@ -16,6 +16,7 @@ export type Check = {
   reportIds: string[];
   createdAt: string;
   href: string;
+  applicantId: string;
   applicantProvidesData: boolean;
   status: string;
   tags: string[];
