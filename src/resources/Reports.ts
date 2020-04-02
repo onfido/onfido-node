@@ -11,7 +11,7 @@ export type Report = {
   subResult: string | null;
   properties: object | null;
   breakdown: object | null;
-  documents?: string[] | null;
+  documents: Array<{ id: string }>;
   checkId: string;
 };
 

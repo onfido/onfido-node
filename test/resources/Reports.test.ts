@@ -13,7 +13,7 @@ const exampleReport: Report = {
   subResult: null,
   properties: null,
   breakdown: null,
-  documents: ["document-id"],
+  documents: [{ id: "document-id" }],
   checkId: "aa111111-1111-1111-1111-111111111111"
 };
 
@@ -27,7 +27,7 @@ const exampleReportJson = {
   sub_result: null,
   properties: null,
   breakdown: null,
-  documents: ["document-id"],
+  documents: [{ id: "document-id" }],
   check_id: "aa111111-1111-1111-1111-111111111111"
 };
 
