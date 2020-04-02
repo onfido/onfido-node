@@ -12,6 +12,7 @@ export type Report = {
   properties: object | null;
   breakdown: object | null;
   documents?: string[] | null;
+  checkId: string;
 };
 
 export class Reports extends Resource<never> {
