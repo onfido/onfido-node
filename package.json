@@ -1,6 +1,6 @@
 {
   "name": "@onfido/api",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Node.js library for the Onfido API",
   "keywords": [
     "onfido",
@@ -42,13 +42,13 @@
     }
   },
   "devDependencies": {
-    "@types/jest": "^24.0.19",
-    "jest": "^24.9.0",
+    "@types/jest": "^25.1.4",
+    "jest": "^25.2.4",
     "nock": "^11.7.0",
     "prettier": "^1.18.2",
     "rollup": "^1.24.0",
     "rollup-plugin-typescript2": "^0.25.3",
-    "ts-jest": "^24.1.0",
+    "ts-jest": "^25.3.0",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
