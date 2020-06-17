@@ -5,6 +5,7 @@ export type SdkTokenRequest = {
   applicantId: string;
   applicationId?: string | null;
   referrer?: string | null;
+  crossDeviceUrl?: string | null;
 };
 
 export class SdkTokens extends Resource<SdkTokenRequest> {
