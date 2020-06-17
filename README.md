@@ -39,7 +39,7 @@ Configure with your API token, and region if necessary:
 ```js
 const onfido = new Onfido({
   apiToken: process.env.ONFIDO_API_TOKEN
-  // Defaults to EU region (api.onfido.com)
+  // Defaults to Region.EU (api.onfido.com), supports Region.US and Region.CA
   // region: Region.US
 });
 ```
