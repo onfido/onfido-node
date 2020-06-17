@@ -11,7 +11,8 @@ import { Webhooks } from "./resources/Webhooks";
 
 export enum Region {
   EU = "EU",
-  US = "US"
+  US = "US",
+  CA = "CA"
 }
 
 export type OnfidoOptions = {
@@ -23,7 +24,8 @@ export type OnfidoOptions = {
 
 const apiUrls = {
   [Region.EU]: "https://api.onfido.com/v3/",
-  [Region.US]: "https://api.us.onfido.com/v3/"
+  [Region.US]: "https://api.us.onfido.com/v3/",
+  [Region.CA]: "https://api.ca.onfido.com/v3/"
 };
 
 export class Onfido {
