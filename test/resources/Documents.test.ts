@@ -1,3 +1,4 @@
+import { ReadStream } from "fs";
 import nock from "nock";
 import { Document, Onfido, OnfidoDownload } from "onfido-node";
 
@@ -37,7 +38,7 @@ it("uploads a document", async () => {
     .reply(201, exampleDocumentJson);
 
   const document = await onfido.document.upload({
-    file: "file" as any,
+    file: ("file" as any) as ReadStream,
     type: "passport"
   });
 

@@ -2,6 +2,7 @@ export { Onfido, OnfidoOptions, Region } from "./Onfido";
 export { OnfidoDownload } from "./OnfidoDownload";
 export { OnfidoError } from "./errors/OnfidoError";
 export { OnfidoApiError } from "./errors/OnfidoApiError";
+export { FileLike } from "./formatting";
 export { WebhookEvent, WebhookEventVerifier } from "./WebhookEventVerifier";
 
 export { Applicant, ApplicantRequest } from "./resources/Applicants";

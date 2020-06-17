@@ -1,11 +1,11 @@
 import { AxiosInstance } from "axios";
-import { ReadStream } from "fs";
+import { FileLike } from "../formatting";
 import { OnfidoDownload } from "../OnfidoDownload";
 import { Method, Resource } from "../Resource";
 
 export type DocumentRequest = {
   applicantId?: string | null;
-  file: ReadStream;
+  file: FileLike;
   type: string;
   side?: string | null;
   issuingCountry?: string | null;

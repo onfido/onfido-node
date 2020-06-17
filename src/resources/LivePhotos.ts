@@ -1,11 +1,11 @@
 import { AxiosInstance } from "axios";
-import { ReadStream } from "fs";
+import { FileLike } from "../formatting";
 import { OnfidoDownload } from "../OnfidoDownload";
 import { Method, Resource } from "../Resource";
 
 export type LivePhotoRequest = {
   applicantId: string;
-  file: ReadStream;
+  file: FileLike;
   advancedValidation?: boolean;
 };
 

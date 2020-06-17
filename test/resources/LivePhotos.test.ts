@@ -1,5 +1,6 @@
 import nock from "nock";
 import { LivePhoto, Onfido, OnfidoDownload } from "onfido-node";
+import { PassThrough } from "stream";
 
 const onfido = new Onfido({ apiToken: "api_token" });
 
@@ -28,8 +29,18 @@ it("uploads a live photo", async () => {
     .post("/live_photos/")
     .reply(201, exampleLivePhotoJson);
 
+  const buffer = Buffer.from("base64data", "base64");
+  const bufferStream = new PassThrough();
+  bufferStream.end(buffer);
+
   const photo = await onfido.livePhoto.upload({
-    file: "file" as any,
+    file: {
+      contents: bufferStream,
+      filename: "name.png",
+      filepath: "path/name.png",
+      contentType: "image/png",
+      knownLength: 123
+    },
     applicantId: "applicant-123"
   });
 
