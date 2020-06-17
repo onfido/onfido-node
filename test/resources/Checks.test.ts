@@ -37,14 +37,14 @@ it("creates a check", async () => {
   nock("https://api.onfido.com/v3")
     .post("/checks/", {
       applicant_id: "applicant-123",
-      report_names: ["document", "identity_standard"],
+      report_names: ["document", "identity_enhanced"],
       document_ids: ["document-123"]
     })
     .reply(201, exampleCheckJson);
 
   const check = await onfido.check.create({
     applicantId: "applicant-123",
-    reportNames: ["document", "identity_standard"],
+    reportNames: ["document", "identity_enhanced"],
     documentIds: ["document-123"]
   });
 
