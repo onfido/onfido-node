@@ -38,7 +38,7 @@ it("uploads a document", async () => {
     .reply(201, exampleDocumentJson);
 
   const document = await onfido.document.upload({
-    file: ("file" as any) as ReadStream,
+    file: ("file" as unknown) as ReadStream,
     type: "passport"
   });
 
