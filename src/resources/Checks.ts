@@ -4,6 +4,7 @@ import { Method, Resource } from "../Resource";
 export type CheckRequest = {
   applicantId: string;
   reportNames: string[];
+  documentIds?: string[] | null;
   applicantProvidesData?: boolean;
   asynchronous?: boolean;
   tags?: string[] | null;
