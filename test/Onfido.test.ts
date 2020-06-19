@@ -14,10 +14,17 @@ it("defaults to the EU region", () => {
   );
 });
 
-it("allows setting the region", () => {
+it("allows setting the US region", () => {
   const onfido = new Onfido({ apiToken: "token", region: Region.US });
   expect(onfido.axiosInstance.defaults.baseURL).toBe(
     "https://api.us.onfido.com/v3/"
+  );
+});
+
+it("allows setting the CA region", () => {
+  const onfido = new Onfido({ apiToken: "token", region: Region.CA });
+  expect(onfido.axiosInstance.defaults.baseURL).toBe(
+    "https://api.ca.onfido.com/v3/"
   );
 });
 
