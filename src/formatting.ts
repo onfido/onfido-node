@@ -1,6 +1,15 @@
 import FormData from "form-data";
+import { Readable } from "stream";
 
 export type SimpleObject = { [key: string]: unknown };
+
+type ContentsAndOptions = {
+  contents: Readable;
+  filepath?: string;
+  contentType?: string;
+};
+
+export type FileLike = Readable | ContentsAndOptions;
 
 const snakeCase = (s: string): string =>
   s.replace(/[A-Z]/g, char => `_${char.toLowerCase()}`);
@@ -34,7 +43,10 @@ export const convertObjectToCamelCase = (
 
 export const toFormData = (object: SimpleObject): FormData => {
   return Object.entries(object).reduce((formData, [key, value]) => {
-    if (value !== undefined && value !== null) {
+    if (value instanceof Object && "contents" in value) {
+      const { contents, ...options } = value as ContentsAndOptions;
+      formData.append(snakeCase(key), contents, options);
+    } else if (value !== undefined && value !== null) {
       formData.append(snakeCase(key), value);
     }
     return formData;

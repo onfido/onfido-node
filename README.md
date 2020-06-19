@@ -20,7 +20,7 @@ For Yarn:
 yarn add @onfido/api
 ```
 
-## Getting Started
+## Getting started
 
 Require the package:
 
@@ -151,6 +151,32 @@ Call `asStream()` to get a `Readable` stream of the download. You can read more 
 const readableStream = download.asStream();
 ```
 
-## More Documentation
+## File upload
+
+For some common types of streams, like instances of `fs.ReadStream`, you can provide the stream directly in the `file` property:
+
+```js
+onfido.document.upload({
+  applicantId: "<APPLICANT_ID>",
+  file: fs.createReadStream("path/to/passport.png"),
+  type: "passport"
+});
+```
+
+Alternatively, you may need to provide some extra information:
+
+```js
+onfido.livePhoto.upload({
+  applicantId: "<APPLICANT_ID>",
+  file: {
+    contents: stream,
+    filepath: "path/to/photo.png",
+    contentType: "image/png"
+  },
+  type: "passport"
+});
+```
+
+## More documentation
 
 More documentation and code examples can be found at <https://documentation.onfido.com>
