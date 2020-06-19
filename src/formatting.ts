@@ -5,8 +5,6 @@ export type SimpleObject = { [key: string]: unknown };
 
 type ContentsAndOptions = {
   contents: Readable;
-  knownLength?: number;
-  filename?: string;
   filepath?: string;
   contentType?: string;
 };

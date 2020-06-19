@@ -36,10 +36,8 @@ it("uploads a live photo", async () => {
   const photo = await onfido.livePhoto.upload({
     file: {
       contents: bufferStream,
-      filename: "name.png",
       filepath: "path/name.png",
-      contentType: "image/png",
-      knownLength: 123
+      contentType: "image/png"
     },
     applicantId: "applicant-123"
   });
