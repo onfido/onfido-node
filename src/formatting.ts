@@ -5,7 +5,7 @@ export type SimpleObject = { [key: string]: unknown };
 
 type ContentsAndOptions = {
   contents: Readable;
-  filepath?: string;
+  filepath: string;
   contentType?: string;
 };
 
