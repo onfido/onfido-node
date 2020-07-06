@@ -1,6 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import { Addresses } from "./resources/Addresses";
 import { Applicants } from "./resources/Applicants";
+import { Autofill } from "./resources/Autofill";
 import { Checks } from "./resources/Checks";
 import { Documents } from "./resources/Documents";
 import { LivePhotos } from "./resources/LivePhotos";
@@ -41,6 +42,7 @@ export class Onfido {
   public readonly address: Addresses;
   public readonly webhook: Webhooks;
   public readonly sdkToken: SdkTokens;
+  public readonly autofill: Autofill;
 
   constructor({
     apiToken,
@@ -77,5 +79,6 @@ export class Onfido {
     this.address = new Addresses(this.axiosInstance);
     this.webhook = new Webhooks(this.axiosInstance);
     this.sdkToken = new SdkTokens(this.axiosInstance);
+    this.autofill = new Autofill(this.axiosInstance);
   }
 }
