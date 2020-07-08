@@ -35,12 +35,9 @@ export class Autofill extends Resource<never> {
   }
 
   public async perform(documentId: string): Promise<ExtractionResult> {
-    const result = await this.request({
+    return this.request({
       method: Method.POST,
-      path: "",
-      query: { document_id: documentId }
+      query: { documentId }
     });
-
-    return result;
   }
 }
