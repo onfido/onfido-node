@@ -29,7 +29,11 @@ export type ExtractionResult = {
   };
 };
 
-export class Autofill extends Resource<never> {
+export type AutofillResource = {
+  documentId: string;
+};
+
+export class Autofill extends Resource<AutofillResource> {
   constructor(axiosInstance: AxiosInstance) {
     super("extractions", axiosInstance);
   }
@@ -37,7 +41,7 @@ export class Autofill extends Resource<never> {
   public async perform(documentId: string): Promise<ExtractionResult> {
     return this.request({
       method: Method.POST,
-      query: { documentId }
+      body: { documentId }
     });
   }
 }
