@@ -29,7 +29,7 @@ export type ExtractionResult = {
   };
 };
 
-export type AutofillResource = {
+type AutofillResource = {
   documentId: string;
 };
 
