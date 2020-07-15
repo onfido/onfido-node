@@ -3,6 +3,7 @@ import { Onfido } from "onfido-node";
 
 const onfido = new Onfido({ apiToken: "api_token" });
 
+// Fake data, taken from documentation.
 const exampleAutofillJson = {
   document_id: "21345-xxx",
   document_classification: {
@@ -17,7 +18,7 @@ const exampleAutofillJson = {
     gender: "Female",
     last_name: "MAVARINE",
     mrz_line1: "IDFRAMAVARINE<<<<<<<<<<<<<<<<<075123",
-    mrz_line2: "2004075123457AMANDINE<CHANT9007219F5",
+    mrz_line2: "2000000000000AMANDINE<CHANT9007219F5",
     nationality: "FRA"
   }
 };
@@ -36,7 +37,7 @@ const exampleAutofillResult = {
     gender: "Female",
     lastName: "MAVARINE",
     mrzLine1: "IDFRAMAVARINE<<<<<<<<<<<<<<<<<075123",
-    mrzLine2: "2004075123457AMANDINE<CHANT9007219F5",
+    mrzLine2: "2000000000000AMANDINE<CHANT9007219F5",
     nationality: "FRA"
   }
 };
