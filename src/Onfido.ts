@@ -63,7 +63,8 @@ export class Onfido {
       baseURL: unknownApiUrl || regionUrl,
       headers: {
         Authorization: `Token token=${apiToken}`,
-        Accept: "application/json"
+        Accept: "application/json",
+        "User-Agent": `onfido-node/${process.env.npm_package_version}`
       },
       timeout
     });
