@@ -59,12 +59,14 @@ export class Onfido {
       throw new Error("Unknown region " + region);
     }
 
+    const packageVersion = require("../package.json").version;
+
     this.axiosInstance = axios.create({
       baseURL: unknownApiUrl || regionUrl,
       headers: {
         Authorization: `Token token=${apiToken}`,
         Accept: "application/json",
-        "User-Agent": `onfido-node/${process.env.npm_package_version}`
+        "User-Agent": `onfido-node/${packageVersion}`
       },
       timeout
     });
