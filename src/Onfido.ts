@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from "axios";
+import { version } from "../package.json";
 import { Addresses } from "./resources/Addresses";
 import { Applicants } from "./resources/Applicants";
 import { Autofill } from "./resources/Autofill";
@@ -59,14 +60,12 @@ export class Onfido {
       throw new Error("Unknown region " + region);
     }
 
-    const packageVersion = require("../package.json").version;
-
     this.axiosInstance = axios.create({
       baseURL: unknownApiUrl || regionUrl,
       headers: {
         Authorization: `Token token=${apiToken}`,
         Accept: "application/json",
-        "User-Agent": `onfido-node/${packageVersion}`
+        "User-Agent": `onfido-node/${version}`
       },
       timeout
     });

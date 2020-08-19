@@ -8,12 +8,9 @@ it("sets the authorization header from the given token", () => {
 });
 
 it("contains a user agent header", () => {
-  jest.mock("../package.json", () => {
-    return { version: "1.0.0" };
-  });
   const onfido = new Onfido({ apiToken: "api_token" });
-  expect(onfido.axiosInstance.defaults.headers["User-Agent"]).toBe(
-    "onfido-node/1.0.0"
+  expect(onfido.axiosInstance.defaults.headers["User-Agent"]).toMatch(
+    /^onfido-node\/\d+\.\d+\.\d+$/
   );
 });
 
