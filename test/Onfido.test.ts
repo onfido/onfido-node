@@ -1,16 +1,5 @@
 import { Onfido, Region } from "onfido-node";
 
-const OLD_ENV = process.env;
-
-beforeEach(() => {
-  jest.resetModules(); // most important - it clears the cache
-  process.env = { ...OLD_ENV }; // make a copy
-});
-
-afterAll(() => {
-  process.env = OLD_ENV; // restore old env
-});
-
 it("sets the authorization header from the given token", () => {
   const onfido = new Onfido({ apiToken: "api_token" });
   expect(onfido.axiosInstance.defaults.headers.Authorization).toBe(
@@ -19,11 +8,9 @@ it("sets the authorization header from the given token", () => {
 });
 
 it("contains a user agent header", () => {
-  process.env.npm_package_version = "0.0.0";
-
   const onfido = new Onfido({ apiToken: "api_token" });
-  expect(onfido.axiosInstance.defaults.headers["User-Agent"]).toBe(
-    "onfido-node/0.0.0"
+  expect(onfido.axiosInstance.defaults.headers["User-Agent"]).toMatch(
+    /^onfido-node\/\d+\.\d+\.\d+$/
   );
 });
 

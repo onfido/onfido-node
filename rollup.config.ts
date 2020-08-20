@@ -1,3 +1,4 @@
+import json from "@rollup/plugin-json";
 import typescript from "rollup-plugin-typescript2";
 
 export default {
@@ -14,6 +15,6 @@ export default {
       sourcemap: true
     }
   ],
-  plugins: [typescript()],
+  plugins: [json(), typescript()],
   external: ["axios", "form-data", "stream"]
 };

@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from "axios";
+import { version } from "../package.json";
 import { Addresses } from "./resources/Addresses";
 import { Applicants } from "./resources/Applicants";
 import { Autofill } from "./resources/Autofill";
@@ -64,7 +65,7 @@ export class Onfido {
       headers: {
         Authorization: `Token token=${apiToken}`,
         Accept: "application/json",
-        "User-Agent": `onfido-node/${process.env.npm_package_version}`
+        "User-Agent": `onfido-node/${version}`
       },
       timeout
     });

@@ -502,6 +502,22 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
+"@rollup/plugin-json@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-json/-/plugin-json-4.1.0.tgz#54e09867ae6963c593844d8bd7a9c718294496f3"
+  integrity sha512-yfLbTdNS6amI/2OpmbiBoW12vngr5NW2jCJVZSBEz+H5KfUJZ2M7sDjk0U6GOOdCWFVScShte29o9NezJ53TPw==
+  dependencies:
+    "@rollup/pluginutils" "^3.0.8"
+
+"@rollup/pluginutils@^3.0.8":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-3.1.0.tgz#706b4524ee6dc8b103b3c995533e5ad680c02b9b"
+  integrity sha512-GksZ6pr6TpIjHm8h9lSQ8pi8BE9VeubNT0OMJ3B5uZJ8pz73NPiqOtCog/x2/QzM1ENChPKxMDhiQuRHsqc+lg==
+  dependencies:
+    "@types/estree" "0.0.39"
+    estree-walker "^1.0.1"
+    picomatch "^2.2.2"
+
 "@sinonjs/commons@^1.7.0":
   version "1.7.1"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.7.1.tgz#da5fd19a5f71177a53778073978873964f49acf1"
@@ -551,6 +567,11 @@
   version "0.0.40"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.40.tgz#0e6cb9b9bbd098031fa19e4b4e8131bc70e5de13"
   integrity sha512-p3KZgMto/JyxosKGmnLDJ/dG5wf+qTRMUjHJcspC2oQKa4jP7mz+tv0ND56lLBu3ojHlhzY33Ol+khLyNmilkA==
+
+"@types/estree@0.0.39":
+  version "0.0.39"
+  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
+  integrity sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==
 
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.1"
@@ -1302,6 +1323,11 @@ estree-walker@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-0.6.1.tgz#53049143f40c6eb918b23671d1fe3219f3a1b362"
   integrity sha512-SqmZANLWS0mnatqbSfRP5g8OXZC12Fgg1IwNtLsyHDzJizORW4khDfjPqJZsemPWBB2uqykUah5YpQ6epsqC/w==
+
+estree-walker@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-1.0.1.tgz#31bc5d612c96b704106b477e6dd5d8aa138cb700"
+  integrity sha512-1fMXF3YP4pZZVozF8j/ZLfvnR8NSIljt56UhbZ5PeeDmmGHpgpdwQt7ITlGvYaQukCvuBRMLEiKiYC+oeIg4cg==
 
 esutils@^2.0.2:
   version "2.0.3"
@@ -2815,7 +2841,7 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-picomatch@^2.0.4, picomatch@^2.0.5:
+picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
   integrity sha512-q0M/9eZHzmr0AulXyPwNfZjtwZ/RBZlbN3K3CErVrk50T2ASYI7Bye0EvekFY3IP1Nt2DHu0re+V2ZHIpMkuWg==
