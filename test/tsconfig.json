@@ -3,6 +3,7 @@
   "include": ["./**/*"],
   "compilerOptions": {
     "baseUrl": "../",
+    "resolveJsonModule": true,
     "paths": {
       "onfido-node": ["src/index"]
     }
