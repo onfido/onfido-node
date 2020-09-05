@@ -1,9 +1,37 @@
 import { AxiosInstance } from "axios";
 import { Method, Resource } from "../Resource";
 
+// Events availables list for WebHooks
+export const CheckReportNamesList = [
+  // Document
+  "document",
+  // Document with Address Information
+  "document_with_address_information",
+  "document_with_driving_licence_information",
+  // Facial Similarity
+  "facial_similarity_photo",
+  "facial_similarity_photo_fully_auto",
+  "facial_similarity_video",
+  // Known Faces (beta)
+  "known_faces",
+  // Identity
+  "identity_enhanced",
+  // Watchlist
+  "watchlist_enhanced",
+  "watchlist_standard",
+  "watchlist_peps_only",
+  "watchlist_sanctions_only",
+  // Proof of Address
+  "proof_of_address",
+  // Right to Work
+  "right_to_work"
+] as const;
+
+export type CheckReportNames = typeof CheckReportNamesList[number];
+
 export type CheckRequest = {
   applicantId: string;
-  reportNames: string[];
+  reportNames: CheckReportNames[];
   documentIds?: string[] | null;
   applicantProvidesData?: boolean;
   asynchronous?: boolean;

@@ -1,4 +1,4 @@
-export { Onfido, OnfidoOptions, Region } from "./Onfido";
+export { Onfido, OnfidoOptions, Region, RegionEnum } from "./Onfido";
 export { OnfidoDownload } from "./OnfidoDownload";
 export { OnfidoError } from "./errors/OnfidoError";
 export { OnfidoApiError } from "./errors/OnfidoApiError";
@@ -11,8 +11,13 @@ export { IdNumber, IdNumberRequest } from "./resources/IdNumbers";
 export { Document, DocumentRequest } from "./resources/Documents";
 export { LivePhoto, LivePhotoRequest } from "./resources/LivePhotos";
 export { LiveVideo } from "./resources/LiveVideos";
-export { Check, CheckRequest } from "./resources/Checks";
+export { Check, CheckRequest, CheckReportNames } from "./resources/Checks";
 export { Report } from "./resources/Reports";
-export { Webhook, WebhookRequest } from "./resources/Webhooks";
+export {
+  Webhook,
+  WebhookEventsList,
+  WebhookEnvironmentsList,
+  WebhookRequest
+} from "./resources/Webhooks";
 export { SdkTokenRequest } from "./resources/SdkTokens";
 export { Autofill, ExtractionResult } from "./resources/Autofill";

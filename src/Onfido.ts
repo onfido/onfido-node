@@ -11,11 +11,13 @@ import { Reports } from "./resources/Reports";
 import { SdkTokens } from "./resources/SdkTokens";
 import { Webhooks } from "./resources/Webhooks";
 
-export enum Region {
+export enum RegionEnum {
   EU = "EU",
   US = "US",
   CA = "CA"
 }
+
+export type Region = keyof typeof RegionEnum;
 
 export type OnfidoOptions = {
   apiToken: string;
@@ -25,9 +27,9 @@ export type OnfidoOptions = {
 };
 
 const apiUrls = {
-  [Region.EU]: "https://api.onfido.com/v3/",
-  [Region.US]: "https://api.us.onfido.com/v3/",
-  [Region.CA]: "https://api.ca.onfido.com/v3/"
+  [RegionEnum.EU]: "https://api.onfido.com/v3/",
+  [RegionEnum.US]: "https://api.us.onfido.com/v3/",
+  [RegionEnum.CA]: "https://api.ca.onfido.com/v3/"
 };
 
 export class Onfido {
@@ -47,7 +49,7 @@ export class Onfido {
 
   constructor({
     apiToken,
-    region = Region.EU,
+    region = "EU",
     timeout = 30_000,
     unknownApiUrl
   }: OnfidoOptions) {

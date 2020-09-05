@@ -1,4 +1,4 @@
-import { Onfido, Region } from "onfido-node";
+import { Onfido } from "onfido-node";
 
 it("sets the authorization header from the given token", () => {
   const onfido = new Onfido({ apiToken: "api_token" });
@@ -22,14 +22,14 @@ it("defaults to the EU region", () => {
 });
 
 it("allows setting the US region", () => {
-  const onfido = new Onfido({ apiToken: "token", region: Region.US });
+  const onfido = new Onfido({ apiToken: "token", region: "US" });
   expect(onfido.axiosInstance.defaults.baseURL).toBe(
     "https://api.us.onfido.com/v3/"
   );
 });
 
 it("allows setting the CA region", () => {
-  const onfido = new Onfido({ apiToken: "token", region: Region.CA });
+  const onfido = new Onfido({ apiToken: "token", region: "CA" });
   expect(onfido.axiosInstance.defaults.baseURL).toBe(
     "https://api.ca.onfido.com/v3/"
   );

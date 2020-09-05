@@ -1,12 +1,32 @@
 import { AxiosInstance } from "axios";
 import { Method, Resource } from "../Resource";
 
+// Events availables list for WebHooks
+export const WebhookEventsList = [
+  "check.started",
+  "check.reopened",
+  "check.withdrawn",
+  "check.completed",
+  "check.form_completed",
+  "report.withdrawn",
+  "report.resumed",
+  "report.cancelled",
+  "report.awaiting_approval",
+  "report.completed"
+] as const;
+
+// Environments availables list for WebHooks
+export const WebhookEnvironmentsList = ["live", "sandbox"] as const;
+
+type WebhookEvents = typeof WebhookEventsList[number];
+type WebhookEnvironments = typeof WebhookEnvironmentsList[number];
+
 // url is also optional to allow updating.
 export type WebhookRequest = {
   url?: string | null;
   enabled?: boolean;
-  environments?: string[];
-  events?: string[] | null;
+  environments?: WebhookEnvironments[];
+  events?: WebhookEvents[] | null;
 };
 
 export type Webhook = {
