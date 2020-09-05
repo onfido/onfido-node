@@ -38,7 +38,7 @@ Configure with your API token, and region if necessary:
 
 ```js
 const onfido = new Onfido({
-  apiToken: process.env.ONFIDO_API_TOKEN,
+  apiToken: process.env.ONFIDO_API_TOKEN
   // Defaults to "EU" (api.onfido.com), supports "US" and "CA"
   // region: "US"
 });
@@ -50,12 +50,12 @@ Using with `async`/`await` (in an `async function`):
 try {
   const applicant = await onfido.applicant.create({
     firstName: "Jane",
-    lastName: "Doe",
+    lastName: "Doe"
   });
 
   const check = await onfido.check.create({
     applicantId: applicant.id,
-    reportNames: ["identity_enhanced"],
+    reportNames: ["identity_enhanced"]
   });
 
   return check;
@@ -159,7 +159,7 @@ For some common types of streams, like instances of `fs.ReadStream`, you can pro
 onfido.document.upload({
   applicantId: "<APPLICANT_ID>",
   file: fs.createReadStream("path/to/passport.png"),
-  type: "passport",
+  type: "passport"
 });
 ```
 
@@ -171,9 +171,9 @@ onfido.livePhoto.upload({
   file: {
     contents: stream,
     filepath: "path/to/photo.png",
-    contentType: "image/png",
+    contentType: "image/png"
   },
-  type: "passport",
+  type: "passport"
 });
 ```
 
