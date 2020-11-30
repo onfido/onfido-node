@@ -30,4 +30,11 @@ describe("toFormData", () => {
   it("omits undefined and null values", () => {
     expect(() => toFormData({ a: null, b: undefined })).not.toThrow();
   });
+
+  it("should return proper FormData object", () => {
+    const formData = toFormData({ a: "A", b: "B" });
+    expect(formData.getBoundary()).toContain("----");
+    expect(formData.getLengthSync()).toEqual(258);
+    expect(formData.hasKnownLength()).toBeTruthy();
+  });
 });

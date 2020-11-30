@@ -1,5 +1,7 @@
-import FormData from "form-data";
 import { Readable } from "stream";
+import { FormData } from "./types/formData";
+
+const FormData = require("form-data");
 
 export type SimpleObject = { [key: string]: unknown };
 
