@@ -6,7 +6,6 @@
     "interface-over-type-literal": false,
     "member-ordering": [true, { "order": "fields-first" }],
     "object-literal-sort-keys": false,
-    "typedef": [true, "call-signature", "arrow-call-signature"],
-    "no-var-requires": false
+    "typedef": [true, "call-signature", "arrow-call-signature"]
   }
 }

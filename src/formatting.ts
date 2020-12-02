@@ -2,6 +2,7 @@ import { Readable } from "stream";
 import { IFormData } from "./types/formData";
 
 // Using require because "form-data" exports this object as a default export which breaks integration when esModuleInterop: false
+// tslint:disable-next-line: no-var-requires
 const FormData = require("form-data");
 
 export type SimpleObject = { [key: string]: unknown };
