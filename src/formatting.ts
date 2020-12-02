@@ -1,6 +1,7 @@
 import { Readable } from "stream";
-import { FormData } from "./types/formData";
+import { IFormData } from "./types/formData";
 
+// Using require because "form-data" exports this object as a default export which breaks integration when esModuleInterop: false
 const FormData = require("form-data");
 
 export type SimpleObject = { [key: string]: unknown };
@@ -43,7 +44,7 @@ export const convertObjectToCamelCase = (
   responseBody: SimpleObject
 ): SimpleObject => deepMapObjectKeys(responseBody, camelCase);
 
-export const toFormData = (object: SimpleObject): FormData => {
+export const toFormData = (object: SimpleObject): IFormData => {
   return Object.entries(object).reduce((formData, [key, value]) => {
     if (value instanceof Object && "contents" in value) {
       const { contents, ...options } = value as ContentsAndOptions;

@@ -2,33 +2,11 @@
 import * as http from "http";
 import * as stream from "stream";
 
-// Extracted because @types/node doesn't export interfaces.
-interface ReadableOptions {
-  highWaterMark?: number;
-  encoding?: string;
-  objectMode?: boolean;
-  autoDestroy?: boolean;
-  read?(this: stream.Readable, size: number): void;
-  destroy?(
-    this: stream.Readable,
-    error: Error | null,
-    callback: (error: Error | null) => void
-  ): void;
-}
-
-interface Options extends ReadableOptions {
-  writable?: boolean;
-  readable?: boolean;
-  dataSize?: number;
-  maxDataSize?: number;
-  pauseStreams?: boolean;
-}
-
-export interface FormData extends stream.Readable {
-  append(key: string, value: any, options?: AppendOptions | string): void;
-  getHeaders(userHeaders?: Headers): Headers;
+export interface IFormData extends stream.Readable {
+  append(key: string, value: any, options?: IAppendOptions | string): void;
+  getHeaders(userHeaders?: IHeaders): IHeaders;
   submit(
-    params: string | SubmitOptions,
+    params: string | ISubmitOptions,
     callback?: (error: Error | null, response: http.IncomingMessage) => void
   ): http.ClientRequest;
   getBuffer(): Buffer;
@@ -38,18 +16,18 @@ export interface FormData extends stream.Readable {
   hasKnownLength(): boolean;
 }
 
-interface Headers {
+interface IHeaders {
   [key: string]: any;
 }
 
-interface AppendOptions {
-  header?: string | Headers;
+interface IAppendOptions {
+  header?: string | IHeaders;
   knownLength?: number;
   filename?: string;
   filepath?: string;
   contentType?: string;
 }
 
-interface SubmitOptions extends http.RequestOptions {
+interface ISubmitOptions extends http.RequestOptions {
   protocol?: "https:" | "http:";
 }
