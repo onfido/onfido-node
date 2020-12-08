@@ -163,14 +163,18 @@ onfido.document.upload({
 });
 ```
 
-Alternatively, you may need to provide some extra information:
+Alternatively, you may need to provide some extra information, for example when uploading a Base64 encoded image:
 
 ```js
-onfido.livePhoto.upload({
+const buffer = Buffer.from(base64Data, "base64");
+const bufferStream = new PassThrough();
+bufferStream.end(buffer);
+
+onfido.document.upload({
   applicantId: "<APPLICANT_ID>",
   file: {
-    contents: stream,
-    filepath: "path/to/photo.png",
+    contents: bufferStream,
+    filepath: "image.png",
     contentType: "image/png"
   },
   type: "passport"
