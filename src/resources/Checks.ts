@@ -10,6 +10,7 @@ export type CheckRequest = {
   tags?: string[] | null;
   suppressFormEmails?: boolean;
   redirectUri?: string | null;
+  privacyNoticesReadConsentGiven?: boolean;
 };
 
 export type Check = {
