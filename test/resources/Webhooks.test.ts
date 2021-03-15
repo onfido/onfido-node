@@ -16,7 +16,7 @@ const exampleWebhook: Webhook = {
 const exampleWebhookJson = exampleWebhook;
 
 it("creates a webhook", async () => {
-  nock("https://api.onfido.com/v3")
+  nock("https://api.onfido.com/v3.1")
     .post("/webhooks/", { url: "https://example.com" })
     .reply(201, exampleWebhookJson);
 
@@ -28,7 +28,7 @@ it("creates a webhook", async () => {
 });
 
 it("finds a webhook", async () => {
-  nock("https://api.onfido.com/v3")
+  nock("https://api.onfido.com/v3.1")
     .get("/webhooks/123-abc")
     .reply(200, exampleWebhookJson);
 
@@ -38,7 +38,7 @@ it("finds a webhook", async () => {
 });
 
 it("updates a webhook", async () => {
-  nock("https://api.onfido.com/v3")
+  nock("https://api.onfido.com/v3.1")
     .put("/webhooks/123-abc", { enabled: false })
     .reply(200, exampleWebhookJson);
 
@@ -50,7 +50,7 @@ it("updates a webhook", async () => {
 });
 
 it("deletes a webhook", async () => {
-  nock("https://api.onfido.com/v3")
+  nock("https://api.onfido.com/v3.1")
     .delete("/webhooks/123-abc")
     .reply(204);
 
@@ -58,7 +58,7 @@ it("deletes a webhook", async () => {
 });
 
 it("lists webhooks", async () => {
-  nock("https://api.onfido.com/v3")
+  nock("https://api.onfido.com/v3.1")
     .get("/webhooks/")
     .reply(200, { webhooks: [exampleWebhookJson, exampleWebhookJson] });
 

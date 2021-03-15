@@ -11,6 +11,7 @@ export type CheckRequest = {
   suppressFormEmails?: boolean;
   redirectUri?: string | null;
   privacyNoticesReadConsentGiven?: boolean;
+  webhookIds?: string[] | null;
 };
 
 export type Check = {
@@ -26,6 +27,8 @@ export type Check = {
   formUri: string | null;
   redirectUri: string | null;
   resultsUri: string;
+  privacyNoticesReadConsentGiven: boolean;
+  webhookIds: string[] | null;
 };
 
 export class Checks extends Resource<CheckRequest> {
@@ -52,5 +55,9 @@ export class Checks extends Resource<CheckRequest> {
 
   public async resume(id: string): Promise<void> {
     await this.request({ method: Method.POST, path: `${id}/resume` });
+  }
+
+  public async download(id: string): Promise<OnfidoDownload> {
+    return super.download(`${id}/download`);
   }
 }

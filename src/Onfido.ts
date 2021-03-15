@@ -25,9 +25,9 @@ export type OnfidoOptions = {
 };
 
 const apiUrls = {
-  [Region.EU]: "https://api.onfido.com/v3/",
-  [Region.US]: "https://api.us.onfido.com/v3/",
-  [Region.CA]: "https://api.ca.onfido.com/v3/"
+  [Region.EU]: "https://api.onfido.com/v3.1.1/",
+  [Region.US]: "https://api.us.onfido.com/v3.1/",
+  [Region.CA]: "https://api.ca.onfido.com/v3.1/"
 };
 
 export class Onfido {

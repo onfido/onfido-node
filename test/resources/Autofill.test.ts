@@ -43,7 +43,7 @@ const exampleAutofillResult = {
 };
 
 it("performs autofill", async () => {
-  nock("https://api.onfido.com/v3")
+  nock("https://api.onfido.com/v3.1")
     .post("/extractions/", {
       document_id: "21345-xxx"
     })

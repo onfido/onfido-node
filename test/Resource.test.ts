@@ -4,7 +4,7 @@ import { OnfidoApiError, OnfidoDownload } from "onfido-node";
 import { Resource } from "../src/Resource";
 
 const axiosInstance = axios.create({
-  baseURL: "https://api.onfido.com/v3/"
+  baseURL: "https://api.onfido.com/v3.1/"
 });
 
 class TestResource extends Resource<{}> {
@@ -37,7 +37,7 @@ describe("error handling", () => {
   it("returns an OnfidoApiError when a response is recieved", async () => {
     expect.assertions(2);
 
-    nock("https://api.onfido.com/v3")
+    nock("https://api.onfido.com/v3.1")
       .post("/test/")
       .reply(404, "Not Found");
 
@@ -52,7 +52,7 @@ describe("error handling", () => {
   it("reads json error messages when streaming the response", async () => {
     expect.assertions(2);
 
-    nock("https://api.onfido.com/v3")
+    nock("https://api.onfido.com/v3.1")
       .get("/test/123/download")
       .reply(400, errorJson);
 

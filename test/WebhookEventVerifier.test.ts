@@ -3,14 +3,14 @@ import { OnfidoError, WebhookEvent, WebhookEventVerifier } from "onfido-node";
 const webhookToken = "_ABC123abc123ABC123abc123ABC123_";
 const verifier = new WebhookEventVerifier(webhookToken);
 
-const rawEvent = `{"payload":{"resource_type":"check","action":"check.completed","object":{"id":"check-123","status":"complete","completed_at_iso8601":"2020-01-01T00:00:00Z","href":"https://api.onfido.com/v3/checks/check-123"}}}`;
+const rawEvent = `{"payload":{"resource_type":"check","action":"check.completed","object":{"id":"check-123","status":"complete","completed_at_iso8601":"2020-01-01T00:00:00Z","href":"https://api.onfido.com/v3.1/checks/check-123"}}}`;
 
 const expectedEvent: WebhookEvent = {
   action: "check.completed",
   resourceType: "check",
   object: {
     id: "check-123",
-    href: "https://api.onfido.com/v3/checks/check-123",
+    href: "https://api.onfido.com/v3.1/checks/check-123",
     status: "complete",
     completedAtIso8601: "2020-01-01T00:00:00Z"
   }

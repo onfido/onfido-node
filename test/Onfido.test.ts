@@ -17,21 +17,21 @@ it("contains a user agent header", () => {
 it("defaults to the EU region", () => {
   const onfido = new Onfido({ apiToken: "token" });
   expect(onfido.axiosInstance.defaults.baseURL).toBe(
-    "https://api.onfido.com/v3/"
+    "https://api.onfido.com/v3.1/"
   );
 });
 
 it("allows setting the US region", () => {
   const onfido = new Onfido({ apiToken: "token", region: Region.US });
   expect(onfido.axiosInstance.defaults.baseURL).toBe(
-    "https://api.us.onfido.com/v3/"
+    "https://api.us.onfido.com/v3.1/"
   );
 });
 
 it("allows setting the CA region", () => {
   const onfido = new Onfido({ apiToken: "token", region: Region.CA });
   expect(onfido.axiosInstance.defaults.baseURL).toBe(
-    "https://api.ca.onfido.com/v3/"
+    "https://api.ca.onfido.com/v3.1/"
   );
 });
 

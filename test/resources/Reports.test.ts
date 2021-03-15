@@ -7,7 +7,7 @@ const exampleReport: Report = {
   id: "abc-123",
   createdAt: "2020-01-01T00:00:00Z",
   name: "document",
-  href: "https://api.onfido.com/v3/reports/123-abc",
+  href: "https://api.onfido.com/v3.1/reports/123-abc",
   status: "in_progress",
   result: null,
   subResult: null,
@@ -21,7 +21,7 @@ const exampleReportJson = {
   id: "abc-123",
   created_at: "2020-01-01T00:00:00Z",
   name: "document",
-  href: "https://api.onfido.com/v3/reports/123-abc",
+  href: "https://api.onfido.com/v3.1/reports/123-abc",
   status: "in_progress",
   result: null,
   sub_result: null,
@@ -32,7 +32,7 @@ const exampleReportJson = {
 };
 
 it("finds a report", async () => {
-  nock("https://api.onfido.com/v3")
+  nock("https://api.onfido.com/v3.1")
     .get("/reports/123-abc")
     .reply(200, exampleReportJson);
 
@@ -42,7 +42,7 @@ it("finds a report", async () => {
 });
 
 it("lists reports", async () => {
-  nock("https://api.onfido.com/v3")
+  nock("https://api.onfido.com/v3.1")
     .get("/reports/")
     .query({ check_id: "check-123" })
     .reply(200, { reports: [exampleReportJson, exampleReportJson] });
@@ -53,7 +53,7 @@ it("lists reports", async () => {
 });
 
 it("resumes a report", async () => {
-  nock("https://api.onfido.com/v3")
+  nock("https://api.onfido.com/v3.1")
     .post("/reports/abc-123/resume")
     .reply(204);
 
@@ -61,7 +61,7 @@ it("resumes a report", async () => {
 });
 
 it("cancels a report", async () => {
-  nock("https://api.onfido.com/v3")
+  nock("https://api.onfido.com/v3.1")
     .post("/reports/abc-123/cancel")
     .reply(204);
 

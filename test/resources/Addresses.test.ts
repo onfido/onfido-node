@@ -34,7 +34,7 @@ const exampleAddressJson = {
 };
 
 it("allows picking addresses", async () => {
-  nock("https://api.onfido.com/v3")
+  nock("https://api.onfido.com/v3.1")
     .get("/addresses/pick")
     .query({ postcode: "S2 2DF" })
     .reply(200, { addresses: [exampleAddressJson, exampleAddressJson] });
