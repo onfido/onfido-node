@@ -1,4 +1,5 @@
 import { AxiosInstance } from "axios";
+import { OnfidoDownload } from "../OnfidoDownload";
 import { Method, Resource } from "../Resource";
 
 export type CheckRequest = {

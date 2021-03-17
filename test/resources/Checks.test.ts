@@ -1,5 +1,5 @@
 import nock from "nock";
-import { Check, Onfido } from "onfido-node";
+import { Check, Onfido, OnfidoDownload } from "onfido-node";
 
 const onfido = new Onfido({ apiToken: "api_token" });
 
@@ -15,7 +15,9 @@ const exampleCheck: Check = {
   result: null,
   formUri: null,
   redirectUri: null,
-  resultsUri: "https://dashboard.onfido.com/checks/123-abc"
+  resultsUri: "https://dashboard.onfido.com/checks/123-abc",
+  privacyNoticesReadConsentGiven: true,
+  webhookIds: ["webhook-123"]
 };
 
 const exampleCheckJson = {
@@ -30,7 +32,9 @@ const exampleCheckJson = {
   result: null,
   form_uri: null,
   redirect_uri: null,
-  results_uri: "https://dashboard.onfido.com/checks/123-abc"
+  results_uri: "https://dashboard.onfido.com/checks/123-abc",
+  privacy_notices_read_consent_given: true,
+  webhook_ids: ["webhook-123"]
 };
 
 it("creates a check", async () => {
