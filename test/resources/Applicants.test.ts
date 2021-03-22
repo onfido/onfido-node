@@ -1,7 +1,5 @@
-import nock from "nock";
-import { Applicant, Onfido } from "onfido-node";
-
-const onfido = new Onfido({ apiToken: "api_token" });
+import { Applicant } from "onfido-node";
+import { createNock, onfido } from "../testHelpers";
 
 const exampleApplicant: Applicant = {
   id: "123-abc",
@@ -56,7 +54,7 @@ const exampleApplicantJson = {
 };
 
 it("creates applicants", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .post("/applicants/", {
       first_name: "Test",
       last_name: "Applicant",
@@ -80,7 +78,7 @@ it("creates applicants", async () => {
 });
 
 it("finds an applicant", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .get("/applicants/123-abc")
     .reply(200, exampleApplicantJson);
 
@@ -90,7 +88,7 @@ it("finds an applicant", async () => {
 });
 
 it("updates an applicant", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .put("/applicants/123-abc", { first_name: "Test2" })
     .reply(200, exampleApplicantJson);
 
@@ -102,7 +100,7 @@ it("updates an applicant", async () => {
 });
 
 it("deletes an applicant", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .delete("/applicants/123-abc")
     .reply(204);
 
@@ -110,7 +108,7 @@ it("deletes an applicant", async () => {
 });
 
 it("restores an applicant", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .post("/applicants/123-abc/restore")
     .reply(204);
 
@@ -118,7 +116,7 @@ it("restores an applicant", async () => {
 });
 
 it("lists applicants", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .get("/applicants/")
     .query({
       page: 1,

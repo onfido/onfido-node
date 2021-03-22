@@ -1,7 +1,5 @@
-import nock from "nock";
-import { Onfido, Webhook } from "onfido-node";
-
-const onfido = new Onfido({ apiToken: "api_token" });
+import { Webhook } from "onfido-node";
+import { createNock, onfido } from "../testHelpers";
 
 const exampleWebhook: Webhook = {
   id: "abc-123",
@@ -16,7 +14,7 @@ const exampleWebhook: Webhook = {
 const exampleWebhookJson = exampleWebhook;
 
 it("creates a webhook", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .post("/webhooks/", { url: "https://example.com" })
     .reply(201, exampleWebhookJson);
 
@@ -28,7 +26,7 @@ it("creates a webhook", async () => {
 });
 
 it("finds a webhook", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .get("/webhooks/123-abc")
     .reply(200, exampleWebhookJson);
 
@@ -38,7 +36,7 @@ it("finds a webhook", async () => {
 });
 
 it("updates a webhook", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .put("/webhooks/123-abc", { enabled: false })
     .reply(200, exampleWebhookJson);
 
@@ -50,7 +48,7 @@ it("updates a webhook", async () => {
 });
 
 it("deletes a webhook", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .delete("/webhooks/123-abc")
     .reply(204);
 
@@ -58,7 +56,7 @@ it("deletes a webhook", async () => {
 });
 
 it("lists webhooks", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .get("/webhooks/")
     .reply(200, { webhooks: [exampleWebhookJson, exampleWebhookJson] });
 

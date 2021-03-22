@@ -34,13 +34,13 @@ For TypeScript users, types are available as well:
 import { Onfido, Region, Applicant, OnfidoApiError } from "@onfido/api";
 ```
 
-Configure with your API token, and region if necessary:
+Configure with your API token and region:
 
 ```js
 const onfido = new Onfido({
-  apiToken: process.env.ONFIDO_API_TOKEN
-  // Defaults to Region.EU (api.onfido.com), supports Region.US and Region.CA
-  // region: Region.US
+  apiToken: process.env.ONFIDO_API_TOKEN,
+  // Supports Region.EU, Region.US and Region.CA
+  region: Region.EU
 });
 ```
 
