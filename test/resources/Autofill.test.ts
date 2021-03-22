@@ -16,7 +16,9 @@ const exampleAutofillJson = {
     last_name: "MAVARINE",
     mrz_line1: "IDFRAMAVARINE<<<<<<<<<<<<<<<<<075123",
     mrz_line2: "2000000000000AMANDINE<CHANT9007219F5",
-    nationality: "FRA"
+    nationality: "FRA",
+    address_line_1: "address 1",
+    address_line_2: "address 2"
   }
 };
 
@@ -35,7 +37,9 @@ const exampleAutofillResult = {
     lastName: "MAVARINE",
     mrzLine1: "IDFRAMAVARINE<<<<<<<<<<<<<<<<<075123",
     mrzLine2: "2000000000000AMANDINE<CHANT9007219F5",
-    nationality: "FRA"
+    nationality: "FRA",
+    addressLine1: "address 1",
+    addressLine2: "address 2"
   }
 };
 
