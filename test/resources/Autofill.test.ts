@@ -1,7 +1,4 @@
-import nock from "nock";
-import { Onfido } from "onfido-node";
-
-const onfido = new Onfido({ apiToken: "api_token" });
+import { createNock, onfido } from "../testHelpers";
 
 // Fake data, taken from documentation.
 const exampleAutofillJson = {
@@ -43,7 +40,7 @@ const exampleAutofillResult = {
 };
 
 it("performs autofill", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .post("/extractions/", {
       document_id: "21345-xxx"
     })

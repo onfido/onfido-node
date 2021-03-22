@@ -1,8 +1,7 @@
-import nock from "nock";
-import { LivePhoto, Onfido, OnfidoDownload } from "onfido-node";
+import { LivePhoto, OnfidoDownload } from "onfido-node";
 import { PassThrough } from "stream";
 
-const onfido = new Onfido({ apiToken: "api_token" });
+import { createNock, onfido } from "../testHelpers";
 
 const exampleLivePhoto: LivePhoto = {
   id: "123-abc",
@@ -25,7 +24,7 @@ const exampleLivePhotoJson = {
 };
 
 it("uploads a live photo", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .post("/live_photos/")
     .reply(201, exampleLivePhotoJson);
 
@@ -46,7 +45,7 @@ it("uploads a live photo", async () => {
 });
 
 it("downloads a live photo", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .get("/live_photos/abc-123/download")
     .reply(200, {});
 
@@ -56,7 +55,7 @@ it("downloads a live photo", async () => {
 });
 
 it("finds a live photo", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .get("/live_photos/123-abc")
     .reply(200, exampleLivePhotoJson);
 
@@ -66,7 +65,7 @@ it("finds a live photo", async () => {
 });
 
 it("lists live photos", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .get("/live_photos/")
     .query({ applicant_id: "applicant-123" })
     .reply(200, { live_photos: [exampleLivePhotoJson, exampleLivePhotoJson] });

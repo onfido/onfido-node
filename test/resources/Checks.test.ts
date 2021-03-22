@@ -1,7 +1,5 @@
-import nock from "nock";
-import { Check, Onfido, OnfidoDownload } from "onfido-node";
-
-const onfido = new Onfido({ apiToken: "api_token" });
+import { Check, OnfidoDownload } from "onfido-node";
+import { createNock, onfido } from "../testHelpers";
 
 const exampleCheck: Check = {
   id: "abc-123",
@@ -38,7 +36,7 @@ const exampleCheckJson = {
 };
 
 it("creates a check", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .post("/checks/", {
       applicant_id: "applicant-123",
       report_names: ["document", "identity_enhanced"],
@@ -60,7 +58,7 @@ it("creates a check", async () => {
 });
 
 it("finds a check", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .get("/checks/123-abc")
     .reply(200, exampleCheckJson);
 
@@ -70,7 +68,7 @@ it("finds a check", async () => {
 });
 
 it("lists checks", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .get("/checks/")
     .query({ applicant_id: "applicant-123" })
     .reply(200, { checks: [exampleCheckJson, exampleCheckJson] });
@@ -81,7 +79,7 @@ it("lists checks", async () => {
 });
 
 it("resumes a check", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .post("/checks/abc-123/resume")
     .reply(204);
 
@@ -89,7 +87,7 @@ it("resumes a check", async () => {
 });
 
 it("downloads a check", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .get("/checks/abc-123/download")
     .reply(200, {});
 

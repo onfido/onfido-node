@@ -19,15 +19,9 @@ export enum Region {
 
 export type OnfidoOptions = {
   apiToken: string;
-  region?: Region;
+  region: Region;
   timeout?: number;
   unknownApiUrl?: string;
-};
-
-const apiUrls = {
-  [Region.EU]: "https://api.onfido.com/v3.1/",
-  [Region.US]: "https://api.us.onfido.com/v3.1/",
-  [Region.CA]: "https://api.ca.onfido.com/v3.1/"
 };
 
 export class Onfido {
@@ -47,18 +41,18 @@ export class Onfido {
 
   constructor({
     apiToken,
-    region = Region.EU,
+    region,
     timeout = 30_000,
     unknownApiUrl
   }: OnfidoOptions) {
     if (!apiToken) {
       throw new Error("No apiToken provided");
     }
-
-    const regionUrl = apiUrls[region];
-    if (!regionUrl) {
-      throw new Error("Unknown region " + region);
+    if (!region || !Object.values(Region).includes(region)) {
+      throw new Error(`Unknown region '${region}'`);
     }
+
+    const regionUrl = `https://api.${region.toLowerCase()}.onfido.com/v3.1/`;
 
     this.axiosInstance = axios.create({
       baseURL: unknownApiUrl || regionUrl,

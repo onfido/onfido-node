@@ -1,7 +1,5 @@
-import nock from "nock";
-import { LiveVideo, Onfido, OnfidoDownload } from "onfido-node";
-
-const onfido = new Onfido({ apiToken: "api_token" });
+import { LiveVideo, OnfidoDownload } from "onfido-node";
+import { createNock, onfido } from "../testHelpers";
 
 const exampleLiveVideo: LiveVideo = {
   id: "123-abc",
@@ -24,7 +22,7 @@ const exampleLiveVideoJson = {
 };
 
 it("downloads a live video", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .get("/live_videos/abc-123/download")
     .reply(200, {});
 
@@ -34,7 +32,7 @@ it("downloads a live video", async () => {
 });
 
 it("downloads a live video frame", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .get("/live_videos/abc-123/frame")
     .reply(200, {});
 
@@ -44,7 +42,7 @@ it("downloads a live video frame", async () => {
 });
 
 it("finds a live video", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .get("/live_videos/123-abc")
     .reply(200, exampleLiveVideoJson);
 
@@ -54,7 +52,7 @@ it("finds a live video", async () => {
 });
 
 it("lists live videos", async () => {
-  nock("https://api.onfido.com/v3.1")
+  createNock()
     .get("/live_videos/")
     .query({ applicant_id: "applicant-123" })
     .reply(200, { live_videos: [exampleLiveVideoJson, exampleLiveVideoJson] });
