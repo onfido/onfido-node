@@ -15,11 +15,13 @@ type ContentsAndOptions = {
 
 export type FileLike = Readable | ContentsAndOptions;
 
-const snakeCase = (s: string): string =>
-  s.replace(/[A-Z]/g, char => `_${char.toLowerCase()}`);
+const snakeCase = (camelCaseString: string): string =>
+  camelCaseString.replace(/[A-Z]/g, char => `_${char.toLowerCase()}`);
 
-const camelCase = (s: string): string =>
-  s.replace(/_[a-z]/g, underscoreChar => underscoreChar[1].toUpperCase());
+const camelCase = (snakeCaseString: string): string =>
+  snakeCaseString
+    .replace(/_[0-9]/g, underscoreDigit => underscoreDigit[1])
+    .replace(/_[a-z]/g, underscoreChar => underscoreChar[1].toUpperCase());
 
 const deepMapObjectKeys = (value: unknown, f: (key: string) => string): any => {
   if (!(value instanceof Object)) {
