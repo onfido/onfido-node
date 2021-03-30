@@ -37,13 +37,13 @@ it("allows setting the CA region", () => {
 
 it("throws an error for no region", () => {
   expect(() => new Onfido({ apiToken: "token" } as any)).toThrow(
-    "Unknown region 'undefined'"
+    "Unknown or missing region 'undefined'"
   );
 });
 
 it("throws an error for unknown regions", () => {
   expect(() => new Onfido({ apiToken: "token", region: "abc" as any })).toThrow(
-    "Unknown region 'abc'"
+    "Unknown or missing region 'abc'"
   );
 });
 
