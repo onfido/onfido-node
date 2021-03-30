@@ -49,7 +49,11 @@ export class Onfido {
       throw new Error("No apiToken provided");
     }
     if (!region || !Object.values(Region).includes(region)) {
-      throw new Error(`Unknown region '${region}'`);
+      throw new Error(
+        `Unknown or missing region '${region}'. ` +
+          "We previously defaulted to region 'EU', so if you previously didn’t " +
+          "set a region or used api.onfido.com, please set your region to 'EU'"
+      );
     }
 
     const regionUrl = `https://api.${region.toLowerCase()}.onfido.com/v3.1/`;
