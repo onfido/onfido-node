@@ -1,14 +1,13 @@
-import nock from "nock";
-import { LivePhoto, Onfido, OnfidoDownload } from "onfido-node";
+import { LivePhoto, OnfidoDownload } from "onfido-node";
 import { PassThrough } from "stream";
 
-const onfido = new Onfido({ apiToken: "api_token" });
+import { createNock, onfido } from "../testHelpers";
 
 const exampleLivePhoto: LivePhoto = {
   id: "123-abc",
   createdAt: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3/live_photos/123-abc",
-  downloadHref: "https://api.onfido.com/v3/live_photos/123-abc/downlaod",
+  href: "https://api.onfido.com/v3.1/live_photos/123-abc",
+  downloadHref: "https://api.onfido.com/v3.1/live_photos/123-abc/downlaod",
   fileName: "photo.png",
   fileType: "png",
   fileSize: 500_000
@@ -17,15 +16,15 @@ const exampleLivePhoto: LivePhoto = {
 const exampleLivePhotoJson = {
   id: "123-abc",
   created_at: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3/live_photos/123-abc",
-  download_href: "https://api.onfido.com/v3/live_photos/123-abc/downlaod",
+  href: "https://api.onfido.com/v3.1/live_photos/123-abc",
+  download_href: "https://api.onfido.com/v3.1/live_photos/123-abc/downlaod",
   file_name: "photo.png",
   file_type: "png",
   file_size: 500_000
 };
 
 it("uploads a live photo", async () => {
-  nock("https://api.onfido.com/v3")
+  createNock()
     .post("/live_photos/")
     .reply(201, exampleLivePhotoJson);
 
@@ -46,7 +45,7 @@ it("uploads a live photo", async () => {
 });
 
 it("downloads a live photo", async () => {
-  nock("https://api.onfido.com/v3")
+  createNock()
     .get("/live_photos/abc-123/download")
     .reply(200, {});
 
@@ -56,7 +55,7 @@ it("downloads a live photo", async () => {
 });
 
 it("finds a live photo", async () => {
-  nock("https://api.onfido.com/v3")
+  createNock()
     .get("/live_photos/123-abc")
     .reply(200, exampleLivePhotoJson);
 
@@ -66,7 +65,7 @@ it("finds a live photo", async () => {
 });
 
 it("lists live photos", async () => {
-  nock("https://api.onfido.com/v3")
+  createNock()
     .get("/live_photos/")
     .query({ applicant_id: "applicant-123" })
     .reply(200, { live_photos: [exampleLivePhotoJson, exampleLivePhotoJson] });

@@ -20,9 +20,9 @@ describe("convertObjectToCamelCase", () => {
     expect(
       convertObjectToCamelCase({
         key_name: { nested_key: 2 },
-        a: [{ nested_in_array: 1 }]
+        a: [{ nested_in_array_1: 1 }]
       })
-    ).toEqual({ keyName: { nestedKey: 2 }, a: [{ nestedInArray: 1 }] });
+    ).toEqual({ keyName: { nestedKey: 2 }, a: [{ nestedInArray1: 1 }] });
   });
 });
 

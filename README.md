@@ -6,6 +6,8 @@ Documentation can be found at <https://documentation.onfido.com>
 
 This library is only for use on the backend, as it uses Onfido API tokens which must be kept secret. If you do need to collect applicant data in the frontend of your application, we recommend that you use one of [the Onfido SDKs](https://developers.onfido.com/sdks/).
 
+This version uses Onfido API v3.1. Refer to our [API versioning guide](https://developers.onfido.com/guide/api-versioning-policy#client-libraries) for details of which client library versions use which versions of the API.
+
 ## Installation
 
 For npm:
@@ -34,13 +36,13 @@ For TypeScript users, types are available as well:
 import { Onfido, Region, Applicant, OnfidoApiError } from "@onfido/api";
 ```
 
-Configure with your API token, and region if necessary:
+Configure with your API token and region:
 
 ```js
 const onfido = new Onfido({
-  apiToken: process.env.ONFIDO_API_TOKEN
-  // Defaults to Region.EU (api.onfido.com), supports Region.US and Region.CA
-  // region: Region.US
+  apiToken: process.env.ONFIDO_API_TOKEN,
+  // Supports Region.EU, Region.US and Region.CA
+  region: Region.EU
 });
 ```
 

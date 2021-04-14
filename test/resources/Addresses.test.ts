@@ -1,7 +1,5 @@
-import nock from "nock";
-import { Address, Onfido } from "onfido-node";
-
-const onfido = new Onfido({ apiToken: "api_token" });
+import { Address } from "onfido-node";
+import { createNock, onfido } from "../testHelpers";
 
 const exampleAddress: Address = {
   postcode: "S2 2DF",
@@ -34,7 +32,7 @@ const exampleAddressJson = {
 };
 
 it("allows picking addresses", async () => {
-  nock("https://api.onfido.com/v3")
+  createNock()
     .get("/addresses/pick")
     .query({ postcode: "S2 2DF" })
     .reply(200, { addresses: [exampleAddressJson, exampleAddressJson] });

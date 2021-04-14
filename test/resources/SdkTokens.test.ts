@@ -1,10 +1,7 @@
-import nock from "nock";
-import { Onfido } from "onfido-node";
-
-const onfido = new Onfido({ apiToken: "api_token" });
+import { createNock, onfido } from "../testHelpers";
 
 it("generates an sdk token", async () => {
-  nock("https://api.onfido.com/v3")
+  createNock()
     .post("/sdk_token/", {
       applicant_id: "applicant-123",
       referrer: "https://*.example.com/*"
