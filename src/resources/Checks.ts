@@ -13,6 +13,8 @@ export type CheckRequest = {
   redirectUri?: string | null;
   privacyNoticesReadConsentGiven?: boolean;
   webhookIds?: string[] | null;
+  subResult?: string;
+  consider?: string[];
 };
 
 export type Check = {
