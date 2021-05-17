@@ -53,8 +53,56 @@ it("creates a check", async () => {
     privacyNoticesReadConsentGiven: true,
     webhookIds: ["abc", "def"]
   });
-
+  
   expect(check).toEqual(exampleCheck);
+});
+
+it("creates a check for generating a rejected sub-result for document report in the sandbox", async () => {
+  createNock()
+    .post("/checks/", {
+      applicant_id: "applicant-123",
+      report_names: ["document", "identity_enhanced"],
+      document_ids: ["document-123"],
+      privacy_notices_read_consent_given: true,
+      webhook_ids: ["abc", "def"],
+      sub_result: "rejected"
+    })
+    .reply(201, exampleCheckJson);
+
+  const subResultCheck = await onfido.check.create({
+    applicantId: "applicant-123",
+    reportNames: ["document", "identity_enhanced"],
+    documentIds: ["document-123"],
+    privacyNoticesReadConsentGiven: true,
+    webhookIds: ["abc", "def"],
+    subResult: "rejected"
+  });
+
+  expect(subResultCheck).toEqual(exampleCheck);
+});
+
+it("creates a check for generating a consider result for a report in the sandbox", async () => {
+  createNock()
+    .post("/checks/", {
+      applicant_id: "applicant-123",
+      report_names: ["document", "identity_enhanced"],
+      document_ids: ["document-123"],
+      privacy_notices_read_consent_given: true,
+      webhook_ids: ["abc", "def"],
+      consider: ["identity_enhanced"]
+    })
+    .reply(201, exampleCheckJson);
+
+  const considerCheck = await onfido.check.create({
+    applicantId: "applicant-123",
+    reportNames: ["document", "identity_enhanced"],
+    documentIds: ["document-123"],
+    privacyNoticesReadConsentGiven: true,
+    webhookIds: ["abc", "def"],
+    consider: ["identity_enhanced"]
+  });
+
+  expect(considerCheck).toEqual(exampleCheck);
 });
 
 it("finds a check", async () => {
