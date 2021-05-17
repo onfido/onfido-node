@@ -2,8 +2,8 @@
 
 ## v2.0.1, 17 May 2021
 
-- Add `sub_result` to trigger sandbox pre-determined reponses for Document report sub-results
-- Add `consider` array functionality for sandbox pre-determined reponses 
+- Add `sub_result` to trigger sandbox pre-determined responses for Document report sub-results
+- Add `consider` array functionality for sandbox pre-determined responses 
 
 ## v2.0.0, 9 April 2021
 
