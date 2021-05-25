@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.2, 25 May 2021
+
+- Add `environments` to Webhook object 
+
 ## v2.0.1, 17 May 2021
 
 - Add `sub_result` to trigger sandbox pre-determined responses for Document report sub-results
