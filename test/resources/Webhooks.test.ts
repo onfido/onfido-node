@@ -7,7 +7,8 @@ const exampleWebhook: Webhook = {
   enabled: true,
   events: ["check.completed", "report.completed"],
   token: "webhook-token",
-  href: "/v3/webhooks/abc-132"
+  href: "/v3/webhooks/abc-132",
+  environments: ["sandbox"]
 };
 
 // All property names are the same in camelCase and snake_case.
