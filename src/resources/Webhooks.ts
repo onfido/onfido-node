@@ -16,6 +16,7 @@ export type Webhook = {
   events: string[];
   token: string;
   href: string;
+  environments: string[];
 };
 
 export class Webhooks extends Resource<WebhookRequest> {
