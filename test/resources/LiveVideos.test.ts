@@ -4,8 +4,8 @@ import { createNock, onfido } from "../testHelpers";
 const exampleLiveVideo: LiveVideo = {
   id: "123-abc",
   createdAt: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3.1/live_videos/123-abc",
-  downloadHref: "https://api.onfido.com/v3.1/live_videos/123-abc/downlaod",
+  href: "https://api.onfido.com/v3.2/live_videos/123-abc",
+  downloadHref: "https://api.onfido.com/v3.2/live_videos/123-abc/downlaod",
   fileName: "video.mp4",
   fileType: "mp4",
   fileSize: 500_000
@@ -14,8 +14,8 @@ const exampleLiveVideo: LiveVideo = {
 const exampleLiveVideoJson = {
   id: "123-abc",
   created_at: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3.1/live_videos/123-abc",
-  download_href: "https://api.onfido.com/v3.1/live_videos/123-abc/downlaod",
+  href: "https://api.onfido.com/v3.2/live_videos/123-abc",
+  download_href: "https://api.onfido.com/v3.2/live_videos/123-abc/downlaod",
   file_name: "video.mp4",
   file_type: "mp4",
   file_size: 500_000

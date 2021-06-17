@@ -6,8 +6,8 @@ import { createNock, onfido } from "../testHelpers";
 const exampleLivePhoto: LivePhoto = {
   id: "123-abc",
   createdAt: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3.1/live_photos/123-abc",
-  downloadHref: "https://api.onfido.com/v3.1/live_photos/123-abc/downlaod",
+  href: "https://api.onfido.com/v3.2/live_photos/123-abc",
+  downloadHref: "https://api.onfido.com/v3.2/live_photos/123-abc/downlaod",
   fileName: "photo.png",
   fileType: "png",
   fileSize: 500_000
@@ -16,8 +16,8 @@ const exampleLivePhoto: LivePhoto = {
 const exampleLivePhotoJson = {
   id: "123-abc",
   created_at: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3.1/live_photos/123-abc",
-  download_href: "https://api.onfido.com/v3.1/live_photos/123-abc/downlaod",
+  href: "https://api.onfido.com/v3.2/live_photos/123-abc",
+  download_href: "https://api.onfido.com/v3.2/live_photos/123-abc/downlaod",
   file_name: "photo.png",
   file_type: "png",
   file_size: 500_000
