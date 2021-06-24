@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.0, 23 June 2021
+
+- Updated to use API v3.2
+
 ## v2.0.2, 25 May 2021
 
 - Add `environments` to Webhook object 
