@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.1.0, 23 June 2021
+## v2.1.0, 24 June 2021
 
 - Updated to use API v3.2
 
