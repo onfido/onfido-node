@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.1, 6 Jan 2022
+
+- Add `validate_image_quality` to document upload request
+
 ## v2.1.0, 24 June 2021
 
 - Updated to use API v3.2
