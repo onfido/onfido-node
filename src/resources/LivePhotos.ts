@@ -6,7 +6,7 @@ import { Method, Resource } from "../Resource";
 export type LivePhotoRequest = {
   applicantId: string;
   file: FileLike;
-  advancedValidation?: boolean;
+  advancedValidation?: string;
 };
 
 export type LivePhoto = {
