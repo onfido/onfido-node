@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.2, 17 Feb 2022
+
+- Fix `advancedValidation` flag when uploading live photo
+
 ## v2.1.1, 6 Jan 2022
 
 - Add `validate_image_quality` to document upload request

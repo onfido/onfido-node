@@ -44,6 +44,28 @@ it("uploads a live photo", async () => {
   expect(photo).toEqual(exampleLivePhoto);
 });
 
+it("uploads a live photo with advanced validation", async () => {
+  createNock()
+    .post("/live_photos/")
+    .reply(201, exampleLivePhotoJson);
+
+  const buffer = Buffer.from("base64data", "base64");
+  const bufferStream = new PassThrough();
+  bufferStream.end(buffer);
+
+  const photo = await onfido.livePhoto.upload({
+    file: {
+      contents: bufferStream,
+      filepath: "path/name.png",
+      contentType: "image/png"
+    },
+    applicantId: "applicant-123",
+    advancedValidation: "true"
+  });
+
+  expect(photo).toEqual(exampleLivePhoto);
+});
+
 it("downloads a live photo", async () => {
   createNock()
     .get("/live_photos/abc-123/download")
