@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.2.0, 02 March 2022
+
+- Updated to use API v3.3
+
 ## v2.1.2, 17 Feb 2022
 
 - Fix `advancedValidation` flag when uploading live photo
