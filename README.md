@@ -52,7 +52,11 @@ Using with `async`/`await` (in an `async function`):
 try {
   const applicant = await onfido.applicant.create({
     firstName: "Jane",
-    lastName: "Doe"
+    lastName: "Doe", 
+    location: {
+      ipAddress: "127.0.0.1",
+      countryOfResidence: "GBR"
+    }
   });
 
   const check = await onfido.check.create({
@@ -80,7 +84,11 @@ Using with promises:
 onfido.applicant
   .create({
     firstName: "Jane",
-    lastName: "Doe"
+    lastName: "Doe",
+    location: {
+      ipAddress: "127.0.0.1",
+      countryOfResidence: "GBR"
+    }
   })
   .then(applicant =>
     onfido.check.create({
@@ -108,6 +116,10 @@ const applicant = await onfido.applicant.create({
     flatNumber: "12",
     postcode: "S2 2DF",
     country: "GBR",
+  },
+  location: {
+    ipAddress: "127.0.0.1",
+    countryOfResidence: "GBR",
   }
 });
 
@@ -135,7 +147,12 @@ console.log(applicant);
     line2: null,
     line3: null
   },
-  idNumbers: []
+  idNumbers: [],
+  phoneNumber: null,
+  location: {
+    ipAddress: "127.0.0.1",
+    countryOfResidence: "GBR"
+  }
 }
 ```
 
