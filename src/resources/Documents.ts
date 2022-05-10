@@ -2,6 +2,7 @@ import { AxiosInstance } from "axios";
 import { FileLike } from "../formatting";
 import { OnfidoDownload } from "../OnfidoDownload";
 import { Method, Resource } from "../Resource";
+import { LocationRequest } from "./Location";
 
 export type DocumentRequest = {
   applicantId?: string | null;
@@ -10,6 +11,7 @@ export type DocumentRequest = {
   side?: string | null;
   issuingCountry?: string | null;
   validateImageQuality?: boolean | null;
+  location?: LocationRequest | null;
 };
 
 export type Document = {

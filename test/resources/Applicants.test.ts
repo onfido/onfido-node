@@ -24,6 +24,11 @@ const exampleApplicant: Applicant = {
     line1: null,
     line2: null,
     line3: null
+  },
+  phoneNumber: null,
+  location: {
+    ipAddress: "127.0.0.1",
+    countryOfResidence: "GBR"
   }
 };
 
@@ -50,6 +55,11 @@ const exampleApplicantJson = {
     line1: null,
     line2: null,
     line3: null
+  },
+  phoneNumber: null,
+  location: {
+    ipAddress: "127.0.0.1",
+    countryOfResidence: "GBR"
   }
 };
 
@@ -61,6 +71,10 @@ it("creates applicants", async () => {
       address: {
         postcode: "AB12 3AB",
         country: "GBR"
+      },
+      location: {
+        ipAddress: "127.0.0.1",
+        countryOfResidence: "GBR"
       }
     })
     .reply(201, exampleApplicantJson);
@@ -71,6 +85,10 @@ it("creates applicants", async () => {
     address: {
       postcode: "AB12 3AB",
       country: "GBR"
+    },
+    location: {
+      ipAddress: "127.0.0.1",
+      countryOfResidence: "GBR"
     }
   });
 
