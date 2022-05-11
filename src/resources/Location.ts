@@ -3,7 +3,7 @@ export type LocationRequest = {
     countryOfResidence?: string | null;
   };
   
-  export type Location = {
+export type Location = {
     ipAddress: string;
     countryOfResidence: string;
   };

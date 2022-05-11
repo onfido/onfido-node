@@ -5,7 +5,7 @@ const exampleApplicant: Applicant = {
   id: "123-abc",
   createdAt: "2020-01-01T00:00:00Z",
   deleteAt: null,
-  href: "/v3/applicants/123-abc",
+  href: "/v3.4/applicants/123-abc",
   firstName: "Test",
   lastName: "Applicant",
   email: null,
@@ -36,7 +36,7 @@ const exampleApplicantJson = {
   id: "123-abc",
   created_at: "2020-01-01T00:00:00Z",
   delete_at: null,
-  href: "/v3/applicants/123-abc",
+  href: "/v3.4/applicants/123-abc",
   first_name: "Test",
   last_name: "Applicant",
   email: null,
@@ -56,10 +56,10 @@ const exampleApplicantJson = {
     line2: null,
     line3: null
   },
-  phoneNumber: null,
+  phone_number: null,
   location: {
-    ipAddress: "127.0.0.1",
-    countryOfResidence: "GBR"
+    ip_address: "127.0.0.1",
+    country_of_residence: "GBR"
   }
 };
 
@@ -73,8 +73,8 @@ it("creates applicants", async () => {
         country: "GBR"
       },
       location: {
-        ipAddress: "127.0.0.1",
-        countryOfResidence: "GBR"
+        ip_address: "127.0.0.1",
+        country_of_residence: "GBR"
       }
     })
     .reply(201, exampleApplicantJson);
