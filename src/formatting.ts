@@ -53,7 +53,13 @@ export const toFormData = (object: SimpleObject): IFormData => {
       const { contents, ...options } = value as ContentsAndOptions;
       formData.append(snakeCase(key), contents, options);
     } else if (value !== undefined && value !== null) {
-      formData.append(snakeCase(key), value);
+      if (value instanceof Object) {
+        for (const [elementKey, elementValue] of Object.entries(value)) {
+          formData.append(snakeCase(key + "[" + elementKey + "]"), elementValue);
+        }
+      } else {
+        formData.append(snakeCase(key), value);
+      }
     }
     return formData;
   }, new FormData());

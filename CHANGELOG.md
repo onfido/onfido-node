@@ -2,11 +2,11 @@
 
 ## v2.3.0, 10 May 2022
 
-- Updated to use API v3.4 
-- Added `location`to applicant request, applicant response and documents request. `location` is a mandatory parameter for all applicants in order to create a check using API v3.4
+- Updated to use API v3.4. For more details please see our [release notes](https://developers.onfido.com/release-notes#api-v34)
+- Added `location` to applicant request, applicant response and documents request. `location` is a mandatory parameter for all applicants in order to create a check using API v3.4
 - Added `consents` to applicant request. `consents` is a mandatory parameter for any applicant located in the United States in order to create a check using API v3.4
 - Added `phoneNumber` to applicant request and response
-- Removed `privacy_notices_read_consent_given`
+- Removed `privacy_notices_read_consent_given` from check request and response
 
 ## v2.2.0, 02 March 2022
 

@@ -37,7 +37,11 @@ it("uploads a document", async () => {
 
   const document = await onfido.document.upload({
     file: ("file" as unknown) as ReadStream,
-    type: "passport"
+    type: "passport",
+    location: {
+      ipAddress: "123.123.123",
+      countryOfResidence: "GBR"
+    }
   });
 
   expect(document).toEqual(exampleDocument);
