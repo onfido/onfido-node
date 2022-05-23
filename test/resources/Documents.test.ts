@@ -6,8 +6,8 @@ const exampleDocument: Document = {
   id: "123-abc",
   applicantId: "applicant-123",
   createdAt: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3.3/documents/123-abc",
-  downloadHref: "https://api.onfido.com/v3.3/documents/123-abc/download",
+  href: "https://api.onfido.com/v3.4/documents/123-abc",
+  downloadHref: "https://api.onfido.com/v3.4/documents/123-abc/download",
   fileName: "document.png",
   fileType: "png",
   fileSize: 500_000,
@@ -20,8 +20,8 @@ const exampleDocumentJson = {
   id: "123-abc",
   applicant_id: "applicant-123",
   created_at: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3.3/documents/123-abc",
-  download_href: "https://api.onfido.com/v3.3/documents/123-abc/download",
+  href: "https://api.onfido.com/v3.4/documents/123-abc",
+  download_href: "https://api.onfido.com/v3.4/documents/123-abc/download",
   file_name: "document.png",
   file_type: "png",
   file_size: 500_000,
@@ -37,7 +37,11 @@ it("uploads a document", async () => {
 
   const document = await onfido.document.upload({
     file: ("file" as unknown) as ReadStream,
-    type: "passport"
+    type: "passport",
+    location: {
+      ipAddress: "123.123.123",
+      countryOfResidence: "GBR"
+    }
   });
 
   expect(document).toEqual(exampleDocument);

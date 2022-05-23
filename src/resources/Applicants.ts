@@ -2,6 +2,8 @@ import { AxiosInstance } from "axios";
 import { Method, Resource } from "../Resource";
 import { Address, AddressRequest } from "./Addresses";
 import { IdNumber, IdNumberRequest } from "./IdNumbers";
+import { Location, LocationRequest } from "./Location";
+import { ConsentsRequest } from "./ConsentsRequest";
 
 // firstName and lastName are also optional, to allow updating.
 export type ApplicantRequest = {
@@ -11,6 +13,9 @@ export type ApplicantRequest = {
   dob?: string | null;
   address?: AddressRequest | null;
   idNumbers?: IdNumberRequest[] | null;
+  phoneNumber?: string | null;
+  location?: LocationRequest | null;
+  consents?: ConsentsRequest[] | null;
 };
 
 export type Applicant = {
@@ -24,6 +29,8 @@ export type Applicant = {
   dob: string | null;
   address: Address | null;
   idNumbers: IdNumber[] | null;
+  phoneNumber: string | null;
+  location: Location | null;
 };
 
 export class Applicants extends Resource<ApplicantRequest> {

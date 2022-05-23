@@ -11,7 +11,6 @@ export type CheckRequest = {
   tags?: string[] | null;
   suppressFormEmails?: boolean;
   redirectUri?: string | null;
-  privacyNoticesReadConsentGiven?: boolean;
   webhookIds?: string[] | null;
   subResult?: string;
   consider?: string[];
@@ -30,7 +29,6 @@ export type Check = {
   formUri: string | null;
   redirectUri: string | null;
   resultsUri: string;
-  privacyNoticesReadConsentGiven: boolean;
   webhookIds: string[] | null;
 };
 

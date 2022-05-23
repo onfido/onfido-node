@@ -1,16 +1,24 @@
 # Changelog
 
+## v2.3.0, 10 May 2022
+
+- Updated to use API v3.4. For more details please see our [release notes](https://developers.onfido.com/release-notes#api-v34)
+- Added `location` to applicant request, applicant response and documents request. `location` is a mandatory parameter for all applicants in order to create a check using API v3.4
+- Added `consents` to applicant request. `consents` is a mandatory parameter for any applicant located in the United States in order to create a check using API v3.4
+- Added `phoneNumber` to applicant request and response
+- Removed `privacy_notices_read_consent_given` from check request and response
+
 ## v2.2.0, 02 March 2022
 
 - Updated to use API v3.3
 
 ## v2.1.2, 17 Feb 2022
 
-- Fix `advancedValidation` flag when uploading live photo
+- Fixed `advancedValidation` flag when uploading live photo
 
 ## v2.1.1, 6 Jan 2022
 
-- Add `validate_image_quality` to document upload request
+- Added `validate_image_quality` to document upload request
 
 ## v2.1.0, 24 June 2021
 
@@ -18,12 +26,12 @@
 
 ## v2.0.2, 25 May 2021
 
-- Add `environments` to Webhook object 
+- Added `environments` to Webhook object 
 
 ## v2.0.1, 17 May 2021
 
-- Add `sub_result` to trigger sandbox pre-determined responses for Document report sub-results
-- Add `consider` array functionality for sandbox pre-determined responses 
+- Added `sub_result` to trigger sandbox pre-determined responses for Document report sub-results
+- Added `consider` array functionality for sandbox pre-determined responses 
 
 ## v2.0.0, 9 April 2021
 
