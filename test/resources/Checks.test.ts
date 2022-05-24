@@ -14,6 +14,7 @@ const exampleCheck: Check = {
   formUri: null,
   redirectUri: null,
   resultsUri: "https://dashboard.onfido.com/checks/123-abc",
+  privacyNoticesReadConsentGiven: true,
   webhookIds: ["webhook-123"]
 };
 
@@ -30,6 +31,7 @@ const exampleCheckJson = {
   form_uri: null,
   redirect_uri: null,
   results_uri: "https://dashboard.onfido.com/checks/123-abc",
+  privacy_notices_read_consent_given: true,
   webhook_ids: ["webhook-123"]
 };
 
