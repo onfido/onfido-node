@@ -1,6 +1,6 @@
 {
   "name": "@onfido/api",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Node.js library for the Onfido API",
   "keywords": [
     "onfido",
