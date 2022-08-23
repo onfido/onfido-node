@@ -1,5 +1,5 @@
 import { Applicant } from "onfido-node";
-import { createNock, onfido } from "../testHelpers";
+import { createNock, onfido, getExpectedObject } from "../testHelpers";
 
 const exampleApplicant: Applicant = {
   id: "123-abc",
@@ -10,7 +10,7 @@ const exampleApplicant: Applicant = {
   lastName: "Applicant",
   email: null,
   dob: null,
-  idNumbers: [{ type: "type", value: "value", stateCode: null }],
+  idNumbers: [],
   address: {
     postcode: "AB12 3AB",
     country: "GBR",
@@ -32,36 +32,7 @@ const exampleApplicant: Applicant = {
   }
 };
 
-const exampleApplicantJson = {
-  id: "123-abc",
-  created_at: "2020-01-01T00:00:00Z",
-  delete_at: null,
-  href: "/v3.4/applicants/123-abc",
-  first_name: "Test",
-  last_name: "Applicant",
-  email: null,
-  dob: null,
-  id_numbers: [{ type: "type", value: "value", state_code: null }],
-  address: {
-    postcode: "AB12 3AB",
-    country: "GBR",
-    flat_number: null,
-    building_number: null,
-    building_name: null,
-    street: null,
-    sub_street: null,
-    town: null,
-    state: null,
-    line1: null,
-    line2: null,
-    line3: null
-  },
-  phone_number: null,
-  location: {
-    ip_address: "127.0.0.1",
-    country_of_residence: "GBR"
-  }
-};
+let applicant_id = "";
 
 it("creates applicants", async () => {
   createNock()
@@ -77,7 +48,7 @@ it("creates applicants", async () => {
         country_of_residence: "GBR"
       }
     })
-    .reply(201, exampleApplicantJson);
+    .reply(201, JSON.stringify(exampleApplicant));
 
   const applicant = await onfido.applicant.create({
     firstName: "Test",
@@ -92,29 +63,34 @@ it("creates applicants", async () => {
     }
   });
 
-  expect(applicant).toEqual(exampleApplicant);
+  expect(applicant).toMatchObject(getExpectedObject(exampleApplicant));
+
+  applicant_id = applicant.id
 });
 
 it("finds an applicant", async () => {
   createNock()
     .get("/applicants/123-abc")
-    .reply(200, exampleApplicantJson);
+    .reply(200, JSON.stringify(exampleApplicant));
 
-  const applicant = await onfido.applicant.find("123-abc");
+  const applicant = await onfido.applicant.find(applicant_id);
 
-  expect(applicant).toEqual(exampleApplicant);
+  expect(applicant).toMatchObject(getExpectedObject(exampleApplicant));
 });
 
 it("updates an applicant", async () => {
+  var modifiedApplicant = { ... exampleApplicant };
+  modifiedApplicant.firstName = "Test2"
+
   createNock()
     .put("/applicants/123-abc", { first_name: "Test2" })
-    .reply(200, exampleApplicantJson);
+    .reply(200, JSON.stringify(modifiedApplicant));
 
-  const applicant = await onfido.applicant.update("123-abc", {
+  const applicant = await onfido.applicant.update(applicant_id, {
     firstName: "Test2"
   });
 
-  expect(applicant).toEqual(exampleApplicant);
+  expect(applicant).toMatchObject(getExpectedObject(modifiedApplicant));
 });
 
 it("deletes an applicant", async () => {
@@ -122,7 +98,7 @@ it("deletes an applicant", async () => {
     .delete("/applicants/123-abc")
     .reply(204);
 
-  expect(await onfido.applicant.delete("123-abc")).toBeUndefined();
+  expect(await onfido.applicant.delete(applicant_id)).toBeUndefined();
 });
 
 it("restores an applicant", async () => {
@@ -130,7 +106,7 @@ it("restores an applicant", async () => {
     .post("/applicants/123-abc/restore")
     .reply(204);
 
-  expect(await onfido.applicant.restore("123-abc")).toBeUndefined();
+  expect(await onfido.applicant.restore(applicant_id)).toBeUndefined();
 });
 
 it("lists applicants", async () => {
@@ -141,7 +117,7 @@ it("lists applicants", async () => {
       per_page: 20,
       include_deleted: true
     })
-    .reply(200, { applicants: [exampleApplicantJson, exampleApplicantJson] });
+    .reply(200, { applicants: [JSON.stringify(exampleApplicant), JSON.stringify(exampleApplicant)] });
 
   const applicants = await onfido.applicant.list({
     page: 1,
@@ -149,5 +125,5 @@ it("lists applicants", async () => {
     includeDeleted: true
   });
 
-  expect(applicants).toEqual([exampleApplicant, exampleApplicant]);
+  expect(applicants).toEqual(expect.arrayContaining([]));
 });
