@@ -71,7 +71,7 @@ it("lists reports", async () => {
 
   const report = (await onfido.report.list(check.id)).sort(sort_by_name);
 
-  // result and subresult need to be provided as they might have a valid value or null
+  // Providing actual result and subresult as parameter as they might change overtime
   expect(report).toEqual([getExpectedReport(exampleReport, { name: 'document',
                                                              result: report[0].result,
                                                              subResult: report[0].result }),

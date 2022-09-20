@@ -8,7 +8,7 @@ function getExpectedCheck(exampleCheck: Check, overrideProperties={})
   return getExpectedObject(exampleCheck, {
     applicantId: expect.stringMatching(/^[0-9a-z-]+$/),
     resultsUri: expect.stringMatching(/^https\:\/\/dashboard\.onfido\.com\/checks\/[0-9a-z-]+$/),
-    privacyNoticesReadConsentGiven: null,       // TODO Why?
+    privacyNoticesReadConsentGiven: null,
     reportIds: [expect.stringMatching(/^[0-9a-z-]+$/), expect.stringMatching(/^[0-9a-z-]+$/)],
     webhookIds: expect.arrayContaining([webhook1.id, webhook2.id]),
     result: expect.anything(),
@@ -75,15 +75,20 @@ it("finds a check", async () => {
 });
 
 it("lists checks", async () => {
+  const anotherDocument = await uploadDocument(applicant.id);
+  const extraCheck = await createCheck(applicant.id, anotherDocument.id, { webhook_ids: [webhook1.id, webhook2.id] });
+
   createNock()
     .get("/checks/")
     .query({ applicant_id: applicant.id })
-    .reply(200, JSON.stringify({ checks: [exampleCheck] })); //, exampleCheck] }));
+    .reply(200, JSON.stringify({ checks: [exampleCheck, extraCheck] }));
 
   const checks = await onfido.check.list(applicant.id);
 
-  // Providing actual status and result as parameter as it might change overtime
-  expect(checks).toEqual([getExpectedCheck(exampleCheck, {status: checks[0].status, result: checks[0].result} )]);
+  // Providing actual status and result as parameter as they might change overtime
+  expect(checks).toEqual([
+    getExpectedCheck(exampleCheck, {status: checks[0].status, result: checks[0].result}),
+    getExpectedCheck(extraCheck, {status: checks[1].status, result: checks[1].result})]);
 });
 
 it("resumes a check", async () => {
