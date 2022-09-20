@@ -1,28 +1,9 @@
-import { createNock, onfido } from "../testHelpers";
+import { Applicant, Document } from "onfido-node";
+
+import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants, nockEnabled, uploadDocument } from "../testHelpers";
 
 // Fake data, taken from documentation.
-const exampleAutofillJson = {
-  document_id: "21345-xxx",
-  document_classification: {
-    issuing_country: "FRA",
-    document_type: "national_identity_card"
-  },
-  extracted_data: {
-    date_of_birth: "1990-07-21",
-    date_of_expiry: "2025-07-07",
-    document_number: "200407512345",
-    first_name: "AMANDINE CHANTAL",
-    gender: "Female",
-    last_name: "MAVARINE",
-    mrz_line1: "IDFRAMAVARINE<<<<<<<<<<<<<<<<<075123",
-    mrz_line2: "2000000000000AMANDINE<CHANT9007219F5",
-    nationality: "FRA",
-    address_line_1: "address 1",
-    address_line_2: "address 2"
-  }
-};
-
-const exampleAutofillResult = {
+const exampleAutofillMock = {
   documentId: "21345-xxx",
   documentClassification: {
     issuingCountry: "FRA",
@@ -43,13 +24,46 @@ const exampleAutofillResult = {
   }
 };
 
+const exampleAutofillE2e = {
+  documentId: "21345-xxx",
+  documentClassification: {
+    issuingCountry: "GBR",
+    documentType: "driving_licence"
+  },
+  extractedData: {
+    dateOfBirth: "1976-03-11",
+    dateOfExpiry: "2023-01-18",
+    documentNumber: "200407512345",
+    firstName: "SARAH",
+    gender: "Female",
+    lastName: "MORGAN"
+  }
+};
+
+let applicant: Applicant;
+let document: Document;
+
+async function init() {
+  applicant = await createApplicant();
+  document = await uploadDocument(applicant.id);
+}
+
+beforeAll(() => {
+  return init();
+});
+
+afterAll(() => {
+  return cleanUpApplicants();
+});
+
 it("performs autofill", async () => {
   createNock()
     .post("/extractions/", {
-      document_id: "21345-xxx"
+      document_id: document.id
     })
-    .reply(201, exampleAutofillJson);
+    .reply(201, getExpectedObject(exampleAutofillMock));
 
-  const result = await onfido.autofill.perform("21345-xxx");
-  expect(result).toEqual(exampleAutofillResult);
+  const result = await onfido.autofill.perform(document.id);
+
+  expect(result).toEqual(nockEnabled() ? exampleAutofillMock : getExpectedObject(exampleAutofillE2e, {documentId: document.id}));
 });

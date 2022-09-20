@@ -34,7 +34,10 @@ jobs:
     - name: Mock testing
       run: npm test
     - name: E2E testing
-      run: npm test test/resources/Applicants.test.ts
+      run: npm test -i
       env:
         ONFIDO_API_TOKEN: ${{secrets.ONFIDO_API_TOKEN}}
+        ONFIDO_SAMPLE_APPLICANT_ID: ${{secrets.ONFIDO_SAMPLE_APPLICANT_ID}}
+        ONFIDO_SAMPLE_VIDEO_ID_1: ${{secrets.ONFIDO_SAMPLE_VIDEO_ID_1}}
+        ONFIDO_SAMPLE_VIDEO_ID_2: ${{secrets.ONFIDO_SAMPLE_VIDEO_ID_2}}
         NOCK_OFF: true

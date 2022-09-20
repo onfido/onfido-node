@@ -22,7 +22,7 @@ export type AddressRequest = {
 export type Address = {
   postcode: string;
   country: string;
-} & AddressOptional;
+} & Partial<AddressOptional>;
 
 export class Addresses extends Resource<never> {
   constructor(axiosInstance: AxiosInstance) {

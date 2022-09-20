@@ -1,139 +1,105 @@
-import { Check, OnfidoDownload } from "onfido-node";
-import { createNock, onfido } from "../testHelpers";
+import { Applicant, Check, Document, Webhook, OnfidoDownload } from "onfido-node";
 
-const exampleCheck: Check = {
-  id: "abc-123",
-  reportIds: ["report-1", "report-2"],
-  createdAt: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3.4/checks/123-abc",
-  applicantId: "applicant-123",
-  applicantProvidesData: false,
-  status: "in_progress",
-  tags: [],
-  result: null,
-  formUri: null,
-  redirectUri: null,
-  resultsUri: "https://dashboard.onfido.com/checks/123-abc",
-  privacyNoticesReadConsentGiven: true,
-  webhookIds: ["webhook-123"]
-};
+import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants, uploadDocument, createWebhook, createCheck, cleanUpWebhooks } from "../testHelpers";
+import { exampleCheck } from "../testExamples";
 
-const exampleCheckJson = {
-  id: "abc-123",
-  report_ids: ["report-1", "report-2"],
-  created_at: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3.4/checks/123-abc",
-  applicant_id: "applicant-123",
-  applicant_provides_data: false,
-  status: "in_progress",
-  tags: [],
-  result: null,
-  form_uri: null,
-  redirect_uri: null,
-  results_uri: "https://dashboard.onfido.com/checks/123-abc",
-  privacy_notices_read_consent_given: true,
-  webhook_ids: ["webhook-123"]
-};
+function getExpectedCheck(exampleCheck: Check, overrideProperties={})
+{
+  return getExpectedObject(exampleCheck, {
+    applicantId: expect.stringMatching(/^[0-9a-z-]+$/),
+    resultsUri: expect.stringMatching(/^https\:\/\/dashboard\.onfido\.com\/checks\/[0-9a-z-]+$/),
+    privacyNoticesReadConsentGiven: null,       // TODO Why?
+    reportIds: [expect.stringMatching(/^[0-9a-z-]+$/), expect.stringMatching(/^[0-9a-z-]+$/)],
+    webhookIds: expect.arrayContaining([webhook1.id, webhook2.id]),
+    result: expect.anything(),
+    status: expect.anything(),
+    version: "3.4",
+    sandbox: true,
+    paused: false,
+    ... overrideProperties
+   });
+}
+
+let applicant: Applicant;
+let document: Document;
+let webhook1: Webhook;
+let webhook2: Webhook;
+let check: Check;
+
+async function init() {
+  applicant = await createApplicant();
+  document = await uploadDocument(applicant.id);
+  webhook1 = await createWebhook();
+  webhook2 = await createWebhook();
+}
+
+beforeAll(() => {
+  return init();
+});
+
+afterAll(() => {
+  return Promise.all([cleanUpApplicants(), cleanUpWebhooks()]);
+});
 
 it("creates a check", async () => {
-  createNock()
-    .post("/checks/", {
-      applicant_id: "applicant-123",
-      report_names: ["document", "identity_enhanced"],
-      document_ids: ["document-123"],
-      webhook_ids: ["abc", "def"]
-    })
-    .reply(201, exampleCheckJson);
+  check = await createCheck(applicant.id, document.id, { webhook_ids: [webhook1.id, webhook2.id] });
 
-  const check = await onfido.check.create({
-    applicantId: "applicant-123",
-    reportNames: ["document", "identity_enhanced"],
-    documentIds: ["document-123"],
-    webhookIds: ["abc", "def"]
-  });
-  
-  expect(check).toEqual(exampleCheck);
+  expect(check).toEqual(getExpectedCheck(exampleCheck, {applicantId: applicant.id, result: null, status: "in_progress"}));
 });
 
 it("creates a check for generating a rejected sub-result for document report in the sandbox", async () => {
-  createNock()
-    .post("/checks/", {
-      applicant_id: "applicant-123",
-      report_names: ["document", "identity_enhanced"],
-      document_ids: ["document-123"],
-      webhook_ids: ["abc", "def"],
-      sub_result: "rejected"
-    })
-    .reply(201, exampleCheckJson);
+  const anotherApplicant = await createApplicant();
+  const anotherDocument = await uploadDocument(anotherApplicant.id);
+  const anotherCheck = await createCheck(anotherApplicant.id, anotherDocument.id, { webhook_ids: [webhook1.id, webhook2.id], sub_result: "rejected" });
 
-  const subResultCheck = await onfido.check.create({
-    applicantId: "applicant-123",
-    reportNames: ["document", "identity_enhanced"],
-    documentIds: ["document-123"],
-    webhookIds: ["abc", "def"],
-    subResult: "rejected"
-  });
-
-  expect(subResultCheck).toEqual(exampleCheck);
+  expect(anotherCheck).toEqual(getExpectedCheck(exampleCheck, {applicantId: anotherApplicant.id, result: null, status: "in_progress"}));
 });
 
 it("creates a check for generating a consider result for a report in the sandbox", async () => {
-  createNock()
-    .post("/checks/", {
-      applicant_id: "applicant-123",
-      report_names: ["document", "identity_enhanced"],
-      document_ids: ["document-123"],
-      webhook_ids: ["abc", "def"],
-      consider: ["identity_enhanced"]
-    })
-    .reply(201, exampleCheckJson);
+  const anotherApplicant = await createApplicant();
+  const anotherDocument = await uploadDocument(anotherApplicant.id);
+  const anotherCheck = await createCheck(anotherApplicant.id, anotherDocument.id, { webhook_ids: [webhook1.id, webhook2.id], consider: ["identity_enhanced"] });
 
-  const considerCheck = await onfido.check.create({
-    applicantId: "applicant-123",
-    reportNames: ["document", "identity_enhanced"],
-    documentIds: ["document-123"],
-    webhookIds: ["abc", "def"],
-    consider: ["identity_enhanced"]
-  });
-
-  expect(considerCheck).toEqual(exampleCheck);
+  expect(anotherCheck).toEqual(getExpectedCheck(exampleCheck, {applicantId: anotherApplicant.id, result: null, status: "in_progress"}));
 });
 
 it("finds a check", async () => {
   createNock()
-    .get("/checks/123-abc")
-    .reply(200, exampleCheckJson);
+    .get("/checks/" + check.id)
+    .reply(200, JSON.stringify(exampleCheck));
 
-  const check = await onfido.check.find("123-abc");
+  const lookupCheck = await onfido.check.find(check.id);
 
-  expect(check).toEqual(exampleCheck);
+  // Providing actual status and result as parameter as it might change overtime
+  expect(lookupCheck).toEqual(getExpectedCheck(exampleCheck, {applicantId: applicant.id, status: lookupCheck.status, result: lookupCheck.result}));
 });
 
 it("lists checks", async () => {
   createNock()
     .get("/checks/")
-    .query({ applicant_id: "applicant-123" })
-    .reply(200, { checks: [exampleCheckJson, exampleCheckJson] });
+    .query({ applicant_id: applicant.id })
+    .reply(200, JSON.stringify({ checks: [exampleCheck] })); //, exampleCheck] }));
 
-  const checks = await onfido.check.list("applicant-123");
+  const checks = await onfido.check.list(applicant.id);
 
-  expect(checks).toEqual([exampleCheck, exampleCheck]);
+  // Providing actual status and result as parameter as it might change overtime
+  expect(checks).toEqual([getExpectedCheck(exampleCheck, {status: checks[0].status, result: checks[0].result} )]);
 });
 
 it("resumes a check", async () => {
   createNock()
-    .post("/checks/abc-123/resume")
+    .post("/checks/" + check.id + "/resume")
     .reply(204);
 
-  expect(await onfido.check.resume("abc-123")).toBeUndefined();
+  expect(await onfido.check.resume(check.id)).toBeUndefined();
 });
 
 it("downloads a check", async () => {
   createNock()
-    .get("/checks/abc-123/download")
+    .get("/checks/" + check.id + "/download")
     .reply(200, {});
 
-  const file = await onfido.check.download("abc-123");
+  const file = await onfido.check.download(check.id);
 
   expect(file).toBeInstanceOf(OnfidoDownload);
 });

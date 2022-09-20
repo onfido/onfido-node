@@ -1,98 +1,99 @@
-import { LivePhoto, OnfidoDownload } from "onfido-node";
-import { PassThrough } from "stream";
+import { Applicant, LivePhoto, OnfidoDownload } from "onfido-node";
 
-import { createNock, onfido } from "../testHelpers";
+import { createReadStream } from "fs";
+
+import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants } from "../testHelpers";
 
 const exampleLivePhoto: LivePhoto = {
   id: "123-abc",
   createdAt: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3.4/live_photos/123-abc",
-  downloadHref: "https://api.onfido.com/v3.4/live_photos/123-abc/download",
-  fileName: "photo.png",
-  fileType: "png",
-  fileSize: 500_000
+  href: "/v3.4/live_photos/123-abc",
+  downloadHref: "/v3.4/live_photos/123-abc/download",
+  fileName: "name.png",
+  fileType: "image/png",
+  fileSize: 395_856
 };
 
-const exampleLivePhotoJson = {
-  id: "123-abc",
-  created_at: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3.4/live_photos/123-abc",
-  download_href: "https://api.onfido.com/v3.4/live_photos/123-abc/download",
-  file_name: "photo.png",
-  file_type: "png",
-  file_size: 500_000
-};
+function getExpectedLivePhoto(exampleLivePhoto: LivePhoto)
+{
+  return getExpectedObject(exampleLivePhoto, {
+    'downloadHref': expect.stringMatching(/^\/v3.4\/live_photos\/[0-9a-z-]+\/download$/) });
+}
 
-it("uploads a live photo", async () => {
+let applicant: Applicant;
+let photo: LivePhoto;
+
+async function init() {
+  applicant = await createApplicant();
+}
+
+beforeAll(() => {
+  return init();
+});
+
+afterAll(() => {
+  return cleanUpApplicants();
+});
+
+export async function uploadLivePhoto(applicant_id: string, overrideProperties={})
+{
   createNock()
     .post("/live_photos/")
-    .reply(201, exampleLivePhotoJson);
-
-  const buffer = Buffer.from("base64data", "base64");
-  const bufferStream = new PassThrough();
-  bufferStream.end(buffer);
+    .reply(201, JSON.stringify(exampleLivePhoto));
 
   const photo = await onfido.livePhoto.upload({
     file: {
-      contents: bufferStream,
+      contents: createReadStream("test/media/sample_photo.png"),
       filepath: "path/name.png",
       contentType: "image/png"
     },
-    applicantId: "applicant-123"
+    applicantId: applicant_id,
+    ... overrideProperties
   });
 
-  expect(photo).toEqual(exampleLivePhoto);
+  return photo;
+}
+
+it("uploads a live photo", async () => {
+  photo = await uploadLivePhoto(applicant.id);
+
+  expect(photo).toEqual(getExpectedLivePhoto(exampleLivePhoto));
 });
 
 it("uploads a live photo with advanced validation", async () => {
-  createNock()
-    .post("/live_photos/")
-    .reply(201, exampleLivePhotoJson);
+  const anotherPhoto = await uploadLivePhoto(applicant.id, {advancedValidation: "true"});
 
-  const buffer = Buffer.from("base64data", "base64");
-  const bufferStream = new PassThrough();
-  bufferStream.end(buffer);
-
-  const photo = await onfido.livePhoto.upload({
-    file: {
-      contents: bufferStream,
-      filepath: "path/name.png",
-      contentType: "image/png"
-    },
-    applicantId: "applicant-123",
-    advancedValidation: "true"
-  });
-
-  expect(photo).toEqual(exampleLivePhoto);
+  expect(anotherPhoto).toEqual(getExpectedLivePhoto(exampleLivePhoto));
 });
 
 it("downloads a live photo", async () => {
   createNock()
-    .get("/live_photos/abc-123/download")
+    .get("/live_photos/" + photo.id + "/download")
     .reply(200, {});
 
-  const file = await onfido.livePhoto.download("abc-123");
+  const file = await onfido.livePhoto.download(photo.id);
 
   expect(file).toBeInstanceOf(OnfidoDownload);
 });
 
 it("finds a live photo", async () => {
   createNock()
-    .get("/live_photos/123-abc")
-    .reply(200, exampleLivePhotoJson);
+    .get("/live_photos/" + photo.id)
+    .reply(200, JSON.stringify(exampleLivePhoto));
 
-  const livePhoto = await onfido.livePhoto.find("123-abc");
+  const livePhoto = await onfido.livePhoto.find(photo.id);
 
-  expect(livePhoto).toEqual(exampleLivePhoto);
+  expect(livePhoto).toEqual(getExpectedLivePhoto(exampleLivePhoto));
 });
 
 it("lists live photos", async () => {
   createNock()
     .get("/live_photos/")
-    .query({ applicant_id: "applicant-123" })
-    .reply(200, { live_photos: [exampleLivePhotoJson, exampleLivePhotoJson] });
+    .query({ applicant_id: applicant.id })
+    .reply(200, JSON.stringify({ livePhotos: [exampleLivePhoto, exampleLivePhoto] }));
 
-  const livePhotos = await onfido.livePhoto.list("applicant-123");
+  const livePhotos = await onfido.livePhoto.list(applicant.id);
 
-  expect(livePhotos).toEqual([exampleLivePhoto, exampleLivePhoto]);
+  expect(livePhotos).toEqual([getExpectedLivePhoto(exampleLivePhoto),
+                              getExpectedLivePhoto(exampleLivePhoto)]);
 });
