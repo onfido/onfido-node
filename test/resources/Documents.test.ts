@@ -1,79 +1,70 @@
-import { ReadStream } from "fs";
-import { Document, OnfidoDownload } from "onfido-node";
-import { createNock, onfido } from "../testHelpers";
 
-const exampleDocument: Document = {
-  id: "123-abc",
-  applicantId: "applicant-123",
-  createdAt: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3.4/documents/123-abc",
-  downloadHref: "https://api.onfido.com/v3.4/documents/123-abc/download",
-  fileName: "document.png",
-  fileType: "png",
-  fileSize: 500_000,
-  type: "passport",
-  side: null,
-  issuingCountry: null
-};
+import { Applicant, Document, OnfidoDownload } from "onfido-node";
 
-const exampleDocumentJson = {
-  id: "123-abc",
-  applicant_id: "applicant-123",
-  created_at: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3.4/documents/123-abc",
-  download_href: "https://api.onfido.com/v3.4/documents/123-abc/download",
-  file_name: "document.png",
-  file_type: "png",
-  file_size: 500_000,
-  type: "passport",
-  side: null,
-  issuing_country: null
-};
+import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants, uploadDocument } from "../testHelpers";
+import { exampleDocument } from "../testExamples";
+
+function getExpectedDocument(exampleDocument: Document)
+{
+  return getExpectedObject(exampleDocument, {
+    'applicantId': applicant.id,
+    'downloadHref': expect.stringMatching(/^\/.+/) });
+}
+
+let applicant: Applicant;
+let document: Document;
+
+async function init() {
+  applicant = await createApplicant();
+}
+
+beforeAll(() => {
+  return init();
+});
+
+afterAll(() => {
+  return cleanUpApplicants();
+});
 
 it("uploads a document", async () => {
-  createNock()
-    .post("/documents/")
-    .reply(201, exampleDocumentJson);
-
-  const document = await onfido.document.upload({
-    file: ("file" as unknown) as ReadStream,
-    type: "passport",
-    location: {
-      ipAddress: "123.123.123",
-      countryOfResidence: "GBR"
-    }
-  });
-
-  expect(document).toEqual(exampleDocument);
+  document = await uploadDocument(applicant.id);
+  expect(document).toEqual(getExpectedDocument(exampleDocument));
 });
+
+it("uploads another document", async () => {
+  const anotherDocument = await uploadDocument(applicant.id);
+  expect(anotherDocument).toEqual(getExpectedDocument(exampleDocument));
+});
+
 
 it("downloads a document", async () => {
   createNock()
-    .get("/documents/abc-123/download")
+    .get("/documents/" + document.id + "/download")
     .reply(200, {});
 
-  const file = await onfido.document.download("abc-123");
+  const file = await onfido.document.download(document.id);
 
   expect(file).toBeInstanceOf(OnfidoDownload);
 });
 
 it("finds a document", async () => {
   createNock()
-    .get("/documents/123-abc")
-    .reply(200, exampleDocumentJson);
+    .get("/documents/" + document.id)
+    .reply(200, JSON.stringify(exampleDocument));
 
-  const document = await onfido.document.find("123-abc");
+  document = await onfido.document.find(document.id);
 
-  expect(document).toEqual(exampleDocument);
+  expect(document).toEqual(getExpectedDocument(exampleDocument));
 });
 
 it("lists documents", async () => {
   createNock()
     .get("/documents/")
-    .query({ applicant_id: "applicant-123" })
-    .reply(200, { documents: [exampleDocumentJson, exampleDocumentJson] });
+    .query({ applicant_id: applicant.id })
+    .reply(200, JSON.stringify({ documents: [exampleDocument, exampleDocument] }));
 
-  const documents = await onfido.document.list("applicant-123");
+  const documents = await onfido.document.list(applicant.id);
 
-  expect(documents).toEqual([exampleDocument, exampleDocument]);
+  expect(documents).toEqual([getExpectedDocument(exampleDocument),
+                             getExpectedDocument(exampleDocument)]);
 });

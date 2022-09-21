@@ -1,4 +1,5 @@
 import { OnfidoApiError, OnfidoDownload } from "onfido-node";
+
 import { Resource } from "../src/Resource";
 import { createNock, onfido } from "./testHelpers";
 
@@ -20,11 +21,9 @@ const testResource = new TestResource();
 
 const errorJson = {
   error: {
-    type: "the_type",
-    message: "the message",
-    fields: {
-      field: "error"
-    }
+    type: "bad_request",
+    message: "The request could not be understood by the server, please check your request is correctly formatted",
+    fields: {}
   }
 };
 
@@ -34,13 +33,14 @@ describe("error handling", () => {
 
     createNock()
       .post("/test/")
-      .reply(404, "Not Found");
+      .reply(403, "The request could not be understood by the server, please check your request is correctly formatted");
 
     try {
       await testResource.upload({});
     } catch (error) {
       expect(error).toBeInstanceOf(OnfidoApiError);
-      expect(error.message).toBe("Not Found (status code 404)");
+      expect(error.message).toContain("The request could not be understood by the server, " +
+                                      "please check your request is correctly formatted (status code 403)");
     }
   });
 

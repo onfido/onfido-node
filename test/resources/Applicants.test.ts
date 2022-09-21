@@ -1,112 +1,74 @@
 import { Applicant } from "onfido-node";
-import { createNock, onfido, getExpectedObject } from "../testHelpers";
 
-const exampleApplicant: Applicant = {
-  id: "123-abc",
-  createdAt: "2020-01-01T00:00:00Z",
-  deleteAt: null,
-  href: "/v3.4/applicants/123-abc",
-  firstName: "Test",
-  lastName: "Applicant",
-  email: null,
-  dob: null,
-  idNumbers: [],
-  address: {
-    postcode: "AB12 3AB",
-    country: "GBR",
-    flatNumber: null,
-    buildingNumber: null,
-    buildingName: null,
-    street: null,
-    subStreet: null,
-    town: null,
-    state: null,
-    line1: null,
-    line2: null,
-    line3: null
-  },
-  phoneNumber: null,
-  location: {
-    ipAddress: "127.0.0.1",
-    countryOfResidence: "GBR"
+import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants } from "../testHelpers";
+import { exampleApplicant } from "../testExamples";
+
+function getExpectedApplicant(exampleApplicant: Applicant)
+{
+  return getExpectedObject(exampleApplicant, {
+    'sandbox': true });
+}
+
+function sort_by_firstname( a: Applicant, b: Applicant ) {
+  if ( a.firstName < b.firstName ){
+    return -1;
   }
-};
+  if ( a.firstName > b.firstName ){
+    return 1;
+  }
+  return 0;
+}
 
-let applicant_id = "";
+let modifiedApplicant = { ... exampleApplicant,
+                          firstName: "Test2" }
 
-it("creates applicants", async () => {
-  createNock()
-    .post("/applicants/", {
-      first_name: "Test",
-      last_name: "Applicant",
-      address: {
-        postcode: "AB12 3AB",
-        country: "GBR"
-      },
-      location: {
-        ip_address: "127.0.0.1",
-        country_of_residence: "GBR"
-      }
-    })
-    .reply(201, JSON.stringify(exampleApplicant));
+let applicant: Applicant;
 
-  const applicant = await onfido.applicant.create({
-    firstName: "Test",
-    lastName: "Applicant",
-    address: {
-      postcode: "AB12 3AB",
-      country: "GBR"
-    },
-    location: {
-      ipAddress: "127.0.0.1",
-      countryOfResidence: "GBR"
-    }
-  });
+afterAll(() => {
+  return cleanUpApplicants();
+});
 
-  expect(applicant).toMatchObject(getExpectedObject(exampleApplicant));
-
-  applicant_id = applicant.id
+it("creates an applicant", async () => {
+  applicant = await createApplicant();
+  expect(applicant).toMatchObject(getExpectedApplicant(exampleApplicant));
 });
 
 it("finds an applicant", async () => {
   createNock()
-    .get("/applicants/123-abc")
+    .get("/applicants/" + applicant.id)
     .reply(200, JSON.stringify(exampleApplicant));
 
-  const applicant = await onfido.applicant.find(applicant_id);
+  const lookupApplicant = await onfido.applicant.find(applicant.id);
 
-  expect(applicant).toMatchObject(getExpectedObject(exampleApplicant));
+  expect(lookupApplicant).toMatchObject(getExpectedApplicant(exampleApplicant));
 });
 
 it("updates an applicant", async () => {
-  var modifiedApplicant = { ... exampleApplicant };
-  modifiedApplicant.firstName = "Test2"
-
   createNock()
-    .put("/applicants/123-abc", { first_name: "Test2" })
+    .put("/applicants/" + applicant.id, { first_name: "Test2" })
     .reply(200, JSON.stringify(modifiedApplicant));
 
-  const applicant = await onfido.applicant.update(applicant_id, {
+  const updatedApplicant = await onfido.applicant.update(applicant.id, {
     firstName: "Test2"
   });
 
-  expect(applicant).toMatchObject(getExpectedObject(modifiedApplicant));
+  expect(updatedApplicant).toMatchObject(getExpectedApplicant(modifiedApplicant));
 });
 
 it("deletes an applicant", async () => {
   createNock()
-    .delete("/applicants/123-abc")
+    .delete("/applicants/" + applicant.id)
     .reply(204);
 
-  expect(await onfido.applicant.delete(applicant_id)).toBeUndefined();
+  expect(await onfido.applicant.delete(applicant.id)).toBeUndefined();
 });
 
 it("restores an applicant", async () => {
   createNock()
-    .post("/applicants/123-abc/restore")
+    .post("/applicants/" + applicant.id + "/restore")
     .reply(204);
 
-  expect(await onfido.applicant.restore(applicant_id)).toBeUndefined();
+  expect(await onfido.applicant.restore(applicant.id)).toBeUndefined();
 });
 
 it("lists applicants", async () => {
@@ -115,15 +77,17 @@ it("lists applicants", async () => {
     .query({
       page: 1,
       per_page: 20,
-      include_deleted: true
+      include_deleted: false
     })
-    .reply(200, { applicants: [JSON.stringify(exampleApplicant), JSON.stringify(exampleApplicant)] });
+    .reply(200, JSON.stringify({ applicants: [exampleApplicant, modifiedApplicant] }))
 
   const applicants = await onfido.applicant.list({
     page: 1,
     perPage: 20,
-    includeDeleted: true
+    includeDeleted: false
   });
 
-  expect(applicants).toEqual(expect.arrayContaining([]));
+  expect(applicants.sort(sort_by_firstname)).toEqual(
+    expect.arrayContaining([getExpectedApplicant(exampleApplicant),
+                            getExpectedApplicant(modifiedApplicant)]));
 });

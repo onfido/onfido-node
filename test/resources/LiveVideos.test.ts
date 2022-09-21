@@ -1,63 +1,83 @@
-import { LiveVideo, OnfidoDownload } from "onfido-node";
-import { createNock, onfido } from "../testHelpers";
+import { LiveVideo, OnfidoDownload, OnfidoApiError } from "onfido-node";
+
+import { createNock, onfido, getExpectedObject, sampleApplicantId, nockEnabled } from "../testHelpers";
+
+const sampleLiveVideoId1 = process.env.ONFIDO_SAMPLE_VIDEO_ID_1 || "sample_video_id_1"
+const sampleLiveVideoId2 = process.env.ONFIDO_SAMPLE_VIDEO_ID_2 || "sample_video_id_2"
 
 const exampleLiveVideo: LiveVideo = {
   id: "123-abc",
   createdAt: "2020-01-01T00:00:00Z",
   href: "https://api.onfido.com/v3.4/live_videos/123-abc",
   downloadHref: "https://api.onfido.com/v3.4/live_videos/123-abc/download",
-  fileName: "video.mp4",
-  fileType: "mp4",
-  fileSize: 500_000
+  fileName: "video.mov",
+  fileType: "video/quicktime",
+  fileSize: 165_093
 };
 
-const exampleLiveVideoJson = {
-  id: "123-abc",
-  created_at: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3.4/live_videos/123-abc",
-  download_href: "https://api.onfido.com/v3.4/live_videos/123-abc/download",
-  file_name: "video.mp4",
-  file_type: "mp4",
-  file_size: 500_000
-};
+function getExpectedLiveVideo(exampleLivePhoto: LiveVideo, liveVideoId: string)
+{
+  return getExpectedObject(exampleLivePhoto, {
+    'id': liveVideoId,
+    'languages': null,
+    'challenge': expect.anything(),
+    'downloadHref': expect.stringMatching(/^\/v3.4\/live_videos\/[0-9a-z-]+\/download$/) });
+}
+
+function sort_by_id( a: LiveVideo, b: LiveVideo ) {
+  if ( a.id < b.id ){
+    return -1;
+  }
+  if ( a.id > b.id ){
+    return 1;
+  }
+  return 0;
+}
 
 it("downloads a live video", async () => {
   createNock()
-    .get("/live_videos/abc-123/download")
+    .get("/live_videos/" + sampleLiveVideoId2 + "/download")
     .reply(200, {});
 
-  const file = await onfido.liveVideo.download("abc-123");
+  const file = await onfido.liveVideo.download(sampleLiveVideoId2);
 
   expect(file).toBeInstanceOf(OnfidoDownload);
 });
 
 it("downloads a live video frame", async () => {
-  createNock()
-    .get("/live_videos/abc-123/frame")
+  try {
+    createNock()
+    .get("/live_videos/" + sampleLiveVideoId2 + "/frame")
     .reply(200, {});
 
-  const file = await onfido.liveVideo.frame("abc-123");
-
-  expect(file).toBeInstanceOf(OnfidoDownload);
+    const file = await onfido.liveVideo.frame(sampleLiveVideoId2);
+    expect(file).toBeInstanceOf(OnfidoDownload);
+  } catch (error) {
+    expect(nockEnabled()).toBeFalsy();
+    expect(error).toBeInstanceOf(OnfidoApiError);
+    expect(error.message).toBe("Failed to extract a frame from the provided video (status code 422) | {}");
+  }
 });
 
 it("finds a live video", async () => {
   createNock()
-    .get("/live_videos/123-abc")
-    .reply(200, exampleLiveVideoJson);
+    .get("/live_videos/" + sampleLiveVideoId1)
+    .reply(200, JSON.stringify(exampleLiveVideo));
 
-  const liveVideo = await onfido.liveVideo.find("123-abc");
+  const liveVideo = await onfido.liveVideo.find(sampleLiveVideoId1);
 
-  expect(liveVideo).toEqual(exampleLiveVideo);
+  expect(liveVideo).toEqual(getExpectedLiveVideo(exampleLiveVideo, sampleLiveVideoId1));
 });
 
 it("lists live videos", async () => {
   createNock()
     .get("/live_videos/")
-    .query({ applicant_id: "applicant-123" })
-    .reply(200, { live_videos: [exampleLiveVideoJson, exampleLiveVideoJson] });
+    .query({ applicant_id: sampleApplicantId })
+    .reply(200, { live_videos: [getExpectedLiveVideo(exampleLiveVideo, sampleLiveVideoId1),
+                                getExpectedLiveVideo(exampleLiveVideo, sampleLiveVideoId2)] });
 
-  const liveVideos = await onfido.liveVideo.list("applicant-123");
+  const liveVideos = await onfido.liveVideo.list(sampleApplicantId);
 
-  expect(liveVideos).toEqual([exampleLiveVideo, exampleLiveVideo]);
+  expect(liveVideos.sort(sort_by_id)).toEqual([getExpectedLiveVideo(exampleLiveVideo,sampleLiveVideoId1),
+                                               getExpectedLiveVideo(exampleLiveVideo,sampleLiveVideoId2)]);
 });

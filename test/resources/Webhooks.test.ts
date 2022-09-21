@@ -1,67 +1,69 @@
 import { Webhook } from "onfido-node";
-import { createNock, onfido } from "../testHelpers";
 
-const exampleWebhook: Webhook = {
-  id: "abc-123",
-  url: "https://example.com",
-  enabled: true,
-  events: ["check.completed", "report.completed"],
-  token: "webhook-token",
-  href: "/v3/webhooks/abc-132",
-  environments: ["sandbox"]
-};
+import { createNock, onfido, getExpectedObject, cleanUpWebhooks, createWebhook } from "../testHelpers";
+import { exampleWebhook } from "../testExamples";
 
-// All property names are the same in camelCase and snake_case.
-const exampleWebhookJson = exampleWebhook;
+function getExpectedWebhook(exampleWebhook: Webhook)
+{
+  return getExpectedObject(exampleWebhook, {
+    token: expect.stringMatching(/^[0-9a-zA-Z_-]+$/) });
+}
+
+let webhook: Webhook;
+
+afterAll(() => {
+  return cleanUpWebhooks();
+});
 
 it("creates a webhook", async () => {
-  createNock()
-    .post("/webhooks/", { url: "https://example.com" })
-    .reply(201, exampleWebhookJson);
-
-  const webhook = await onfido.webhook.create({
-    url: "https://example.com"
-  });
-
-  expect(webhook).toEqual(exampleWebhook);
+  webhook = await createWebhook()
+  expect(webhook).toEqual(getExpectedWebhook(exampleWebhook));
 });
 
 it("finds a webhook", async () => {
   createNock()
-    .get("/webhooks/123-abc")
-    .reply(200, exampleWebhookJson);
+    .get("/webhooks/" + webhook.id)
+    .reply(200, JSON.stringify(exampleWebhook));
 
-  const webhook = await onfido.webhook.find("123-abc");
+  const otherWebhook = await onfido.webhook.find(webhook.id);
 
-  expect(webhook).toEqual(exampleWebhook);
+  expect(otherWebhook).toEqual(getExpectedWebhook(exampleWebhook));
 });
 
 it("updates a webhook", async () => {
-  createNock()
-    .put("/webhooks/123-abc", { enabled: false })
-    .reply(200, exampleWebhookJson);
+  var modifiedWebhook = { ... exampleWebhook };
+  modifiedWebhook.enabled = false
 
-  const webhook = await onfido.webhook.update("123-abc", {
+  createNock()
+    .put("/webhooks/" + webhook.id, { enabled: false })
+    .reply(200, JSON.stringify(modifiedWebhook));
+
+  const updatedWebhook = await onfido.webhook.update(webhook.id, {
     enabled: false
   });
 
-  expect(webhook).toEqual(exampleWebhookJson);
+  expect(updatedWebhook).toEqual(getExpectedWebhook(modifiedWebhook));
 });
 
 it("deletes a webhook", async () => {
   createNock()
-    .delete("/webhooks/123-abc")
+    .delete("/webhooks/" + webhook.id)
     .reply(204);
 
-  expect(await onfido.webhook.delete("123-abc")).toBeUndefined();
+  expect(await onfido.webhook.delete(webhook.id)).toBeUndefined();
 });
 
 it("lists webhooks", async () => {
+  // create two webhooks
+  await createWebhook();
+  await createWebhook();
+
   createNock()
     .get("/webhooks/")
-    .reply(200, { webhooks: [exampleWebhookJson, exampleWebhookJson] });
+    .reply(200, JSON.stringify({ webhooks: [exampleWebhook, exampleWebhook] }));
 
   const webhooks = await onfido.webhook.list();
 
-  expect(webhooks).toEqual([exampleWebhook, exampleWebhook]);
+  expect(webhooks).toEqual([getExpectedWebhook(exampleWebhook),
+                            getExpectedWebhook(exampleWebhook)]);
 });
