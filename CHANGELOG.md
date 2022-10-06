@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.4.0, 06 October 2022
+
+- Updated to use API v3.5. For more details please see our [release notes](https://developers.onfido.com/release-notes#api-v35)
+
 ## v2.3.1, 24 May 2022
 
 - Reinstated `privacyNoticesReadConsentGiven` parameter 

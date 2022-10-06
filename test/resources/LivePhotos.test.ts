@@ -7,8 +7,8 @@ import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplican
 const exampleLivePhoto: LivePhoto = {
   id: "123-abc",
   createdAt: "2020-01-01T00:00:00Z",
-  href: "/v3.4/live_photos/123-abc",
-  downloadHref: "/v3.4/live_photos/123-abc/download",
+  href: "/v3.5/live_photos/123-abc",
+  downloadHref: "/v3.5/live_photos/123-abc/download",
   fileName: "name.png",
   fileType: "image/png",
   fileSize: 395_856
@@ -17,7 +17,7 @@ const exampleLivePhoto: LivePhoto = {
 function getExpectedLivePhoto(exampleLivePhoto: LivePhoto)
 {
   return getExpectedObject(exampleLivePhoto, {
-    'downloadHref': expect.stringMatching(/^\/v3.4\/live_photos\/[0-9a-z-]+\/download$/) });
+    'downloadHref': expect.stringMatching(/^\/v3.5\/live_photos\/[0-9a-z-]+\/download$/) });
 }
 
 let applicant: Applicant;

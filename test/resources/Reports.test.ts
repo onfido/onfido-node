@@ -43,7 +43,7 @@ const exampleReport: Report = {
   id: "abc-123",
   createdAt: "2020-01-01T00:00:00Z",
   name: "document",
-  href: "https://api.onfido.com/v3.4/reports/123-abc",
+  href: "https://api.onfido.com/v3.5/reports/123-abc",
   status: "awaiting_data",
   result: null,
   subResult: null,
