@@ -1,4 +1,5 @@
 import { Address } from "onfido-node";
+
 import { createNock, onfido } from "../testHelpers";
 
 const exampleAddress: Address = {

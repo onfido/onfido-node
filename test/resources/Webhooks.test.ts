@@ -11,12 +11,19 @@ function getExpectedWebhook(exampleWebhook: Webhook)
 
 let webhook: Webhook;
 
+async function init() {
+  webhook = await createWebhook();
+}
+
+beforeEach(() => {
+  return init();
+});
+
 afterAll(() => {
   return cleanUpWebhooks();
 });
 
 it("creates a webhook", async () => {
-  webhook = await createWebhook()
   expect(webhook).toEqual(getExpectedWebhook(exampleWebhook));
 });
 
@@ -25,14 +32,13 @@ it("finds a webhook", async () => {
     .get("/webhooks/" + webhook.id)
     .reply(200, JSON.stringify(exampleWebhook));
 
-  const otherWebhook = await onfido.webhook.find(webhook.id);
+  const lookupWebhook = await onfido.webhook.find(webhook.id);
 
-  expect(otherWebhook).toEqual(getExpectedWebhook(exampleWebhook));
+  expect(lookupWebhook).toEqual(getExpectedWebhook(exampleWebhook));
 });
 
 it("updates a webhook", async () => {
-  var modifiedWebhook = { ... exampleWebhook };
-  modifiedWebhook.enabled = false
+  var modifiedWebhook = { ... exampleWebhook, 'enabled': false };
 
   createNock()
     .put("/webhooks/" + webhook.id, { enabled: false })
@@ -54,8 +60,7 @@ it("deletes a webhook", async () => {
 });
 
 it("lists webhooks", async () => {
-  // create two webhooks
-  await createWebhook();
+  // create one extra webhook
   await createWebhook();
 
   createNock()
@@ -64,6 +69,7 @@ it("lists webhooks", async () => {
 
   const webhooks = await onfido.webhook.list();
 
-  expect(webhooks).toEqual([getExpectedWebhook(exampleWebhook),
-                            getExpectedWebhook(exampleWebhook)]);
+  expect(webhooks).toEqual(
+    expect.arrayContaining([getExpectedWebhook(exampleWebhook),
+                            getExpectedWebhook(exampleWebhook)]));
 });

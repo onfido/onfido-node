@@ -24,7 +24,7 @@ function getExpectedLiveVideo(exampleLivePhoto: LiveVideo, liveVideoId: string)
     'downloadHref': expect.stringMatching(/^\/v3.4\/live_videos\/[0-9a-z-]+\/download$/) });
 }
 
-function sort_by_id( a: LiveVideo, b: LiveVideo ) {
+function sortById( a: LiveVideo, b: LiveVideo ) {
   if ( a.id < b.id ){
     return -1;
   }
@@ -78,6 +78,6 @@ it("lists live videos", async () => {
 
   const liveVideos = await onfido.liveVideo.list(sampleApplicantId);
 
-  expect(liveVideos.sort(sort_by_id)).toEqual([getExpectedLiveVideo(exampleLiveVideo,sampleLiveVideoId1),
-                                               getExpectedLiveVideo(exampleLiveVideo,sampleLiveVideoId2)]);
+  expect(liveVideos.sort(sortById)).toEqual([getExpectedLiveVideo(exampleLiveVideo,sampleLiveVideoId1),
+                                             getExpectedLiveVideo(exampleLiveVideo,sampleLiveVideoId2)]);
 });

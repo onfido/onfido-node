@@ -45,10 +45,10 @@ let document: Document;
 
 async function init() {
   applicant = await createApplicant();
-  document = await uploadDocument(applicant.id);
+  document = await uploadDocument(applicant);
 }
 
-beforeAll(() => {
+beforeEach(() => {
   return init();
 });
 

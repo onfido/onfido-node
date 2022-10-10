@@ -9,7 +9,7 @@ function getExpectedApplicant(exampleApplicant: Applicant)
     'sandbox': true });
 }
 
-function sort_by_firstname( a: Applicant, b: Applicant ) {
+function sortByFirstName( a: Applicant, b: Applicant ) {
   if ( a.firstName < b.firstName ){
     return -1;
   }
@@ -19,17 +19,30 @@ function sort_by_firstname( a: Applicant, b: Applicant ) {
   return 0;
 }
 
-let modifiedApplicant = { ... exampleApplicant,
-                          firstName: "Test2" }
-
 let applicant: Applicant;
+
+async function init() {
+  applicant = await createApplicant();
+}
+
+beforeEach(() => {
+  return init();
+});
 
 afterAll(() => {
   return cleanUpApplicants();
 });
 
+async function deleteApplicant(applicant: Applicant)
+{
+  createNock()
+    .delete("/applicants/" + applicant.id)
+    .reply(204);
+
+  return onfido.applicant.delete(applicant.id);
+}
+
 it("creates an applicant", async () => {
-  applicant = await createApplicant();
   expect(applicant).toMatchObject(getExpectedApplicant(exampleApplicant));
 });
 
@@ -44,6 +57,8 @@ it("finds an applicant", async () => {
 });
 
 it("updates an applicant", async () => {
+  const modifiedApplicant = { ... exampleApplicant, firstName: "Test2" }
+
   createNock()
     .put("/applicants/" + applicant.id, { first_name: "Test2" })
     .reply(200, JSON.stringify(modifiedApplicant));
@@ -56,14 +71,12 @@ it("updates an applicant", async () => {
 });
 
 it("deletes an applicant", async () => {
-  createNock()
-    .delete("/applicants/" + applicant.id)
-    .reply(204);
-
-  expect(await onfido.applicant.delete(applicant.id)).toBeUndefined();
+  expect(await deleteApplicant(applicant)).toBeUndefined();
 });
 
 it("restores an applicant", async () => {
+  await deleteApplicant(applicant);
+
   createNock()
     .post("/applicants/" + applicant.id + "/restore")
     .reply(204);
@@ -72,6 +85,9 @@ it("restores an applicant", async () => {
 });
 
 it("lists applicants", async () => {
+  const anotherApplicant = { ... exampleApplicant, firstName: "Another" }
+  await createApplicant({ firstName: "Another" });
+
   createNock()
     .get("/applicants/")
     .query({
@@ -79,7 +95,7 @@ it("lists applicants", async () => {
       per_page: 20,
       include_deleted: false
     })
-    .reply(200, JSON.stringify({ applicants: [exampleApplicant, modifiedApplicant] }))
+    .reply(200, JSON.stringify({ applicants: [anotherApplicant, exampleApplicant] }))
 
   const applicants = await onfido.applicant.list({
     page: 1,
@@ -87,7 +103,7 @@ it("lists applicants", async () => {
     includeDeleted: false
   });
 
-  expect(applicants.sort(sort_by_firstname)).toEqual(
-    expect.arrayContaining([getExpectedApplicant(exampleApplicant),
-                            getExpectedApplicant(modifiedApplicant)]));
+  expect(applicants.sort(sortByFirstName)).toEqual(
+    expect.arrayContaining([getExpectedApplicant(anotherApplicant),
+                            getExpectedApplicant(exampleApplicant)]));
 });

@@ -8,7 +8,7 @@ async function init() {
   applicant = await createApplicant();
 }
 
-beforeAll(() => {
+beforeEach(() => {
   return init();
 });
 
