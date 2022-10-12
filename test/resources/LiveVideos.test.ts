@@ -1,6 +1,6 @@
 import { LiveVideo, OnfidoDownload, OnfidoApiError } from "onfido-node";
 
-import { createNock, onfido, getExpectedObject, sampleApplicantId, nockEnabled } from "../testHelpers";
+import { createNock, onfido, getExpectedObject, sampleApplicantId, nockEnabled, sortByLiveVideoId } from "../testHelpers";
 
 const sampleLiveVideoId1 = process.env.ONFIDO_SAMPLE_VIDEO_ID_1 || "sample_video_id_1"
 const sampleLiveVideoId2 = process.env.ONFIDO_SAMPLE_VIDEO_ID_2 || "sample_video_id_2"
@@ -22,16 +22,6 @@ function getExpectedLiveVideo(exampleLivePhoto: LiveVideo, liveVideoId: string)
     'languages': null,
     'challenge': expect.anything(),
     'downloadHref': expect.stringMatching(/^\/v3.4\/live_videos\/[0-9a-z-]+\/download$/) });
-}
-
-function sort_by_id( a: LiveVideo, b: LiveVideo ) {
-  if ( a.id < b.id ){
-    return -1;
-  }
-  if ( a.id > b.id ){
-    return 1;
-  }
-  return 0;
 }
 
 it("downloads a live video", async () => {
@@ -78,6 +68,6 @@ it("lists live videos", async () => {
 
   const liveVideos = await onfido.liveVideo.list(sampleApplicantId);
 
-  expect(liveVideos.sort(sort_by_id)).toEqual([getExpectedLiveVideo(exampleLiveVideo,sampleLiveVideoId1),
-                                               getExpectedLiveVideo(exampleLiveVideo,sampleLiveVideoId2)]);
+  expect(liveVideos.sort(sortByLiveVideoId)).toEqual([getExpectedLiveVideo(exampleLiveVideo,sampleLiveVideoId1),
+                                             getExpectedLiveVideo(exampleLiveVideo,sampleLiveVideoId2)]);
 });

@@ -4,12 +4,8 @@ import { createNock, onfido, createApplicant, cleanUpApplicants, nockEnabled } f
 
 let applicant: Applicant;
 
-async function init() {
+beforeEach(async () => {
   applicant = await createApplicant();
-}
-
-beforeAll(() => {
-  return init();
 });
 
 afterAll(() => {

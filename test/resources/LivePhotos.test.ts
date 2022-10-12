@@ -21,21 +21,16 @@ function getExpectedLivePhoto(exampleLivePhoto: LivePhoto)
 }
 
 let applicant: Applicant;
-let photo: LivePhoto;
 
-async function init() {
+beforeEach(async () => {
   applicant = await createApplicant();
-}
-
-beforeAll(() => {
-  return init();
 });
 
 afterAll(() => {
   return cleanUpApplicants();
 });
 
-export async function uploadLivePhoto(applicant_id: string, overrideProperties={})
+async function uploadLivePhoto(applicant_id: string, overrideProperties={})
 {
   createNock()
     .post("/live_photos/")
@@ -55,7 +50,7 @@ export async function uploadLivePhoto(applicant_id: string, overrideProperties={
 }
 
 it("uploads a live photo", async () => {
-  photo = await uploadLivePhoto(applicant.id);
+  const photo = await uploadLivePhoto(applicant.id);
 
   expect(photo).toEqual(getExpectedLivePhoto(exampleLivePhoto));
 });
@@ -67,6 +62,8 @@ it("uploads a live photo with advanced validation", async () => {
 });
 
 it("downloads a live photo", async () => {
+  const photo = await uploadLivePhoto(applicant.id);
+
   createNock()
     .get("/live_photos/" + photo.id + "/download")
     .reply(200, {});
@@ -77,6 +74,8 @@ it("downloads a live photo", async () => {
 });
 
 it("finds a live photo", async () => {
+  const photo = await uploadLivePhoto(applicant.id);
+
   createNock()
     .get("/live_photos/" + photo.id)
     .reply(200, JSON.stringify(exampleLivePhoto));
@@ -87,6 +86,9 @@ it("finds a live photo", async () => {
 });
 
 it("lists live photos", async () => {
+  await uploadLivePhoto(applicant.id);
+  await uploadLivePhoto(applicant.id);
+
   createNock()
     .get("/live_photos/")
     .query({ applicant_id: applicant.id })

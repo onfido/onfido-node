@@ -24,17 +24,15 @@ let applicant: Applicant;
 let document: Document;
 let webhook1: Webhook;
 let webhook2: Webhook;
-let check: Check;
 
-async function init() {
-  applicant = await createApplicant();
-  document = await uploadDocument(applicant.id);
+beforeAll(async () => {
   webhook1 = await createWebhook();
   webhook2 = await createWebhook();
-}
+});
 
-beforeAll(() => {
-  return init();
+beforeEach(async () => {
+  applicant = await createApplicant();
+  document = await uploadDocument(applicant);
 });
 
 afterAll(() => {
@@ -42,28 +40,26 @@ afterAll(() => {
 });
 
 it("creates a check", async () => {
-  check = await createCheck(applicant.id, document.id, { webhook_ids: [webhook1.id, webhook2.id] });
+  const check = await createCheck(applicant, document, { webhook_ids: [webhook1.id, webhook2.id] });
 
   expect(check).toEqual(getExpectedCheck(exampleCheck, {applicantId: applicant.id, result: null, status: "in_progress"}));
 });
 
 it("creates a check for generating a rejected sub-result for document report in the sandbox", async () => {
-  const anotherApplicant = await createApplicant();
-  const anotherDocument = await uploadDocument(anotherApplicant.id);
-  const anotherCheck = await createCheck(anotherApplicant.id, anotherDocument.id, { webhook_ids: [webhook1.id, webhook2.id], sub_result: "rejected" });
+  const check = await createCheck(applicant, document, { webhook_ids: [webhook1.id, webhook2.id], sub_result: "rejected" });
 
-  expect(anotherCheck).toEqual(getExpectedCheck(exampleCheck, {applicantId: anotherApplicant.id, result: null, status: "in_progress"}));
+  expect(check).toEqual(getExpectedCheck(exampleCheck, {applicantId: applicant.id, result: null, status: "in_progress"}));
 });
 
 it("creates a check for generating a consider result for a report in the sandbox", async () => {
-  const anotherApplicant = await createApplicant();
-  const anotherDocument = await uploadDocument(anotherApplicant.id);
-  const anotherCheck = await createCheck(anotherApplicant.id, anotherDocument.id, { webhook_ids: [webhook1.id, webhook2.id], consider: ["identity_enhanced"] });
+  const check = await createCheck(applicant, document, { webhook_ids: [webhook1.id, webhook2.id], consider: ["identity_enhanced"] });
 
-  expect(anotherCheck).toEqual(getExpectedCheck(exampleCheck, {applicantId: anotherApplicant.id, result: null, status: "in_progress"}));
+  expect(check).toEqual(getExpectedCheck(exampleCheck, {applicantId: applicant.id, result: null, status: "in_progress"}));
 });
 
 it("finds a check", async () => {
+  const check = await createCheck(applicant, document, { webhook_ids: [webhook1.id, webhook2.id] });
+
   createNock()
     .get("/checks/" + check.id)
     .reply(200, JSON.stringify(exampleCheck));
@@ -75,23 +71,25 @@ it("finds a check", async () => {
 });
 
 it("lists checks", async () => {
-  const anotherDocument = await uploadDocument(applicant.id);
-  const extraCheck = await createCheck(applicant.id, anotherDocument.id, { webhook_ids: [webhook1.id, webhook2.id] });
+  await createCheck(applicant, document, { webhook_ids: [webhook1.id, webhook2.id] });
+  await createCheck(applicant, document, { webhook_ids: [webhook1.id, webhook2.id] });
 
   createNock()
     .get("/checks/")
     .query({ applicant_id: applicant.id })
-    .reply(200, JSON.stringify({ checks: [exampleCheck, extraCheck] }));
+    .reply(200, JSON.stringify({ checks: [exampleCheck, exampleCheck] }));
 
   const checks = await onfido.check.list(applicant.id);
 
   // Providing actual status and result as parameter as they might change overtime
   expect(checks).toEqual([
     getExpectedCheck(exampleCheck, {status: checks[0].status, result: checks[0].result}),
-    getExpectedCheck(extraCheck, {status: checks[1].status, result: checks[1].result})]);
+    getExpectedCheck(exampleCheck, {status: checks[1].status, result: checks[1].result})]);
 });
 
 it("resumes a check", async () => {
+  const check = await createCheck(applicant, document, { webhook_ids: [webhook1.id, webhook2.id] });
+
   createNock()
     .post("/checks/" + check.id + "/resume")
     .reply(204);
@@ -100,6 +98,8 @@ it("resumes a check", async () => {
 });
 
 it("downloads a check", async () => {
+  const check = await createCheck(applicant, document, { webhook_ids: [webhook1.id, webhook2.id] });
+
   createNock()
     .get("/checks/" + check.id + "/download")
     .reply(200, {});

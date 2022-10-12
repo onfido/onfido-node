@@ -34,7 +34,7 @@ jobs:
     - name: Mock testing
       run: npm test
     - name: E2E testing
-      if: ${{ matrix.node-version == '18.x' }}
+      if: ${{ matrix.node-version == '14.x' }}
       run: npm test -i
       env:
         ONFIDO_API_TOKEN: ${{secrets.ONFIDO_API_TOKEN}}

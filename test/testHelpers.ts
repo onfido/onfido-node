@@ -2,7 +2,7 @@ import nock from "nock";
 import snakecaseKeys from "snakecase-keys";
 import { createReadStream } from "fs";
 
-import { Onfido, Region } from "onfido-node";
+import { Applicant, Document, FileLike, LiveVideo, Onfido, Region, Report } from "onfido-node";
 
 import { exampleApplicant, exampleCheck, exampleDocument, exampleWebhook } from "./testExamples";
 
@@ -36,7 +36,7 @@ export function getExpectedObject( exampleObject: any, overrideProperties={} ) {
   return expectedObject;
 }
 
-export async function createApplicant()
+export async function createApplicant( overrideProperties={} )
 {
   const requestPayload = {
     firstName: "Test",
@@ -48,7 +48,8 @@ export async function createApplicant()
     location: {
       ipAddress: "127.0.0.1",
       countryOfResidence: "GBR"
-    }
+    },
+    ... overrideProperties
   }
 
   createNock()
@@ -73,26 +74,31 @@ export async function cleanUpApplicants() {
 
   applicants.forEach(async function(applicant){
     if ( applicant.id != sampleApplicantId ) {
-      expect(await onfido.applicant.delete(applicant.id)).toBeUndefined();
+      await onfido.applicant.delete(applicant.id);
     }
   });
 }
 
-export async function uploadDocument(applicant_id: string)
+export async function uploadDocumentFromStream(applicant: Applicant, file: FileLike, documentType="driving_licence")
 {
   createNock()
     .post("/documents/")
     .reply(201, JSON.stringify(exampleDocument));
 
   return onfido.document.upload({
-    applicantId: applicant_id,
-    file: createReadStream("test/media/sample_driving_licence.png"),
-    type: "driving_licence",
+    applicantId: applicant.id,
+    file: file,
+    type: documentType,
     location: {
       ipAddress: "127.0.0.1",
       countryOfResidence: "GBR"
     }
   });
+}
+
+export async function uploadDocument(applicant: Applicant, documentType="driving_licence")
+{
+  return uploadDocumentFromStream(applicant, createReadStream("test/media/sample_driving_licence.png"), documentType);
 }
 
 export async function createWebhook()
@@ -122,11 +128,11 @@ export async function cleanUpWebhooks() {
   });
 }
 
-export async function createCheck(applicant_id: string, document_id: string, overrideProperties={}) {
+export async function createCheck(applicant: Applicant, document: Document, overrideProperties={}) {
   const requestPayload = {
-    applicantId: applicant_id,
+    applicantId: applicant.id,
     reportNames: ["document", "identity_enhanced"],
-    documentIds: [document_id],
+    documentIds: [document.id],
     ... overrideProperties
   }
 
@@ -135,4 +141,44 @@ export async function createCheck(applicant_id: string, document_id: string, ove
     .reply(201, JSON.stringify(exampleCheck));
 
   return onfido.check.create(requestPayload);
+}
+
+export function sortByApplicantFirstName( a: Applicant, b: Applicant ) {
+  if ( a.firstName < b.firstName ){
+    return -1;
+  }
+  if ( a.firstName > b.firstName ){
+    return 1;
+  }
+  return 0;
+}
+
+export function sortByDocumentType( a: Document, b: Document ) {
+  if ( a.type < b.type ){
+    return -1;
+  }
+  if ( a.type > b.type ){
+    return 1;
+  }
+  return 0;
+}
+
+export function sortByLiveVideoId( a: LiveVideo, b: LiveVideo ) {
+  if ( a.id < b.id ){
+    return -1;
+  }
+  if ( a.id > b.id ){
+    return 1;
+  }
+  return 0;
+}
+
+export function sortByReportName( a: Report, b: Report ) {
+  if ( a.name < b.name ){
+    return -1;
+  }
+  if ( a.name > b.name ){
+    return 1;
+  }
+  return 0;
 }

@@ -1,25 +1,23 @@
 
 import { Applicant, Document, OnfidoDownload } from "onfido-node";
 
-import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants, uploadDocument } from "../testHelpers";
+import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants, uploadDocument, sortByDocumentType } from "../testHelpers";
 import { exampleDocument } from "../testExamples";
 
-function getExpectedDocument(exampleDocument: Document)
+function getExpectedDocument(exampleDocument: Document, overrideProperties={})
 {
   return getExpectedObject(exampleDocument, {
     'applicantId': applicant.id,
-    'downloadHref': expect.stringMatching(/^\/.+/) });
+    'downloadHref': expect.stringMatching(/^\/.+/),
+    ... overrideProperties });
 }
 
 let applicant: Applicant;
 let document: Document;
 
-async function init() {
+beforeEach(async () => {
   applicant = await createApplicant();
-}
-
-beforeAll(() => {
-  return init();
+  document = await uploadDocument(applicant);
 });
 
 afterAll(() => {
@@ -27,15 +25,8 @@ afterAll(() => {
 });
 
 it("uploads a document", async () => {
-  document = await uploadDocument(applicant.id);
   expect(document).toEqual(getExpectedDocument(exampleDocument));
 });
-
-it("uploads another document", async () => {
-  const anotherDocument = await uploadDocument(applicant.id);
-  expect(anotherDocument).toEqual(getExpectedDocument(exampleDocument));
-});
-
 
 it("downloads a document", async () => {
   createNock()
@@ -58,13 +49,15 @@ it("finds a document", async () => {
 });
 
 it("lists documents", async () => {
+  const anotherDocument = await uploadDocument(applicant, "passport");
+
   createNock()
     .get("/documents/")
     .query({ applicant_id: applicant.id })
     .reply(200, JSON.stringify({ documents: [exampleDocument, exampleDocument] }));
 
-  const documents = await onfido.document.list(applicant.id);
+  const documents = (await onfido.document.list(applicant.id)).sort(sortByDocumentType);
 
-  expect(documents).toEqual([getExpectedDocument(exampleDocument),
-                             getExpectedDocument(exampleDocument)]);
+  expect(documents).toEqual([getExpectedDocument(exampleDocument, {'id': document.id, 'type': 'driving_licence'}),
+                             getExpectedDocument(exampleDocument, {'id': anotherDocument.id, 'type': 'passport'})]);
 });
