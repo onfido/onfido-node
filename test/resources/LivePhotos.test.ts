@@ -22,12 +22,8 @@ function getExpectedLivePhoto(exampleLivePhoto: LivePhoto)
 
 let applicant: Applicant;
 
-async function init() {
+beforeEach(async () => {
   applicant = await createApplicant();
-}
-
-beforeEach(() => {
-  return init();
 });
 
 afterAll(() => {

@@ -2,7 +2,7 @@ import nock from "nock";
 import snakecaseKeys from "snakecase-keys";
 import { createReadStream } from "fs";
 
-import { Applicant, Document, FileLike, Onfido, Region } from "onfido-node";
+import { Applicant, Document, FileLike, LiveVideo, Onfido, Region, Report } from "onfido-node";
 
 import { exampleApplicant, exampleCheck, exampleDocument, exampleWebhook } from "./testExamples";
 
@@ -141,4 +141,44 @@ export async function createCheck(applicant: Applicant, document: Document, over
     .reply(201, JSON.stringify(exampleCheck));
 
   return onfido.check.create(requestPayload);
+}
+
+export function sortByFirstName( a: Applicant, b: Applicant ) {
+  if ( a.firstName < b.firstName ){
+    return -1;
+  }
+  if ( a.firstName > b.firstName ){
+    return 1;
+  }
+  return 0;
+}
+
+export function sortByType( a: Document, b: Document ) {
+  if ( a.type < b.type ){
+    return -1;
+  }
+  if ( a.type > b.type ){
+    return 1;
+  }
+  return 0;
+}
+
+export function sortById( a: LiveVideo, b: LiveVideo ) {
+  if ( a.id < b.id ){
+    return -1;
+  }
+  if ( a.id > b.id ){
+    return 1;
+  }
+  return 0;
+}
+
+export function sortByName( a: Report, b: Report ) {
+  if ( a.name < b.name ){
+    return -1;
+  }
+  if ( a.name > b.name ){
+    return 1;
+  }
+  return 0;
 }

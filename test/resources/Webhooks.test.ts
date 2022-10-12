@@ -11,12 +11,8 @@ function getExpectedWebhook(exampleWebhook: Webhook)
 
 let webhook: Webhook;
 
-async function init() {
+beforeEach(async () => {
   webhook = await createWebhook();
-}
-
-beforeEach(() => {
-  return init();
 });
 
 afterAll(() => {

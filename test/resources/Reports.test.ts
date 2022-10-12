@@ -1,6 +1,6 @@
 import { Applicant, Check, Document, Report } from "onfido-node";
 
-import { createNock, onfido, getExpectedObject, createApplicant, uploadDocument, createCheck } from "../testHelpers";
+import { createNock, onfido, getExpectedObject, createApplicant, uploadDocument, createCheck, sortByName } from "../testHelpers";
 
 function getExpectedReport(exampleReport: Report, overrideProperties={})
 {
@@ -14,28 +14,14 @@ function getExpectedReport(exampleReport: Report, overrideProperties={})
    });
 }
 
-function sortByName( a: Report, b: Report ) {
-  if ( a.name < b.name ){
-    return -1;
-  }
-  if ( a.name > b.name ){
-    return 1;
-  }
-  return 0;
-}
-
 let applicant: Applicant;
 let document: Document;
 let check: Check;
 
-async function init() {
+beforeEach(async () => {
   applicant = await createApplicant();
   document = await uploadDocument(applicant);
   check = await createCheck(applicant, document, { webhook_ids: [] });
-}
-
-beforeEach(() => {
-  return init();
 });
 
 const exampleReport: Report = {

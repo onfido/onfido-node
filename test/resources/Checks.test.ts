@@ -25,22 +25,14 @@ let document: Document;
 let webhook1: Webhook;
 let webhook2: Webhook;
 
-async function  initOnce() {
+beforeAll(async () => {
   webhook1 = await createWebhook();
   webhook2 = await createWebhook();
-}
-
-async function init() {
-  applicant = await createApplicant();
-  document = await uploadDocument(applicant);
-}
-
-beforeAll(() => {
-  return initOnce();
 });
 
-beforeEach(() => {
-  return init();
+beforeEach(async () => {
+  applicant = await createApplicant();
+  document = await uploadDocument(applicant);
 });
 
 afterAll(() => {

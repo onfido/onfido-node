@@ -1,7 +1,7 @@
 
 import { Applicant, Document, OnfidoDownload } from "onfido-node";
 
-import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants, uploadDocument } from "../testHelpers";
+import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants, uploadDocument, sortByType } from "../testHelpers";
 import { exampleDocument } from "../testExamples";
 
 function getExpectedDocument(exampleDocument: Document, overrideProperties={})
@@ -12,26 +12,12 @@ function getExpectedDocument(exampleDocument: Document, overrideProperties={})
     ... overrideProperties });
 }
 
-function sortByType( a: Document, b: Document ) {
-  if ( a.type < b.type ){
-    return -1;
-  }
-  if ( a.type > b.type ){
-    return 1;
-  }
-  return 0;
-}
-
 let applicant: Applicant;
 let document: Document;
 
-async function init() {
+beforeEach(async () => {
   applicant = await createApplicant();
   document = await uploadDocument(applicant);
-}
-
-beforeEach(() => {
-  return init();
 });
 
 afterAll(() => {

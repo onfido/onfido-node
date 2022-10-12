@@ -43,13 +43,9 @@ const exampleAutofillE2e = {
 let applicant: Applicant;
 let document: Document;
 
-async function init() {
+beforeEach(async () => {
   applicant = await createApplicant();
   document = await uploadDocument(applicant);
-}
-
-beforeEach(() => {
-  return init();
 });
 
 afterAll(() => {

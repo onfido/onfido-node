@@ -1,6 +1,6 @@
 import { Applicant } from "onfido-node";
 
-import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants } from "../testHelpers";
+import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants, sortByFirstName } from "../testHelpers";
 import { exampleApplicant } from "../testExamples";
 
 function getExpectedApplicant(exampleApplicant: Applicant)
@@ -9,24 +9,10 @@ function getExpectedApplicant(exampleApplicant: Applicant)
     'sandbox': true });
 }
 
-function sortByFirstName( a: Applicant, b: Applicant ) {
-  if ( a.firstName < b.firstName ){
-    return -1;
-  }
-  if ( a.firstName > b.firstName ){
-    return 1;
-  }
-  return 0;
-}
-
 let applicant: Applicant;
 
-async function init() {
+beforeEach(async () => {
   applicant = await createApplicant();
-}
-
-beforeEach(() => {
-  return init();
 });
 
 afterAll(() => {
