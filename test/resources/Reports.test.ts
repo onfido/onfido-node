@@ -1,6 +1,6 @@
 import { Applicant, Check, Document, Report } from "onfido-node";
 
-import { createNock, onfido, getExpectedObject, createApplicant, uploadDocument, createCheck, sortByName } from "../testHelpers";
+import { createNock, onfido, getExpectedObject, createApplicant, uploadDocument, createCheck, sortByReportName } from "../testHelpers";
 
 function getExpectedReport(exampleReport: Report, overrideProperties={})
 {
@@ -59,7 +59,7 @@ it("lists reports", async () => {
     .query({ check_id: check.id })
     .reply(200, JSON.stringify({ reports: [exampleReport, exampleReport] }));
 
-  const report = (await onfido.report.list(check.id)).sort(sortByName);
+  const report = (await onfido.report.list(check.id)).sort(sortByReportName);
 
   // Providing actual result and subresult as parameter as they might change overtime
   expect(report).toEqual([getExpectedReport(exampleReport, { name: 'document',

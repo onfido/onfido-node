@@ -1,6 +1,6 @@
 import { LiveVideo, OnfidoDownload, OnfidoApiError } from "onfido-node";
 
-import { createNock, onfido, getExpectedObject, sampleApplicantId, nockEnabled, sortById } from "../testHelpers";
+import { createNock, onfido, getExpectedObject, sampleApplicantId, nockEnabled, sortByLiveVideoId } from "../testHelpers";
 
 const sampleLiveVideoId1 = process.env.ONFIDO_SAMPLE_VIDEO_ID_1 || "sample_video_id_1"
 const sampleLiveVideoId2 = process.env.ONFIDO_SAMPLE_VIDEO_ID_2 || "sample_video_id_2"
@@ -68,6 +68,6 @@ it("lists live videos", async () => {
 
   const liveVideos = await onfido.liveVideo.list(sampleApplicantId);
 
-  expect(liveVideos.sort(sortById)).toEqual([getExpectedLiveVideo(exampleLiveVideo,sampleLiveVideoId1),
+  expect(liveVideos.sort(sortByLiveVideoId)).toEqual([getExpectedLiveVideo(exampleLiveVideo,sampleLiveVideoId1),
                                              getExpectedLiveVideo(exampleLiveVideo,sampleLiveVideoId2)]);
 });

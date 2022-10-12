@@ -1,7 +1,7 @@
 
 import { Applicant, Document, OnfidoDownload } from "onfido-node";
 
-import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants, uploadDocument, sortByType } from "../testHelpers";
+import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants, uploadDocument, sortByDocumentType } from "../testHelpers";
 import { exampleDocument } from "../testExamples";
 
 function getExpectedDocument(exampleDocument: Document, overrideProperties={})
@@ -56,7 +56,7 @@ it("lists documents", async () => {
     .query({ applicant_id: applicant.id })
     .reply(200, JSON.stringify({ documents: [exampleDocument, exampleDocument] }));
 
-  const documents = (await onfido.document.list(applicant.id)).sort(sortByType);
+  const documents = (await onfido.document.list(applicant.id)).sort(sortByDocumentType);
 
   expect(documents).toEqual([getExpectedDocument(exampleDocument, {'id': document.id, 'type': 'driving_licence'}),
                              getExpectedDocument(exampleDocument, {'id': anotherDocument.id, 'type': 'passport'})]);

@@ -143,7 +143,7 @@ export async function createCheck(applicant: Applicant, document: Document, over
   return onfido.check.create(requestPayload);
 }
 
-export function sortByFirstName( a: Applicant, b: Applicant ) {
+export function sortByApplicantFirstName( a: Applicant, b: Applicant ) {
   if ( a.firstName < b.firstName ){
     return -1;
   }
@@ -153,7 +153,7 @@ export function sortByFirstName( a: Applicant, b: Applicant ) {
   return 0;
 }
 
-export function sortByType( a: Document, b: Document ) {
+export function sortByDocumentType( a: Document, b: Document ) {
   if ( a.type < b.type ){
     return -1;
   }
@@ -163,7 +163,7 @@ export function sortByType( a: Document, b: Document ) {
   return 0;
 }
 
-export function sortById( a: LiveVideo, b: LiveVideo ) {
+export function sortByLiveVideoId( a: LiveVideo, b: LiveVideo ) {
   if ( a.id < b.id ){
     return -1;
   }
@@ -173,7 +173,7 @@ export function sortById( a: LiveVideo, b: LiveVideo ) {
   return 0;
 }
 
-export function sortByName( a: Report, b: Report ) {
+export function sortByReportName( a: Report, b: Report ) {
   if ( a.name < b.name ){
     return -1;
   }

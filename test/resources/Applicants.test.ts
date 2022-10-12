@@ -1,6 +1,6 @@
 import { Applicant } from "onfido-node";
 
-import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants, sortByFirstName } from "../testHelpers";
+import { createNock, onfido, getExpectedObject, createApplicant, cleanUpApplicants, sortByApplicantFirstName } from "../testHelpers";
 import { exampleApplicant } from "../testExamples";
 
 function getExpectedApplicant(exampleApplicant: Applicant)
@@ -89,7 +89,7 @@ it("lists applicants", async () => {
     includeDeleted: false
   });
 
-  expect(applicants.sort(sortByFirstName)).toEqual(
+  expect(applicants.sort(sortByApplicantFirstName)).toEqual(
     expect.arrayContaining([getExpectedApplicant(anotherApplicant),
                             getExpectedApplicant(exampleApplicant)]));
 });
