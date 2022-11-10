@@ -56,7 +56,7 @@ export class Onfido {
       );
     }
 
-    const regionUrl = `https://api.${region.toLowerCase()}.onfido.com/v3.4/`;
+    const regionUrl = `https://api.${region.toLowerCase()}.onfido.com/v3.5/`;
 
     this.axiosInstance = axios.create({
       baseURL: unknownApiUrl || regionUrl,
