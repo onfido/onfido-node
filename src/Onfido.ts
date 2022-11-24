@@ -7,6 +7,7 @@ import { Checks } from "./resources/Checks";
 import { Documents } from "./resources/Documents";
 import { LivePhotos } from "./resources/LivePhotos";
 import { LiveVideos } from "./resources/LiveVideos";
+import { MotionCaptures } from "./resources/MotionCaptures";
 import { Reports } from "./resources/Reports";
 import { SdkTokens } from "./resources/SdkTokens";
 import { Webhooks } from "./resources/Webhooks";
@@ -31,6 +32,7 @@ export class Onfido {
   public readonly document: Documents;
   public readonly livePhoto: LivePhotos;
   public readonly liveVideo: LiveVideos;
+  public readonly motionCapture: MotionCaptures;
   public readonly check: Checks;
   public readonly report: Reports;
   // Other endpoints
@@ -73,6 +75,7 @@ export class Onfido {
     this.document = new Documents(this.axiosInstance);
     this.livePhoto = new LivePhotos(this.axiosInstance);
     this.liveVideo = new LiveVideos(this.axiosInstance);
+    this.motionCapture = new MotionCaptures(this.axiosInstance);
     this.check = new Checks(this.axiosInstance);
     this.report = new Reports(this.axiosInstance);
     // Other endpoints

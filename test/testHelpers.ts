@@ -2,7 +2,7 @@ import nock from "nock";
 import snakecaseKeys from "snakecase-keys";
 import { createReadStream } from "fs";
 
-import { Applicant, Document, FileLike, LiveVideo, Onfido, Region, Report } from "onfido-node";
+import { Applicant, Document, FileLike, LiveVideo, MotionCapture, Onfido, Region, Report } from "onfido-node";
 
 import { exampleApplicant, exampleCheck, exampleDocument, exampleWebhook } from "./testExamples";
 
@@ -31,7 +31,7 @@ export function getExpectedObject( exampleObject: any, overrideProperties={} ) {
     expectedObject.href = expect.stringMatching(/^\/v3.5\/.+$/);
 
   if ('createdAt' in expectedObject)
-    expectedObject.createdAt = expect.stringMatching(/^[0-9TZ:-]+$/);
+    expectedObject.createdAt = expect.stringMatching(/^[0-9TZ:\-\.]+$/);
 
   return expectedObject;
 }
@@ -164,6 +164,16 @@ export function sortByDocumentType( a: Document, b: Document ) {
 }
 
 export function sortByLiveVideoId( a: LiveVideo, b: LiveVideo ) {
+  if ( a.id < b.id ){
+    return -1;
+  }
+  if ( a.id > b.id ){
+    return 1;
+  }
+  return 0;
+}
+
+export function sortByMotionCaptureId( a: MotionCapture, b: MotionCapture ) {
   if ( a.id < b.id ){
     return -1;
   }
