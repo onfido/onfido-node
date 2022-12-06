@@ -86,9 +86,10 @@ export class Resource<T extends SimpleObject> {
     body?: T;
     query?: SimpleObject;
   }): Promise<any> {
+    const url = path === null ? `${this.name}` : `${this.name}/${path}`;
     const request = this.axiosInstance({
       method,
-      url: `${this.name}/${path}`,
+      url: url,
       data: body && convertObjectToSnakeCase(body),
       params: query && convertObjectToSnakeCase(query)
     });

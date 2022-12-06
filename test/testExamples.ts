@@ -1,4 +1,4 @@
-import { Applicant, Check, Document, Webhook } from "onfido-node";
+import { Applicant, Check, Document, Webhook, WorkflowRun } from "onfido-node";
 
 export const exampleApplicant: Applicant = {
   id: "123-abc",
@@ -71,3 +71,18 @@ export const exampleWebhook: Webhook = {
   href: "/v3/webhooks/abc-132",
   environments: ["sandbox"]
 };
+
+export const exampleWorkflowRun: WorkflowRun = {
+  id: "abc-123",
+  applicantId: "abc-123",
+  workflowId: "abc-123",
+  workflowVersionId: 1,
+  dashboardUrl: "https://dashboard.onfido.com/results/uuid",
+  status: "status",
+  output: null,
+  reasons: null,
+  error: null,
+  link: null,
+  createdAt: "2022-06-28T15:39:42Z",
+  updatedAt: "2022-06-28T15:39:42Z"
+}

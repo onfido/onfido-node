@@ -17,3 +17,4 @@ export { Report } from "./resources/Reports";
 export { Webhook, WebhookRequest } from "./resources/Webhooks";
 export { SdkTokenRequest } from "./resources/SdkTokens";
 export { Autofill, ExtractionResult } from "./resources/Autofill";
+export { WorkflowRun, WorkflowRunRequest } from "./resources/WorkflowRuns";
