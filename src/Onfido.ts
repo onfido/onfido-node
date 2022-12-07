@@ -11,6 +11,7 @@ import { MotionCaptures } from "./resources/MotionCaptures";
 import { Reports } from "./resources/Reports";
 import { SdkTokens } from "./resources/SdkTokens";
 import { Webhooks } from "./resources/Webhooks";
+import { WorkflowRuns } from "./resources/WorkflowRuns";
 
 export enum Region {
   EU = "EU",
@@ -35,6 +36,7 @@ export class Onfido {
   public readonly motionCapture: MotionCaptures;
   public readonly check: Checks;
   public readonly report: Reports;
+  public readonly workflowRun: WorkflowRuns;
   // Other endpoints
   public readonly address: Addresses;
   public readonly webhook: Webhooks;
@@ -78,6 +80,7 @@ export class Onfido {
     this.motionCapture = new MotionCaptures(this.axiosInstance);
     this.check = new Checks(this.axiosInstance);
     this.report = new Reports(this.axiosInstance);
+    this.workflowRun = new WorkflowRuns(this.axiosInstance);
     // Other endpoints
     this.address = new Addresses(this.axiosInstance);
     this.webhook = new Webhooks(this.axiosInstance);

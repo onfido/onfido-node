@@ -4,7 +4,7 @@ import { createReadStream } from "fs";
 
 import { Applicant, Document, FileLike, LiveVideo, MotionCapture, Onfido, Region, Report } from "onfido-node";
 
-import { exampleApplicant, exampleCheck, exampleDocument, exampleWebhook } from "./testExamples";
+import { exampleApplicant, exampleCheck, exampleDocument, exampleWebhook, exampleWorkflowRun } from "./testExamples";
 
 export const onfido = new Onfido({ region: Region.EU, apiToken: process.env.ONFIDO_API_TOKEN || "api_token" });
 
@@ -191,4 +191,17 @@ export function sortByReportName( a: Report, b: Report ) {
     return 1;
   }
   return 0;
+}
+
+export function createWorkflowRun(applicant: Applicant, workflowId: string) {
+  const requestPayload = {
+    applicantId: applicant.id,
+    workflowId: workflowId
+  }
+
+  createNock()
+    .post("/workflow_runs/", snakecaseKeys(requestPayload))
+    .reply(201, JSON.stringify(exampleWorkflowRun));
+
+    return onfido.workflowRun.create(requestPayload);
 }
