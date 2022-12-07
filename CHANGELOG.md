@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.6.0, 7 December 2022
+
+- Added WorkflowRuns support
+
 ## v2.5.0, 22 November 2022
 
 - Added Motion capture support
