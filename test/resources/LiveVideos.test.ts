@@ -8,8 +8,8 @@ const sampleLiveVideoId2 = process.env.ONFIDO_SAMPLE_VIDEO_ID_2 || "sample_video
 const exampleLiveVideo: LiveVideo = {
   id: "123-abc",
   createdAt: "2020-01-01T00:00:00Z",
-  href: "https://api.onfido.com/v3.5/live_videos/123-abc",
-  downloadHref: "https://api.onfido.com/v3.5/live_videos/123-abc/download",
+  href: "https://api.onfido.com/v3.6/live_videos/123-abc",
+  downloadHref: "https://api.onfido.com/v3.6/live_videos/123-abc/download",
   fileName: "video.mov",
   fileType: "video/quicktime",
   fileSize: 165_093
@@ -21,7 +21,7 @@ function getExpectedLiveVideo(exampleLivePhoto: LiveVideo, liveVideoId: string)
     'id': liveVideoId,
     'languages': null,
     'challenge': expect.anything(),
-    'downloadHref': expect.stringMatching(/^\/v3.5\/live_videos\/[0-9a-z-]+\/download$/) });
+    'downloadHref': expect.stringMatching(/^\/v3.6\/live_videos\/[0-9a-z-]+\/download$/) });
 }
 
 it("downloads a live video", async () => {

@@ -15,8 +15,8 @@ const sampleId2 = process.env.ONFIDO_SAMPLE_MOTION_ID_2 || "motion_0abc";
 const exampleMotionCapture: MotionCapture = {
   id: "id",
   createdAt: "2020-01-01T00:00:00.000Z",
-  href: "https://api.onfido.com/v3.5/motion_captures/id",
-  downloadHref: "https://api.onfido.com/v3.5/motion_captures/id/download",
+  href: "https://api.onfido.com/v3.6/motion_captures/id",
+  downloadHref: "https://api.onfido.com/v3.6/motion_captures/id/download",
   fileName: "id.mp4",
   fileType: "video/mp4",
   fileSize: 2_720_276
@@ -30,7 +30,7 @@ function getExpectedMotionCapture(
     id: exampleId,
     fileName: exampleId + ".mp4",
     downloadHref: expect.stringMatching(
-      /^\/v3\.5\/motion_captures\/[0-9a-z-]+\/download$/
+      /^\/v3\.6\/motion_captures\/[0-9a-z-]+\/download$/
     )
   });
 }

@@ -13,7 +13,7 @@ function getExpectedCheck(exampleCheck: Check, overrideProperties={})
     webhookIds: expect.arrayContaining([webhook1.id, webhook2.id]),
     result: expect.anything(),
     status: expect.anything(),
-    version: "3.5",
+    version: "3.6",
     sandbox: true,
     paused: false,
     ... overrideProperties

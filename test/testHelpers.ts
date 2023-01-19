@@ -9,7 +9,7 @@ import { exampleApplicant, exampleCheck, exampleDocument, exampleWebhook, exampl
 export const onfido = new Onfido({ region: Region.EU, apiToken: process.env.ONFIDO_API_TOKEN || "api_token" });
 
 export const createNock = (): nock.Scope =>
-  nock("https://api.eu.onfido.com/v3.5");
+  nock("https://api.eu.onfido.com/v3.6");
 
 export const nockEnabled = (): boolean =>
   process.env.NOCK_OFF !== 'true'
@@ -28,7 +28,7 @@ export function getExpectedObject( exampleObject: any, overrideProperties={} ) {
     expectedObject.id = expect.stringMatching(/^[0-9a-z-]+$/);
 
   if ('href' in expectedObject)
-    expectedObject.href = expect.stringMatching(/^\/v3.5\/.+$/);
+    expectedObject.href = expect.stringMatching(/^\/v3.6\/.+$/);
 
   if ('createdAt' in expectedObject)
     expectedObject.createdAt = expect.stringMatching(/^[0-9TZ:\-\.]+$/);
