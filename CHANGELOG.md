@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.7.0, 24 January 2023
+
+- Updated to use API v3.6. For more details please see our [release notes](https://developers.onfido.com/release-notes#api-v36)
+
 ## v2.6.0, 7 December 2022
 
 - Added WorkflowRuns support
