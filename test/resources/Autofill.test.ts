@@ -32,7 +32,7 @@ const exampleAutofillE2e = {
   },
   extractedData: {
     dateOfBirth: "1976-03-11",
-    dateOfExpiry: "2023-01-18",
+    dateOfExpiry: "2031-05-28",
     documentNumber: "200407512345",
     firstName: "SARAH",
     gender: "Female",
