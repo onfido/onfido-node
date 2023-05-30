@@ -10,7 +10,7 @@ export type DocumentRequest = {
   type: string;
   side?: string | null;
   issuingCountry?: string | null;
-  validateImageQuality?: boolean | null;
+  validateImageQuality?: boolean | null | string;
   location?: LocationRequest | null;
 };
 
