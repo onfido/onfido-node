@@ -18,6 +18,14 @@ export type FileLike = Readable | ContentsAndOptions;
 const snakeCase = (camelCaseString: string): string =>
   camelCaseString.replace(/[A-Z]/g, char => `_${char.toLowerCase()}`);
 
+const formatValue = (value: any): string => {
+  if (typeof value === 'boolean') {
+    return String(value);
+  } else {
+    return value;
+  }
+};
+
 const camelCase = (snakeCaseString: string): string =>
   snakeCaseString
     .replace(/_[0-9]/g, underscoreDigit => underscoreDigit[1])
@@ -58,7 +66,7 @@ export const toFormData = (object: SimpleObject): IFormData => {
           formData.append(snakeCase(key + "[" + elementKey + "]"), elementValue);
         }
       } else {
-        formData.append(snakeCase(key), value);
+        formData.append(snakeCase(key), formatValue(value));
       }
     }
     return formData;
