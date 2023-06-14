@@ -38,6 +38,7 @@ export const exampleCheck: Check = {
   href: "https://api.onfido.com/v3.6/checks/123-abc",
   applicantId: "applicant-123",
   applicantProvidesData: false,
+  sandbox: false,
   status: "in_progress",
   tags: [],
   result: null,

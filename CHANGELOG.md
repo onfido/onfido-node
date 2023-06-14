@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.7.2, 14 June 2023
+
+- Added `sandbox` field to Check.
+
 ## v2.7.1, 30 May 2023
 
 - Fix bug when uploading documents with `validateImageQuality`.
