@@ -24,6 +24,7 @@ export type Check = {
   href: string;
   applicantId: string;
   applicantProvidesData: boolean;
+  sandbox: boolean;
   status: string;
   tags: string[];
   result: string | null;
