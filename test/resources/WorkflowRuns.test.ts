@@ -1,4 +1,4 @@
-import { Applicant, WorkflowRun } from "onfido-node";
+import { Applicant, WorkflowRun, OnfidoDownload } from "onfido-node";
 
 import { exampleWorkflowRun } from "../testExamples";
 import {
@@ -78,4 +78,16 @@ it("lists workflow runs", async () => {
       getExpectedWorkflowRun(exampleWorkflowRun)
     ])
   );
+});
+
+it("downloads a signed evidence file", async () => {
+  const workflowRun = await createWorkflowRun(applicant, workflow_id);
+
+  createNock()
+    .get("/workflow_runs/" + workflowRun.id + "/signed_evidence_file")
+    .reply(200, {});
+
+  const file = await onfido.workflowRun.evidence(workflowRun.id);
+
+  expect(file).toBeInstanceOf(OnfidoDownload);
 });
