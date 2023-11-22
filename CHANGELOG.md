@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.7.3, 22 November 2023
+
+- Axios version update to 1.6.1.
+
 ## v2.7.2, 14 June 2023
 
 - Added `sandbox` field to Check.
