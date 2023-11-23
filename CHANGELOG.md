@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.8.0 24 November 2023
+
+- Added `signed_evidence_file` method for WorkflowRuns
+
 ## v2.7.2, 14 June 2023
 
 - Added `sandbox` field to Check.
