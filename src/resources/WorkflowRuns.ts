@@ -34,6 +34,7 @@ export type WorkflowRun = {
   link: WorkflowRunLink | null;
   createdAt: string;
   updatedAt: string;
+  tags: string[] | null;
 };
 
 export type WorkflowRunListRequest = {
