@@ -70,7 +70,8 @@ export const exampleWebhook: Webhook = {
   events: ["check.completed", "report.completed"],
   token: "webhook-token",
   href: "/v3/webhooks/abc-132",
-  environments: ["sandbox"]
+  environments: ["sandbox"],
+  payloadVersion: 3
 };
 
 export const exampleWorkflowRun: WorkflowRun = {
@@ -85,5 +86,6 @@ export const exampleWorkflowRun: WorkflowRun = {
   error: null,
   link: null,
   createdAt: "2022-06-28T15:39:42Z",
-  updatedAt: "2022-06-28T15:39:42Z"
+  updatedAt: "2022-06-28T15:39:42Z",
+  tags: []
 }
