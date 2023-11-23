@@ -33,7 +33,8 @@
     "preset": "ts-jest",
     "testEnvironment": "node",
     "moduleNameMapper": {
-      "onfido-node": "<rootDir>/src/index"
+      "onfido-node": "<rootDir>/src/index",
+      "axios": "axios/dist/node/axios.cjs"
     },
     "globals": {
       "ts-jest": {
@@ -57,7 +58,7 @@
     "typescript": "^4.0.5"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.6.1",
     "form-data": "^3.0.0"
   }
 }
