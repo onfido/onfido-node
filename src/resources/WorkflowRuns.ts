@@ -1,4 +1,5 @@
 import { AxiosInstance } from "axios";
+import { OnfidoDownload } from "../OnfidoDownload";
 import { Method, Resource } from "../Resource";
 
 export type WorkflowRunRequest = {
@@ -8,15 +9,15 @@ export type WorkflowRunRequest = {
 };
 
 type WorkflowRunError = {
-  type:	string;
+  type: string;
   message: string;
 }
 
 type WorkflowRunLink = {
-  url:	string;
-  completed_redirect_url:	string;
-  expired_redirect_url:	string;
-  expires_at:	string;
+  url: string;
+  completed_redirect_url: string;
+  expired_redirect_url: string;
+  expires_at: string;
   language: string;
 }
 
@@ -62,5 +63,9 @@ export class WorkflowRuns extends Resource<WorkflowRunRequest> {
     });
 
     return workflowRuns;
+  }
+
+  public async evidence(id: string): Promise<OnfidoDownload> {
+    return super.download(`${id}/signed_evidence_file`);
   }
 }
