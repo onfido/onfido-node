@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.9.0 24 November 2023
+
+- Add `resource` to `WebhookEvent`
+
 ## v2.8.0 24 November 2023
 
 - Added `signed_evidence_file` method for WorkflowRuns
