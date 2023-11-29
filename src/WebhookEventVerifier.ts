@@ -19,6 +19,7 @@ export type WebhookEvent = {
     href: string;
     completedAtIso8601: string;
   };
+  resource?: object;
 };
 
 export class WebhookEventVerifier {
