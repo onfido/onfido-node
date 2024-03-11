@@ -1,5 +1,7 @@
 # Changelog
 
+## v3.0.0 11th March 2024
+
 ## v2.9.0 24 November 2023
 
 - Add `resource` to `WebhookEvent`

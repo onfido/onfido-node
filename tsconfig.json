@@ -1,15 +1,19 @@
 {
   "compilerOptions": {
-    "noImplicitAny": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "target": "ES2017",
-    "moduleResolution": "node",
-    "sourceMap": true,
     "declaration": true,
-    "esModuleInterop": true,
-    "rootDir": "src"
+    "target": "ES6",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "outDir": "dist",
+    "rootDir": ".",
+    "moduleResolution": "node",
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
-  "include": ["src/**/*"]
+  "include": [
+    "api",
+    "model",
+    "index.ts"
+  ]
 }
