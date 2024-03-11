@@ -1,33 +1,33 @@
-import { Applicant, WorkflowRun, OnfidoDownload } from "onfido-node";
+import { Applicant, WorkflowRun } from "onfido-node";
 
-import { exampleWorkflowRun } from "../testExamples";
+import { exampleWorkflowRun } from "../test-examples";
 import {
   cleanUpApplicants,
   cleanUpWebhooks,
   createApplicant,
-  createNock,
   createWorkflowRun,
   getExpectedObject,
   onfido
-} from "../testHelpers";
+} from "../test-helpers";
 
 function getExpectedWorkflowRun(
   exampleWorkflowRun: WorkflowRun,
   overrideProperties = {}
 ) {
   return getExpectedObject(exampleWorkflowRun, {
-    applicantId: expect.stringMatching(/^[0-9a-z-]+$/),
+    applicant_id: expect.stringMatching(/^[0-9a-z-]+$/),
     id: expect.stringMatching(/^[0-9a-z-]+$/),
-    workflowId: expect.stringMatching(/^[0-9a-z-]+$/),
-    workflowVersionId: expect.anything(),
-    dashboardUrl: expect.anything(),
+    workflow_id: expect.stringMatching(/^[0-9a-z-]+$/),
+    workflow_version_id: expect.anything(),
+    dashboard_url: expect.anything(),
     status: expect.anything(),
     output: null,
     reasons: expect.anything(),
+    sdk_token: null,
     error: null,
     link: expect.anything(),
-    createdAt: expect.anything(),
-    updatedAt: expect.anything(),
+    created_at: expect.anything(),
+    updated_at: expect.anything(),
     ...overrideProperties
   });
 }
@@ -36,7 +36,7 @@ let applicant: Applicant;
 const workflow_id = "e8c921eb-0495-44fe-b655-bcdcaffdafe5";
 
 beforeEach(async () => {
-  applicant = await createApplicant();
+  applicant = (await createApplicant()).data;
 });
 
 afterAll(() => {
@@ -46,33 +46,27 @@ afterAll(() => {
 it("creates a workflow run", async () => {
   const workflowRun = await createWorkflowRun(applicant, workflow_id);
 
-  expect(workflowRun).toEqual(getExpectedWorkflowRun(exampleWorkflowRun));
+  expect(workflowRun.data).toEqual(getExpectedWorkflowRun(exampleWorkflowRun));
 });
 
 it("finds a workflow run", async () => {
   const workflowRun = await createWorkflowRun(applicant, workflow_id);
 
-  createNock()
-    .get("/workflow_runs/" + workflowRun.id)
-    .reply(200, JSON.stringify(workflowRun));
+  const lookupworkflowRun = await onfido.findWorkflowRun(workflowRun.data.id);
 
-  const lookupworkflowRun = await onfido.workflowRun.find(workflowRun.id);
-
-  // Providing actual status and result as parameter as it might change overtime
-  expect(lookupworkflowRun).toEqual(getExpectedWorkflowRun(exampleWorkflowRun));
+  // Providing actual status and result as parameter since they might have changed overtime
+  expect(lookupworkflowRun.data).toEqual(
+    getExpectedWorkflowRun(exampleWorkflowRun)
+  );
 });
 
 it("lists workflow runs", async () => {
   await createWorkflowRun(applicant, workflow_id);
   await createWorkflowRun(applicant, workflow_id);
 
-  createNock()
-    .get("/workflow_runs/")
-    .reply(200, JSON.stringify([exampleWorkflowRun, exampleWorkflowRun]));
+  const workflowRuns = await onfido.listWorkflowRuns();
 
-  const workflowRuns = await onfido.workflowRun.list();
-
-  expect(workflowRuns).toEqual(
+  expect(workflowRuns.data).toEqual(
     expect.arrayContaining([
       getExpectedWorkflowRun(exampleWorkflowRun),
       getExpectedWorkflowRun(exampleWorkflowRun)
@@ -83,11 +77,9 @@ it("lists workflow runs", async () => {
 it("downloads a signed evidence file", async () => {
   const workflowRun = await createWorkflowRun(applicant, workflow_id);
 
-  createNock()
-    .get("/workflow_runs/" + workflowRun.id + "/signed_evidence_file")
-    .reply(200, {});
+  const file = await onfido.downloadSignedEvidenceFile(workflowRun.data.id);
 
-  const file = await onfido.workflowRun.evidence(workflowRun.id);
-
-  expect(file).toBeInstanceOf(OnfidoDownload);
+  expect(file.status).toEqual(200);
+  expect(file.headers["content-type"]).toEqual("binary/octet-stream");
+  expect(file.data.slice(0, 5)).toEqual("%PDF-");
 });

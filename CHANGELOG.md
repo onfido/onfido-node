@@ -1,6 +1,8 @@
 # Changelog
 
-## v3.0.0 11th March 2024
+## v3.0.0 12th March 2024
+
+- Automatically generate library from [Onfido OpenAPI spec](https://github.com/onfido/onfido-openapi-spec/tree/master)
 
 ## v2.9.0 24 November 2023
 
@@ -36,7 +38,7 @@
 
 ## v2.3.1, 24 May 2022
 
-- Reinstated `privacyNoticesReadConsentGiven` parameter 
+- Reinstated `privacyNoticesReadConsentGiven` parameter
 
 ## v2.3.0, 10 May 2022
 
@@ -63,12 +65,12 @@
 
 ## v2.0.2, 25 May 2021
 
-- Added `environments` to Webhook object 
+- Added `environments` to Webhook object
 
 ## v2.0.1, 17 May 2021
 
 - Added `sub_result` to trigger sandbox pre-determined responses for Document report sub-results
-- Added `consider` array functionality for sandbox pre-determined responses 
+- Added `consider` array functionality for sandbox pre-determined responses
 
 ## v2.0.0, 9 April 2021
 

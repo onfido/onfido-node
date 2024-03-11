@@ -14,13 +14,13 @@
     "openapi-generator",
     "@onfido/api"
   ],
-  "license": "MIT",         
+  "license": "MIT",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "module": "./dist/esm/index.js",
   "sideEffects": false,
   "scripts": {
-    "test": "jest", 
+    "test": "jest",
     "build": "tsc && tsc -p tsconfig.esm.json",
     "prepare": "npm run build"
   },
