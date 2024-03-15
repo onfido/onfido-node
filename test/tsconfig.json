@@ -2,11 +2,9 @@
   "extends": "../tsconfig.json",
   "include": ["./**/*"],
   "compilerOptions": {
-    "baseUrl": "../",
-    "rootDir": "../",
-    "resolveJsonModule": true,
+    "noImplicitAny": false,
     "paths": {
-      "onfido-node": ["src/index"]
+      "onfido-node": ["../index"]
     }
   }
 }
