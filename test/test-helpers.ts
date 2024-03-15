@@ -9,8 +9,7 @@ import {
   MotionCapture,
   Configuration,
   DefaultApi,
-  Report,
-  Region
+  Report
 } from "onfido-node";
 
 export const onfido = new DefaultApi(
@@ -26,7 +25,7 @@ export function getExpectedObject(exampleObject: any, overrideProperties = {}) {
   var expectedObject = { ...exampleObject, ...overrideProperties };
 
   if ("id" in expectedObject)
-    expectedObject.id = expect.stringMatching(/^[0-9a-z-]+$/);
+    expectedObject.id = expect.stringMatching(/^[0-9a-z-_]+$/);
 
   if ("href" in expectedObject)
     expectedObject.href = expect.stringMatching(/^\/v3.6\/.+$/);
@@ -175,4 +174,19 @@ export function createWorkflowRun(applicant: Applicant, workflow_id: string) {
     applicant_id: applicant.id,
     workflow_id: workflow_id
   });
+}
+
+export function completeTask(
+  workflowRunId: string,
+  taskId: string,
+  overrideProperties = {}
+) {
+  const taskData = {
+    data: {
+      first_name: "Test",
+      last_name: "Applicant",
+      ...overrideProperties,
+    },
+  };
+  return onfido.completeTask(workflowRunId, taskId, taskData);
 }
