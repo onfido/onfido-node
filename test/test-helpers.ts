@@ -185,8 +185,8 @@ export function completeTask(
     data: {
       first_name: "Test",
       last_name: "Applicant",
-      ...overrideProperties,
-    },
+      ...overrideProperties
+    }
   };
   return onfido.completeTask(workflowRunId, taskId, taskData);
 }

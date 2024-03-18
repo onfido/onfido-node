@@ -18,7 +18,7 @@ function getExpectedTask(exampleTask: Task, overrideProperties = {}) {
     workflow_run_id: expect.stringMatching(/^[0-9a-z-]+$/),
     created_at: expect.anything(),
     updated_at: expect.anything(),
-    ...overrideProperties,
+    ...overrideProperties
   });
 }
 
@@ -56,7 +56,7 @@ it("finds a task", async () => {
 
 it("completes a task", async () => {
   const taskId = (await onfido.listTasks(workflowRunId)).data.filter(
-    (task) => task.id !== "start"
+    task => task.id !== "start"
   )[0].id;
 
   const completedTask = await completeTask(workflowRunId, taskId);

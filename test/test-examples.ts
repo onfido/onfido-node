@@ -101,5 +101,5 @@ export const exampleTask: Task = {
   id: "abc-123",
   task_def_id: "task_123",
   created_at: "2022-06-28T15:39:42Z",
-  updated_at: "2022-07-28T15:40:42Z",
+  updated_at: "2022-07-28T15:40:42Z"
 };
