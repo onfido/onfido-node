@@ -32,7 +32,7 @@ beforeEach(async () => {
 });
 
 afterAll(() => {
-  return Promise.all([cleanUpApplicants(), cleanUpWebhooks()]);
+  return Promise.all([cleanUpApplicants()]);
 });
 
 it("lists tasks", async () => {
