@@ -1,0 +1,138 @@
+import { faker } from "@faker-js/faker";
+import { Applicant, WorkflowRun } from "onfido-node";
+
+import { exampleWorkflowRun } from "../test-examples";
+import {
+  cleanUpApplicants,
+  completeTask,
+  createApplicant,
+  createWorkflowRun,
+  getExpectedObject,
+  onfido,
+  uploadDocument,
+  uploadLivePhoto
+} from "../test-helpers";
+
+function getExpectedWorkflowRun(
+  exampleWorkflowRun: WorkflowRun,
+  overrideProperties = {}
+) {
+  return getExpectedObject(exampleWorkflowRun, {
+    applicant_id: expect.stringMatching(/^[0-9a-z-]+$/),
+    id: expect.stringMatching(/^[0-9a-z-]+$/),
+    workflow_id: expect.stringMatching(/^[0-9a-z-]+$/),
+    workflow_version_id: expect.anything(),
+    dashboard_url: expect.anything(),
+    status: expect.anything(),
+    output: expect.anything(),
+    reasons: expect.anything(),
+    sdk_token: null,
+    error: null,
+    link: expect.anything(),
+    created_at: expect.anything(),
+    updated_at: expect.anything(),
+    ...overrideProperties
+  });
+}
+
+async function sleep(msec: number) {
+  return new Promise(resolve => setTimeout(resolve, msec));
+}
+
+let applicant: Applicant;
+
+describe("workflow runs outputs", () => {
+  beforeEach(async () => {
+    applicant = (await createApplicant()).data;
+  });
+
+  afterAll(() => {
+    return Promise.all([cleanUpApplicants()]);
+  });
+
+  it("allows profile data capture as output", async () => {
+    const workflow_id = "d27e510b-27a8-44c3-a3cc-bf4c0648a4ba";
+    const workflowRunId = (await createWorkflowRun(applicant, workflow_id)).data
+      .id;
+
+    const taskId = (await onfido.listTasks(workflowRunId)).data.filter(
+      task => task.id !== "start"
+    )[0].id;
+
+    await completeTask(workflowRunId, taskId, {
+      data: {
+        country_residence: faker.location.countryCode("alpha-3"),
+        first_name: faker.person.firstName(),
+        last_name: faker.person.lastName(),
+        // birthdate().toISOString() yields 1977-07-10T01:37:30.719Z format, discard the time
+        dob: faker.date
+          .birthdate()
+          .toISOString()
+          .split("T")[0],
+        email: faker.internet.email(),
+        phone_number: faker.helpers.fromRegExp(/[\+]3519[1236][0-9]{7}/),
+        nationality: faker.location.countryCode("alpha-3"),
+        phone_number_consent_granted: true,
+        address: {
+          country: faker.location.countryCode("alpha-3"),
+          line1: faker.location.streetAddress(),
+          line2: faker.location.street(),
+          line3: faker.location.street(),
+          town: faker.location.city(),
+          postcode: faker.location.zipCode()
+        }
+      }
+    });
+
+    const workflowRun = await onfido.findWorkflowRun(workflowRunId);
+
+    expect(workflowRun.data).toEqual(
+      getExpectedWorkflowRun(exampleWorkflowRun)
+    );
+  });
+
+  it("allows document and facial similarity photo reports as outputs", async () => {
+    const workflow_id = "5025d9fd-7842-4805-bce1-a7bfd7131b4e";
+    const workflowRunId = (await createWorkflowRun(applicant, workflow_id)).data
+      .id;
+
+    const profileDataCaptureTaskId = (
+      await onfido.listTasks(workflowRunId)
+    ).data.filter(task => task.id.includes("profile"))[0].id;
+
+    await completeTask(workflowRunId, profileDataCaptureTaskId, {
+      data: {
+        first_name: faker.person.firstName(),
+        last_name: faker.person.lastName()
+      }
+    });
+
+    const documentCaptureTaskId = (
+      await onfido.listTasks(workflowRunId)
+    ).data.filter(task => task.id.includes("document_photo"))[0].id;
+
+    const documentId = (await uploadDocument(applicant)).data.id;
+    await completeTask(workflowRunId, documentCaptureTaskId, {
+      data: [{ id: documentId }]
+    });
+
+    const photoCaptureTaskId = (
+      await onfido.listTasks(workflowRunId)
+    ).data.filter(task => task.id.includes("face_photo"))[0].id;
+
+    const photoId = (await uploadLivePhoto(applicant)).data.id;
+    await completeTask(workflowRunId, photoCaptureTaskId, {
+      data: [{ id: photoId }]
+    });
+
+    let workflowRun = await onfido.findWorkflowRun(workflowRunId);
+    while (workflowRun.data.status === "processing") {
+      await sleep(1000);
+      workflowRun = await onfido.findWorkflowRun(workflowRunId);
+    }
+
+    expect(workflowRun.data).toEqual(
+      getExpectedWorkflowRun(exampleWorkflowRun)
+    );
+  }, 30000);
+});
