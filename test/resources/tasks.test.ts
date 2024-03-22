@@ -1,3 +1,4 @@
+import { faker } from "@faker-js/faker";
 import { Applicant, Task } from "onfido-node";
 
 import { exampleTask } from "../test-examples";
@@ -59,7 +60,12 @@ it("completes a task", async () => {
     task => task.id !== "start"
   )[0].id;
 
-  const completedTask = await completeTask(workflowRunId, taskId);
+  const completedTask = await completeTask(workflowRunId, taskId, {
+    data: {
+      first_name: faker.person.firstName(),
+      last_name: faker.person.lastName()
+    }
+  });
   expect(completedTask.status).toEqual(200);
   expect(completedTask.data).toEqual({});
 });
