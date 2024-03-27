@@ -25,11 +25,13 @@ import { DUMMY_BASE_URL, assertParamExists, setApiKeyToObject, setBasicAuthToObj
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError, operationServerMap } from '../base';
 // @ts-ignore
-import { Addresses } from '../model';
+import { AddressesList } from '../model';
 // @ts-ignore
 import { Applicant } from '../model';
 // @ts-ignore
 import { ApplicantBuilder } from '../model';
+// @ts-ignore
+import { ApplicantUpdater } from '../model';
 // @ts-ignore
 import { ApplicantsList } from '../model';
 // @ts-ignore
@@ -53,8 +55,6 @@ import { ExtractRequest } from '../model';
 // @ts-ignore
 import { Extraction } from '../model';
 // @ts-ignore
-import { GenerateSdkTokenRequest } from '../model';
-// @ts-ignore
 import { IDPhotosList } from '../model';
 // @ts-ignore
 import { IdPhoto } from '../model';
@@ -73,7 +73,7 @@ import { MotionCapture } from '../model';
 // @ts-ignore
 import { MotionCapturesList } from '../model';
 // @ts-ignore
-import { RepeatAttempts } from '../model';
+import { RepeatAttemptsList } from '../model';
 // @ts-ignore
 import { Report } from '../model';
 // @ts-ignore
@@ -81,7 +81,9 @@ import { ReportsList } from '../model';
 // @ts-ignore
 import { ResultsFeedback } from '../model';
 // @ts-ignore
-import { SDKToken } from '../model';
+import { SdkToken } from '../model';
+// @ts-ignore
+import { SdkTokenBuilder } from '../model';
 // @ts-ignore
 import { Task } from '../model';
 // @ts-ignore
@@ -1247,6 +1249,47 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary A single task can be retrieved by calling this endpoint with the unique identifier of the Task and Workflow Run.
+         * @param {string} workflowRunId The unique identifier of the Workflow Run to which the Task belongs.
+         * @param {string} taskId The identifier of the Task you want to retrieve.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findTask: async (workflowRunId: string, taskId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'workflowRunId' is not null or undefined
+            assertParamExists('findTask', 'workflowRunId', workflowRunId)
+            // verify required parameter 'taskId' is not null or undefined
+            assertParamExists('findTask', 'taskId', taskId)
+            const localVarPath = `/workflow_runs/{workflow_run_id}/tasks/{task_id}`
+                .replace(`{${"workflow_run_id"}}`, encodeURIComponent(String(workflowRunId)))
+                .replace(`{${"task_id"}}`, encodeURIComponent(String(taskId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Retrieves a single monitor
          * @param {string} monitorId The watchlist monitor\&#39;s unique identifier.
          * @param {*} [options] Override http request option.
@@ -1396,13 +1439,13 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Generate a SDK token
-         * @param {GenerateSdkTokenRequest} generateSdkTokenRequest 
+         * @param {SdkTokenBuilder} sdkTokenBuilder 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        generateSdkToken: async (generateSdkTokenRequest: GenerateSdkTokenRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'generateSdkTokenRequest' is not null or undefined
-            assertParamExists('generateSdkToken', 'generateSdkTokenRequest', generateSdkTokenRequest)
+        generateSdkToken: async (sdkTokenBuilder: SdkTokenBuilder, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'sdkTokenBuilder' is not null or undefined
+            assertParamExists('generateSdkToken', 'sdkTokenBuilder', sdkTokenBuilder)
             const localVarPath = `/sdk_token`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1425,7 +1468,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(generateSdkTokenRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(sdkTokenBuilder, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -2234,59 +2277,18 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * 
-         * @summary A single task can be retrieved by calling this endpoint with the unique identifier of the Task and Workflow Run.
-         * @param {string} workflowRunId The unique identifier of the Workflow Run to which the Task belongs.
-         * @param {string} taskId The identifier of the Task you want to retrieve.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveTask: async (workflowRunId: string, taskId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'workflowRunId' is not null or undefined
-            assertParamExists('retrieveTask', 'workflowRunId', workflowRunId)
-            // verify required parameter 'taskId' is not null or undefined
-            assertParamExists('retrieveTask', 'taskId', taskId)
-            const localVarPath = `/workflow_runs/{workflow_run_id}/tasks/{task_id}`
-                .replace(`{${"workflow_run_id"}}`, encodeURIComponent(String(workflowRunId)))
-                .replace(`{${"task_id"}}`, encodeURIComponent(String(taskId)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication Token required
-            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Allows updating applicant\'s information before any checks is created. - Partial updates - Addresses and ID numbers present will replace existing ones - Same applicant validations to create applicant 
          * @summary Update Applicant
          * @param {string} applicantId 
-         * @param {ApplicantBuilder} applicantBuilder 
+         * @param {ApplicantUpdater} applicantUpdater 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateApplicant: async (applicantId: string, applicantBuilder: ApplicantBuilder, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateApplicant: async (applicantId: string, applicantUpdater: ApplicantUpdater, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'applicantId' is not null or undefined
             assertParamExists('updateApplicant', 'applicantId', applicantId)
-            // verify required parameter 'applicantBuilder' is not null or undefined
-            assertParamExists('updateApplicant', 'applicantBuilder', applicantBuilder)
+            // verify required parameter 'applicantUpdater' is not null or undefined
+            assertParamExists('updateApplicant', 'applicantUpdater', applicantUpdater)
             const localVarPath = `/applicants/{applicant_id}`
                 .replace(`{${"applicant_id"}}`, encodeURIComponent(String(applicantId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -2310,7 +2312,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(applicantBuilder, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(applicantUpdater, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -2885,7 +2887,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async findAddresses(postcode: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Addresses>> {
+        async findAddresses(postcode: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AddressesList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.findAddresses(postcode, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.findAddresses']?.[localVarOperationServerIndex]?.url;
@@ -2997,6 +2999,20 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary A single task can be retrieved by calling this endpoint with the unique identifier of the Task and Workflow Run.
+         * @param {string} workflowRunId The unique identifier of the Workflow Run to which the Task belongs.
+         * @param {string} taskId The identifier of the Task you want to retrieve.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async findTask(workflowRunId: string, taskId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Task>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.findTask(workflowRunId, taskId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.findTask']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Retrieves a single monitor
          * @param {string} monitorId The watchlist monitor\&#39;s unique identifier.
          * @param {*} [options] Override http request option.
@@ -3050,12 +3066,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Generate a SDK token
-         * @param {GenerateSdkTokenRequest} generateSdkTokenRequest 
+         * @param {SdkTokenBuilder} sdkTokenBuilder 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async generateSdkToken(generateSdkTokenRequest: GenerateSdkTokenRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SDKToken>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.generateSdkToken(generateSdkTokenRequest, options);
+        async generateSdkToken(sdkTokenBuilder: SdkTokenBuilder, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SdkToken>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.generateSdkToken(sdkTokenBuilder, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.generateSdkToken']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -3160,7 +3176,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listRepeatAttempts(reportId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RepeatAttempts>> {
+        async listRepeatAttempts(reportId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RepeatAttemptsList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listRepeatAttempts(reportId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listRepeatAttempts']?.[localVarOperationServerIndex]?.url;
@@ -3326,29 +3342,15 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 
-         * @summary A single task can be retrieved by calling this endpoint with the unique identifier of the Task and Workflow Run.
-         * @param {string} workflowRunId The unique identifier of the Workflow Run to which the Task belongs.
-         * @param {string} taskId The identifier of the Task you want to retrieve.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async retrieveTask(workflowRunId: string, taskId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Task>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieveTask(workflowRunId, taskId, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.retrieveTask']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
          * Allows updating applicant\'s information before any checks is created. - Partial updates - Addresses and ID numbers present will replace existing ones - Same applicant validations to create applicant 
          * @summary Update Applicant
          * @param {string} applicantId 
-         * @param {ApplicantBuilder} applicantBuilder 
+         * @param {ApplicantUpdater} applicantUpdater 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateApplicant(applicantId: string, applicantBuilder: ApplicantBuilder, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Applicant>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateApplicant(applicantId, applicantBuilder, options);
+        async updateApplicant(applicantId: string, applicantUpdater: ApplicantUpdater, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Applicant>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateApplicant(applicantId, applicantUpdater, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateApplicant']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -3659,7 +3661,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findAddresses(postcode: string, options?: any): AxiosPromise<Addresses> {
+        findAddresses(postcode: string, options?: any): AxiosPromise<AddressesList> {
             return localVarFp.findAddresses(postcode, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3744,6 +3746,17 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary A single task can be retrieved by calling this endpoint with the unique identifier of the Task and Workflow Run.
+         * @param {string} workflowRunId The unique identifier of the Workflow Run to which the Task belongs.
+         * @param {string} taskId The identifier of the Task you want to retrieve.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findTask(workflowRunId: string, taskId: string, options?: any): AxiosPromise<Task> {
+            return localVarFp.findTask(workflowRunId, taskId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Retrieves a single monitor
          * @param {string} monitorId The watchlist monitor\&#39;s unique identifier.
          * @param {*} [options] Override http request option.
@@ -3785,12 +3798,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Generate a SDK token
-         * @param {GenerateSdkTokenRequest} generateSdkTokenRequest 
+         * @param {SdkTokenBuilder} sdkTokenBuilder 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        generateSdkToken(generateSdkTokenRequest: GenerateSdkTokenRequest, options?: any): AxiosPromise<SDKToken> {
-            return localVarFp.generateSdkToken(generateSdkTokenRequest, options).then((request) => request(axios, basePath));
+        generateSdkToken(sdkTokenBuilder: SdkTokenBuilder, options?: any): AxiosPromise<SdkToken> {
+            return localVarFp.generateSdkToken(sdkTokenBuilder, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -3871,7 +3884,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listRepeatAttempts(reportId: string, options?: any): AxiosPromise<RepeatAttempts> {
+        listRepeatAttempts(reportId: string, options?: any): AxiosPromise<RepeatAttemptsList> {
             return localVarFp.listRepeatAttempts(reportId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3998,26 +4011,15 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.resumeReport(reportId, options).then((request) => request(axios, basePath));
         },
         /**
-         * 
-         * @summary A single task can be retrieved by calling this endpoint with the unique identifier of the Task and Workflow Run.
-         * @param {string} workflowRunId The unique identifier of the Workflow Run to which the Task belongs.
-         * @param {string} taskId The identifier of the Task you want to retrieve.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        retrieveTask(workflowRunId: string, taskId: string, options?: any): AxiosPromise<Task> {
-            return localVarFp.retrieveTask(workflowRunId, taskId, options).then((request) => request(axios, basePath));
-        },
-        /**
          * Allows updating applicant\'s information before any checks is created. - Partial updates - Addresses and ID numbers present will replace existing ones - Same applicant validations to create applicant 
          * @summary Update Applicant
          * @param {string} applicantId 
-         * @param {ApplicantBuilder} applicantBuilder 
+         * @param {ApplicantUpdater} applicantUpdater 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateApplicant(applicantId: string, applicantBuilder: ApplicantBuilder, options?: any): AxiosPromise<Applicant> {
-            return localVarFp.updateApplicant(applicantId, applicantBuilder, options).then((request) => request(axios, basePath));
+        updateApplicant(applicantId: string, applicantUpdater: ApplicantUpdater, options?: any): AxiosPromise<Applicant> {
+            return localVarFp.updateApplicant(applicantId, applicantUpdater, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -4455,6 +4457,19 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
+     * @summary A single task can be retrieved by calling this endpoint with the unique identifier of the Task and Workflow Run.
+     * @param {string} workflowRunId The unique identifier of the Workflow Run to which the Task belongs.
+     * @param {string} taskId The identifier of the Task you want to retrieve.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public findTask(workflowRunId: string, taskId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).findTask(workflowRunId, taskId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Retrieves a single monitor
      * @param {string} monitorId The watchlist monitor\&#39;s unique identifier.
      * @param {*} [options] Override http request option.
@@ -4504,13 +4519,13 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @summary Generate a SDK token
-     * @param {GenerateSdkTokenRequest} generateSdkTokenRequest 
+     * @param {SdkTokenBuilder} sdkTokenBuilder 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public generateSdkToken(generateSdkTokenRequest: GenerateSdkTokenRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).generateSdkToken(generateSdkTokenRequest, options).then((request) => request(this.axios, this.basePath));
+    public generateSdkToken(sdkTokenBuilder: SdkTokenBuilder, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).generateSdkToken(sdkTokenBuilder, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -4759,29 +4774,16 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
-     * 
-     * @summary A single task can be retrieved by calling this endpoint with the unique identifier of the Task and Workflow Run.
-     * @param {string} workflowRunId The unique identifier of the Workflow Run to which the Task belongs.
-     * @param {string} taskId The identifier of the Task you want to retrieve.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public retrieveTask(workflowRunId: string, taskId: string, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).retrieveTask(workflowRunId, taskId, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * Allows updating applicant\'s information before any checks is created. - Partial updates - Addresses and ID numbers present will replace existing ones - Same applicant validations to create applicant 
      * @summary Update Applicant
      * @param {string} applicantId 
-     * @param {ApplicantBuilder} applicantBuilder 
+     * @param {ApplicantUpdater} applicantUpdater 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public updateApplicant(applicantId: string, applicantBuilder: ApplicantBuilder, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).updateApplicant(applicantId, applicantBuilder, options).then((request) => request(this.axios, this.basePath));
+    public updateApplicant(applicantId: string, applicantUpdater: ApplicantUpdater, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updateApplicant(applicantId, applicantUpdater, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

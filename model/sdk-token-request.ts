@@ -17,31 +17,31 @@
 /**
  * 
  * @export
- * @interface GenerateSdkTokenRequest
+ * @interface SdkTokenRequest
  */
-export interface GenerateSdkTokenRequest {
+export interface SdkTokenRequest {
     /**
      * The unique identifier of the applicant
      * @type {string}
-     * @memberof GenerateSdkTokenRequest
+     * @memberof SdkTokenRequest
      */
     'applicant_id': string;
     /**
      * The referrer URL pattern
      * @type {string}
-     * @memberof GenerateSdkTokenRequest
+     * @memberof SdkTokenRequest
      */
     'referrer'?: string;
     /**
      * The application ID (iOS or Android)
      * @type {string}
-     * @memberof GenerateSdkTokenRequest
+     * @memberof SdkTokenRequest
      */
     'application_id'?: string;
     /**
      * The URL to be used by the Web SDK for the cross device flow.
      * @type {string}
-     * @memberof GenerateSdkTokenRequest
+     * @memberof SdkTokenRequest
      */
     'cross_device_url'?: string;
 }

@@ -15,19 +15,12 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { Address } from './address';
+import { UsDrivingLicenceShared } from './us-driving-licence-shared';
 
 /**
- * 
+ * @type UsDrivingLicenceBuilder
  * @export
- * @interface Addresses
  */
-export interface Addresses {
-    /**
-     * 
-     * @type {Array<Address>}
-     * @memberof Addresses
-     */
-    'addresses'?: Array<Address>;
-}
+export type UsDrivingLicenceBuilder = UsDrivingLicenceShared;
+
 

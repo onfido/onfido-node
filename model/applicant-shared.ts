@@ -24,18 +24,6 @@ import { IdNumber } from './id-number';
  */
 export interface ApplicantShared {
     /**
-     * The applicant\'s first name
-     * @type {string}
-     * @memberof ApplicantShared
-     */
-    'first_name'?: string;
-    /**
-     * The applicant\'s surname
-     * @type {string}
-     * @memberof ApplicantShared
-     */
-    'last_name'?: string;
-    /**
      * The applicant\'s email address. Required if doing a US check, or a UK check for which `applicant_provides_data` is `true`.
      * @type {string}
      * @memberof ApplicantShared

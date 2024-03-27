@@ -17,30 +17,30 @@
 /**
  * The applicant\'s consents
  * @export
- * @interface ApplicantConsent
+ * @interface ConsentItem
  */
-export interface ApplicantConsent {
+export interface ConsentItem {
     /**
      * 
      * @type {string}
-     * @memberof ApplicantConsent
+     * @memberof ConsentItem
      */
-    'name': ApplicantConsentNameEnum;
+    'name': ConsentItemNameEnum;
     /**
      * 
      * @type {boolean}
-     * @memberof ApplicantConsent
+     * @memberof ConsentItem
      */
     'granted': boolean;
 }
 
-export const ApplicantConsentNameEnum = {
+export const ConsentItemNameEnum = {
     PrivacyNoticesRead: 'privacy_notices_read',
     SsnVerification: 'ssn_verification',
     PhoneNumberVerification: 'phone_number_verification',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 
-export type ApplicantConsentNameEnum = typeof ApplicantConsentNameEnum[keyof typeof ApplicantConsentNameEnum];
+export type ConsentItemNameEnum = typeof ConsentItemNameEnum[keyof typeof ConsentItemNameEnum];
 
 

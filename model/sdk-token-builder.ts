@@ -15,19 +15,12 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { Webhook } from './webhook';
+import { SdkTokenRequest } from './sdk-token-request';
 
 /**
- * 
+ * @type SdkTokenBuilder
  * @export
- * @interface WebhooksList
  */
-export interface WebhooksList {
-    /**
-     * 
-     * @type {Array<Webhook>}
-     * @memberof WebhooksList
-     */
-    'webhooks': Array<Webhook>;
-}
+export type SdkTokenBuilder = SdkTokenRequest;
+
 

@@ -36,6 +36,8 @@ export const WebhookEventType = {
     ReportCancelled: 'report.cancelled',
     ReportAwaitingApproval: 'report.awaiting_approval',
     ReportCompleted: 'report.completed',
+    WorkflowTimelineFileCreated: 'workflow_timeline_file.created',
+    WorkflowSignedEvidenceFileCreated: 'workflow_signed_evidence_file.created',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 

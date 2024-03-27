@@ -13,21 +13,21 @@
  */
 
 
-// May contain unused imports in some cases
-// @ts-ignore
-import { Webhook } from './webhook';
 
 /**
- * 
+ * The result of the report. Read-only.
  * @export
- * @interface WebhooksList
+ * @enum {string}
  */
-export interface WebhooksList {
-    /**
-     * 
-     * @type {Array<Webhook>}
-     * @memberof WebhooksList
-     */
-    'webhooks': Array<Webhook>;
-}
+
+export const ReportResult = {
+    Clear: 'clear',
+    Consider: 'consider',
+    Unidentified: 'unidentified',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ReportResult = typeof ReportResult[keyof typeof ReportResult];
+
+
 

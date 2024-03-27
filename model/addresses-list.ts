@@ -15,19 +15,19 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { Webhook } from './webhook';
+import { Address } from './address';
 
 /**
  * 
  * @export
- * @interface WebhooksList
+ * @interface AddressesList
  */
-export interface WebhooksList {
+export interface AddressesList {
     /**
      * 
-     * @type {Array<Webhook>}
-     * @memberof WebhooksList
+     * @type {Array<Address>}
+     * @memberof AddressesList
      */
-    'webhooks': Array<Webhook>;
+    'addresses'?: Array<Address>;
 }
 

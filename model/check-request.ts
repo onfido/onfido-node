@@ -16,6 +16,9 @@
 // May contain unused imports in some cases
 // @ts-ignore
 import { ReportName } from './report-name';
+// May contain unused imports in some cases
+// @ts-ignore
+import { UsDrivingLicenceBuilder } from './us-driving-licence-builder';
 
 /**
  * 
@@ -28,13 +31,19 @@ export interface CheckRequest {
      * @type {Array<ReportName>}
      * @memberof CheckRequest
      */
-    'report_names'?: Array<ReportName>;
+    'report_names': Array<ReportName>;
     /**
      * Optional. An array of document ids, for use with Document reports only. If omitted, the Document report will use the most recently uploaded document by default.
      * @type {Array<string>}
      * @memberof CheckRequest
      */
     'document_ids'?: Array<string>;
+    /**
+     * Send an applicant form to applicant to complete to proceed with check. Defaults to false.
+     * @type {boolean}
+     * @memberof CheckRequest
+     */
+    'applicant_provides_data'?: boolean;
     /**
      * Defaults to `true`. If set to `false`, you will only receive a response when all reports in your check have completed. 
      * @type {boolean}
@@ -48,16 +57,22 @@ export interface CheckRequest {
      */
     'suppress_form_emails'?: boolean;
     /**
-     * Array of names of particular reports to return consider as their results. This is a feature available in sandbox testing
-     * @type {Array<string>}
+     * Triggers responses for particular sub-results for sandbox Document reports.
+     * @type {string}
      * @memberof CheckRequest
      */
-    'consider'?: Array<string>;
+    'sub_result'?: string;
     /**
-     * An object that contains all accepted fields for the Driver\'s License Data Verification report.
-     * @type {{ [key: string]: any; }}
+     * Array of names of particular reports to return consider as their results. This is a feature available in sandbox testing
+     * @type {Array<ReportName>}
      * @memberof CheckRequest
      */
-    'us_driving_licence'?: { [key: string]: any; };
+    'consider'?: Array<ReportName>;
+    /**
+     * 
+     * @type {UsDrivingLicenceBuilder}
+     * @memberof CheckRequest
+     */
+    'us_driving_licence'?: UsDrivingLicenceBuilder;
 }
 

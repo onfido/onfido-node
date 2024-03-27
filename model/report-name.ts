@@ -23,7 +23,7 @@
 export const ReportName = {
     Document: 'document',
     DocumentVideo: 'document_video',
-    DocumentVideoWithAddress: 'document_video_with_address',
+    DocumentVideoWithAddressInformation: 'document_video_with_address_information',
     DocumentWithAddressInformation: 'document_with_address_information',
     DocumentWithDrivingLicenceInformation: 'document_with_driving_licence_information',
     DocumentWithDriverVerification: 'document_with_driver_verification',
@@ -41,6 +41,7 @@ export const ReportName = {
     ProofOfAddress: 'proof_of_address',
     UsDrivingLicence: 'us_driving_licence',
     DeviceIntelligence: 'device_intelligence',
+    IndiaPan: 'india_pan',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 

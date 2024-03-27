@@ -15,19 +15,13 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { Webhook } from './webhook';
+import { ConsentItem } from './consent-item';
 
 /**
  * 
  * @export
- * @interface WebhooksList
+ * @interface ConsentsBuilder
  */
-export interface WebhooksList {
-    /**
-     * 
-     * @type {Array<Webhook>}
-     * @memberof WebhooksList
-     */
-    'webhooks': Array<Webhook>;
+export interface ConsentsBuilder {
 }
 
