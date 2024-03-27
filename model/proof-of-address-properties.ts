@@ -31,7 +31,7 @@ export interface ProofOfAddressProperties {
      * @type {string}
      * @memberof ProofOfAddressProperties
      */
-    'document_type'?: string;
+    'document_type'?: ProofOfAddressPropertiesDocumentTypeEnum;
     /**
      * This property provides the first names on the document, including any initials and middle names.
      * @type {string}
@@ -69,4 +69,22 @@ export interface ProofOfAddressProperties {
      */
     'summary_period_end'?: string;
 }
+
+export const ProofOfAddressPropertiesDocumentTypeEnum = {
+    BankBuildingSocietyStatement: 'bank_building_society_statement',
+    UtilityBill: 'utility_bill',
+    CouncilTax: 'council_tax',
+    BenefitLetters: 'benefit_letters',
+    MortgageStatement: 'mortgage_statement',
+    MobilePhoneBill: 'mobile_phone_bill',
+    GeneralLetter: 'general_letter',
+    InsuranceStatement: 'insurance_statement',
+    PensionPropertyStatementLetter: 'pension_property_statement_letter',
+    IdentityDocumentWithAddress: 'identity_document_with_address',
+    ExchangeHouseStatement: 'exchange_house_statement',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ProofOfAddressPropertiesDocumentTypeEnum = typeof ProofOfAddressPropertiesDocumentTypeEnum[keyof typeof ProofOfAddressPropertiesDocumentTypeEnum];
+
 

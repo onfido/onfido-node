@@ -22,6 +22,9 @@ import { CheckShared } from './check-shared';
 // May contain unused imports in some cases
 // @ts-ignore
 import { ReportName } from './report-name';
+// May contain unused imports in some cases
+// @ts-ignore
+import { UsDrivingLicenceBuilder } from './us-driving-licence-builder';
 
 /**
  * @type CheckBuilder

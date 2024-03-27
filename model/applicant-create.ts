@@ -13,21 +13,24 @@
  */
 
 
-// May contain unused imports in some cases
-// @ts-ignore
-import { Webhook } from './webhook';
 
 /**
  * 
  * @export
- * @interface WebhooksList
+ * @interface ApplicantCreate
  */
-export interface WebhooksList {
+export interface ApplicantCreate {
     /**
-     * 
-     * @type {Array<Webhook>}
-     * @memberof WebhooksList
+     * The applicant\'s first name
+     * @type {string}
+     * @memberof ApplicantCreate
      */
-    'webhooks': Array<Webhook>;
+    'first_name': string;
+    /**
+     * The applicant\'s surname
+     * @type {string}
+     * @memberof ApplicantCreate
+     */
+    'last_name': string;
 }
 

@@ -13,21 +13,18 @@
  */
 
 
-// May contain unused imports in some cases
-// @ts-ignore
-import { Webhook } from './webhook';
 
 /**
  * 
  * @export
- * @interface WebhooksList
+ * @interface SdkTokenResponse
  */
-export interface WebhooksList {
+export interface SdkTokenResponse {
     /**
-     * 
-     * @type {Array<Webhook>}
-     * @memberof WebhooksList
+     * The generated SDK token
+     * @type {string}
+     * @memberof SdkTokenResponse
      */
-    'webhooks': Array<Webhook>;
+    'token': string;
 }
 

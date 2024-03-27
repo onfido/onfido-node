@@ -16,6 +16,9 @@
 // May contain unused imports in some cases
 // @ts-ignore
 import { CountryCodes } from './country-codes';
+// May contain unused imports in some cases
+// @ts-ignore
+import { DocumentTypes } from './document-types';
 
 /**
  * 
@@ -157,10 +160,10 @@ export interface ExtractionExtractedData {
     'issuing_country'?: CountryCodes;
     /**
      * Type of document.
-     * @type {string}
+     * @type {DocumentTypes}
      * @memberof ExtractionExtractedData
      */
-    'document_type'?: string;
+    'document_type'?: DocumentTypes;
     /**
      * Place of birth.
      * @type {string}

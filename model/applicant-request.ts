@@ -18,7 +18,7 @@
 import { AddressBuilder } from './address-builder';
 // May contain unused imports in some cases
 // @ts-ignore
-import { ApplicantConsent } from './applicant-consent';
+import { ConsentsBuilder } from './consents-builder';
 // May contain unused imports in some cases
 // @ts-ignore
 import { LocationBuilder } from './location-builder';
@@ -31,10 +31,10 @@ import { LocationBuilder } from './location-builder';
 export interface ApplicantRequest {
     /**
      * 
-     * @type {Array<ApplicantConsent>}
+     * @type {ConsentsBuilder}
      * @memberof ApplicantRequest
      */
-    'consents'?: Array<ApplicantConsent>;
+    'consents'?: ConsentsBuilder;
     /**
      * 
      * @type {AddressBuilder}

@@ -15,42 +15,42 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { RepeatAttemptsRepeatAttemptsInner } from './repeat-attempts-repeat-attempts-inner';
+import { RepeatAttemptsListRepeatAttemptsInner } from './repeat-attempts-list-repeat-attempts-inner';
 
 /**
  * 
  * @export
- * @interface RepeatAttempts
+ * @interface RepeatAttemptsList
  */
-export interface RepeatAttempts {
+export interface RepeatAttemptsList {
     /**
      * The unique identifier of the completed Document report.
      * @type {string}
-     * @memberof RepeatAttempts
+     * @memberof RepeatAttemptsList
      */
     'report_id'?: string;
     /**
      * An array of repeat attempt objects. If no repeat attempts were found, the array will be empty. The number of objects returned can increase over time if more matches are received. 
-     * @type {Array<RepeatAttemptsRepeatAttemptsInner>}
-     * @memberof RepeatAttempts
+     * @type {Array<RepeatAttemptsListRepeatAttemptsInner>}
+     * @memberof RepeatAttemptsList
      */
-    'repeat_attempts'?: Array<RepeatAttemptsRepeatAttemptsInner>;
+    'repeat_attempts': Array<RepeatAttemptsListRepeatAttemptsInner>;
     /**
      * The total number of attempts using the same document, including the current report under assessment.
      * @type {number}
-     * @memberof RepeatAttempts
+     * @memberof RepeatAttemptsList
      */
     'attempts_count'?: number;
     /**
      * A number between 0 and 1 which indicates the proportion of attempts that have been cleared, including the current report under assessment.
      * @type {number}
-     * @memberof RepeatAttempts
+     * @memberof RepeatAttemptsList
      */
     'attempts_clear_rate'?: number;
     /**
      * The number of unique entries in the repeat_attempts field for which at least one of the fields is a mismatch.
      * @type {number}
-     * @memberof RepeatAttempts
+     * @memberof RepeatAttemptsList
      */
     'unique_mismatches_count'?: number;
 }

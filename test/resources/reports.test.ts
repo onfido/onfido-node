@@ -38,8 +38,6 @@ const exampleReport: Report = {
   status: "awaiting_data",
   result: null,
   sub_result: null,
-  properties: {},
-  breakdown: null,
   documents: [{ id: "document-id" }],
   check_id: "aa111111-1111-1111-1111-111111111111"
 };

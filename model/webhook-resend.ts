@@ -15,7 +15,7 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { WebhookResendDataInner } from './webhook-resend-data-inner';
+import { WebhooksResendItem } from './webhooks-resend-item';
 
 /**
  * 
@@ -25,9 +25,9 @@ import { WebhookResendDataInner } from './webhook-resend-data-inner';
 export interface WebhookResend {
     /**
      * 
-     * @type {Array<WebhookResendDataInner>}
+     * @type {Array<WebhooksResendItem>}
      * @memberof WebhookResend
      */
-    'data'?: Array<WebhookResendDataInner>;
+    'data'?: Array<WebhooksResendItem>;
 }
 

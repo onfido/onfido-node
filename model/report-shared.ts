@@ -16,6 +16,18 @@
 // May contain unused imports in some cases
 // @ts-ignore
 import { ReportDocument } from './report-document';
+// May contain unused imports in some cases
+// @ts-ignore
+import { ReportName } from './report-name';
+// May contain unused imports in some cases
+// @ts-ignore
+import { ReportResult } from './report-result';
+// May contain unused imports in some cases
+// @ts-ignore
+import { ReportStatus } from './report-status';
+// May contain unused imports in some cases
+// @ts-ignore
+import { ReportSubResult } from './report-sub-result';
 
 /**
  * 
@@ -42,23 +54,23 @@ export interface ReportShared {
      */
     'href'?: string;
     /**
-     * The current state of the report in the checking process. Read-only.
-     * @type {string}
+     * 
+     * @type {ReportStatus}
      * @memberof ReportShared
      */
-    'status'?: ReportSharedStatusEnum;
+    'status'?: ReportStatus;
     /**
-     * The result of the report. Read-only.
-     * @type {string}
+     * 
+     * @type {ReportResult}
      * @memberof ReportShared
      */
-    'result'?: ReportSharedResultEnum;
+    'result'?: ReportResult;
     /**
-     * The sub_result of the report. It gives a more detailed result for document reports only, and will be null otherwise. Read-only.
-     * @type {string}
+     * 
+     * @type {ReportSubResult}
      * @memberof ReportShared
      */
-    'sub_result'?: ReportSharedSubResultEnum;
+    'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
      * @type {string}
@@ -72,77 +84,12 @@ export interface ReportShared {
      */
     'documents'?: Array<ReportDocument>;
     /**
-     * The name of the report type.
-     * @type {string}
+     * 
+     * @type {ReportName}
      * @memberof ReportShared
      */
-    'name': ReportSharedNameEnum;
-    /**
-     * The details of the report. This is specific to each type of report.
-     * @type {object}
-     * @memberof ReportShared
-     */
-    'breakdown'?: object;
-    /**
-     * The properties associated with the report, if any. Read-only.
-     * @type {{ [key: string]: any; }}
-     * @memberof ReportShared
-     */
-    'properties'?: { [key: string]: any; };
+    'name': ReportName;
 }
 
-export const ReportSharedStatusEnum = {
-    AwaitingData: 'awaiting_data',
-    AwaitingApproval: 'awaiting_approval',
-    Cancelled: 'cancelled',
-    Complete: 'complete',
-    Withdrawn: 'withdrawn',
-    UnknownDefaultOpenApi: '11184809'
-} as const;
-
-export type ReportSharedStatusEnum = typeof ReportSharedStatusEnum[keyof typeof ReportSharedStatusEnum];
-export const ReportSharedResultEnum = {
-    Clear: 'clear',
-    Consider: 'consider',
-    Unidentified: 'unidentified',
-    UnknownDefaultOpenApi: '11184809'
-} as const;
-
-export type ReportSharedResultEnum = typeof ReportSharedResultEnum[keyof typeof ReportSharedResultEnum];
-export const ReportSharedSubResultEnum = {
-    Clear: 'clear',
-    Rejected: 'rejected',
-    Suspected: 'suspected',
-    Caution: 'caution',
-    UnknownDefaultOpenApi: '11184809'
-} as const;
-
-export type ReportSharedSubResultEnum = typeof ReportSharedSubResultEnum[keyof typeof ReportSharedSubResultEnum];
-export const ReportSharedNameEnum = {
-    Document: 'document',
-    DocumentVideo: 'document_video',
-    DocumentVideoWithAddressInformation: 'document_video_with_address_information',
-    DocumentWithAddressInformation: 'document_with_address_information',
-    DocumentWithDrivingLicenceInformation: 'document_with_driving_licence_information',
-    DocumentWithDriverVerification: 'document_with_driver_verification',
-    FacialSimilarityPhoto: 'facial_similarity_photo',
-    FacialSimilarityPhotoFullyAuto: 'facial_similarity_photo_fully_auto',
-    FacialSimilarityVideo: 'facial_similarity_video',
-    FacialSimilarityMotion: 'facial_similarity_motion',
-    KnownFaces: 'known_faces',
-    IdentityEnhanced: 'identity_enhanced',
-    WatchlistAml: 'watchlist_aml',
-    WatchlistEnhanced: 'watchlist_enhanced',
-    WatchlistStandard: 'watchlist_standard',
-    WatchlistPepsOnly: 'watchlist_peps_only',
-    WatchlistSanctionsOnly: 'watchlist_sanctions_only',
-    ProofOfAddress: 'proof_of_address',
-    UsDrivingLicence: 'us_driving_licence',
-    DeviceIntelligence: 'device_intelligence',
-    IndiaPan: 'india_pan',
-    UnknownDefaultOpenApi: '11184809'
-} as const;
-
-export type ReportSharedNameEnum = typeof ReportSharedNameEnum[keyof typeof ReportSharedNameEnum];
 
 

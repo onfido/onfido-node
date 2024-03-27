@@ -27,6 +27,18 @@ import { Location } from './location';
  */
 export interface ApplicantResponse {
     /**
+     * The applicant\'s first name
+     * @type {string}
+     * @memberof ApplicantResponse
+     */
+    'first_name'?: string;
+    /**
+     * The applicant\'s surname
+     * @type {string}
+     * @memberof ApplicantResponse
+     */
+    'last_name'?: string;
+    /**
      * The unique identifier for the applicant.
      * @type {string}
      * @memberof ApplicantResponse

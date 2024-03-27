@@ -16,6 +16,9 @@
 // May contain unused imports in some cases
 // @ts-ignore
 import { CountryCodes } from './country-codes';
+// May contain unused imports in some cases
+// @ts-ignore
+import { DocumentTypes } from './document-types';
 
 /**
  * 
@@ -31,10 +34,10 @@ export interface ExtractionDocumentClassification {
     'issuing_country'?: CountryCodes;
     /**
      * Type of document.
-     * @type {string}
+     * @type {DocumentTypes}
      * @memberof ExtractionDocumentClassification
      */
-    'document_type'?: string;
+    'document_type'?: DocumentTypes;
     /**
      * The state that issued the document (if available).
      * @type {string}

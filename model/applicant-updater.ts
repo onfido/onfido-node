@@ -15,33 +15,30 @@
 
 // May contain unused imports in some cases
 // @ts-ignore
-import { ProofOfAddressBreakdown } from './proof-of-address-breakdown';
+import { AddressBuilder } from './address-builder';
 // May contain unused imports in some cases
 // @ts-ignore
-import { ProofOfAddressProperties } from './proof-of-address-properties';
+import { ApplicantRequest } from './applicant-request';
 // May contain unused imports in some cases
 // @ts-ignore
-import { ReportDocument } from './report-document';
+import { ApplicantShared } from './applicant-shared';
 // May contain unused imports in some cases
 // @ts-ignore
-import { ReportName } from './report-name';
+import { ApplicantUpdate } from './applicant-update';
 // May contain unused imports in some cases
 // @ts-ignore
-import { ReportResult } from './report-result';
+import { ConsentsBuilder } from './consents-builder';
 // May contain unused imports in some cases
 // @ts-ignore
-import { ReportShared } from './report-shared';
+import { IdNumber } from './id-number';
 // May contain unused imports in some cases
 // @ts-ignore
-import { ReportStatus } from './report-status';
-// May contain unused imports in some cases
-// @ts-ignore
-import { ReportSubResult } from './report-sub-result';
+import { LocationBuilder } from './location-builder';
 
 /**
- * @type ProofOfAddressReport
+ * @type ApplicantUpdater
  * @export
  */
-export type ProofOfAddressReport = ReportShared;
+export type ApplicantUpdater = ApplicantRequest & ApplicantShared & ApplicantUpdate;
 
 

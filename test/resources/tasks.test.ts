@@ -47,7 +47,7 @@ it("lists tasks", async () => {
 it("finds a task", async () => {
   const taskId = (await onfido.listTasks(workflowRunId)).data[0].id;
 
-  const task = await onfido.retrieveTask(workflowRunId, taskId);
+  const task = await onfido.findTask(workflowRunId, taskId);
 
   expect(task.data).toEqual(
     getExpectedTask(exampleTask, { input: expect.anything(), output: null })

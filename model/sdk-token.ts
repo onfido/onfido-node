@@ -13,18 +13,14 @@
  */
 
 
+// May contain unused imports in some cases
+// @ts-ignore
+import { SdkTokenResponse } from './sdk-token-response';
 
 /**
- * 
+ * @type SdkToken
  * @export
- * @interface SDKToken
  */
-export interface SDKToken {
-    /**
-     * The generated SDK token
-     * @type {string}
-     * @memberof SDKToken
-     */
-    'token'?: string;
-}
+export type SdkToken = SdkTokenResponse;
+
 

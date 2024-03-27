@@ -27,15 +27,24 @@ yarn add @onfido/api
 Require the package:
 
 ```js
-const { DefaultApi, Configuration, WebhookEventVerifier } = require("@onfido/api");
-const { isAxiosError } = require('axios');
+const {
+  DefaultApi,
+  Configuration,
+  WebhookEventVerifier,
+} = require("@onfido/api");
+const { isAxiosError } = require("axios");
 ```
 
 For TypeScript users, types are available as well:
 
 ```ts
-import { DefaultApi, Configuration, Region, WebhookEventVerifier } from "@onfido/api";
-import { isAxiosError } from 'axios';
+import {
+  DefaultApi,
+  Configuration,
+  Region,
+  WebhookEventVerifier,
+} from "@onfido/api";
+import { isAxiosError } from "axios";
 ```
 
 Configure with your API token and region:
@@ -45,10 +54,12 @@ const onfido = new DefaultApi(
   new Configuration({
     apiToken: process.env.ONFIDO_API_TOKEN,
     region: Region.EU, // Supports Region.EU, Region.US and Region.CA
-    baseOptions: { timeout: 30_000 }, // Additional Axios options (timeout, etc.)
-  })
+    baseOptions: { timeout: 60_000 }, // Additional Axios options (timeout, etc.)
+  }),
 );
 ```
+
+NB: by default, timeout is set to 30 seconds.
 
 Using with `async`/`await` (in an `async function`):
 
@@ -62,11 +73,6 @@ Using with `async`/`await` (in an `async function`):
         ip_address: "127.0.0.1",
         country_of_residence: "GBR",
       },
-    });
-
-    const check = await onfido.createCheck({
-      applicant_id: applicant.data.id,
-      report_names: ["identity_enhanced"],
     });
 
     // ...
@@ -130,7 +136,7 @@ File downloads, for example `onfido.downloadDocument(documentId, {responseType: 
 These objects will have a content type, e.g. `image/png`.
 
 ```js
-download.headers['content-type'];
+download.headers["content-type"];
 ```
 
 Call `slice()` to get a `Blob` of the download:
@@ -144,8 +150,24 @@ const blob = download.data.slice();
 For some common types of streams, like instances of `fs.ReadStream`, you can provide the stream directly:
 
 ```js
-onfido.uploadDocument("passport", "<APPLICANT_ID>", fs.createReadStream("path/to/passport.png"));
+onfido.uploadDocument(
+  "passport",
+  "<APPLICANT_ID>",
+  fs.createReadStream("path/to/passport.png"),
+);
 ```
+
+## Contributing
+
+This library is automatically generated using [OpenAPI Generator](https://openapi-generator.tech);
+therefore all the contributions, except tests files, should target [Onfido OpenAPI specification repository](https://github.com/onfido/onfido-openapi-spec/tree/master) instead of this repository.
+
+1. [Fork](<https://github.com/onfido/onfido-node/fork>) repository
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Make your changes
+4. Commit your changes (`git commit -am 'Add some feature'`)
+5. Push to the branch (`git push origin my-new-feature`)
+6. Create a new Pull Request
 
 ## More documentation
 

@@ -18,13 +18,16 @@
 import { AddressBuilder } from './address-builder';
 // May contain unused imports in some cases
 // @ts-ignore
-import { ApplicantConsent } from './applicant-consent';
+import { ApplicantCreate } from './applicant-create';
 // May contain unused imports in some cases
 // @ts-ignore
 import { ApplicantRequest } from './applicant-request';
 // May contain unused imports in some cases
 // @ts-ignore
 import { ApplicantShared } from './applicant-shared';
+// May contain unused imports in some cases
+// @ts-ignore
+import { ConsentsBuilder } from './consents-builder';
 // May contain unused imports in some cases
 // @ts-ignore
 import { IdNumber } from './id-number';
@@ -36,6 +39,6 @@ import { LocationBuilder } from './location-builder';
  * @type ApplicantBuilder
  * @export
  */
-export type ApplicantBuilder = ApplicantRequest & ApplicantShared;
+export type ApplicantBuilder = ApplicantCreate & ApplicantRequest & ApplicantShared;
 
 

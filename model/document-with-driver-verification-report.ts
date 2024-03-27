@@ -24,7 +24,19 @@ import { DocumentWithDriverVerificationReportAllOfProperties } from './document-
 import { ReportDocument } from './report-document';
 // May contain unused imports in some cases
 // @ts-ignore
+import { ReportName } from './report-name';
+// May contain unused imports in some cases
+// @ts-ignore
+import { ReportResult } from './report-result';
+// May contain unused imports in some cases
+// @ts-ignore
 import { ReportShared } from './report-shared';
+// May contain unused imports in some cases
+// @ts-ignore
+import { ReportStatus } from './report-status';
+// May contain unused imports in some cases
+// @ts-ignore
+import { ReportSubResult } from './report-sub-result';
 
 /**
  * @type DocumentWithDriverVerificationReport

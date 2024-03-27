@@ -24,7 +24,7 @@ import { DocumentReport } from './document-report';
 import { DocumentVideoReport } from './document-video-report';
 // May contain unused imports in some cases
 // @ts-ignore
-import { DocumentVideoWithAddressInformation } from './document-video-with-address-information';
+import { DocumentVideoWithAddressInformationReport } from './document-video-with-address-information-report';
 // May contain unused imports in some cases
 // @ts-ignore
 import { DocumentWithAddressInformationReport } from './document-with-address-information-report';
@@ -69,6 +69,18 @@ import { ProofOfAddressReport } from './proof-of-address-report';
 import { ReportDocument } from './report-document';
 // May contain unused imports in some cases
 // @ts-ignore
+import { ReportName } from './report-name';
+// May contain unused imports in some cases
+// @ts-ignore
+import { ReportResult } from './report-result';
+// May contain unused imports in some cases
+// @ts-ignore
+import { ReportStatus } from './report-status';
+// May contain unused imports in some cases
+// @ts-ignore
+import { ReportSubResult } from './report-sub-result';
+// May contain unused imports in some cases
+// @ts-ignore
 import { UsDrivingLicenceReport } from './us-driving-licence-report';
 // May contain unused imports in some cases
 // @ts-ignore
@@ -90,6 +102,6 @@ import { WatchlistStandardReport } from './watchlist-standard-report';
  * @type Report
  * @export
  */
-export type Report = { name: 'device_intelligence' } & DeviceIntelligenceReport | { name: 'document' } & DocumentReport | { name: 'document_video' } & DocumentVideoReport | { name: 'document_video_with_address_information' } & DocumentVideoWithAddressInformation | { name: 'document_with_address_information' } & DocumentWithAddressInformationReport | { name: 'document_with_driver_verification' } & DocumentWithDriverVerificationReport | { name: 'document_with_driving_licence_information' } & DocumentWithDrivingLicenceInformationReport | { name: 'facial_similarity_motion' } & FacialSimilarityMotionReport | { name: 'facial_similarity_photo' } & FacialSimilarityPhotoReport | { name: 'facial_similarity_photo_fully_auto' } & FacialSimilarityPhotoFullyAutoReport | { name: 'facial_similarity_video' } & FacialSimilarityVideoReport | { name: 'identity_enhanced' } & IdentityEnhancedReport | { name: 'india_pan' } & IndiaPanReport | { name: 'known_faces' } & KnownFacesReport | { name: 'proof_of_address' } & ProofOfAddressReport | { name: 'us_driving_licence' } & UsDrivingLicenceReport | { name: 'watchlist_aml' } & WatchlistAmlReport | { name: 'watchlist_enhanced' } & WatchlistEnhancedReport | { name: 'watchlist_peps_only' } & WatchlistPepsOnlyReport | { name: 'watchlist_sanctions_only' } & WatchlistSanctionsOnlyReport | { name: 'watchlist_standard' } & WatchlistStandardReport;
+export type Report = { name: 'device_intelligence' } & DeviceIntelligenceReport | { name: 'document' } & DocumentReport | { name: 'document_video' } & DocumentVideoReport | { name: 'document_video_with_address_information' } & DocumentVideoWithAddressInformationReport | { name: 'document_with_address_information' } & DocumentWithAddressInformationReport | { name: 'document_with_driver_verification' } & DocumentWithDriverVerificationReport | { name: 'document_with_driving_licence_information' } & DocumentWithDrivingLicenceInformationReport | { name: 'facial_similarity_motion' } & FacialSimilarityMotionReport | { name: 'facial_similarity_photo' } & FacialSimilarityPhotoReport | { name: 'facial_similarity_photo_fully_auto' } & FacialSimilarityPhotoFullyAutoReport | { name: 'facial_similarity_video' } & FacialSimilarityVideoReport | { name: 'identity_enhanced' } & IdentityEnhancedReport | { name: 'india_pan' } & IndiaPanReport | { name: 'known_faces' } & KnownFacesReport | { name: 'proof_of_address' } & ProofOfAddressReport | { name: 'us_driving_licence' } & UsDrivingLicenceReport | { name: 'watchlist_aml' } & WatchlistAmlReport | { name: 'watchlist_enhanced' } & WatchlistEnhancedReport | { name: 'watchlist_peps_only' } & WatchlistPepsOnlyReport | { name: 'watchlist_sanctions_only' } & WatchlistSanctionsOnlyReport | { name: 'watchlist_standard' } & WatchlistStandardReport;
 
 
