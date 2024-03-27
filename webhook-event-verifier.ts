@@ -7,7 +7,7 @@ try {
   // We throw an error when verifying webhooks instead.
 }
 
-import { WebhookEvent } from "./model/webhook-event";
+import { WebhookEvent } from "./api";
 
 export class OnfidoInvalidSignatureError extends Error {}
 
@@ -33,7 +33,7 @@ export class WebhookEventVerifier {
     // Use timingSafeEqual to prevent against timing attacks.
     if (!crypto.timingSafeEqual(givenSignature, eventSignature)) {
       throw new OnfidoInvalidSignatureError(
-        "Invalid signature for webhook event"
+        "Invalid signature for webhook event",
       );
     }
 
