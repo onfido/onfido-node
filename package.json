@@ -1,6 +1,6 @@
 {
   "name": "@onfido/api",
-  "version": "2.9.1",
+  "version": "2.9.0",
   "description": "OpenAPI client for @onfido/api",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
