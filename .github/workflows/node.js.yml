@@ -29,11 +29,11 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm ci
-    - run: npm run build --if-present
+    - name: Install dependencies
+      run: npm install
     - name: Run linter over tests
       run: npx prettier -c test/**/*.ts
-    - name: E2E testing
+    - name: Run integration tests
       if: ${{ matrix.node-version == '16.x' &&
           github.event.pull_request.head.repo.full_name == github.repository &&
           github.actor != 'dependabot[bot]' }}
