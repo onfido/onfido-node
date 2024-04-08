@@ -80,6 +80,6 @@ it("downloads a signed evidence file", async () => {
   const file = await onfido.downloadSignedEvidenceFile(workflowRun.data.id);
 
   expect(file.status).toEqual(200);
-  expect(file.headers["content-type"]).toEqual("binary/octet-stream");
+  expect(file.headers["content-type"]).toEqual("application/pdf");
   expect(file.data.slice(0, 5)).toEqual("%PDF-");
 });

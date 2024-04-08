@@ -14,7 +14,8 @@ import {
 
 export const onfido = new DefaultApi(
   new Configuration({
-    apiToken: process.env.ONFIDO_API_TOKEN
+    apiToken: process.env.ONFIDO_API_TOKEN,
+    baseOptions: { timeout: 60_000 }
   })
 );
 
