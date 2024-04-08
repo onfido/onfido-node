@@ -3,3 +3,5 @@ dist/
 .rpt2_cache/
 coverage/
 *.log
+/.idea/
+.env

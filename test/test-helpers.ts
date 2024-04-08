@@ -1,5 +1,6 @@
 import { AxiosError, isAxiosError } from "axios";
 import { createReadStream, ReadStream } from "fs";
+import "dotenv/config";
 
 import {
   Applicant,
@@ -8,7 +9,8 @@ import {
   MotionCapture,
   Configuration,
   DefaultApi,
-  Report
+  Report,
+  CompleteTaskRequest
 } from "onfido-node";
 
 export const onfido = new DefaultApi(
@@ -93,6 +95,15 @@ export async function uploadDocument(
     "test/media/sample_driving_licence.png"
   );
   return uploadDocumentFromStream(applicant, readStream, documentType);
+}
+
+export async function uploadLivePhoto(
+  applicant: Applicant,
+  advancedValidation?: boolean
+) {
+  let readStream: any = createReadStream("test/media/sample_photo.png");
+
+  return onfido.uploadLivePhoto(applicant.id, readStream, advancedValidation);
 }
 
 export async function createWebhook() {
@@ -183,14 +194,11 @@ export function createWorkflowRun(applicant: Applicant, workflow_id: string) {
 export function completeTask(
   workflowRunId: string,
   taskId: string,
-  overrideProperties = {}
+  taskData: CompleteTaskRequest
 ) {
-  const taskData = {
-    data: {
-      first_name: "Test",
-      last_name: "Applicant",
-      ...overrideProperties
-    }
-  };
   return onfido.completeTask(workflowRunId, taskId, taskData);
+}
+
+export async function sleep(msec: number) {
+  return new Promise(resolve => setTimeout(resolve, msec));
 }

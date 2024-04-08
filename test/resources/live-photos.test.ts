@@ -6,7 +6,8 @@ import {
   onfido,
   getExpectedObject,
   createApplicant,
-  cleanUpApplicants
+  cleanUpApplicants,
+  uploadLivePhoto
 } from "../test-helpers";
 
 const exampleLivePhoto: LivePhoto = {
@@ -36,15 +37,6 @@ beforeEach(async () => {
 afterAll(() => {
   return cleanUpApplicants();
 });
-
-async function uploadLivePhoto(
-  applicant: Applicant,
-  advancedValidation?: boolean
-) {
-  let readStream: any = createReadStream("test/media/sample_photo.png");
-
-  return onfido.uploadLivePhoto(applicant.id, readStream, advancedValidation);
-}
 
 it("uploads a live photo", async () => {
   const photo = await uploadLivePhoto(applicant);
