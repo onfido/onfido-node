@@ -6702,7 +6702,7 @@ export interface Location {
      */
     'ip_address'?: string;
     /**
-     * The applicant's country of residence in 3-letter ISO code.
+     * The applicant\'s country of residence in 3-letter ISO code.
      * @type {CountryCodes}
      * @memberof Location
      */
@@ -6723,7 +6723,7 @@ export interface LocationBuilder {
      */
     'ip_address'?: string;
     /**
-     * The applicant's country of residence in 3-letter ISO code.
+     * The applicant\'s country of residence in 3-letter ISO code.
      * @type {CountryCodes}
      * @memberof LocationBuilder
      */
@@ -6744,7 +6744,7 @@ export interface LocationShared {
      */
     'ip_address'?: string;
     /**
-     * The applicant's country of residence in 3-letter ISO code.
+     * The applicant\'s country of residence in 3-letter ISO code.
      * @type {CountryCodes}
      * @memberof LocationShared
      */
@@ -12012,16 +12012,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * You can upload ID photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. 
          * @summary Upload ID photo
-         * @param {string} applicantId The ID of the applicant whose ID photo is being uploaded.
-         * @param {File} file The file to be uploaded.
+         * @param {string} [applicantId] The ID of the applicant whose ID photo is being uploaded.
+         * @param {File} [file] The file to be uploaded.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadIdPhoto: async (applicantId: string, file: File, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'applicantId' is not null or undefined
-            assertParamExists('uploadIdPhoto', 'applicantId', applicantId)
-            // verify required parameter 'file' is not null or undefined
-            assertParamExists('uploadIdPhoto', 'file', file)
+        uploadIdPhoto: async (applicantId?: string, file?: File, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/id_photos`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12063,17 +12059,13 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * You can upload live photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. Live photos are validated at the point of upload to check that they contain exactly one face. This validation can be disabled by setting the advanced_validation argument to false. 
          * @summary Upload live photo
-         * @param {string} applicantId The ID of the applicant whose live photo is being uploaded.
-         * @param {File} file The file to be uploaded.
+         * @param {string} [applicantId] The ID of the applicant whose live photo is being uploaded.
+         * @param {File} [file] The file to be uploaded.
          * @param {boolean} [advancedValidation] Validates that the live photo contains exactly one face.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadLivePhoto: async (applicantId: string, file: File, advancedValidation?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'applicantId' is not null or undefined
-            assertParamExists('uploadLivePhoto', 'applicantId', applicantId)
-            // verify required parameter 'file' is not null or undefined
-            assertParamExists('uploadLivePhoto', 'file', file)
+        uploadLivePhoto: async (applicantId?: string, file?: File, advancedValidation?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/live_photos`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12927,12 +12919,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * You can upload ID photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. 
          * @summary Upload ID photo
-         * @param {string} applicantId The ID of the applicant whose ID photo is being uploaded.
-         * @param {File} file The file to be uploaded.
+         * @param {string} [applicantId] The ID of the applicant whose ID photo is being uploaded.
+         * @param {File} [file] The file to be uploaded.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadIdPhoto(applicantId: string, file: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IdPhoto>> {
+        async uploadIdPhoto(applicantId?: string, file?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IdPhoto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadIdPhoto(applicantId, file, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.uploadIdPhoto']?.[localVarOperationServerIndex]?.url;
@@ -12941,13 +12933,13 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * You can upload live photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. Live photos are validated at the point of upload to check that they contain exactly one face. This validation can be disabled by setting the advanced_validation argument to false. 
          * @summary Upload live photo
-         * @param {string} applicantId The ID of the applicant whose live photo is being uploaded.
-         * @param {File} file The file to be uploaded.
+         * @param {string} [applicantId] The ID of the applicant whose live photo is being uploaded.
+         * @param {File} [file] The file to be uploaded.
          * @param {boolean} [advancedValidation] Validates that the live photo contains exactly one face.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadLivePhoto(applicantId: string, file: File, advancedValidation?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LivePhoto>> {
+        async uploadLivePhoto(applicantId?: string, file?: File, advancedValidation?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LivePhoto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadLivePhoto(applicantId, file, advancedValidation, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.uploadLivePhoto']?.[localVarOperationServerIndex]?.url;
@@ -13584,24 +13576,24 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * You can upload ID photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. 
          * @summary Upload ID photo
-         * @param {string} applicantId The ID of the applicant whose ID photo is being uploaded.
-         * @param {File} file The file to be uploaded.
+         * @param {string} [applicantId] The ID of the applicant whose ID photo is being uploaded.
+         * @param {File} [file] The file to be uploaded.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadIdPhoto(applicantId: string, file: File, options?: any): AxiosPromise<IdPhoto> {
+        uploadIdPhoto(applicantId?: string, file?: File, options?: any): AxiosPromise<IdPhoto> {
             return localVarFp.uploadIdPhoto(applicantId, file, options).then((request) => request(axios, basePath));
         },
         /**
          * You can upload live photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. Live photos are validated at the point of upload to check that they contain exactly one face. This validation can be disabled by setting the advanced_validation argument to false. 
          * @summary Upload live photo
-         * @param {string} applicantId The ID of the applicant whose live photo is being uploaded.
-         * @param {File} file The file to be uploaded.
+         * @param {string} [applicantId] The ID of the applicant whose live photo is being uploaded.
+         * @param {File} [file] The file to be uploaded.
          * @param {boolean} [advancedValidation] Validates that the live photo contains exactly one face.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadLivePhoto(applicantId: string, file: File, advancedValidation?: boolean, options?: any): AxiosPromise<LivePhoto> {
+        uploadLivePhoto(applicantId?: string, file?: File, advancedValidation?: boolean, options?: any): AxiosPromise<LivePhoto> {
             return localVarFp.uploadLivePhoto(applicantId, file, advancedValidation, options).then((request) => request(axios, basePath));
         },
     };
@@ -14355,27 +14347,27 @@ export class DefaultApi extends BaseAPI {
     /**
      * You can upload ID photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. 
      * @summary Upload ID photo
-     * @param {string} applicantId The ID of the applicant whose ID photo is being uploaded.
-     * @param {File} file The file to be uploaded.
+     * @param {string} [applicantId] The ID of the applicant whose ID photo is being uploaded.
+     * @param {File} [file] The file to be uploaded.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public uploadIdPhoto(applicantId: string, file: File, options?: RawAxiosRequestConfig) {
+    public uploadIdPhoto(applicantId?: string, file?: File, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).uploadIdPhoto(applicantId, file, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * You can upload live photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. Live photos are validated at the point of upload to check that they contain exactly one face. This validation can be disabled by setting the advanced_validation argument to false. 
      * @summary Upload live photo
-     * @param {string} applicantId The ID of the applicant whose live photo is being uploaded.
-     * @param {File} file The file to be uploaded.
+     * @param {string} [applicantId] The ID of the applicant whose live photo is being uploaded.
+     * @param {File} [file] The file to be uploaded.
      * @param {boolean} [advancedValidation] Validates that the live photo contains exactly one face.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public uploadLivePhoto(applicantId: string, file: File, advancedValidation?: boolean, options?: RawAxiosRequestConfig) {
+    public uploadLivePhoto(applicantId?: string, file?: File, advancedValidation?: boolean, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).uploadLivePhoto(applicantId, file, advancedValidation, options).then((request) => request(this.axios, this.basePath));
     }
 }

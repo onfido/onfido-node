@@ -159,7 +159,7 @@ onfido.uploadDocument(
 
 ## Contributing
 
-This library is automatically generated using [OpenAPI Generator](https://openapi-generator.tech);
+This library is automatically generated using [OpenAPI Generator](https://openapi-generator.tech) - version: 7.4.0;
 therefore all the contributions, except tests files, should target [Onfido OpenAPI specification repository](https://github.com/onfido/onfido-openapi-spec/tree/master) instead of this repository.
 
 1. [Fork](<https://github.com/onfido/onfido-node/fork>) repository
