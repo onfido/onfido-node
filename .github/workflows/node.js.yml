@@ -12,6 +12,7 @@ on:
     branches:
       - master
       - 'release/**'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -35,7 +36,7 @@ jobs:
       run: npx prettier -c test/**/*.ts
     - name: Run integration tests with NPM
       if: ${{ matrix.node-version == '16.x' &&
-          github.event.pull_request.head.repo.full_name == github.repository &&
+          github.repository_owner == 'onfido' &&
           github.actor != 'dependabot[bot]' }}
       run: npm test -- -i
       env:

@@ -1,5 +1,4 @@
-// import nock from "nock";
-// import snakecaseKeys from "snakecase-keys";
+import { AxiosError, isAxiosError } from "axios";
 import { createReadStream, ReadStream } from "fs";
 
 import {
@@ -62,8 +61,18 @@ export async function cleanUpApplicants() {
   const applicants = await onfido.listApplicants(1, 20, false);
 
   applicants.data.applicants.forEach(async function(applicant) {
-    if (applicant.id != sampleapplicant_id) {
-      await onfido.deleteApplicant(applicant.id);
+    try {
+      if (applicant.id != sampleapplicant_id) {
+        await onfido.deleteApplicant(applicant.id);
+      }
+    } catch (error) {
+      if (
+        !isAxiosError(error) ||
+        error.response?.data.error?.type != "deletion_incomplete_checks"
+      ) {
+        // Only ignore "Applicants with checks in progress cannot be deleted." error
+        throw error;
+      }
     }
   });
 }
@@ -74,12 +83,6 @@ export async function uploadDocumentFromStream(
   documentType = "driving_licence"
 ) {
   return onfido.uploadDocument(documentType, applicant.id, readStream);
-  // , undefined, undefined, undefined, undefined, new Location(
-  //   {
-  //     ip_address: "127.0.0.1",
-  //     country_of_residence: "GBR"
-  //   }
-  // );
 }
 
 export async function uploadDocument(
