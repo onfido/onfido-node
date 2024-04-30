@@ -4,13 +4,15 @@ import "dotenv/config";
 
 import {
   Applicant,
-  Document,
-  LiveVideo,
-  MotionCapture,
+  CompleteTaskRequest,
   Configuration,
   DefaultApi,
-  Report,
-  CompleteTaskRequest
+  Document,
+  DocumentReport,
+  FacialSimilarityPhotoReport,
+  LiveVideo,
+  MotionCapture,
+  Report
 } from "onfido-node";
 
 export const onfido = new DefaultApi(
@@ -201,4 +203,32 @@ export function completeTask(
 
 export async function sleep(msec: number) {
   return new Promise(resolve => setTimeout(resolve, msec));
+}
+
+export function getExpectedDocumentReport(
+  exampleReport: DocumentReport,
+  overrideProperties = {}
+) {
+  return getExpectedObject(exampleReport, {
+    check_id: expect.stringMatching(/^[0-9a-z-]+$/),
+    documents: expect.anything(),
+    breakdown: expect.anything(),
+    properties: expect.anything(),
+    status: expect.anything(),
+    ...overrideProperties
+  });
+}
+
+export function getExpectedFacialSimilarityReport(
+  exampleReport: FacialSimilarityPhotoReport,
+  overrideProperties = {}
+) {
+  return getExpectedObject(exampleReport, {
+    check_id: expect.stringMatching(/^[0-9a-z-]+$/),
+    documents: expect.anything(),
+    breakdown: expect.anything(),
+    properties: expect.anything(),
+    status: expect.anything(),
+    ...overrideProperties
+  });
 }

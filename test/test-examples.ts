@@ -2,6 +2,8 @@ import {
   Applicant,
   Check,
   Document,
+  DocumentReport,
+  FacialSimilarityPhotoReport,
   Task,
   Webhook,
   WorkflowRun
@@ -398,4 +400,286 @@ export const exampleTask: Task = {
   task_def_id: "task_123",
   created_at: "2022-06-28T15:39:42Z",
   updated_at: "2022-07-28T15:40:42Z"
+};
+
+export const exampleDocumentReport: DocumentReport = {
+  check_id: "adc09d31-857c-442a-ac37-5702ce6aa2da",
+  created_at: "2024-04-26T11:27:05Z",
+  documents: [
+    {
+      id: "dcfa6ae8-4e37-4717-a72b-b6510d24396e"
+    }
+  ],
+  href: "/v3.6/reports/ebc7a6b9-d8b2-4ceb-8940-9c8cd70f2b51",
+  id: "ebc7a6b9-d8b2-4ceb-8940-9c8cd70f2b51",
+  name: "document",
+  properties: {
+    date_of_birth: "1990-01-01",
+    date_of_expiry: "2031-05-28",
+    document_numbers: [
+      {
+        type: "document_number",
+        value: "999999999"
+      }
+    ],
+    document_type: "passport",
+    first_name: "laboris nulla",
+    gender: null,
+    issuing_country: "GBR",
+    last_name: "elit",
+    nationality: null
+  },
+  result: "clear",
+  status: "complete",
+  sub_result: "clear",
+  breakdown: {
+    data_validation: {
+      result: "clear",
+      breakdown: {
+        gender: {
+          result: "clear",
+          properties: {}
+        },
+        date_of_birth: {
+          result: "clear",
+          properties: {}
+        },
+        document_numbers: {
+          result: "clear",
+          properties: {}
+        },
+        document_expiration: {
+          result: "clear",
+          properties: {}
+        },
+        expiry_date: {
+          result: "clear",
+          properties: {}
+        },
+        mrz: {
+          result: "clear",
+          properties: {}
+        }
+      }
+    },
+    visual_authenticity: {
+      result: "clear",
+      breakdown: {
+        fonts: {
+          result: "clear",
+          properties: {}
+        },
+        picture_face_integrity: {
+          result: "clear",
+          properties: {}
+        },
+        template: {
+          result: "clear",
+          properties: {}
+        },
+        security_features: {
+          result: "clear",
+          properties: {}
+        },
+        original_document_present: {
+          result: "clear",
+          properties: {}
+        },
+        digital_tampering: {
+          result: "clear",
+          properties: {}
+        },
+        other: {
+          result: "clear",
+          properties: {}
+        },
+        face_detection: {
+          result: "clear",
+          properties: {}
+        }
+      }
+    },
+    compromised_document: {
+      result: "clear",
+      breakdown: {
+        document_database: {
+          result: "clear",
+          properties: {}
+        },
+        repeat_attempts: {
+          result: "clear",
+          properties: {}
+        }
+      }
+    },
+    data_consistency: {
+      result: "clear",
+      breakdown: {
+        date_of_expiry: {
+          result: "clear",
+          properties: {}
+        },
+        document_numbers: {
+          result: "clear",
+          properties: {}
+        },
+        issuing_country: {
+          result: "clear",
+          properties: {}
+        },
+        document_type: {
+          result: "clear",
+          properties: {}
+        },
+        date_of_birth: {
+          result: "clear",
+          properties: {}
+        },
+        gender: {
+          result: "clear",
+          properties: {}
+        },
+        multiple_data_sources_present: {
+          result: "clear",
+          properties: {}
+        },
+        first_name: {
+          result: "clear",
+          properties: {}
+        },
+        last_name: {
+          result: "clear",
+          properties: {}
+        },
+        nationality: {
+          result: "clear",
+          properties: {}
+        }
+      }
+    },
+    data_comparison: {
+      result: "clear",
+      breakdown: {
+        issuing_country: {
+          result: "clear",
+          properties: {}
+        },
+        gender: {
+          result: "clear",
+          properties: {}
+        },
+        date_of_expiry: {
+          result: "clear",
+          properties: {}
+        },
+        last_name: {
+          result: "clear",
+          properties: {}
+        },
+        document_type: {
+          result: "clear",
+          properties: {}
+        },
+        document_numbers: {
+          result: "clear",
+          properties: {}
+        },
+        first_name: {
+          result: "clear",
+          properties: {}
+        },
+        date_of_birth: {
+          result: "clear",
+          properties: {}
+        }
+      }
+    },
+    image_integrity: {
+      result: "clear",
+      breakdown: {
+        image_quality: {
+          result: "clear",
+          properties: {}
+        },
+        conclusive_document_quality: {
+          result: "clear",
+          properties: {}
+        },
+        supported_document: {
+          result: "clear",
+          properties: {}
+        },
+        colour_picture: {
+          result: "clear",
+          properties: {}
+        }
+      }
+    },
+    police_record: {
+      result: "clear"
+    },
+    age_validation: {
+      result: "clear",
+      breakdown: {
+        minimum_accepted_age: {
+          result: "clear",
+          properties: {}
+        }
+      }
+    }
+  }
+};
+
+export const exampleFacialSimilarityPhotoReport: FacialSimilarityPhotoReport = {
+  check_id: "d63e8885-5c37-464d-b8c6-ca3b4c6813fd",
+  created_at: "2024-04-30T13:31:43Z",
+  documents: [
+    {
+      id: "83bab412-6253-4a2b-9a91-658a864e379f"
+    }
+  ],
+  href: "/v3.6/reports/c39c01da-a6d4-4921-a3c5-72d78eb51236",
+  id: "c39c01da-a6d4-4921-a3c5-72d78eb51236",
+  name: "facial_similarity_photo_fully_auto",
+  result: "clear",
+  status: "complete",
+  sub_result: null,
+  breakdown: {
+    visual_authenticity: {
+      result: "clear",
+      breakdown: {
+        spoofing_detection: {
+          result: "clear",
+          properties: {
+            score: 0.9512
+          }
+        }
+      }
+    },
+    image_integrity: {
+      result: "clear",
+      breakdown: {
+        source_integrity: {
+          result: "clear",
+          properties: {}
+        },
+        face_detected: {
+          result: "clear",
+          properties: {}
+        }
+      }
+    },
+    face_comparison: {
+      result: "clear",
+      breakdown: {
+        face_match: {
+          result: "clear",
+          properties: {
+            score: 0.6512,
+            document_id: "83bab412-6253-4a2b-9a91-658a864e379f"
+          }
+        }
+      }
+    }
+  }
 };
