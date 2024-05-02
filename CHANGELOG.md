@@ -1,5 +1,7 @@
 # Changelog
 
+## v3.0.0 02th May 2024
+
 ## v2.9.0 09th April 2024
 
 ## v3.0.0 12th March 2024
