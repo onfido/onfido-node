@@ -1,13 +1,17 @@
 import { AxiosError, isAxiosError } from "axios";
 import { createReadStream, ReadStream } from "fs";
+import "dotenv/config";
 
 import {
   Applicant,
-  Document,
-  LiveVideo,
-  MotionCapture,
+  CompleteTaskRequest,
   Configuration,
   DefaultApi,
+  Document,
+  DocumentReport,
+  FacialSimilarityPhotoReport,
+  LiveVideo,
+  MotionCapture,
   Report
 } from "onfido-node";
 
@@ -93,6 +97,15 @@ export async function uploadDocument(
     "test/media/sample_driving_licence.png"
   );
   return uploadDocumentFromStream(applicant, readStream, documentType);
+}
+
+export async function uploadLivePhoto(
+  applicant: Applicant,
+  advancedValidation?: boolean
+) {
+  let readStream: any = createReadStream("test/media/sample_photo.png");
+
+  return onfido.uploadLivePhoto(applicant.id, readStream, advancedValidation);
 }
 
 export async function createWebhook() {
@@ -183,14 +196,39 @@ export function createWorkflowRun(applicant: Applicant, workflow_id: string) {
 export function completeTask(
   workflowRunId: string,
   taskId: string,
+  taskData: CompleteTaskRequest
+) {
+  return onfido.completeTask(workflowRunId, taskId, taskData);
+}
+
+export async function sleep(msec: number) {
+  return new Promise(resolve => setTimeout(resolve, msec));
+}
+
+export function getExpectedDocumentReport(
+  exampleReport: DocumentReport,
   overrideProperties = {}
 ) {
-  const taskData = {
-    data: {
-      first_name: "Test",
-      last_name: "Applicant",
-      ...overrideProperties
-    }
-  };
-  return onfido.completeTask(workflowRunId, taskId, taskData);
+  return getExpectedObject(exampleReport, {
+    check_id: expect.stringMatching(/^[0-9a-z-]+$/),
+    documents: expect.anything(),
+    breakdown: expect.anything(),
+    properties: expect.anything(),
+    status: expect.anything(),
+    ...overrideProperties
+  });
+}
+
+export function getExpectedFacialSimilarityReport(
+  exampleReport: FacialSimilarityPhotoReport,
+  overrideProperties = {}
+) {
+  return getExpectedObject(exampleReport, {
+    check_id: expect.stringMatching(/^[0-9a-z-]+$/),
+    documents: expect.anything(),
+    breakdown: expect.anything(),
+    properties: expect.anything(),
+    status: expect.anything(),
+    ...overrideProperties
+  });
 }
