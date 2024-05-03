@@ -47,6 +47,6 @@ jobs:
       - name: Build package
         run: npm run build
       - name: Publish package
-        run: npm publish --dry-run
+        run: npm publish --dry-run dist
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
