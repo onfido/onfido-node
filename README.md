@@ -2,27 +2,29 @@
 
 The official Node.js library for integrating with the Onfido API.
 
-Documentation can be found at <https://documentation.onfido.com>
+Documentation can be found at <https://documentation.onfido.com>.
 
 This library is only for use on the backend, as it uses Onfido API tokens which must be kept secret. If you do need to collect applicant data in the frontend of your application, we recommend that you use the Onfido SDKs: [iOS](https://github.com/onfido/onfido-ios-sdk), [Android](https://github.com/onfido/onfido-android-sdk), [Web](https://github.com/onfido/onfido-sdk-ui), and [React Native](https://github.com/onfido/react-native-sdk).
 
 This version uses Onfido API v3.6. Refer to our [API versioning guide](https://developers.onfido.com/guide/api-versioning-policy#client-libraries) for details of which client library versions use which versions of the API.
 
-## Installation
+## Installation & Usage
 
-For npm:
+### Installation
+
+#### Npm
 
 ```sh
 npm install @onfido/api
 ```
 
-For Yarn:
+#### Yarn
 
 ```sh
 yarn add @onfido/api
 ```
 
-## Getting started
+## Getting Started
 
 Require the package:
 
@@ -61,7 +63,9 @@ const onfido = new DefaultApi(
 
 NB: by default, timeout is set to 30 seconds.
 
-Using with `async`/`await` (in an `async function`):
+### Making a call to the API
+
+Using `async`/`await` (in an `async function`):
 
 ```js
 (async () => {
@@ -76,12 +80,6 @@ Using with `async`/`await` (in an `async function`):
     });
 
     // ...
-
-    // Webhook verification
-    const verifier = new WebhookEventVerifier("_ABC123abc...3ABC123_");
-    const signature = "a0...760e";
-
-    const event = verifier.readPayload(`{"payload":{"r...3"}}}`, signature);
   } catch (error) {
     if (isAxiosError(error)) {
       console.log(`status code: ${error.response?.status}`);
@@ -103,7 +101,7 @@ Using with `async`/`await` (in an `async function`):
 
 Please find more information regarding Axios errors in library [documentation](https://axios-http.com/docs/handling_errors).
 
-Using with promises:
+Using promises:
 
 ```js
 onfido
@@ -129,7 +127,7 @@ onfido
   });
 ```
 
-## File download
+### File download
 
 File downloads, for example `onfido.downloadDocument(documentId, {responseType: 'arraybuffer'})`, will return an instance of a specific object for this endpoint.
 
@@ -145,7 +143,7 @@ Call `slice()` to get a `Blob` of the download:
 const blob = download.data.slice();
 ```
 
-## File upload
+### File upload
 
 For some common types of streams, like instances of `fs.ReadStream`, you can provide the stream directly:
 
@@ -157,10 +155,30 @@ onfido.uploadDocument(
 );
 ```
 
+### Webhook event verification
+
+Webhook events payload needs to be verified before it can be accessed. Library allows to easily decode the payload and verify its signature before returning it as an object for user convenience:
+
+```js
+(async () => {
+  try {
+    const verifier = new WebhookEventVerifier("_ABC123abc...3ABC123_");
+    const signature = "a0...760e";
+
+    const event = verifier.readPayload(`{"payload":{"r...3"}}`, signature);
+  } catch (e) {
+    if (e instanceof OnfidoInvalidSignatureError) {
+      // Invalid webhook signature
+    }
+  }
+})();
+```
+
 ## Contributing
 
-This library is automatically generated using [OpenAPI Generator](https://openapi-generator.tech) - version: 7.4.0;
-therefore all the contributions, except tests files, should target [Onfido OpenAPI specification repository](https://github.com/onfido/onfido-openapi-spec/tree/master) instead of this repository.
+This library is automatically generated using [OpenAPI Generator](https://openapi-generator.tech) - version: 7.4.0; therefore all the contributions, except tests files, should target [Onfido OpenAPI specification repository](https://github.com/onfido/onfido-openapi-spec/tree/master) instead of this repository.
+
+For contributions to the tests instead, please follow the steps below:
 
 1. [Fork](<https://github.com/onfido/onfido-node/fork>) repository
 2. Create your feature branch (`git checkout -b my-new-feature`)
@@ -171,9 +189,9 @@ therefore all the contributions, except tests files, should target [Onfido OpenA
 
 ## More documentation
 
-More documentation and code examples can be found at <https://documentation.onfido.com>
+More documentation and code examples can be found at <https://documentation.onfido.com>.
 
 ## Support
 
-Should you encounter any technical issues during integration, please contact Onfido’s Customer Support team
-via the [Customer Experience Portal](https://public.support.onfido.com/) which also include support documentation.
+Should you encounter any technical issues during integration, please contact Onfido's Customer Support team
+via the [Customer Experience Portal](https://public.support.onfido.com/) which also includes support documentation.
