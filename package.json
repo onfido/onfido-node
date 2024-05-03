@@ -28,6 +28,9 @@
     "build": "tsc && tsc -p tsconfig.esm.json",
     "prepare": "npm run build"
   },
+  "files": [
+    "/dist"
+  ],
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
