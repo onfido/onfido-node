@@ -12,8 +12,10 @@ on:
       - created
 
 jobs:
-  build:
+  integration-tests:
     runs-on: ubuntu-latest
+    concurrency:
+      group: integration
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -32,7 +34,7 @@ jobs:
           ONFIDO_SAMPLE_MOTION_ID_2: ${{ secrets.ONFIDO_SAMPLE_MOTION_ID_2 }}
 
   publish-npm:
-    needs: build
+    needs: integration-tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
