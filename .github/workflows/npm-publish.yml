@@ -4,9 +4,6 @@
 name: Node.js Package with NPM
 
 on:
-  pull_request:
-    branches:
-      - master
   release:
     types:
       - created
@@ -43,6 +40,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build and publish package
-        run: npm publish --dry-run
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
