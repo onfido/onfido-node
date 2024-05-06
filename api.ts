@@ -9312,7 +9312,7 @@ export interface WorkflowRun {
      * @type {Array<string>}
      * @memberof WorkflowRun
      */
-    'tags'?: Array<string>;
+    'tags'?: Array<string> | null;
     /**
      * 
      * @type {WorkflowRunSharedLink}
@@ -9411,7 +9411,7 @@ export interface WorkflowRunBuilder {
      * @type {Array<string>}
      * @memberof WorkflowRunBuilder
      */
-    'tags'?: Array<string>;
+    'tags'?: Array<string> | null;
     /**
      * 
      * @type {WorkflowRunSharedLink}
@@ -9555,7 +9555,7 @@ export interface WorkflowRunShared {
      * @type {Array<string>}
      * @memberof WorkflowRunShared
      */
-    'tags'?: Array<string>;
+    'tags'?: Array<string> | null;
     /**
      * 
      * @type {WorkflowRunSharedLink}
@@ -11989,7 +11989,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             }
     
             if (validateImageQuality !== undefined) { 
-                localVarFormParams.append('validate_image_quality', validateImageQuality as any);
+                localVarFormParams.append('validate_image_quality', String(validateImageQuality) as any);
             }
     
             if (location !== undefined) { 
@@ -12092,7 +12092,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             }
     
             if (advancedValidation !== undefined) { 
-                localVarFormParams.append('advanced_validation', advancedValidation as any);
+                localVarFormParams.append('advanced_validation', String(advancedValidation) as any);
             }
     
     

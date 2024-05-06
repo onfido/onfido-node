@@ -44,9 +44,7 @@ it("uploads a live photo", async () => {
   expect(photo.data).toEqual(getExpectedLivePhoto(exampleLivePhoto));
 });
 
-// [SKIP] Need to cast advancedValidation parameter to String in default-api.ts:2578:
-// localVarFormParams.append('advanced_validation', String(advancedValidation as any));
-it.skip("uploads a live photo without advanced validation", async () => {
+it("uploads a live photo without advanced validation", async () => {
   const anotherPhoto = await uploadLivePhoto(applicant, false);
 
   expect(anotherPhoto.data).toEqual(getExpectedLivePhoto(exampleLivePhoto));
