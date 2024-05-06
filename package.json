@@ -1,7 +1,7 @@
 {
   "name": "@onfido/api",
   "version": "3.0.0",
-  "description": "OpenAPI client for @onfido/api",
+  "description": "Node.js library for the Onfido API",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
     "type": "git",
@@ -12,18 +12,25 @@
     "typescript",
     "openapi-client",
     "openapi-generator",
-    "@onfido/api"
+    "@onfido/api",
+    "onfido",
+    "identity",
+    "verification",
+    "api"
   ],
-  "license": "MIT",         
+  "license": "MIT",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "module": "./dist/esm/index.js",
   "sideEffects": false,
   "scripts": {
-    "test": "jest", 
+    "test": "jest",
     "build": "tsc && tsc -p tsconfig.esm.json",
     "prepare": "npm run build"
   },
+  "files": [
+    "/dist"
+  ],
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "node",
