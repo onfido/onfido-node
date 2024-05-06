@@ -1,5 +1,7 @@
 # Changelog
 
+## v3.0.0 06th May 2024
+
 ## v3.0.0 3rd May 2024
 
 - Make library auto-generated and based on [Onfido OpenAPI spec](https://github.com/onfido/onfido-openapi-spec)
