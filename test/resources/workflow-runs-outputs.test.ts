@@ -116,8 +116,8 @@ describe("workflow runs outputs", () => {
         country_residence: expect.stringMatching(/^[A-Z]{3}$/),
         dob: expect.stringMatching(/^[0-9-]+$/),
         email: expect.stringMatching(/^[0-9A-Za-z_@\.]+$/),
-        first_name: expect.stringMatching(/^[A-Za-z\s]+$/),
-        last_name: expect.stringMatching(/^[A-Za-z\s]+$/),
+        first_name: expect.stringMatching(/^[A-Za-z\s-]+$/),
+        last_name: expect.stringMatching(/^[A-Za-z\s-]+$/),
         nationality: expect.stringMatching(/^[A-Z]{3}$/),
         phone_number: expect.stringMatching(/^\+[0-9]+$/),
         phone_number_consent_granted: expect.anything()
