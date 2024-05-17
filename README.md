@@ -32,7 +32,7 @@ Require the package:
 const {
   DefaultApi,
   Configuration,
-  WebhookEventVerifier,
+  WebhookEventVerifier
 } = require("@onfido/api");
 const { isAxiosError } = require("axios");
 ```
@@ -44,7 +44,7 @@ import {
   DefaultApi,
   Configuration,
   Region,
-  WebhookEventVerifier,
+  WebhookEventVerifier
 } from "@onfido/api";
 import { isAxiosError } from "axios";
 ```
@@ -56,8 +56,8 @@ const onfido = new DefaultApi(
   new Configuration({
     apiToken: process.env.ONFIDO_API_TOKEN,
     region: Region.EU, // Supports Region.EU, Region.US and Region.CA
-    baseOptions: { timeout: 60_000 }, // Additional Axios options (timeout, etc.)
-  }),
+    baseOptions: { timeout: 60_000 } // Additional Axios options (timeout, etc.)
+  })
 );
 ```
 
@@ -75,8 +75,8 @@ Using `async`/`await` (in an `async function`):
       last_name: "Doe",
       location: {
         ip_address: "127.0.0.1",
-        country_of_residence: "GBR",
-      },
+        country_of_residence: "GBR"
+      }
     });
 
     // ...
@@ -151,7 +151,7 @@ For some common types of streams, like instances of `fs.ReadStream`, you can pro
 onfido.uploadDocument(
   "passport",
   "<APPLICANT_ID>",
-  fs.createReadStream("path/to/passport.png"),
+  fs.createReadStream("path/to/passport.png")
 );
 ```
 
@@ -180,7 +180,7 @@ This library is automatically generated using [OpenAPI Generator](https://openap
 
 For contributions to the tests instead, please follow the steps below:
 
-1. [Fork](<https://github.com/onfido/onfido-node/fork>) repository
+1. [Fork](https://github.com/onfido/onfido-node/fork) repository
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Make your changes
 4. Commit your changes (`git commit -am 'Add some feature'`)

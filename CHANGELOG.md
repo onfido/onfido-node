@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.1.0 17th May 2024
+
+- Refresh library up to commit: [6dacb71](https://github.com/onfido/onfido-openapi-spec/commit/6dacb71ce66ee346fb729ff5bd43f5b9b98f62e0)
+
 ## v3.0.0 6th May 2024
 
 - Make library auto-generated and based on [Onfido OpenAPI spec](https://github.com/onfido/onfido-openapi-spec)
