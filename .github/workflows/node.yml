@@ -1,7 +1,7 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Node.js CI with NPM
+name: Node CI with NPM
 
 on:
   push:
@@ -13,9 +13,12 @@ on:
       - master
       - "release/**"
   workflow_dispatch:
+  release:
+    types:
+      - published
 
 jobs:
-  build:
+  integration-tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -43,3 +46,22 @@ jobs:
           ONFIDO_SAMPLE_VIDEO_ID_2: ${{ secrets.ONFIDO_SAMPLE_VIDEO_ID_2 }}
           ONFIDO_SAMPLE_MOTION_ID_1: ${{ secrets.ONFIDO_SAMPLE_MOTION_ID_1 }}
           ONFIDO_SAMPLE_MOTION_ID_2: ${{ secrets.ONFIDO_SAMPLE_MOTION_ID_2 }}
+
+  publish-npm:
+    runs-on: ubuntu-latest
+
+    needs: integration-tests
+    if: github.event_name == 'release'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16.x
+          registry-url: https://registry.npmjs.org/
+      - name: Install dependencies
+        run: npm ci
+      - name: Build and publish package
+        run: |
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
