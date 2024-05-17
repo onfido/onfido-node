@@ -13,6 +13,7 @@ import {
   LiveVideo,
   MotionCapture,
   Report,
+  WatchlistMonitorReportNameEnum,
   WorkflowRunBuilder
 } from "onfido-node";
 
@@ -134,6 +135,16 @@ export async function createCheck(
     report_names: ["document", "identity_enhanced"],
     document_ids: [document.id],
     ...overrideProperties
+  });
+}
+
+export async function createWatchlistMonitor(
+  applicant: Applicant,
+  reportName: WatchlistMonitorReportNameEnum
+) {
+  return onfido.createWatchlistMonitor({
+    applicant_id: applicant.id,
+    report_name: reportName
   });
 }
 

@@ -5,6 +5,7 @@ import {
   DocumentReport,
   FacialSimilarityPhotoReport,
   Task,
+  WatchlistMonitor,
   Webhook,
   WorkflowRun
 } from "onfido-node";
@@ -682,4 +683,14 @@ export const exampleFacialSimilarityPhotoReport: FacialSimilarityPhotoReport = {
       }
     }
   }
+};
+
+export const exampleWatchlistMonitor: WatchlistMonitor = {
+  id: "abc-123",
+  applicant_id: "abc-123",
+  report_name: "watchlist_standard",
+  deleted_at: null,
+  tags: [],
+  is_sandbox: true,
+  created_at: "2022-06-28T15:39:42Z"
 };
