@@ -1036,16 +1036,23 @@ export interface ChecksList {
 /**
  * 
  * @export
- * @interface CompleteTaskRequest
+ * @interface CompleteTaskBuilder
  */
-export interface CompleteTaskRequest {
+export interface CompleteTaskBuilder {
     /**
-     * The Task completion payload.
-     * @type {object}
-     * @memberof CompleteTaskRequest
+     * 
+     * @type {CompleteTaskBuilderData}
+     * @memberof CompleteTaskBuilder
      */
-    'data'?: object;
+    'data': CompleteTaskBuilderData;
 }
+/**
+ * @type CompleteTaskBuilderData
+ * The Task completion payload.
+ * @export
+ */
+export type CompleteTaskBuilderData = Array<object> | object;
+
 /**
  * The applicant\'s consents
  * @export
@@ -6679,13 +6686,13 @@ export interface LiveVideo {
 /**
  * 
  * @export
- * @interface LiveoVideosList
+ * @interface LiveVideosList
  */
-export interface LiveoVideosList {
+export interface LiveVideosList {
     /**
      * 
      * @type {Array<LiveVideo>}
-     * @memberof LiveoVideosList
+     * @memberof LiveVideosList
      */
     'live_videos': Array<LiveVideo>;
 }
@@ -7633,25 +7640,6 @@ export interface Task {
 /**
  * 
  * @export
- * @interface UpdateMonitorMatchRequest
- */
-export interface UpdateMonitorMatchRequest {
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof UpdateMonitorMatchRequest
-     */
-    'enable'?: Array<string>;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof UpdateMonitorMatchRequest
-     */
-    'disable'?: Array<string>;
-}
-/**
- * 
- * @export
  * @interface UsDrivingLicenceBreakdown
  */
 export interface UsDrivingLicenceBreakdown {
@@ -8585,11 +8573,29 @@ export interface WatchlistEnhancedReport {
  */
 export interface WatchlistMonitor {
     /**
+     * The ID for the applicant associated with the monitor.
+     * @type {string}
+     * @memberof WatchlistMonitor
+     */
+    'applicant_id': string;
+    /**
+     * The name of the report type the monitor creates.
+     * @type {string}
+     * @memberof WatchlistMonitor
+     */
+    'report_name': WatchlistMonitorReportNameEnum;
+    /**
+     * A list of tags associated with this monitor. These tags will be applied to each check this monitor creates.
+     * @type {Array<string>}
+     * @memberof WatchlistMonitor
+     */
+    'tags'?: Array<string>;
+    /**
      * The unique identifier for the monitor.
      * @type {string}
      * @memberof WatchlistMonitor
      */
-    'id'?: string;
+    'id': string;
     /**
      * The date and time at which the monitor was created.
      * @type {string}
@@ -8603,29 +8609,11 @@ export interface WatchlistMonitor {
      */
     'deleted_at'?: string;
     /**
-     * The ID for the applicant associated with the monitor.
-     * @type {string}
-     * @memberof WatchlistMonitor
-     */
-    'applicant_id': string;
-    /**
-     * The name of the report type the monitor creates. Can be either \"watchlist_standard\" or \"watchlist_aml\".
-     * @type {string}
-     * @memberof WatchlistMonitor
-     */
-    'report_name': WatchlistMonitorReportNameEnum;
-    /**
-     * A list of tags associated with this monitor. These tags will be applied to each check this monitor creates.
-     * @type {Array<string>}
-     * @memberof WatchlistMonitor
-     */
-    'tags'?: Array<string>;
-    /**
      * Indicates whether the object was created in the sandbox or not.
      * @type {boolean}
      * @memberof WatchlistMonitor
      */
-    'sandbox'?: boolean;
+    'is_sandbox'?: boolean;
 }
 
 export const WatchlistMonitorReportNameEnum = {
@@ -8635,6 +8623,40 @@ export const WatchlistMonitorReportNameEnum = {
 } as const;
 
 export type WatchlistMonitorReportNameEnum = typeof WatchlistMonitorReportNameEnum[keyof typeof WatchlistMonitorReportNameEnum];
+
+/**
+ * 
+ * @export
+ * @interface WatchlistMonitorBuilder
+ */
+export interface WatchlistMonitorBuilder {
+    /**
+     * The ID for the applicant associated with the monitor.
+     * @type {string}
+     * @memberof WatchlistMonitorBuilder
+     */
+    'applicant_id': string;
+    /**
+     * The name of the report type the monitor creates.
+     * @type {string}
+     * @memberof WatchlistMonitorBuilder
+     */
+    'report_name': WatchlistMonitorBuilderReportNameEnum;
+    /**
+     * A list of tags associated with this monitor. These tags will be applied to each check this monitor creates.
+     * @type {Array<string>}
+     * @memberof WatchlistMonitorBuilder
+     */
+    'tags'?: Array<string>;
+}
+
+export const WatchlistMonitorBuilderReportNameEnum = {
+    Standard: 'watchlist_standard',
+    Aml: 'watchlist_aml',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type WatchlistMonitorBuilderReportNameEnum = typeof WatchlistMonitorBuilderReportNameEnum[keyof typeof WatchlistMonitorBuilderReportNameEnum];
 
 /**
  * 
@@ -8653,7 +8675,117 @@ export interface WatchlistMonitorMatch {
      * @type {boolean}
      * @memberof WatchlistMonitorMatch
      */
-    'status'?: boolean;
+    'enabled'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface WatchlistMonitorMatchesList
+ */
+export interface WatchlistMonitorMatchesList {
+    /**
+     * 
+     * @type {Array<WatchlistMonitorMatch>}
+     * @memberof WatchlistMonitorMatchesList
+     */
+    'matches': Array<WatchlistMonitorMatch>;
+}
+/**
+ * 
+ * @export
+ * @interface WatchlistMonitorMatchesUpdater
+ */
+export interface WatchlistMonitorMatchesUpdater {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof WatchlistMonitorMatchesUpdater
+     */
+    'enable'?: Array<string>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof WatchlistMonitorMatchesUpdater
+     */
+    'disable'?: Array<string>;
+}
+/**
+ * 
+ * @export
+ * @interface WatchlistMonitorResponse
+ */
+export interface WatchlistMonitorResponse {
+    /**
+     * The unique identifier for the monitor.
+     * @type {string}
+     * @memberof WatchlistMonitorResponse
+     */
+    'id': string;
+    /**
+     * The date and time at which the monitor was created.
+     * @type {string}
+     * @memberof WatchlistMonitorResponse
+     */
+    'created_at'?: string;
+    /**
+     * The date and time at which the monitor was deleted. If the monitor is still active, this field will be null.
+     * @type {string}
+     * @memberof WatchlistMonitorResponse
+     */
+    'deleted_at'?: string;
+    /**
+     * Indicates whether the object was created in the sandbox or not.
+     * @type {boolean}
+     * @memberof WatchlistMonitorResponse
+     */
+    'is_sandbox'?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface WatchlistMonitorShared
+ */
+export interface WatchlistMonitorShared {
+    /**
+     * The ID for the applicant associated with the monitor.
+     * @type {string}
+     * @memberof WatchlistMonitorShared
+     */
+    'applicant_id': string;
+    /**
+     * The name of the report type the monitor creates.
+     * @type {string}
+     * @memberof WatchlistMonitorShared
+     */
+    'report_name': WatchlistMonitorSharedReportNameEnum;
+    /**
+     * A list of tags associated with this monitor. These tags will be applied to each check this monitor creates.
+     * @type {Array<string>}
+     * @memberof WatchlistMonitorShared
+     */
+    'tags'?: Array<string>;
+}
+
+export const WatchlistMonitorSharedReportNameEnum = {
+    Standard: 'watchlist_standard',
+    Aml: 'watchlist_aml',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type WatchlistMonitorSharedReportNameEnum = typeof WatchlistMonitorSharedReportNameEnum[keyof typeof WatchlistMonitorSharedReportNameEnum];
+
+/**
+ * 
+ * @export
+ * @interface WatchlistMonitorsList
+ */
+export interface WatchlistMonitorsList {
+    /**
+     * 
+     * @type {Array<WatchlistMonitor>}
+     * @memberof WatchlistMonitorsList
+     */
+    'monitors': Array<WatchlistMonitor>;
 }
 /**
  * 
@@ -9675,17 +9807,17 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Complete Task
          * @param {string} workflowRunId The unique identifier of the Workflow Run to which the Task belongs.
          * @param {string} taskId The identifier of the Task you want to complete.
-         * @param {CompleteTaskRequest} completeTaskRequest 
+         * @param {CompleteTaskBuilder} completeTaskBuilder 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        completeTask: async (workflowRunId: string, taskId: string, completeTaskRequest: CompleteTaskRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        completeTask: async (workflowRunId: string, taskId: string, completeTaskBuilder: CompleteTaskBuilder, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'workflowRunId' is not null or undefined
             assertParamExists('completeTask', 'workflowRunId', workflowRunId)
             // verify required parameter 'taskId' is not null or undefined
             assertParamExists('completeTask', 'taskId', taskId)
-            // verify required parameter 'completeTaskRequest' is not null or undefined
-            assertParamExists('completeTask', 'completeTaskRequest', completeTaskRequest)
+            // verify required parameter 'completeTaskBuilder' is not null or undefined
+            assertParamExists('completeTask', 'completeTaskBuilder', completeTaskBuilder)
             const localVarPath = `/workflow_runs/{workflow_run_id}/tasks/{task_id}/complete`
                 .replace(`{${"workflow_run_id"}}`, encodeURIComponent(String(workflowRunId)))
                 .replace(`{${"task_id"}}`, encodeURIComponent(String(taskId)));
@@ -9710,7 +9842,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(completeTaskRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(completeTaskBuilder, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -9798,13 +9930,13 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * Creates a new monitor for the applicant 
          * @summary Create monitor
-         * @param {WatchlistMonitor} watchlistMonitor 
+         * @param {WatchlistMonitorBuilder} watchlistMonitorBuilder 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createWatchlistMonitor: async (watchlistMonitor: WatchlistMonitor, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'watchlistMonitor' is not null or undefined
-            assertParamExists('createWatchlistMonitor', 'watchlistMonitor', watchlistMonitor)
+        createWatchlistMonitor: async (watchlistMonitorBuilder: WatchlistMonitorBuilder, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'watchlistMonitorBuilder' is not null or undefined
+            assertParamExists('createWatchlistMonitor', 'watchlistMonitorBuilder', watchlistMonitorBuilder)
             const localVarPath = `/watchlist_monitors`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -9827,7 +9959,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(watchlistMonitor, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(watchlistMonitorBuilder, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -10927,9 +11059,9 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        forceNewRecordCreation: async (monitorId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        forceReportCreationFromWatchlistMonitor: async (monitorId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'monitorId' is not null or undefined
-            assertParamExists('forceNewRecordCreation', 'monitorId', monitorId)
+            assertParamExists('forceReportCreationFromWatchlistMonitor', 'monitorId', monitorId)
             const localVarPath = `/watchlist_monitors/{monitor_id}/new_report`
                 .replace(`{${"monitor_id"}}`, encodeURIComponent(String(monitorId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -11844,15 +11976,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * Update the status of the given matches 
          * @summary Set match status (BETA)
          * @param {string} monitorId 
-         * @param {UpdateMonitorMatchRequest} updateMonitorMatchRequest 
+         * @param {WatchlistMonitorMatchesUpdater} watchlistMonitorMatchesUpdater 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateMonitorMatch: async (monitorId: string, updateMonitorMatchRequest: UpdateMonitorMatchRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        updateWatchlistMonitorMatch: async (monitorId: string, watchlistMonitorMatchesUpdater: WatchlistMonitorMatchesUpdater, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'monitorId' is not null or undefined
-            assertParamExists('updateMonitorMatch', 'monitorId', monitorId)
-            // verify required parameter 'updateMonitorMatchRequest' is not null or undefined
-            assertParamExists('updateMonitorMatch', 'updateMonitorMatchRequest', updateMonitorMatchRequest)
+            assertParamExists('updateWatchlistMonitorMatch', 'monitorId', monitorId)
+            // verify required parameter 'watchlistMonitorMatchesUpdater' is not null or undefined
+            assertParamExists('updateWatchlistMonitorMatch', 'watchlistMonitorMatchesUpdater', watchlistMonitorMatchesUpdater)
             const localVarPath = `/watchlist_monitors/{monitor_id}/matches`
                 .replace(`{${"monitor_id"}}`, encodeURIComponent(String(monitorId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -11876,7 +12008,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateMonitorMatchRequest, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(watchlistMonitorMatchesUpdater, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -12136,12 +12268,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Complete Task
          * @param {string} workflowRunId The unique identifier of the Workflow Run to which the Task belongs.
          * @param {string} taskId The identifier of the Task you want to complete.
-         * @param {CompleteTaskRequest} completeTaskRequest 
+         * @param {CompleteTaskBuilder} completeTaskBuilder 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async completeTask(workflowRunId: string, taskId: string, completeTaskRequest: CompleteTaskRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.completeTask(workflowRunId, taskId, completeTaskRequest, options);
+        async completeTask(workflowRunId: string, taskId: string, completeTaskBuilder: CompleteTaskBuilder, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.completeTask(workflowRunId, taskId, completeTaskBuilder, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.completeTask']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -12175,12 +12307,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * Creates a new monitor for the applicant 
          * @summary Create monitor
-         * @param {WatchlistMonitor} watchlistMonitor 
+         * @param {WatchlistMonitorBuilder} watchlistMonitorBuilder 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async createWatchlistMonitor(watchlistMonitor: WatchlistMonitor, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WatchlistMonitor>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.createWatchlistMonitor(watchlistMonitor, options);
+        async createWatchlistMonitor(watchlistMonitorBuilder: WatchlistMonitorBuilder, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WatchlistMonitor>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createWatchlistMonitor(watchlistMonitorBuilder, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.createWatchlistMonitor']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -12570,10 +12702,10 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async forceNewRecordCreation(monitorId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Applicant>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.forceNewRecordCreation(monitorId, options);
+        async forceReportCreationFromWatchlistMonitor(monitorId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.forceReportCreationFromWatchlistMonitor(monitorId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.forceNewRecordCreation']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.forceReportCreationFromWatchlistMonitor']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -12663,7 +12795,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listLiveVideos(applicantId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LiveoVideosList>> {
+        async listLiveVideos(applicantId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LiveVideosList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listLiveVideos(applicantId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listLiveVideos']?.[localVarOperationServerIndex]?.url;
@@ -12728,7 +12860,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listWatchlistMonitorMatches(monitorId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<WatchlistMonitorMatch>>> {
+        async listWatchlistMonitorMatches(monitorId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WatchlistMonitorMatchesList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listWatchlistMonitorMatches(monitorId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listWatchlistMonitorMatches']?.[localVarOperationServerIndex]?.url;
@@ -12742,7 +12874,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listWatchlistMonitors(applicantId: string, includeDeleted?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<WatchlistMonitor>>> {
+        async listWatchlistMonitors(applicantId: string, includeDeleted?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WatchlistMonitorsList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listWatchlistMonitors(applicantId, includeDeleted, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listWatchlistMonitors']?.[localVarOperationServerIndex]?.url;
@@ -12872,14 +13004,14 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * Update the status of the given matches 
          * @summary Set match status (BETA)
          * @param {string} monitorId 
-         * @param {UpdateMonitorMatchRequest} updateMonitorMatchRequest 
+         * @param {WatchlistMonitorMatchesUpdater} watchlistMonitorMatchesUpdater 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateMonitorMatch(monitorId: string, updateMonitorMatchRequest: UpdateMonitorMatchRequest, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateMonitorMatch(monitorId, updateMonitorMatchRequest, options);
+        async updateWatchlistMonitorMatch(monitorId: string, watchlistMonitorMatchesUpdater: WatchlistMonitorMatchesUpdater, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<WatchlistMonitorMatchesList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateWatchlistMonitorMatch(monitorId, watchlistMonitorMatchesUpdater, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateMonitorMatch']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateWatchlistMonitorMatch']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -12970,12 +13102,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @summary Complete Task
          * @param {string} workflowRunId The unique identifier of the Workflow Run to which the Task belongs.
          * @param {string} taskId The identifier of the Task you want to complete.
-         * @param {CompleteTaskRequest} completeTaskRequest 
+         * @param {CompleteTaskBuilder} completeTaskBuilder 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        completeTask(workflowRunId: string, taskId: string, completeTaskRequest: CompleteTaskRequest, options?: any): AxiosPromise<void> {
-            return localVarFp.completeTask(workflowRunId, taskId, completeTaskRequest, options).then((request) => request(axios, basePath));
+        completeTask(workflowRunId: string, taskId: string, completeTaskBuilder: CompleteTaskBuilder, options?: any): AxiosPromise<void> {
+            return localVarFp.completeTask(workflowRunId, taskId, completeTaskBuilder, options).then((request) => request(axios, basePath));
         },
         /**
          * Creates a single applicant. Returns an applicant object. 
@@ -13000,12 +13132,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * Creates a new monitor for the applicant 
          * @summary Create monitor
-         * @param {WatchlistMonitor} watchlistMonitor 
+         * @param {WatchlistMonitorBuilder} watchlistMonitorBuilder 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createWatchlistMonitor(watchlistMonitor: WatchlistMonitor, options?: any): AxiosPromise<WatchlistMonitor> {
-            return localVarFp.createWatchlistMonitor(watchlistMonitor, options).then((request) => request(axios, basePath));
+        createWatchlistMonitor(watchlistMonitorBuilder: WatchlistMonitorBuilder, options?: any): AxiosPromise<WatchlistMonitor> {
+            return localVarFp.createWatchlistMonitor(watchlistMonitorBuilder, options).then((request) => request(axios, basePath));
         },
         /**
          * Registers a webhook. Returns a webhook object. 
@@ -13305,8 +13437,8 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        forceNewRecordCreation(monitorId: string, options?: any): AxiosPromise<Applicant> {
-            return localVarFp.forceNewRecordCreation(monitorId, options).then((request) => request(axios, basePath));
+        forceReportCreationFromWatchlistMonitor(monitorId: string, options?: any): AxiosPromise<void> {
+            return localVarFp.forceReportCreationFromWatchlistMonitor(monitorId, options).then((request) => request(axios, basePath));
         },
         /**
          * Generates an SDK token. Returns a token object containing the SDK token. 
@@ -13377,7 +13509,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listLiveVideos(applicantId: string, options?: any): AxiosPromise<LiveoVideosList> {
+        listLiveVideos(applicantId: string, options?: any): AxiosPromise<LiveVideosList> {
             return localVarFp.listLiveVideos(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13427,7 +13559,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listWatchlistMonitorMatches(monitorId: string, options?: any): AxiosPromise<Array<WatchlistMonitorMatch>> {
+        listWatchlistMonitorMatches(monitorId: string, options?: any): AxiosPromise<WatchlistMonitorMatchesList> {
             return localVarFp.listWatchlistMonitorMatches(monitorId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13438,7 +13570,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listWatchlistMonitors(applicantId: string, includeDeleted?: boolean, options?: any): AxiosPromise<Array<WatchlistMonitor>> {
+        listWatchlistMonitors(applicantId: string, includeDeleted?: boolean, options?: any): AxiosPromise<WatchlistMonitorsList> {
             return localVarFp.listWatchlistMonitors(applicantId, includeDeleted, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13538,12 +13670,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * Update the status of the given matches 
          * @summary Set match status (BETA)
          * @param {string} monitorId 
-         * @param {UpdateMonitorMatchRequest} updateMonitorMatchRequest 
+         * @param {WatchlistMonitorMatchesUpdater} watchlistMonitorMatchesUpdater 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateMonitorMatch(monitorId: string, updateMonitorMatchRequest: UpdateMonitorMatchRequest, options?: any): AxiosPromise<void> {
-            return localVarFp.updateMonitorMatch(monitorId, updateMonitorMatchRequest, options).then((request) => request(axios, basePath));
+        updateWatchlistMonitorMatch(monitorId: string, watchlistMonitorMatchesUpdater: WatchlistMonitorMatchesUpdater, options?: any): AxiosPromise<WatchlistMonitorMatchesList> {
+            return localVarFp.updateWatchlistMonitorMatch(monitorId, watchlistMonitorMatchesUpdater, options).then((request) => request(axios, basePath));
         },
         /**
          * Edits a webhook. Returns the updated webhook object. 
@@ -13623,13 +13755,13 @@ export class DefaultApi extends BaseAPI {
      * @summary Complete Task
      * @param {string} workflowRunId The unique identifier of the Workflow Run to which the Task belongs.
      * @param {string} taskId The identifier of the Task you want to complete.
-     * @param {CompleteTaskRequest} completeTaskRequest 
+     * @param {CompleteTaskBuilder} completeTaskBuilder 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public completeTask(workflowRunId: string, taskId: string, completeTaskRequest: CompleteTaskRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).completeTask(workflowRunId, taskId, completeTaskRequest, options).then((request) => request(this.axios, this.basePath));
+    public completeTask(workflowRunId: string, taskId: string, completeTaskBuilder: CompleteTaskBuilder, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).completeTask(workflowRunId, taskId, completeTaskBuilder, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -13659,13 +13791,13 @@ export class DefaultApi extends BaseAPI {
     /**
      * Creates a new monitor for the applicant 
      * @summary Create monitor
-     * @param {WatchlistMonitor} watchlistMonitor 
+     * @param {WatchlistMonitorBuilder} watchlistMonitorBuilder 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public createWatchlistMonitor(watchlistMonitor: WatchlistMonitor, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).createWatchlistMonitor(watchlistMonitor, options).then((request) => request(this.axios, this.basePath));
+    public createWatchlistMonitor(watchlistMonitorBuilder: WatchlistMonitorBuilder, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).createWatchlistMonitor(watchlistMonitorBuilder, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -14025,8 +14157,8 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public forceNewRecordCreation(monitorId: string, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).forceNewRecordCreation(monitorId, options).then((request) => request(this.axios, this.basePath));
+    public forceReportCreationFromWatchlistMonitor(monitorId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).forceReportCreationFromWatchlistMonitor(monitorId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -14303,13 +14435,13 @@ export class DefaultApi extends BaseAPI {
      * Update the status of the given matches 
      * @summary Set match status (BETA)
      * @param {string} monitorId 
-     * @param {UpdateMonitorMatchRequest} updateMonitorMatchRequest 
+     * @param {WatchlistMonitorMatchesUpdater} watchlistMonitorMatchesUpdater 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public updateMonitorMatch(monitorId: string, updateMonitorMatchRequest: UpdateMonitorMatchRequest, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).updateMonitorMatch(monitorId, updateMonitorMatchRequest, options).then((request) => request(this.axios, this.basePath));
+    public updateWatchlistMonitorMatch(monitorId: string, watchlistMonitorMatchesUpdater: WatchlistMonitorMatchesUpdater, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updateWatchlistMonitorMatch(monitorId, watchlistMonitorMatchesUpdater, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

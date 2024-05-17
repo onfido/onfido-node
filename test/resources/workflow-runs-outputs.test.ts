@@ -107,15 +107,15 @@ describe("workflow runs outputs", () => {
       getExpectedWorkflowRunOutput(exampleWorkflowRunOutputProfileDataCapture, {
         address: {
           country: expect.stringMatching(/^[A-Za-z\s]+$/),
-          line1: expect.stringMatching(/^[0-9A-Za-z\s-]+$/),
-          line2: expect.stringMatching(/^[0-9A-Za-z\s-]+$/),
-          line3: expect.stringMatching(/^[0-9A-Za-z\s-]+$/),
+          line1: expect.stringMatching(/^[0-9A-Za-z\s'-]+$/),
+          line2: expect.stringMatching(/^[0-9A-Za-z\s'-]+$/),
+          line3: expect.stringMatching(/^[0-9A-Za-z\s'-]+$/),
           postcode: expect.stringMatching(/^[0-9A-Za-z\s-]+$/),
           town: expect.stringMatching(/^[A-Za-z\s]+$/)
         },
         country_residence: expect.stringMatching(/^[A-Z]{3}$/),
         dob: expect.stringMatching(/^[0-9-]+$/),
-        email: expect.stringMatching(/^[0-9A-Za-z_@\.]+$/),
+        email: expect.stringMatching(/^[0-9A-Za-z_@\.-]+$/),
         first_name: expect.stringMatching(/^[A-Za-z\s-]+$/),
         last_name: expect.stringMatching(/^[A-Za-z\s-]+$/),
         nationality: expect.stringMatching(/^[A-Z]{3}$/),

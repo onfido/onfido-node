@@ -4,7 +4,7 @@ import "dotenv/config";
 
 import {
   Applicant,
-  CompleteTaskRequest,
+  CompleteTaskBuilder,
   Configuration,
   DefaultApi,
   Document,
@@ -196,7 +196,7 @@ export function createWorkflowRun(applicant: Applicant, workflow_id: string) {
 export function completeTask(
   workflowRunId: string,
   taskId: string,
-  taskData: CompleteTaskRequest
+  taskData: CompleteTaskBuilder
 ) {
   return onfido.completeTask(workflowRunId, taskId, taskData);
 }
