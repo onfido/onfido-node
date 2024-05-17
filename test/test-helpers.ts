@@ -12,7 +12,8 @@ import {
   FacialSimilarityPhotoReport,
   LiveVideo,
   MotionCapture,
-  Report
+  Report,
+  WorkflowRunBuilder
 } from "onfido-node";
 
 export const onfido = new DefaultApi(
@@ -191,6 +192,12 @@ export function createWorkflowRun(applicant: Applicant, workflow_id: string) {
     applicant_id: applicant.id,
     workflow_id: workflow_id
   });
+}
+
+export function createWorkflowRunWithCustomInputs(
+  workflowRunBuilder: WorkflowRunBuilder
+) {
+  return onfido.createWorkflowRun(workflowRunBuilder);
 }
 
 export function completeTask(

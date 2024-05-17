@@ -1,4 +1,4 @@
-import { Applicant, WorkflowRun } from "onfido-node";
+import { Applicant, WorkflowRun, WorkflowRunBuilder } from "onfido-node";
 
 import { exampleWorkflowRun } from "../test-examples";
 import {
@@ -6,6 +6,7 @@ import {
   cleanUpWebhooks,
   createApplicant,
   createWorkflowRun,
+  createWorkflowRunWithCustomInputs,
   getExpectedObject,
   onfido
 } from "../test-helpers";
@@ -47,6 +48,23 @@ it("creates a workflow run", async () => {
   const workflowRun = await createWorkflowRun(applicant, workflow_id);
 
   expect(workflowRun.data).toEqual(getExpectedWorkflowRun(exampleWorkflowRun));
+});
+
+it("creates a workflow run with custom inputs", async () => {
+  const workflow_id_with_custom_inputs = "45092b29-f220-479e-aa6f-a6f989baac4c";
+  const workflowRunBuilder: WorkflowRunBuilder = {
+    applicant_id: applicant.id,
+    workflow_id: workflow_id_with_custom_inputs,
+    custom_data: { age: 18, is_employed: false }
+  };
+
+  const workflowRunWithCustomInputs = await createWorkflowRunWithCustomInputs(
+    workflowRunBuilder
+  );
+
+  expect(workflowRunWithCustomInputs.data).toEqual(
+    getExpectedWorkflowRun(exampleWorkflowRun)
+  );
 });
 
 it("finds a workflow run", async () => {
