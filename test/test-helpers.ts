@@ -12,7 +12,9 @@ import {
   FacialSimilarityPhotoReport,
   LiveVideo,
   MotionCapture,
-  Report
+  Report,
+  WatchlistMonitorReportNameEnum,
+  WorkflowRunBuilder
 } from "onfido-node";
 
 export const onfido = new DefaultApi(
@@ -136,6 +138,16 @@ export async function createCheck(
   });
 }
 
+export async function createWatchlistMonitor(
+  applicant: Applicant,
+  reportName: WatchlistMonitorReportNameEnum
+) {
+  return onfido.createWatchlistMonitor({
+    applicant_id: applicant.id,
+    report_name: reportName
+  });
+}
+
 export function sortByApplicantfirst_name(a: Applicant, b: Applicant) {
   if (a.first_name < b.first_name) {
     return -1;
@@ -191,6 +203,12 @@ export function createWorkflowRun(applicant: Applicant, workflow_id: string) {
     applicant_id: applicant.id,
     workflow_id: workflow_id
   });
+}
+
+export function createWorkflowRunWithCustomInputs(
+  workflowRunBuilder: WorkflowRunBuilder
+) {
+  return onfido.createWorkflowRun(workflowRunBuilder);
 }
 
 export function completeTask(
