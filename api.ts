@@ -1041,17 +1041,17 @@ export interface ChecksList {
 export interface CompleteTaskBuilder {
     /**
      * 
-     * @type {CompleteTaskBuilderData}
+     * @type {CompleteTaskDataBuilder}
      * @memberof CompleteTaskBuilder
      */
-    'data': CompleteTaskBuilderData;
+    'data': CompleteTaskDataBuilder;
 }
 /**
- * @type CompleteTaskBuilderData
+ * @type CompleteTaskDataBuilder
  * The Task completion payload.
  * @export
  */
-export type CompleteTaskBuilderData = Array<object> | object;
+export type CompleteTaskDataBuilder = Array<object> | object;
 
 /**
  * The applicant\'s consents
@@ -7619,11 +7619,35 @@ export interface Task {
      */
     'id'?: string;
     /**
+     * The workflow run id the task belongs to.
+     * @type {string}
+     * @memberof Task
+     */
+    'workflow_run_id'?: string;
+    /**
      * The identifier for the Task Definition.
      * @type {string}
      * @memberof Task
      */
     'task_def_id'?: string;
+    /**
+     * The task definition version.
+     * @type {string}
+     * @memberof Task
+     */
+    'task_def_version'?: string | null;
+    /**
+     * Input object with the fields used by the Task to execute.
+     * @type {object}
+     * @memberof Task
+     */
+    'input'?: object;
+    /**
+     * Output object with the fields produced by the Task execution.
+     * @type {object}
+     * @memberof Task
+     */
+    'output'?: object | null;
     /**
      * The date and time when the Task was created.
      * @type {string}
@@ -7634,6 +7658,37 @@ export interface Task {
      * The date and time when the Task was last updated.
      * @type {string}
      * @memberof Task
+     */
+    'updated_at'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface TaskItem
+ */
+export interface TaskItem {
+    /**
+     * The identifier for the Task.
+     * @type {string}
+     * @memberof TaskItem
+     */
+    'id'?: string;
+    /**
+     * The identifier for the Task Definition.
+     * @type {string}
+     * @memberof TaskItem
+     */
+    'task_def_id'?: string;
+    /**
+     * The date and time when the Task was created.
+     * @type {string}
+     * @memberof TaskItem
+     */
+    'created_at'?: string;
+    /**
+     * The date and time when the Task was last updated.
+     * @type {string}
+     * @memberof TaskItem
      */
     'updated_at'?: string;
 }
@@ -12847,7 +12902,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listTasks(workflowRunId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Task>>> {
+        async listTasks(workflowRunId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<TaskItem>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listTasks(workflowRunId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listTasks']?.[localVarOperationServerIndex]?.url;
@@ -13549,7 +13604,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listTasks(workflowRunId: string, options?: any): AxiosPromise<Array<Task>> {
+        listTasks(workflowRunId: string, options?: any): AxiosPromise<Array<TaskItem>> {
             return localVarFp.listTasks(workflowRunId, options).then((request) => request(axios, basePath));
         },
         /**
