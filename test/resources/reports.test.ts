@@ -58,12 +58,12 @@ it("lists reports", async () => {
     getExpectedReport(exampleReport, {
       name: "document",
       result: reports[0].result,
-      sub_result: reports[0].result
+      sub_result: reports[0].sub_result
     }),
     getExpectedReport(exampleReport, {
       name: "identity_enhanced",
       result: reports[1].result,
-      sub_result: reports[1].result
+      sub_result: reports[1].sub_result
     })
   ]);
 });
