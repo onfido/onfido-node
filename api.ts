@@ -7695,6 +7695,44 @@ export interface TaskItem {
 /**
  * 
  * @export
+ * @interface TimelineFileReference
+ */
+export interface TimelineFileReference {
+    /**
+     * The unique identifier for the Timefile File that will be created.
+     * @type {string}
+     * @memberof TimelineFileReference
+     */
+    'workflow_timeline_file_id': string;
+    /**
+     * Link to access the Timefile File that will be created.
+     * @type {string}
+     * @memberof TimelineFileReference
+     */
+    'href': string;
+}
+/**
+ * 
+ * @export
+ * @interface TimelineFileReference1
+ */
+export interface TimelineFileReference1 {
+    /**
+     * The unique identifier for the Timefile File that will be created.
+     * @type {string}
+     * @memberof TimelineFileReference1
+     */
+    'workflow_timeline_file_id': string;
+    /**
+     * Link to access the Timefile File that will be created.
+     * @type {string}
+     * @memberof TimelineFileReference1
+     */
+    'href': string;
+}
+/**
+ * 
+ * @export
  * @interface UsDrivingLicenceBreakdown
  */
 export interface UsDrivingLicenceBreakdown {
@@ -9983,6 +10021,43 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Triggers the generation of the Timeline File for the designated Workflow Run. 
+         * @summary Create Timeline File for Workflow Run
+         * @param {string} workflowRunId The unique identifier of the Workflow Run.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createTimelineFile: async (workflowRunId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'workflowRunId' is not null or undefined
+            assertParamExists('createTimelineFile', 'workflowRunId', workflowRunId)
+            const localVarPath = `/workflow_runs/{workflow_run_id}/timeline_file`
+                .replace(`{${"workflow_run_id"}}`, encodeURIComponent(String(workflowRunId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Creates a new monitor for the applicant 
          * @summary Create monitor
          * @param {WatchlistMonitorBuilder} watchlistMonitorBuilder 
@@ -10971,6 +11046,47 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarPath = `/workflow_runs/{workflow_run_id}/tasks/{task_id}`
                 .replace(`{${"workflow_run_id"}}`, encodeURIComponent(String(workflowRunId)))
                 .replace(`{${"task_id"}}`, encodeURIComponent(String(taskId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Retrieves the Timeline File for the designated Workflow Run. 
+         * @summary Retrieve Timeline File for Workflow Run
+         * @param {string} workflowRunId The unique identifier of the Workflow Run.
+         * @param {string} timelineFileId The unique identifier for the Timefile File.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findTimelineFile: async (workflowRunId: string, timelineFileId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'workflowRunId' is not null or undefined
+            assertParamExists('findTimelineFile', 'workflowRunId', workflowRunId)
+            // verify required parameter 'timelineFileId' is not null or undefined
+            assertParamExists('findTimelineFile', 'timelineFileId', timelineFileId)
+            const localVarPath = `/workflow_runs/{workflow_run_id}/timeline_file/{timeline_file_id}`
+                .replace(`{${"workflow_run_id"}}`, encodeURIComponent(String(workflowRunId)))
+                .replace(`{${"timeline_file_id"}}`, encodeURIComponent(String(timelineFileId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12360,6 +12476,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Triggers the generation of the Timeline File for the designated Workflow Run. 
+         * @summary Create Timeline File for Workflow Run
+         * @param {string} workflowRunId The unique identifier of the Workflow Run.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async createTimelineFile(workflowRunId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<TimelineFileReference>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.createTimelineFile(workflowRunId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.createTimelineFile']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Creates a new monitor for the applicant 
          * @summary Create monitor
          * @param {WatchlistMonitorBuilder} watchlistMonitorBuilder 
@@ -12709,6 +12838,20 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.findTask(workflowRunId, taskId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.findTask']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Retrieves the Timeline File for the designated Workflow Run. 
+         * @summary Retrieve Timeline File for Workflow Run
+         * @param {string} workflowRunId The unique identifier of the Workflow Run.
+         * @param {string} timelineFileId The unique identifier for the Timefile File.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async findTimelineFile(workflowRunId: string, timelineFileId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.findTimelineFile(workflowRunId, timelineFileId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.findTimelineFile']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -13185,6 +13328,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.createCheck(checkBuilder, options).then((request) => request(axios, basePath));
         },
         /**
+         * Triggers the generation of the Timeline File for the designated Workflow Run. 
+         * @summary Create Timeline File for Workflow Run
+         * @param {string} workflowRunId The unique identifier of the Workflow Run.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        createTimelineFile(workflowRunId: string, options?: any): AxiosPromise<TimelineFileReference> {
+            return localVarFp.createTimelineFile(workflowRunId, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Creates a new monitor for the applicant 
          * @summary Create monitor
          * @param {WatchlistMonitorBuilder} watchlistMonitorBuilder 
@@ -13454,6 +13607,17 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         findTask(workflowRunId: string, taskId: string, options?: any): AxiosPromise<Task> {
             return localVarFp.findTask(workflowRunId, taskId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves the Timeline File for the designated Workflow Run. 
+         * @summary Retrieve Timeline File for Workflow Run
+         * @param {string} workflowRunId The unique identifier of the Workflow Run.
+         * @param {string} timelineFileId The unique identifier for the Timefile File.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findTimelineFile(workflowRunId: string, timelineFileId: string, options?: any): AxiosPromise<Error> {
+            return localVarFp.findTimelineFile(workflowRunId, timelineFileId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a single monitor 
@@ -13844,6 +14008,18 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * Triggers the generation of the Timeline File for the designated Workflow Run. 
+     * @summary Create Timeline File for Workflow Run
+     * @param {string} workflowRunId The unique identifier of the Workflow Run.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public createTimelineFile(workflowRunId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).createTimelineFile(workflowRunId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Creates a new monitor for the applicant 
      * @summary Create monitor
      * @param {WatchlistMonitorBuilder} watchlistMonitorBuilder 
@@ -14166,6 +14342,19 @@ export class DefaultApi extends BaseAPI {
      */
     public findTask(workflowRunId: string, taskId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findTask(workflowRunId, taskId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves the Timeline File for the designated Workflow Run. 
+     * @summary Retrieve Timeline File for Workflow Run
+     * @param {string} workflowRunId The unique identifier of the Workflow Run.
+     * @param {string} timelineFileId The unique identifier for the Timefile File.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public findTimelineFile(workflowRunId: string, timelineFileId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).findTimelineFile(workflowRunId, timelineFileId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
