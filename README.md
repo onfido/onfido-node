@@ -162,7 +162,8 @@ Webhook events payload needs to be verified before it can be accessed. Library a
 ```js
 (async () => {
   try {
-    const verifier = new WebhookEventVerifier("_ABC123abc...3ABC123_");
+    const token = process.env.ONFIDO_WEBHOOK_SECRET_TOKEN;
+    const verifier = new WebhookEventVerifier(token);
     const signature = "a0...760e";
 
     const event = verifier.readPayload(`{"payload":{"r...3"}}`, signature);
