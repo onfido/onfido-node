@@ -110,6 +110,12 @@ export async function uploadLivePhoto(
   return onfido.uploadLivePhoto(applicant.id, readStream, advancedValidation);
 }
 
+export async function uploadIdPhoto(applicant: Applicant) {
+  let readStream: any = createReadStream("test/media/sample_photo.png");
+
+  return onfido.uploadIdPhoto(applicant.id, readStream);
+}
+
 export async function createWebhook() {
   return onfido.createWebhook({
     url: "https://example.com",
