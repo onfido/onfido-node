@@ -5622,19 +5622,6 @@ export interface FacialSimilarityVideoReport {
 /**
  * 
  * @export
- * @interface IDPhotosList
- */
-export interface IDPhotosList {
-    /**
-     * 
-     * @type {Array<IdPhoto>}
-     * @memberof IDPhotosList
-     */
-    'id_photos': Array<IdPhoto>;
-}
-/**
- * 
- * @export
  * @interface IdNumber
  */
 export interface IdNumber {
@@ -5770,6 +5757,19 @@ export interface IdPhotoResponse {
      * @memberof IdPhotoResponse
      */
     'file_size'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface IdPhotosList
+ */
+export interface IdPhotosList {
+    /**
+     * 
+     * @type {Array<IdPhoto>}
+     * @memberof IdPhotosList
+     */
+    'id_photos': Array<IdPhoto>;
 }
 /**
  * 
@@ -7708,25 +7708,6 @@ export interface TimelineFileReference {
      * Link to access the Timefile File that will be created.
      * @type {string}
      * @memberof TimelineFileReference
-     */
-    'href': string;
-}
-/**
- * 
- * @export
- * @interface TimelineFileReference1
- */
-export interface TimelineFileReference1 {
-    /**
-     * The unique identifier for the Timefile File that will be created.
-     * @type {string}
-     * @memberof TimelineFileReference1
-     */
-    'workflow_timeline_file_id': string;
-    /**
-     * Link to access the Timefile File that will be created.
-     * @type {string}
-     * @memberof TimelineFileReference1
      */
     'href': string;
 }
@@ -12848,7 +12829,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async findTimelineFile(workflowRunId: string, timelineFileId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Error>> {
+        async findTimelineFile(workflowRunId: string, timelineFileId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<File>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.findTimelineFile(workflowRunId, timelineFileId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.findTimelineFile']?.[localVarOperationServerIndex]?.url;
@@ -12967,7 +12948,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listIdPhotos(applicantId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IDPhotosList>> {
+        async listIdPhotos(applicantId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IdPhotosList>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listIdPhotos(applicantId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listIdPhotos']?.[localVarOperationServerIndex]?.url;
@@ -13616,7 +13597,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findTimelineFile(workflowRunId: string, timelineFileId: string, options?: any): AxiosPromise<Error> {
+        findTimelineFile(workflowRunId: string, timelineFileId: string, options?: any): AxiosPromise<File> {
             return localVarFp.findTimelineFile(workflowRunId, timelineFileId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13708,7 +13689,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listIdPhotos(applicantId: string, options?: any): AxiosPromise<IDPhotosList> {
+        listIdPhotos(applicantId: string, options?: any): AxiosPromise<IdPhotosList> {
             return localVarFp.listIdPhotos(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
