@@ -14,7 +14,7 @@ import {
   createWorkflowRun,
   getExpectedObject,
   onfido,
-  sleep,
+  repeatRequestUntilStatusChanges,
   uploadDocument,
   uploadLivePhoto
 } from "../test-helpers";
@@ -159,19 +159,17 @@ describe("workflow runs outputs", () => {
       data: [{ id: photoId }]
     });
 
-    let workflowRun = await onfido.findWorkflowRun(workflowRunId);
-    while (workflowRun.data.status === "processing") {
-      await sleep(1000);
-      workflowRun = await onfido.findWorkflowRun(workflowRunId);
-    }
-
-    expect(workflowRun.data).toEqual(
-      getExpectedWorkflowRun(exampleWorkflowRun)
+    const workflowRun = await repeatRequestUntilStatusChanges(
+      "findWorkflowRun",
+      [workflowRunId],
+      "approved"
     );
+
+    expect(workflowRun).toEqual(getExpectedWorkflowRun(exampleWorkflowRun));
 
     // workflow run has configured as output the result of the document
     // report `doc` and the facial similarity report `selfie`
-    expect(workflowRun.data.output["doc"]).toEqual(
+    expect(workflowRun.output["doc"]).toEqual(
       getExpectedWorkflowRunOutput(exampleWorkflowRunOutputDocumentReport, {
         breakdown: expect.anything(),
         properties: expect.anything(),
@@ -182,7 +180,7 @@ describe("workflow runs outputs", () => {
       })
     );
 
-    expect(workflowRun.data.output["selfie"]).toEqual(
+    expect(workflowRun.output["selfie"]).toEqual(
       getExpectedWorkflowRunOutput(
         exampleWorkflowRunOutputFacialSimilarityReport,
         {

@@ -1,4 +1,9 @@
-import { Applicant, WorkflowRun, WorkflowRunBuilder } from "onfido-node";
+import {
+  Applicant,
+  TimelineFileReference,
+  WorkflowRun,
+  WorkflowRunBuilder
+} from "onfido-node";
 
 import { exampleWorkflowRun } from "../test-examples";
 import {
@@ -8,7 +13,9 @@ import {
   createWorkflowRun,
   createWorkflowRunWithCustomInputs,
   getExpectedObject,
-  onfido
+  onfido,
+  repeatRequestUntilHttpCodeChanges,
+  repeatRequestUntilStatusChanges
 } from "../test-helpers";
 
 function getExpectedWorkflowRun(
@@ -35,6 +42,7 @@ function getExpectedWorkflowRun(
 
 let applicant: Applicant;
 const workflow_id = "e8c921eb-0495-44fe-b655-bcdcaffdafe5";
+const workflowIdTimeline = "221f9d24-cf72-4762-ac4a-01bf3ccc09dd";
 
 beforeEach(async () => {
   applicant = (await createApplicant()).data;
@@ -101,3 +109,43 @@ it("downloads a signed evidence file", async () => {
   expect(file.headers["content-type"]).toEqual("application/pdf");
   expect(file.data.slice(0, 5)).toEqual("%PDF-");
 });
+
+it("generates a timeline file", async () => {
+  const workflowRunId = (await createWorkflowRun(applicant, workflowIdTimeline))
+    .data.id;
+
+  await repeatRequestUntilStatusChanges(
+    "findWorkflowRun",
+    [workflowRunId],
+    "approved"
+  );
+
+  const timelineFileData: TimelineFileReference = (
+    await onfido.createTimelineFile(workflowRunId)
+  ).data;
+  expect(timelineFileData.href).not.toBeNull();
+  expect(timelineFileData.workflow_timeline_file_id).not.toBeNull();
+}, 30000);
+
+it("downloads a timeline file", async () => {
+  const workflowRunId = (await createWorkflowRun(applicant, workflowIdTimeline))
+    .data.id;
+
+  await repeatRequestUntilStatusChanges(
+    "findWorkflowRun",
+    [workflowRunId],
+    "approved"
+  );
+
+  const timelineFileId = (await onfido.createTimelineFile(workflowRunId)).data
+    .workflow_timeline_file_id;
+
+  const file = await repeatRequestUntilHttpCodeChanges("findTimelineFile", [
+    workflowRunId,
+    timelineFileId
+  ]);
+
+  expect(file.status).toEqual(200);
+  expect(file.headers["content-type"]).toEqual("binary/octet-stream");
+  expect(file.data.slice(0, 5)).toEqual("%PDF-");
+}, 30000);
