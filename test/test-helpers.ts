@@ -1,5 +1,5 @@
-import { AxiosError, isAxiosError } from "axios";
-import { createReadStream, ReadStream } from "fs";
+import { isAxiosError } from "axios";
+import { createReadStream } from "fs";
 import "dotenv/config";
 
 import {
@@ -255,4 +255,47 @@ export function getExpectedFacialSimilarityReport(
     status: expect.anything(),
     ...overrideProperties
   });
+}
+
+export async function repeatRequestUntilStatusChanges(
+  fn: string,
+  params: any[],
+  expectedStatus: string,
+  maxRetries = 10,
+  sleepTime = 1000
+): Promise<any> {
+  let instance = (await onfido[fn](...params)).data;
+  let iteration = 0;
+
+  while (instance.status != expectedStatus) {
+    if (iteration >= maxRetries) {
+      throw new Error("Status did not change in time");
+    }
+    iteration += 1;
+    await sleep(sleepTime);
+
+    instance = (await onfido[fn](...params)).data;
+  }
+  return instance;
+}
+
+export async function repeatRequestUntilHttpCodeChanges(
+  fn: string,
+  params: any[],
+  maxRetries: number = 10,
+  sleepTime: number = 1000
+): Promise<any> {
+  let iteration = 0;
+  let instance: any;
+
+  while (iteration <= maxRetries) {
+    try {
+      instance = await onfido[fn](...params);
+      break;
+    } catch (error) {
+      await sleep(sleepTime);
+      iteration += 1;
+    }
+  }
+  return instance;
 }

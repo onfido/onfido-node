@@ -9,8 +9,7 @@ import {
   createCheck,
   getExpectedDocumentReport,
   getExpectedFacialSimilarityReport,
-  onfido,
-  sleep,
+  repeatRequestUntilStatusChanges,
   uploadDocument,
   uploadLivePhoto
 } from "../test-helpers";
@@ -35,11 +34,11 @@ it("schema of document report should be valid", async () => {
     })
   ).data;
 
-  let report: Report = (await onfido.findReport(check.report_ids[0])).data;
-  while (report.status !== "complete") {
-    await sleep(1000);
-    report = (await onfido.findReport(check.report_ids[0])).data;
-  }
+  const report: Report = await repeatRequestUntilStatusChanges(
+    "findReport",
+    [check.report_ids[0]],
+    "complete"
+  );
 
   expect(report).toEqual(getExpectedDocumentReport(exampleDocumentReport));
 }, 30000);
@@ -52,11 +51,11 @@ it("schema of facial similarity photo report should be valid", async () => {
     })
   ).data;
 
-  let report: Report = (await onfido.findReport(check.report_ids[0])).data;
-  while (report.status !== "complete") {
-    await sleep(1000);
-    report = (await onfido.findReport(check.report_ids[0])).data;
-  }
+  const report: Report = await repeatRequestUntilStatusChanges(
+    "findReport",
+    [check.report_ids[0]],
+    "complete"
+  );
 
   expect(report).toEqual(
     getExpectedFacialSimilarityReport(exampleFacialSimilarityPhotoReport)

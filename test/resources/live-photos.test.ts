@@ -1,7 +1,5 @@
 import { Applicant, LivePhoto } from "onfido-node";
 
-import { createReadStream, readFileSync } from "fs";
-
 import {
   onfido,
   getExpectedObject,
