@@ -4833,6 +4833,19 @@ export interface FacialSimilarityMotionBreakdownVisualAuthenticityBreakdownSpoof
 /**
  * 
  * @export
+ * @interface FacialSimilarityMotionProperties
+ */
+export interface FacialSimilarityMotionProperties {
+    /**
+     * A floating point number between 0 and 1. The closer the score is to 0, the more likely it is to be a spoof (i.e. videos of digital screens, masks or print-outs). Conversely, the closer it is to 1, the less likely it is to be a spoof. 
+     * @type {number}
+     * @memberof FacialSimilarityMotionProperties
+     */
+    'score'?: number;
+}
+/**
+ * 
+ * @export
  * @interface FacialSimilarityMotionReport
  */
 export interface FacialSimilarityMotionReport {
@@ -4896,6 +4909,12 @@ export interface FacialSimilarityMotionReport {
      * @memberof FacialSimilarityMotionReport
      */
     'breakdown'?: FacialSimilarityMotionBreakdown;
+    /**
+     * 
+     * @type {FacialSimilarityMotionProperties}
+     * @memberof FacialSimilarityMotionReport
+     */
+    'properties'?: FacialSimilarityMotionProperties;
 }
 
 
@@ -5219,6 +5238,19 @@ export interface FacialSimilarityPhotoFullyAutoBreakdownImageIntegrityBreakdownS
 /**
  * 
  * @export
+ * @interface FacialSimilarityPhotoFullyAutoProperties
+ */
+export interface FacialSimilarityPhotoFullyAutoProperties {
+    /**
+     * A floating point number between 0 and 1. The closer the score is to 0, the more likely it is to be a spoof (i.e. photos of printed photos, or photos of digital screens). Conversely, the closer it is to 1, the less likely it is to be a spoof. 
+     * @type {number}
+     * @memberof FacialSimilarityPhotoFullyAutoProperties
+     */
+    'score'?: number;
+}
+/**
+ * 
+ * @export
  * @interface FacialSimilarityPhotoFullyAutoReport
  */
 export interface FacialSimilarityPhotoFullyAutoReport {
@@ -5282,9 +5314,28 @@ export interface FacialSimilarityPhotoFullyAutoReport {
      * @memberof FacialSimilarityPhotoFullyAutoReport
      */
     'breakdown'?: FacialSimilarityPhotoFullyAutoBreakdown;
+    /**
+     * 
+     * @type {FacialSimilarityPhotoFullyAutoProperties}
+     * @memberof FacialSimilarityPhotoFullyAutoReport
+     */
+    'properties'?: FacialSimilarityPhotoFullyAutoProperties;
 }
 
 
+/**
+ * 
+ * @export
+ * @interface FacialSimilarityPhotoProperties
+ */
+export interface FacialSimilarityPhotoProperties {
+    /**
+     * A floating point number between 0 and 1. The closer the score is to 0, the more likely it is to be a spoof (i.e. photos of printed photos, or photos of digital screens). Conversely, the closer it is to 1, the less likely it is to be a spoof. 
+     * @type {number}
+     * @memberof FacialSimilarityPhotoProperties
+     */
+    'score'?: number;
+}
 /**
  * 
  * @export
@@ -5351,6 +5402,12 @@ export interface FacialSimilarityPhotoReport {
      * @memberof FacialSimilarityPhotoReport
      */
     'breakdown'?: FacialSimilarityPhotoBreakdown;
+    /**
+     * 
+     * @type {FacialSimilarityPhotoProperties}
+     * @memberof FacialSimilarityPhotoReport
+     */
+    'properties'?: FacialSimilarityPhotoProperties;
 }
 
 
@@ -5553,6 +5610,19 @@ export interface FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownSpoofi
 /**
  * 
  * @export
+ * @interface FacialSimilarityVideoProperties
+ */
+export interface FacialSimilarityVideoProperties {
+    /**
+     * A floating point number between 0 and 1. The closer the score is to 0, the more likely it is to be a spoof (i.e. videos of digital screens, masks or print-outs). Conversely, the closer it is to 1, the less likely it is to be a spoof. 
+     * @type {number}
+     * @memberof FacialSimilarityVideoProperties
+     */
+    'score'?: number;
+}
+/**
+ * 
+ * @export
  * @interface FacialSimilarityVideoReport
  */
 export interface FacialSimilarityVideoReport {
@@ -5616,6 +5686,12 @@ export interface FacialSimilarityVideoReport {
      * @memberof FacialSimilarityVideoReport
      */
     'breakdown'?: FacialSimilarityVideoBreakdown;
+    /**
+     * 
+     * @type {FacialSimilarityVideoProperties}
+     * @memberof FacialSimilarityVideoReport
+     */
+    'properties'?: FacialSimilarityVideoProperties;
 }
 
 
