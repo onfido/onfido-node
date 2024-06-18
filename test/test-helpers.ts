@@ -1,5 +1,5 @@
 import { isAxiosError } from "axios";
-import { createReadStream } from "fs";
+import { createReadStream, readFileSync } from "fs";
 import "dotenv/config";
 
 import {
@@ -10,6 +10,7 @@ import {
   Document,
   DocumentReport,
   FacialSimilarityPhotoReport,
+  FileTransfer,
   LiveVideo,
   MotionCapture,
   Report,
@@ -23,6 +24,8 @@ export const onfido = new DefaultApi(
     baseOptions: { timeout: 60_000 }
   })
 );
+
+jest.setTimeout(60_000);
 
 export const sampleapplicant_id =
   process.env.ONFIDO_SAMPLE_APPLICANT_ID || "sample_applicant_id";
@@ -83,37 +86,28 @@ export async function cleanUpApplicants() {
   });
 }
 
-export async function uploadDocumentFromStream(
-  applicant: Applicant,
-  readStream: File,
-  documentType = "driving_licence"
-) {
-  return onfido.uploadDocument(documentType, applicant.id, readStream);
-}
-
 export async function uploadDocument(
   applicant: Applicant,
   documentType = "driving_licence"
 ) {
-  let readStream: any = createReadStream(
-    "test/media/sample_driving_licence.png"
-  );
-  return uploadDocumentFromStream(applicant, readStream, documentType);
+  let fileTransfer = new FileTransfer("test/media/sample_driving_licence.png");
+
+  return onfido.uploadDocument(documentType, applicant.id, fileTransfer);
 }
 
 export async function uploadLivePhoto(
   applicant: Applicant,
   advancedValidation?: boolean
 ) {
-  let readStream: any = createReadStream("test/media/sample_photo.png");
+  let buffer = readFileSync("test/media/sample_photo.png");
 
-  return onfido.uploadLivePhoto(applicant.id, readStream, advancedValidation);
+  return onfido.uploadLivePhoto(applicant.id, new FileTransfer(buffer, "sample_photo.png"), advancedValidation);
 }
 
 export async function uploadIdPhoto(applicant: Applicant) {
-  let readStream: any = createReadStream("test/media/sample_photo.png");
+  let fileTransfer = new FileTransfer("test/media/sample_photo.png");
 
-  return onfido.uploadIdPhoto(applicant.id, readStream);
+  return onfido.uploadIdPhoto(applicant.id, fileTransfer);
 }
 
 export async function createWebhook() {

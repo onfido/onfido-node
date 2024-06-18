@@ -49,7 +49,8 @@ it("downloads a id photo", async () => {
   const file = await onfido.downloadIdPhoto(photo.data.id);
 
   expect(file.status).toEqual(200);
-  expect(file.data.slice(1, 4)).toEqual("PNG");
+  expect(file.data.buffer.slice(1, 4)).toEqual("PNG");
+  expect(file.data.filename).toBeTruthy();
 });
 
 it("finds a id photo", async () => {
