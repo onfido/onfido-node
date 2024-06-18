@@ -26,6 +26,31 @@ import type { RequestArgs } from './base';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerMap } from './base';
 
+import { FileTransfer } from './file-transfer';
+import { AxiosHeaders } from 'axios';
+
+globalAxios.interceptors.response.use(async (response) => {
+    if (response.headers instanceof AxiosHeaders && response.headers['content-type']) {
+        if ( ! response.headers['content-type'].toString().includes('application/json') ) {
+            const contentDisposition = response.headers['content-disposition'];
+            var filename = "";
+
+            if (contentDisposition && contentDisposition != "") {
+                const matcher = contentDisposition.match(/filename=['\"]?([^'\"\s]+)['\"]?/);
+
+                if (matcher != null) {
+                  filename = matcher[1].replace(/.*[/\\\\]/g, "");
+                }
+            }
+
+            response.data = new FileTransfer(response.data, filename);
+        }
+    }
+
+    return response;
+  });
+
+
 /**
  * 
  * @export
@@ -12291,7 +12316,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Upload a document
          * @param {string} type The type of document
          * @param {string} applicantId The ID of the applicant whose document is being uploaded.
-         * @param {File} file The file to be uploaded.
+         * @param {FileTransfer} file The file to be uploaded.
          * @param {UploadDocumentFileTypeEnum} [fileType] The file type of the uploaded file
          * @param {UploadDocumentSideEnum} [side] The side of the document, if applicable. The possible values are front and back
          * @param {CountryCodes} [issuingCountry] The issuing country of the document, a 3-letter ISO code.
@@ -12300,7 +12325,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadDocument: async (type: string, applicantId: string, file: File, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        uploadDocument: async (type: string, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'type' is not null or undefined
             assertParamExists('uploadDocument', 'type', type)
             // verify required parameter 'applicantId' is not null or undefined
@@ -12345,7 +12370,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             }
     
             if (file !== undefined) { 
-                localVarFormParams.append('file', file as any);
+                localVarFormParams.append('file', file.buffer as any, file.filename);
             }
     
             if (validateImageQuality !== undefined) { 
@@ -12373,11 +12398,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * You can upload ID photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. 
          * @summary Upload ID photo
          * @param {string} [applicantId] The ID of the applicant whose ID photo is being uploaded.
-         * @param {File} [file] The file to be uploaded.
+         * @param {FileTransfer} [file] The file to be uploaded.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadIdPhoto: async (applicantId?: string, file?: File, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        uploadIdPhoto: async (applicantId?: string, file?: FileTransfer, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/id_photos`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12400,7 +12425,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             }
     
             if (file !== undefined) { 
-                localVarFormParams.append('file', file as any);
+                localVarFormParams.append('file', file.buffer as any, file.filename);
             }
     
     
@@ -12420,12 +12445,12 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * You can upload live photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. Live photos are validated at the point of upload to check that they contain exactly one face. This validation can be disabled by setting the advanced_validation argument to false. 
          * @summary Upload live photo
          * @param {string} [applicantId] The ID of the applicant whose live photo is being uploaded.
-         * @param {File} [file] The file to be uploaded.
+         * @param {FileTransfer} [file] The file to be uploaded.
          * @param {boolean} [advancedValidation] Validates that the live photo contains exactly one face.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadLivePhoto: async (applicantId?: string, file?: File, advancedValidation?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        uploadLivePhoto: async (applicantId?: string, file?: FileTransfer, advancedValidation?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/live_photos`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12448,7 +12473,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             }
     
             if (file !== undefined) { 
-                localVarFormParams.append('file', file as any);
+                localVarFormParams.append('file', file.buffer as any, file.filename);
             }
     
             if (advancedValidation !== undefined) { 
@@ -12630,7 +12655,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async downloadCheck(checkId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<File>> {
+        async downloadCheck(checkId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.downloadCheck(checkId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadCheck']?.[localVarOperationServerIndex]?.url;
@@ -12643,7 +12668,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async downloadDocument(documentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<File>> {
+        async downloadDocument(documentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.downloadDocument(documentId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadDocument']?.[localVarOperationServerIndex]?.url;
@@ -12656,7 +12681,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async downloadDocumentVideo(documentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<File>> {
+        async downloadDocumentVideo(documentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.downloadDocumentVideo(documentId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadDocumentVideo']?.[localVarOperationServerIndex]?.url;
@@ -12669,7 +12694,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async downloadIdPhoto(idPhotoId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<File>> {
+        async downloadIdPhoto(idPhotoId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.downloadIdPhoto(idPhotoId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadIdPhoto']?.[localVarOperationServerIndex]?.url;
@@ -12682,7 +12707,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async downloadLivePhoto(livePhotoId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<File>> {
+        async downloadLivePhoto(livePhotoId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.downloadLivePhoto(livePhotoId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadLivePhoto']?.[localVarOperationServerIndex]?.url;
@@ -12695,7 +12720,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async downloadLiveVideo(liveVideoId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<File>> {
+        async downloadLiveVideo(liveVideoId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.downloadLiveVideo(liveVideoId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadLiveVideo']?.[localVarOperationServerIndex]?.url;
@@ -12708,7 +12733,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async downloadLiveVideoFrame(liveVideoId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<File>> {
+        async downloadLiveVideoFrame(liveVideoId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.downloadLiveVideoFrame(liveVideoId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadLiveVideoFrame']?.[localVarOperationServerIndex]?.url;
@@ -12721,7 +12746,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async downloadMotionCapture(motionCaptureId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<File>> {
+        async downloadMotionCapture(motionCaptureId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.downloadMotionCapture(motionCaptureId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadMotionCapture']?.[localVarOperationServerIndex]?.url;
@@ -12734,7 +12759,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async downloadMotionCaptureFrame(motionCaptureId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<File>> {
+        async downloadMotionCaptureFrame(motionCaptureId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.downloadMotionCaptureFrame(motionCaptureId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadMotionCaptureFrame']?.[localVarOperationServerIndex]?.url;
@@ -12747,7 +12772,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async downloadSignedEvidenceFile(workflowRunId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<File>> {
+        async downloadSignedEvidenceFile(workflowRunId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.downloadSignedEvidenceFile(workflowRunId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadSignedEvidenceFile']?.[localVarOperationServerIndex]?.url;
@@ -12905,7 +12930,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async findTimelineFile(workflowRunId: string, timelineFileId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<File>> {
+        async findTimelineFile(workflowRunId: string, timelineFileId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.findTimelineFile(workflowRunId, timelineFileId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.findTimelineFile']?.[localVarOperationServerIndex]?.url;
@@ -13288,7 +13313,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @summary Upload a document
          * @param {string} type The type of document
          * @param {string} applicantId The ID of the applicant whose document is being uploaded.
-         * @param {File} file The file to be uploaded.
+         * @param {FileTransfer} file The file to be uploaded.
          * @param {UploadDocumentFileTypeEnum} [fileType] The file type of the uploaded file
          * @param {UploadDocumentSideEnum} [side] The side of the document, if applicable. The possible values are front and back
          * @param {CountryCodes} [issuingCountry] The issuing country of the document, a 3-letter ISO code.
@@ -13297,7 +13322,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadDocument(type: string, applicantId: string, file: File, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Document>> {
+        async uploadDocument(type: string, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Document>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadDocument(type, applicantId, file, fileType, side, issuingCountry, validateImageQuality, location, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.uploadDocument']?.[localVarOperationServerIndex]?.url;
@@ -13307,11 +13332,11 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * You can upload ID photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. 
          * @summary Upload ID photo
          * @param {string} [applicantId] The ID of the applicant whose ID photo is being uploaded.
-         * @param {File} [file] The file to be uploaded.
+         * @param {FileTransfer} [file] The file to be uploaded.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadIdPhoto(applicantId?: string, file?: File, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IdPhoto>> {
+        async uploadIdPhoto(applicantId?: string, file?: FileTransfer, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IdPhoto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadIdPhoto(applicantId, file, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.uploadIdPhoto']?.[localVarOperationServerIndex]?.url;
@@ -13321,12 +13346,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * You can upload live photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. Live photos are validated at the point of upload to check that they contain exactly one face. This validation can be disabled by setting the advanced_validation argument to false. 
          * @summary Upload live photo
          * @param {string} [applicantId] The ID of the applicant whose live photo is being uploaded.
-         * @param {File} [file] The file to be uploaded.
+         * @param {FileTransfer} [file] The file to be uploaded.
          * @param {boolean} [advancedValidation] Validates that the live photo contains exactly one face.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadLivePhoto(applicantId?: string, file?: File, advancedValidation?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LivePhoto>> {
+        async uploadLivePhoto(applicantId?: string, file?: FileTransfer, advancedValidation?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LivePhoto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadLivePhoto(applicantId, file, advancedValidation, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.uploadLivePhoto']?.[localVarOperationServerIndex]?.url;
@@ -13461,7 +13486,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadCheck(checkId: string, options?: any): AxiosPromise<File> {
+        downloadCheck(checkId: string, options?: any): AxiosPromise<FileTransfer> {
             return localVarFp.downloadCheck(checkId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13471,7 +13496,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadDocument(documentId: string, options?: any): AxiosPromise<File> {
+        downloadDocument(documentId: string, options?: any): AxiosPromise<FileTransfer> {
             return localVarFp.downloadDocument(documentId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13481,7 +13506,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadDocumentVideo(documentId: string, options?: any): AxiosPromise<File> {
+        downloadDocumentVideo(documentId: string, options?: any): AxiosPromise<FileTransfer> {
             return localVarFp.downloadDocumentVideo(documentId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13491,7 +13516,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadIdPhoto(idPhotoId: string, options?: any): AxiosPromise<File> {
+        downloadIdPhoto(idPhotoId: string, options?: any): AxiosPromise<FileTransfer> {
             return localVarFp.downloadIdPhoto(idPhotoId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13501,7 +13526,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadLivePhoto(livePhotoId: string, options?: any): AxiosPromise<File> {
+        downloadLivePhoto(livePhotoId: string, options?: any): AxiosPromise<FileTransfer> {
             return localVarFp.downloadLivePhoto(livePhotoId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13511,7 +13536,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadLiveVideo(liveVideoId: string, options?: any): AxiosPromise<File> {
+        downloadLiveVideo(liveVideoId: string, options?: any): AxiosPromise<FileTransfer> {
             return localVarFp.downloadLiveVideo(liveVideoId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13521,7 +13546,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadLiveVideoFrame(liveVideoId: string, options?: any): AxiosPromise<File> {
+        downloadLiveVideoFrame(liveVideoId: string, options?: any): AxiosPromise<FileTransfer> {
             return localVarFp.downloadLiveVideoFrame(liveVideoId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13531,7 +13556,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadMotionCapture(motionCaptureId: string, options?: any): AxiosPromise<File> {
+        downloadMotionCapture(motionCaptureId: string, options?: any): AxiosPromise<FileTransfer> {
             return localVarFp.downloadMotionCapture(motionCaptureId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13541,7 +13566,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadMotionCaptureFrame(motionCaptureId: string, options?: any): AxiosPromise<File> {
+        downloadMotionCaptureFrame(motionCaptureId: string, options?: any): AxiosPromise<FileTransfer> {
             return localVarFp.downloadMotionCaptureFrame(motionCaptureId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13551,7 +13576,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadSignedEvidenceFile(workflowRunId: string, options?: any): AxiosPromise<File> {
+        downloadSignedEvidenceFile(workflowRunId: string, options?: any): AxiosPromise<FileTransfer> {
             return localVarFp.downloadSignedEvidenceFile(workflowRunId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13673,7 +13698,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findTimelineFile(workflowRunId: string, timelineFileId: string, options?: any): AxiosPromise<File> {
+        findTimelineFile(workflowRunId: string, timelineFileId: string, options?: any): AxiosPromise<FileTransfer> {
             return localVarFp.findTimelineFile(workflowRunId, timelineFileId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -13969,7 +13994,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @summary Upload a document
          * @param {string} type The type of document
          * @param {string} applicantId The ID of the applicant whose document is being uploaded.
-         * @param {File} file The file to be uploaded.
+         * @param {FileTransfer} file The file to be uploaded.
          * @param {UploadDocumentFileTypeEnum} [fileType] The file type of the uploaded file
          * @param {UploadDocumentSideEnum} [side] The side of the document, if applicable. The possible values are front and back
          * @param {CountryCodes} [issuingCountry] The issuing country of the document, a 3-letter ISO code.
@@ -13978,30 +14003,30 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadDocument(type: string, applicantId: string, file: File, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: any): AxiosPromise<Document> {
+        uploadDocument(type: string, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: any): AxiosPromise<Document> {
             return localVarFp.uploadDocument(type, applicantId, file, fileType, side, issuingCountry, validateImageQuality, location, options).then((request) => request(axios, basePath));
         },
         /**
          * You can upload ID photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. 
          * @summary Upload ID photo
          * @param {string} [applicantId] The ID of the applicant whose ID photo is being uploaded.
-         * @param {File} [file] The file to be uploaded.
+         * @param {FileTransfer} [file] The file to be uploaded.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadIdPhoto(applicantId?: string, file?: File, options?: any): AxiosPromise<IdPhoto> {
+        uploadIdPhoto(applicantId?: string, file?: FileTransfer, options?: any): AxiosPromise<IdPhoto> {
             return localVarFp.uploadIdPhoto(applicantId, file, options).then((request) => request(axios, basePath));
         },
         /**
          * You can upload live photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. Live photos are validated at the point of upload to check that they contain exactly one face. This validation can be disabled by setting the advanced_validation argument to false. 
          * @summary Upload live photo
          * @param {string} [applicantId] The ID of the applicant whose live photo is being uploaded.
-         * @param {File} [file] The file to be uploaded.
+         * @param {FileTransfer} [file] The file to be uploaded.
          * @param {boolean} [advancedValidation] Validates that the live photo contains exactly one face.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadLivePhoto(applicantId?: string, file?: File, advancedValidation?: boolean, options?: any): AxiosPromise<LivePhoto> {
+        uploadLivePhoto(applicantId?: string, file?: FileTransfer, advancedValidation?: boolean, options?: any): AxiosPromise<LivePhoto> {
             return localVarFp.uploadLivePhoto(applicantId, file, advancedValidation, options).then((request) => request(axios, basePath));
         },
     };
@@ -14763,7 +14788,7 @@ export class DefaultApi extends BaseAPI {
      * @summary Upload a document
      * @param {string} type The type of document
      * @param {string} applicantId The ID of the applicant whose document is being uploaded.
-     * @param {File} file The file to be uploaded.
+     * @param {FileTransfer} file The file to be uploaded.
      * @param {UploadDocumentFileTypeEnum} [fileType] The file type of the uploaded file
      * @param {UploadDocumentSideEnum} [side] The side of the document, if applicable. The possible values are front and back
      * @param {CountryCodes} [issuingCountry] The issuing country of the document, a 3-letter ISO code.
@@ -14773,7 +14798,7 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public uploadDocument(type: string, applicantId: string, file: File, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig) {
+    public uploadDocument(type: string, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).uploadDocument(type, applicantId, file, fileType, side, issuingCountry, validateImageQuality, location, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14781,12 +14806,12 @@ export class DefaultApi extends BaseAPI {
      * You can upload ID photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. 
      * @summary Upload ID photo
      * @param {string} [applicantId] The ID of the applicant whose ID photo is being uploaded.
-     * @param {File} [file] The file to be uploaded.
+     * @param {FileTransfer} [file] The file to be uploaded.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public uploadIdPhoto(applicantId?: string, file?: File, options?: RawAxiosRequestConfig) {
+    public uploadIdPhoto(applicantId?: string, file?: FileTransfer, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).uploadIdPhoto(applicantId, file, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -14794,13 +14819,13 @@ export class DefaultApi extends BaseAPI {
      * You can upload live photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. Live photos are validated at the point of upload to check that they contain exactly one face. This validation can be disabled by setting the advanced_validation argument to false. 
      * @summary Upload live photo
      * @param {string} [applicantId] The ID of the applicant whose live photo is being uploaded.
-     * @param {File} [file] The file to be uploaded.
+     * @param {FileTransfer} [file] The file to be uploaded.
      * @param {boolean} [advancedValidation] Validates that the live photo contains exactly one face.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public uploadLivePhoto(applicantId?: string, file?: File, advancedValidation?: boolean, options?: RawAxiosRequestConfig) {
+    public uploadLivePhoto(applicantId?: string, file?: FileTransfer, advancedValidation?: boolean, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).uploadLivePhoto(applicantId, file, advancedValidation, options).then((request) => request(this.axios, this.basePath));
     }
 }
