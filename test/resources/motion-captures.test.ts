@@ -38,6 +38,7 @@ it("downloads a motion capture", async () => {
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toContain("video/mp4");
+  expect(file.data.filename).toBeTruthy();
 });
 
 it("downloads a motion capture frame", async () => {
@@ -45,7 +46,8 @@ it("downloads a motion capture frame", async () => {
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toContain("image/jpeg");
-  expect(file.data.slice(0, 10)).toContain("JFIF");
+  expect(file.data.buffer.slice(0, 10)).toContain("JFIF");
+  expect(file.data.filename).toBeTruthy();
 });
 
 it("finds a motion capture", async () => {

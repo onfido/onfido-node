@@ -42,7 +42,8 @@ it("downloads a document", async () => {
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toEqual("image/png");
-  expect(file.data.slice(1, 4)).toEqual("PNG");
+  expect(file.data.buffer.slice(1, 4)).toEqual("PNG");
+  expect(file.data.filename).toBeTruthy();
 });
 
 it("finds a document", async () => {
