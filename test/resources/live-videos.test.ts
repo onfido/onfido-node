@@ -1,4 +1,4 @@
-import { LiveVideo } from "onfido-node";
+import { LiveVideo, FileTransfer } from "onfido-node";
 
 import {
   onfido,
@@ -46,11 +46,12 @@ it("downloads a live video", async () => {
 
 it("downloads a live video frame", async () => {
   const file = await onfido.downloadLiveVideoFrame(sampleLiveVideoId2);
+  const file_transfer = file.data as FileTransfer;
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toEqual("image/jpeg");
-  expect(file.data.buffer.slice(0, 10)).toContain("JFIF");
-  expect(file.data.filename).toBeTruthy();
+  expect(file_transfer.buffer.slice(0, 10)).toContain("JFIF");
+  expect(file_transfer.filename).toBeTruthy();
 });
 
 it("finds a live video", async () => {

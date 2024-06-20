@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { Applicant, WorkflowRun } from "onfido-node";
+import { Applicant, WorkflowRun, FileTransfer } from "onfido-node";
 
 import {
   exampleWorkflowRun,

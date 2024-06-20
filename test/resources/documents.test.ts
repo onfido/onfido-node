@@ -1,4 +1,4 @@
-import { Applicant, Document } from "onfido-node";
+import { Applicant, Document, FileTransfer } from "onfido-node";
 
 import {
   onfido,
@@ -39,11 +39,12 @@ it("uploads a document", async () => {
 
 it("downloads a document", async () => {
   const file = await onfido.downloadDocument(document.id);
+  const file_transfer = file.data as FileTransfer;
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toEqual("image/png");
-  expect(file.data.buffer.slice(1, 4)).toEqual("PNG");
-  expect(file.data.filename).toBeTruthy();
+  expect(file_transfer.buffer.slice(1, 4)).toEqual("PNG");
+  expect(file_transfer.filename).toBeTruthy();
 });
 
 it("finds a document", async () => {

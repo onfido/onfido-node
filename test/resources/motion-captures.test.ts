@@ -1,4 +1,4 @@
-import { MotionCapture } from "onfido-node";
+import { MotionCapture, FileTransfer } from "onfido-node";
 
 import {
   getExpectedObject,
@@ -43,11 +43,12 @@ it("downloads a motion capture", async () => {
 
 it("downloads a motion capture frame", async () => {
   const file = await onfido.downloadMotionCaptureFrame(sampleId1);
+  const file_transfer = file.data as FileTransfer;
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toContain("image/jpeg");
-  expect(file.data.buffer.slice(0, 10)).toContain("JFIF");
-  expect(file.data.filename).toBeTruthy();
+  expect(file_transfer.buffer.slice(0, 10)).toContain("JFIF");
+  expect(file_transfer.filename).toBeTruthy();
 });
 
 it("finds a motion capture", async () => {

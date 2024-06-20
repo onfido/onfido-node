@@ -1,4 +1,4 @@
-import { Applicant, Check, Document, Webhook } from "onfido-node";
+import { Applicant, Check, Document, Webhook, FileTransfer } from "onfido-node";
 
 import {
   onfido,
@@ -150,9 +150,10 @@ it("downloads a check", async () => {
   });
 
   const file = await onfido.downloadCheck(check.data.id);
+  const file_transfer = file.data as FileTransfer;
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toEqual("application/pdf");
-  expect(file.data.buffer.slice(0, 5)).toEqual("%PDF-");
-  expect(file.data.filename).toBeTruthy();
+  expect(file_transfer.buffer.slice(0, 5)).toEqual("%PDF-");
+  expect(file_transfer.filename).toBeTruthy();
 });

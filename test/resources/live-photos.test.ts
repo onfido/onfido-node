@@ -1,4 +1,4 @@
-import { Applicant, LivePhoto } from "onfido-node";
+import { Applicant, LivePhoto, FileTransfer } from "onfido-node";
 
 import {
   onfido,
@@ -40,6 +40,7 @@ it("uploads a live photo", async () => {
   const photo = await uploadLivePhoto(applicant);
 
   expect(photo.data).toEqual(getExpectedLivePhoto(exampleLivePhoto));
+  console.log(applicant.id);
 });
 
 it("uploads a live photo without advanced validation", async () => {
@@ -52,10 +53,11 @@ it("downloads a live photo", async () => {
   const photo = await uploadLivePhoto(applicant);
 
   const file = await onfido.downloadLivePhoto(photo.data.id);
+  const file_transfer = file.data as FileTransfer;
 
   expect(file.status).toEqual(200);
-  expect(file.data.buffer.slice(1, 4)).toEqual("PNG");
-  expect(file.data.filename).toEqual("sample_photo.png");
+  expect(file_transfer.buffer.slice(1, 4)).toEqual("PNG");
+  expect(file_transfer.filename).toEqual("sample_photo.png");
 });
 
 it("finds a live photo", async () => {

@@ -2,7 +2,8 @@ import {
   Applicant,
   TimelineFileReference,
   WorkflowRun,
-  WorkflowRunBuilder
+  WorkflowRunBuilder,
+  FileTransfer
 } from "onfido-node";
 
 import { exampleWorkflowRun } from "../test-examples";
@@ -104,10 +105,11 @@ it("downloads a signed evidence file", async () => {
   const workflowRun = await createWorkflowRun(applicant, workflow_id);
 
   const file = await onfido.downloadSignedEvidenceFile(workflowRun.data.id);
+  const file_transfer = file.data as FileTransfer;
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toEqual("application/pdf");
-  expect(file.data.buffer.slice(0, 5)).toEqual("%PDF-");
+  expect(file_transfer.buffer.slice(0, 5)).toEqual("%PDF-");
 });
 
 it("generates a timeline file", async () => {
@@ -144,8 +146,9 @@ it("downloads a timeline file", async () => {
     workflowRunId,
     timelineFileId
   ]);
+  const file_transfer = file.data as FileTransfer;
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toEqual("binary/octet-stream");
-  expect(file.data.buffer.slice(0, 5)).toEqual("%PDF-");
+  expect(file_transfer.buffer.slice(0, 5)).toEqual("%PDF-");
 }, 30000);

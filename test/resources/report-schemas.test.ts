@@ -3,7 +3,8 @@ import {
   Check,
   Document,
   DocumentReport,
-  Report
+  Report,
+  FileTransfer
 } from "onfido-node";
 import {
   exampleDocumentReport,

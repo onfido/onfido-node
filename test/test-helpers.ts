@@ -90,9 +90,11 @@ export async function uploadDocument(
   applicant: Applicant,
   documentType = "driving_licence"
 ) {
-  let fileTransfer = new FileTransfer("test/media/sample_driving_licence.png");
+  let readStream: any = createReadStream(
+    "test/media/sample_driving_licence.png"
+  );
 
-  return onfido.uploadDocument(documentType, applicant.id, fileTransfer);
+  return onfido.uploadDocument(documentType, applicant.id, readStream);
 }
 
 export async function uploadLivePhoto(
@@ -101,13 +103,17 @@ export async function uploadLivePhoto(
 ) {
   let buffer = readFileSync("test/media/sample_photo.png");
 
-  return onfido.uploadLivePhoto(applicant.id, new FileTransfer(buffer, "sample_photo.png"), advancedValidation);
+  return onfido.uploadLivePhoto(
+    applicant.id,
+    new FileTransfer(buffer, "sample_photo.png"),
+    advancedValidation
+  );
 }
 
 export async function uploadIdPhoto(applicant: Applicant) {
-  let fileTransfer = new FileTransfer("test/media/sample_photo.png");
+  let readStream: any = createReadStream("test/media/sample_photo.png");
 
-  return onfido.uploadIdPhoto(applicant.id, fileTransfer);
+  return onfido.uploadIdPhoto(applicant.id, readStream);
 }
 
 export async function createWebhook() {
