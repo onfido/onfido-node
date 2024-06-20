@@ -35,10 +35,11 @@ function getExpectedMotionCapture(
 
 it("downloads a motion capture", async () => {
   const file = await onfido.downloadMotionCapture(sampleId1);
+  const file_transfer = file.data as FileTransfer;
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toContain("video/mp4");
-  expect(file.data.filename).toBeTruthy();
+  expect(file_transfer.filename).toBeTruthy();
 });
 
 it("downloads a motion capture frame", async () => {

@@ -38,10 +38,11 @@ function getExpectedLiveVideo(
 
 it("downloads a live video", async () => {
   const file = await onfido.downloadLiveVideo(sampleLiveVideoId2);
+  const file_transfer = file.data as FileTransfer;
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toEqual("video/quicktime");
-  expect(file.data.filename).toEqual("video.mov");
+  expect(file_transfer.filename).toEqual("video.mov");
 });
 
 it("downloads a live video frame", async () => {

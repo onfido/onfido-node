@@ -1,4 +1,4 @@
-import { Applicant, IdPhoto } from "onfido-node";
+import { Applicant, IdPhoto, FileTransfer } from "onfido-node";
 
 import {
   onfido,
