@@ -153,5 +153,6 @@ it("downloads a check", async () => {
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toEqual("application/pdf");
-  expect(file.data.slice(0, 5)).toEqual("%PDF-");
+  expect(file.data.buffer.slice(0, 5)).toEqual("%PDF-");
+  expect(file.data.filename).toBeTruthy();
 });

@@ -41,6 +41,7 @@ it("downloads a live video", async () => {
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toEqual("video/quicktime");
+  expect(file.data.filename).toEqual("video.mov");
 });
 
 it("downloads a live video frame", async () => {
@@ -48,7 +49,8 @@ it("downloads a live video frame", async () => {
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toEqual("image/jpeg");
-  expect(file.data.slice(0, 10)).toContain("JFIF");
+  expect(file.data.buffer.slice(0, 10)).toContain("JFIF");
+  expect(file.data.filename).toBeTruthy();
 });
 
 it("finds a live video", async () => {
