@@ -2881,6 +2881,12 @@ export interface DocumentProperties {
     'date_of_expiry'?: string;
     /**
      * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'personal_number'?: string;
+    /**
+     * 
      * @type {Array<DocumentPropertiesDocumentNumbersInner>}
      * @memberof DocumentProperties
      */
@@ -2995,10 +3001,100 @@ export interface DocumentProperties {
     'issuing_authority'?: string;
     /**
      * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'remarks'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'civil_state'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'expatriation'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'father_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'mother_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'religion'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'type_of_permit'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'version_number'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'document_subtype'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'profession'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'security_document_number'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'tax_number'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'nist_identity_evidence_strength'?: DocumentPropertiesNistIdentityEvidenceStrengthEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'has_issuance_confirmation'?: DocumentPropertiesHasIssuanceConfirmationEnum;
+    /**
+     * 
      * @type {boolean}
      * @memberof DocumentProperties
      */
     'real_id_compliance'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'security_tier'?: DocumentPropertiesSecurityTierEnum;
     /**
      * 
      * @type {DocumentPropertiesAddressLines}
@@ -3036,6 +3132,38 @@ export interface DocumentProperties {
      */
     'extracted_data'?: DocumentPropertiesExtractedData;
 }
+
+export const DocumentPropertiesNistIdentityEvidenceStrengthEnum = {
+    Superior: 'superior',
+    Strong: 'strong',
+    Fair: 'fair',
+    Weak: 'weak',
+    Unacceptable: 'unacceptable',
+    UnspecifiedIdentityEvidenceStrength: 'unspecified_identity_evidence_strength',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type DocumentPropertiesNistIdentityEvidenceStrengthEnum = typeof DocumentPropertiesNistIdentityEvidenceStrengthEnum[keyof typeof DocumentPropertiesNistIdentityEvidenceStrengthEnum];
+export const DocumentPropertiesHasIssuanceConfirmationEnum = {
+    True: 'true',
+    False: 'false',
+    Unspecified: 'unspecified',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type DocumentPropertiesHasIssuanceConfirmationEnum = typeof DocumentPropertiesHasIssuanceConfirmationEnum[keyof typeof DocumentPropertiesHasIssuanceConfirmationEnum];
+export const DocumentPropertiesSecurityTierEnum = {
+    Tier1: 'tier_1',
+    Tier2: 'tier_2',
+    Tier3: 'tier_3',
+    Tier4: 'tier_4',
+    Tier5: 'tier_5',
+    UnspecifiedSecurityTier: 'unspecified_security_tier',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type DocumentPropertiesSecurityTierEnum = typeof DocumentPropertiesSecurityTierEnum[keyof typeof DocumentPropertiesSecurityTierEnum];
+
 /**
  * 
  * @export
@@ -4017,6 +4145,12 @@ export interface DocumentWithDriverVerificationReportAllOfProperties {
     'date_of_expiry'?: string;
     /**
      * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'personal_number'?: string;
+    /**
+     * 
      * @type {Array<DocumentPropertiesDocumentNumbersInner>}
      * @memberof DocumentWithDriverVerificationReportAllOfProperties
      */
@@ -4131,10 +4265,100 @@ export interface DocumentWithDriverVerificationReportAllOfProperties {
     'issuing_authority'?: string;
     /**
      * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'remarks'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'civil_state'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'expatriation'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'father_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'mother_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'religion'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'type_of_permit'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'version_number'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'document_subtype'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'profession'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'security_document_number'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'tax_number'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'nist_identity_evidence_strength'?: DocumentWithDriverVerificationReportAllOfPropertiesNistIdentityEvidenceStrengthEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'has_issuance_confirmation'?: DocumentWithDriverVerificationReportAllOfPropertiesHasIssuanceConfirmationEnum;
+    /**
+     * 
      * @type {boolean}
      * @memberof DocumentWithDriverVerificationReportAllOfProperties
      */
     'real_id_compliance'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'security_tier'?: DocumentWithDriverVerificationReportAllOfPropertiesSecurityTierEnum;
     /**
      * 
      * @type {DocumentPropertiesAddressLines}
@@ -4208,6 +4432,38 @@ export interface DocumentWithDriverVerificationReportAllOfProperties {
      */
     'passenger_vehicle'?: DocumentWithDriverVerificationReportAllOfPropertiesAllOfPassengerVehicle;
 }
+
+export const DocumentWithDriverVerificationReportAllOfPropertiesNistIdentityEvidenceStrengthEnum = {
+    Superior: 'superior',
+    Strong: 'strong',
+    Fair: 'fair',
+    Weak: 'weak',
+    Unacceptable: 'unacceptable',
+    UnspecifiedIdentityEvidenceStrength: 'unspecified_identity_evidence_strength',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type DocumentWithDriverVerificationReportAllOfPropertiesNistIdentityEvidenceStrengthEnum = typeof DocumentWithDriverVerificationReportAllOfPropertiesNistIdentityEvidenceStrengthEnum[keyof typeof DocumentWithDriverVerificationReportAllOfPropertiesNistIdentityEvidenceStrengthEnum];
+export const DocumentWithDriverVerificationReportAllOfPropertiesHasIssuanceConfirmationEnum = {
+    True: 'true',
+    False: 'false',
+    Unspecified: 'unspecified',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type DocumentWithDriverVerificationReportAllOfPropertiesHasIssuanceConfirmationEnum = typeof DocumentWithDriverVerificationReportAllOfPropertiesHasIssuanceConfirmationEnum[keyof typeof DocumentWithDriverVerificationReportAllOfPropertiesHasIssuanceConfirmationEnum];
+export const DocumentWithDriverVerificationReportAllOfPropertiesSecurityTierEnum = {
+    Tier1: 'tier_1',
+    Tier2: 'tier_2',
+    Tier3: 'tier_3',
+    Tier4: 'tier_4',
+    Tier5: 'tier_5',
+    UnspecifiedSecurityTier: 'unspecified_security_tier',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type DocumentWithDriverVerificationReportAllOfPropertiesSecurityTierEnum = typeof DocumentWithDriverVerificationReportAllOfPropertiesSecurityTierEnum[keyof typeof DocumentWithDriverVerificationReportAllOfPropertiesSecurityTierEnum];
+
 /**
  * Normalised data for passenger cars
  * @export
