@@ -8,6 +8,9 @@ This library is only for use on the backend, as it uses Onfido API tokens which 
 
 This version uses Onfido API v3.6. Refer to our [API versioning guide](https://developers.onfido.com/guide/api-versioning-policy#client-libraries) for details of which client library versions use which versions of the API.
 
+[![npm version](https://badge.fury.io/js/@onfido%2Fapi.svg)](https://badge.fury.io/js/@onfido%2Fapi)
+![Build Status](https://github.com/onfido/onfido-node/actions/workflows/node.yml/badge.svg)
+
 ## Installation & Usage
 
 ### Installation

@@ -55,6 +55,7 @@ it("schema of document report should be valid", async () => {
     document_report.breakdown.data_comparison.breakdown.issuing_country.result
   ).toEqual("clear");
   expect(document_report.properties.date_of_birth).toEqual("1990-01-01");
+  expect(document_report.properties.document_subtype).toBeUndefined();
 }, 30000);
 
 it("schema of facial similarity photo report should be valid", async () => {
