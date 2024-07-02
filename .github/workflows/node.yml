@@ -79,5 +79,3 @@ jobs:
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
-      - name: Update and commit CHANGELOG.md
-        uses: onfido/onfido-actions/update-changelog@main
