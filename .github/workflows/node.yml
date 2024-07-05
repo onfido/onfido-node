@@ -56,7 +56,7 @@ jobs:
           ONFIDO_SAMPLE_MOTION_ID_1: ${{ secrets.ONFIDO_SAMPLE_MOTION_ID_1 }}
           ONFIDO_SAMPLE_MOTION_ID_2: ${{ secrets.ONFIDO_SAMPLE_MOTION_ID_2 }}
 
-  publish-npm:
+  publish:
     runs-on: ubuntu-latest
     needs: integration-tests
     environment: delivery
@@ -65,7 +65,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_ACTION_ACCESS_TOKEN }}
-          ref: ${{ github.ref_name }}
+          ref: master
       - uses: actions/setup-node@v4
         with:
           node-version: 16.x
