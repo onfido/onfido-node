@@ -2908,6 +2908,18 @@ export interface DocumentProperties {
      * @type {string}
      * @memberof DocumentProperties
      */
+    'middle_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
+    'last_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
     'gender'?: string;
     /**
      * 
@@ -2915,12 +2927,6 @@ export interface DocumentProperties {
      * @memberof DocumentProperties
      */
     'issuing_country'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
-    'last_name'?: string;
     /**
      * 
      * @type {string}
@@ -4172,6 +4178,18 @@ export interface DocumentWithDriverVerificationReportAllOfProperties {
      * @type {string}
      * @memberof DocumentWithDriverVerificationReportAllOfProperties
      */
+    'middle_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'last_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
     'gender'?: string;
     /**
      * 
@@ -4179,12 +4197,6 @@ export interface DocumentWithDriverVerificationReportAllOfProperties {
      * @memberof DocumentWithDriverVerificationReportAllOfProperties
      */
     'issuing_country'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
-    'last_name'?: string;
     /**
      * 
      * @type {string}
@@ -10957,6 +10969,53 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Retrieves the signed document or application form depending on the file_id provided. 
+         * @summary Retrieves the signed document or application form
+         * @param {string} workflowRunId The unique identifier of the Workflow Run for which you want to retrieve the signed document.
+         * @param {string} fileId The unique identifier of the file which you want to retrieve.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadQesDocument: async (workflowRunId: string, fileId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'workflowRunId' is not null or undefined
+            assertParamExists('downloadQesDocument', 'workflowRunId', workflowRunId)
+            // verify required parameter 'fileId' is not null or undefined
+            assertParamExists('downloadQesDocument', 'fileId', fileId)
+            const localVarPath = `/qualified_electronic_signature/documents`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (workflowRunId !== undefined) {
+                localVarQueryParameter['workflow_run_id'] = workflowRunId;
+            }
+
+            if (fileId !== undefined) {
+                localVarQueryParameter['file_id'] = fileId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Retrieves the signed evidence file for the designated Workflow Run 
          * @summary Retrieve Workflow Run Evidence Summary File
          * @param {string} workflowRunId Workflow Run ID
@@ -13022,6 +13081,20 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Retrieves the signed document or application form depending on the file_id provided. 
+         * @summary Retrieves the signed document or application form
+         * @param {string} workflowRunId The unique identifier of the Workflow Run for which you want to retrieve the signed document.
+         * @param {string} fileId The unique identifier of the file which you want to retrieve.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async downloadQesDocument(workflowRunId: string, fileId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.downloadQesDocument(workflowRunId, fileId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadQesDocument']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Retrieves the signed evidence file for the designated Workflow Run 
          * @summary Retrieve Workflow Run Evidence Summary File
          * @param {string} workflowRunId Workflow Run ID
@@ -13826,6 +13899,17 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.downloadMotionCaptureFrame(motionCaptureId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves the signed document or application form depending on the file_id provided. 
+         * @summary Retrieves the signed document or application form
+         * @param {string} workflowRunId The unique identifier of the Workflow Run for which you want to retrieve the signed document.
+         * @param {string} fileId The unique identifier of the file which you want to retrieve.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadQesDocument(workflowRunId: string, fileId: string, options?: any): AxiosPromise<FileTransfer> {
+            return localVarFp.downloadQesDocument(workflowRunId, fileId, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Retrieves the signed evidence file for the designated Workflow Run 
          * @summary Retrieve Workflow Run Evidence Summary File
          * @param {string} workflowRunId Workflow Run ID
@@ -14535,6 +14619,19 @@ export class DefaultApi extends BaseAPI {
      */
     public downloadMotionCaptureFrame(motionCaptureId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadMotionCaptureFrame(motionCaptureId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves the signed document or application form depending on the file_id provided. 
+     * @summary Retrieves the signed document or application form
+     * @param {string} workflowRunId The unique identifier of the Workflow Run for which you want to retrieve the signed document.
+     * @param {string} fileId The unique identifier of the file which you want to retrieve.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public downloadQesDocument(workflowRunId: string, fileId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).downloadQesDocument(workflowRunId, fileId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
