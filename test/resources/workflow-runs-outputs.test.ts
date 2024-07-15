@@ -26,6 +26,7 @@ function getExpectedWorkflowRun(
   return getExpectedObject(exampleWorkflowRun, {
     applicant_id: expect.stringMatching(/^[0-9a-z-]+$/),
     id: expect.stringMatching(/^[0-9a-z-]+$/),
+    customer_user_id: expect.anything(),
     workflow_id: expect.stringMatching(/^[0-9a-z-]+$/),
     workflow_version_id: expect.anything(),
     dashboard_url: expect.anything(),
