@@ -17,7 +17,7 @@ export const exampleApplicant: Applicant = {
   href: "/v3.6/applicants/123-abc",
   first_name: "Test",
   last_name: "Applicant",
-  email: null,
+  email: "first.last@gmail.com",
   dob: null,
   id_numbers: [],
   address: {
@@ -34,7 +34,7 @@ export const exampleApplicant: Applicant = {
     line2: null,
     line3: null
   },
-  phone_number: null,
+  phone_number: "351911111111",
   location: {
     ip_address: "127.0.0.1",
     country_of_residence: "GBR"

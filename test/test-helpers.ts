@@ -57,6 +57,8 @@ export async function createApplicant(overrideProperties = {}) {
       ip_address: "127.0.0.1",
       country_of_residence: "GBR"
     },
+    email: "first.last@gmail.com",
+    phone_number: "351911111111",
     ...overrideProperties
   });
 }
@@ -101,7 +103,11 @@ export async function uploadLivePhoto(
 ) {
   let buffer = readFileSync("test/media/sample_photo.png");
 
-  return onfido.uploadLivePhoto(applicant.id, new FileTransfer(buffer, "sample_photo.png"), advancedValidation);
+  return onfido.uploadLivePhoto(
+    applicant.id,
+    new FileTransfer(buffer, "sample_photo.png"),
+    advancedValidation
+  );
 }
 
 export async function uploadIdPhoto(applicant: Applicant) {
@@ -264,6 +270,27 @@ export async function repeatRequestUntilStatusChanges(
   while (instance.status != expectedStatus) {
     if (iteration >= maxRetries) {
       throw new Error("Status did not change in time");
+    }
+    iteration += 1;
+    await sleep(sleepTime);
+
+    instance = (await onfido[fn](...params)).data;
+  }
+  return instance;
+}
+
+export async function repeatRequestUntilTaskOutputChanges(
+  fn: string,
+  params: any[],
+  maxRetries = 10,
+  sleepTime = 1000
+): Promise<any> {
+  let instance = (await onfido[fn](...params)).data;
+  let iteration = 0;
+
+  while (instance["output"] === null) {
+    if (iteration >= maxRetries) {
+      throw new Error("Task output did not change in time");
     }
     iteration += 1;
     await sleep(sleepTime);
