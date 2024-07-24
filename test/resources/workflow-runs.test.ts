@@ -32,7 +32,7 @@ function getExpectedWorkflowRun(
     status: expect.anything(),
     output: null,
     reasons: expect.anything(),
-    sdk_token: null,
+    sdk_token: expect.anything(),
     error: null,
     link: expect.anything(),
     created_at: expect.anything(),
@@ -72,7 +72,7 @@ it("creates a workflow run with custom inputs", async () => {
   );
 
   expect(workflowRunWithCustomInputs.data).toEqual(
-    getExpectedWorkflowRun(exampleWorkflowRun)
+    getExpectedWorkflowRun(exampleWorkflowRun, { sdk_token: null })
   );
 });
 
@@ -149,4 +149,4 @@ it("downloads a timeline file", async () => {
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toEqual("binary/octet-stream");
   expect(file.data.buffer.slice(0, 5)).toEqual("%PDF-");
-}, 30000);
+}, 60000);

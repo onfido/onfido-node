@@ -101,7 +101,7 @@ export class Configuration {
         this.baseOptions = {...{ timeout: 30_000 },
                             ...param.baseOptions,
                             ...{ headers: {...param.baseOptions?.headers,
-                                           ...{'User-Agent': 'onfido-node/3.3.0'}}}};
+                                           ...{'User-Agent': 'onfido-node/3.4.0'}}}};
         this.formDataCtor = param.formDataCtor || require('form-data');         // Injiect form data constructor (if needed)
     }
 

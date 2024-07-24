@@ -9897,6 +9897,12 @@ export interface WorkflowRun {
      */
     'tags'?: Array<string> | null;
     /**
+     * Customer-provided user identifier.
+     * @type {string}
+     * @memberof WorkflowRun
+     */
+    'customer_user_id'?: string;
+    /**
      * 
      * @type {WorkflowRunSharedLink}
      * @memberof WorkflowRun
@@ -9956,6 +9962,12 @@ export interface WorkflowRun {
      * @memberof WorkflowRun
      */
     'error'?: WorkflowRunResponseError;
+    /**
+     * Client token to use when loading this workflow run in the Onfido SDK.
+     * @type {string}
+     * @memberof WorkflowRun
+     */
+    'sdk_token'?: string | null;
 }
 
 export const WorkflowRunStatusEnum = {
@@ -9995,6 +10007,12 @@ export interface WorkflowRunBuilder {
      * @memberof WorkflowRunBuilder
      */
     'tags'?: Array<string> | null;
+    /**
+     * Customer-provided user identifier.
+     * @type {string}
+     * @memberof WorkflowRunBuilder
+     */
+    'customer_user_id'?: string;
     /**
      * 
      * @type {WorkflowRunSharedLink}
@@ -10081,6 +10099,12 @@ export interface WorkflowRunResponse {
      * @memberof WorkflowRunResponse
      */
     'error'?: WorkflowRunResponseError;
+    /**
+     * Client token to use when loading this workflow run in the Onfido SDK.
+     * @type {string}
+     * @memberof WorkflowRunResponse
+     */
+    'sdk_token'?: string | null;
 }
 
 export const WorkflowRunResponseStatusEnum = {
@@ -10139,6 +10163,12 @@ export interface WorkflowRunShared {
      * @memberof WorkflowRunShared
      */
     'tags'?: Array<string> | null;
+    /**
+     * Customer-provided user identifier.
+     * @type {string}
+     * @memberof WorkflowRunShared
+     */
+    'customer_user_id'?: string;
     /**
      * 
      * @type {WorkflowRunSharedLink}
