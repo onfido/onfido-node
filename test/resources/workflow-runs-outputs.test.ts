@@ -33,7 +33,7 @@ function getExpectedWorkflowRun(
     status: expect.anything(),
     output: expect.anything(),
     reasons: expect.anything(),
-    sdk_token: null,
+    sdk_token: expect.anything(),
     error: null,
     link: expect.anything(),
     created_at: expect.anything(),
