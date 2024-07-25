@@ -72,7 +72,7 @@ it("creates a workflow run with custom inputs", async () => {
   );
 
   expect(workflowRunWithCustomInputs.data).toEqual(
-    getExpectedWorkflowRun(exampleWorkflowRun, { sdk_token: null })
+    getExpectedWorkflowRun(exampleWorkflowRun)
   );
 });
 
