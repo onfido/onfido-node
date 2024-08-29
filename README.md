@@ -148,13 +148,13 @@ const blob = download.data.slice();
 
 ### File upload
 
-For some common types of streams, like instances of `fs.ReadStream`, you can provide the stream directly:
+File upload should use the provided FileTransfer class, e.g.:
 
 ```js
 onfido.uploadDocument(
   "passport",
   "<APPLICANT_ID>",
-  fs.createReadStream("path/to/passport.png")
+  new FileTransfer(Buffer.from(document.buffer), document.filename)
 );
 ```
 
