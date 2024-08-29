@@ -148,7 +148,7 @@ const blob = download.data.slice();
 
 ### File upload
 
-Documents uploaded should use the provided FileTransfer class:
+File upload should use the provided FileTransfer class, e.g.:
 
 ```js
 onfido.uploadDocument(
