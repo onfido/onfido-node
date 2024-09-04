@@ -37,6 +37,14 @@ it("uploads a document", async () => {
   expect(document).toEqual(getExpectedDocument(exampleDocument));
 });
 
+it("uploads a document with location", async () => {
+  document = (
+    await uploadDocument(applicant, "driving_licence", {
+      country_of_residence: "FRA"
+    })
+  ).data;
+});
+
 it("downloads a document", async () => {
   const file = await onfido.downloadDocument(document.id);
 

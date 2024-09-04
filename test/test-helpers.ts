@@ -12,6 +12,7 @@ import {
   FacialSimilarityPhotoReport,
   FileTransfer,
   LiveVideo,
+  LocationBuilder,
   MotionCapture,
   Report,
   WatchlistMonitorReportNameEnum,
@@ -90,11 +91,12 @@ export async function cleanUpApplicants() {
 
 export async function uploadDocument(
   applicant: Applicant,
-  documentType = "driving_licence"
+  documentType = "driving_licence",
+  location?: LocationBuilder
 ) {
   let fileTransfer = new FileTransfer("test/media/sample_driving_licence.png");
 
-  return onfido.uploadDocument(documentType, applicant.id, fileTransfer);
+  return onfido.uploadDocument(documentType, applicant.id, fileTransfer, undefined, undefined, undefined, undefined, location);
 }
 
 export async function uploadLivePhoto(
