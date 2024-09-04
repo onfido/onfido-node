@@ -132,15 +132,15 @@ onfido
 
 ### File download
 
-File downloads, for example `onfido.downloadDocument(documentId, {responseType: 'arraybuffer'})`, will return an instance of a specific object for this endpoint.
+File downloads, for example `onfido.downloadDocument(documentId)`, will return an instance of a `FileTransfer` object.
 
-These objects will have a content type, e.g. `image/png`.
+This object will have a content type, e.g. `image/png`.
 
 ```js
 download.headers["content-type"];
 ```
 
-Call `slice()` to get a `Blob` of the download:
+Call `slice()` to get a `Buffer` of the download:
 
 ```js
 const blob = download.data.slice();
@@ -148,7 +148,7 @@ const blob = download.data.slice();
 
 ### File upload
 
-File upload should use the provided FileTransfer class, e.g.:
+File upload should make use of the provided `FileTransfer` class, e.g.:
 
 ```js
 onfido.uploadDocument(
@@ -157,6 +157,8 @@ onfido.uploadDocument(
   new FileTransfer(Buffer.from(document.buffer), document.filename)
 );
 ```
+
+`FileTransfer` object can also be created from an existing file, e.g. `new FileTransfer("path/to/passport.png")`.
 
 ### Webhook event verification
 

@@ -12731,7 +12731,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             }
     
             if (location !== undefined) { 
-                localVarFormParams.append('location', new Blob([JSON.stringify(location)], { type: "application/json", }));
+                localVarFormParams.append('location', JSON.stringify(location));
             }
     
     
