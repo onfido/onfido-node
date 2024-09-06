@@ -1,5 +1,15 @@
 # Changelog
 
+## v3.5.0 6th September 2024
+
+- Release based on Onfido OpenAPI spec version [v3.4.0](https://github.com/onfido/onfido-openapi-spec/releases/tag/v3.4.0):
+- test: fix workflow-runs test
+- docs: update README with the new onfido version
+- Refresh onfido-node after onfido-openapi-spec update (a33e3b2) by @devops-automation-onfido in https://github.com/onfido/onfido-node/pull/144
+  - Fix error raised when uploading media with location in typescript
+  - Fix examples in templated README in typescript
+  - SDK Token: Remove UUID format from application_id
+
 ## v3.4.0 24th July 2024
 
 - Release based on Onfido OpenAPI spec version [v3.3.0](https://github.com/onfido/onfido-openapi-spec/releases/tag/v3.3.0):
