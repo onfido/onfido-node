@@ -8931,10 +8931,278 @@ export interface WatchlistEnhancedBreakdown {
 export interface WatchlistEnhancedProperties {
     /**
      * Returns any matches including, but not limited to, name and date of birth of match, aliases and associates, and relevant events and sources.
-     * @type {Array<string>}
+     * @type {Array<WatchlistEnhancedPropertiesRecordsInner>}
      * @memberof WatchlistEnhancedProperties
      */
-    'records'?: Array<string>;
+    'records'?: Array<WatchlistEnhancedPropertiesRecordsInner>;
+}
+/**
+ * 
+ * @export
+ * @interface WatchlistEnhancedPropertiesRecordsInner
+ */
+export interface WatchlistEnhancedPropertiesRecordsInner {
+    /**
+     * All addresses on file.
+     * @type {Array<WatchlistEnhancedPropertiesRecordsInnerAddressInner>}
+     * @memberof WatchlistEnhancedPropertiesRecordsInner
+     */
+    'address'?: Array<WatchlistEnhancedPropertiesRecordsInnerAddressInner>;
+    /**
+     * Any names that the person is also known as.
+     * @type {Array<WatchlistEnhancedPropertiesRecordsInnerAliasInner>}
+     * @memberof WatchlistEnhancedPropertiesRecordsInner
+     */
+    'alias'?: Array<WatchlistEnhancedPropertiesRecordsInnerAliasInner>;
+    /**
+     * Any linked persons, for example family relatives or business partners.
+     * @type {Array<WatchlistEnhancedPropertiesRecordsInnerAssociateInner>}
+     * @memberof WatchlistEnhancedPropertiesRecordsInner
+     */
+    'associate'?: Array<WatchlistEnhancedPropertiesRecordsInnerAssociateInner>;
+    /**
+     * Information about the person, for example hair color or nationality.
+     * @type {Array<WatchlistEnhancedPropertiesRecordsInnerAttributeInner>}
+     * @memberof WatchlistEnhancedPropertiesRecordsInner
+     */
+    'attribute'?: Array<WatchlistEnhancedPropertiesRecordsInnerAttributeInner>;
+    /**
+     * All the date of births on file.
+     * @type {Array<string>}
+     * @memberof WatchlistEnhancedPropertiesRecordsInner
+     */
+    'date_of_birth'?: Array<string>;
+    /**
+     * Information about events that have occurred to the person, for example deportation or arrest.
+     * @type {Array<WatchlistEnhancedPropertiesRecordsInnerEventInner>}
+     * @memberof WatchlistEnhancedPropertiesRecordsInner
+     */
+    'event'?: Array<WatchlistEnhancedPropertiesRecordsInnerEventInner>;
+    /**
+     * The name on file
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInner
+     */
+    'full_name'?: string;
+    /**
+     * The role, country and date of each position.
+     * @type {Array<string>}
+     * @memberof WatchlistEnhancedPropertiesRecordsInner
+     */
+    'position'?: Array<string>;
+    /**
+     * Details about where the information was obtained.
+     * @type {Array<WatchlistEnhancedPropertiesRecordsInnerSourceInner>}
+     * @memberof WatchlistEnhancedPropertiesRecordsInner
+     */
+    'source'?: Array<WatchlistEnhancedPropertiesRecordsInnerSourceInner>;
+}
+/**
+ * 
+ * @export
+ * @interface WatchlistEnhancedPropertiesRecordsInnerAddressInner
+ */
+export interface WatchlistEnhancedPropertiesRecordsInnerAddressInner {
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerAddressInner
+     */
+    'address_line1'?: string;
+    /**
+     * 
+     * @type {CountryCodes}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerAddressInner
+     */
+    'country'?: CountryCodes;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerAddressInner
+     */
+    'postal_code'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerAddressInner
+     */
+    'state_province'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerAddressInner
+     */
+    'town'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerAddressInner
+     */
+    'locator_type'?: string;
+}
+
+
+/**
+ * 
+ * @export
+ * @interface WatchlistEnhancedPropertiesRecordsInnerAliasInner
+ */
+export interface WatchlistEnhancedPropertiesRecordsInnerAliasInner {
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerAliasInner
+     */
+    'alias_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerAliasInner
+     */
+    'alias_type'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface WatchlistEnhancedPropertiesRecordsInnerAssociateInner
+ */
+export interface WatchlistEnhancedPropertiesRecordsInnerAssociateInner {
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerAssociateInner
+     */
+    'entity_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerAssociateInner
+     */
+    'relationship_direction'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerAssociateInner
+     */
+    'relationship_type'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface WatchlistEnhancedPropertiesRecordsInnerAttributeInner
+ */
+export interface WatchlistEnhancedPropertiesRecordsInnerAttributeInner {
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerAttributeInner
+     */
+    'attribute_type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerAttributeInner
+     */
+    'attribute_value'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface WatchlistEnhancedPropertiesRecordsInnerEventInner
+ */
+export interface WatchlistEnhancedPropertiesRecordsInnerEventInner {
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInner
+     */
+    'category'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInner
+     */
+    'event_date'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInner
+     */
+    'event_description'?: string;
+    /**
+     * 
+     * @type {WatchlistEnhancedPropertiesRecordsInnerEventInnerSource}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInner
+     */
+    'source'?: WatchlistEnhancedPropertiesRecordsInnerEventInnerSource;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInner
+     */
+    'sub_category'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface WatchlistEnhancedPropertiesRecordsInnerEventInnerSource
+ */
+export interface WatchlistEnhancedPropertiesRecordsInnerEventInnerSource {
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInnerSource
+     */
+    'source_date'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInnerSource
+     */
+    'source_format'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInnerSource
+     */
+    'source_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInnerSource
+     */
+    'source_url'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface WatchlistEnhancedPropertiesRecordsInnerSourceInner
+ */
+export interface WatchlistEnhancedPropertiesRecordsInnerSourceInner {
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerSourceInner
+     */
+    'source_headline'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerSourceInner
+     */
+    'source_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerSourceInner
+     */
+    'source_url'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WatchlistEnhancedPropertiesRecordsInnerSourceInner
+     */
+    'source_format'?: string;
 }
 /**
  * 
