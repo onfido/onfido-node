@@ -42,7 +42,7 @@ it("downloads a signed document file", async () => {
   const workflowRun = await createWorkflowRunWithCustomInputs(
     workflowRunBuilder
   );
-  const taskId = (await onfido.listTasks(workflowRun.data.id)).data[0].id;
+  const taskId = (await onfido.listTasks(workflowRun.data.id)).data[1].id;
 
   const output = (
     await repeatRequestUntilTaskOutputChanges(
