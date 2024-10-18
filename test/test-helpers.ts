@@ -16,7 +16,8 @@ import {
   MotionCapture,
   Report,
   WatchlistMonitorReportNameEnum,
-  WorkflowRunBuilder
+  WorkflowRunBuilder,
+  DocumentTypes
 } from "onfido-node";
 
 export const onfido = new DefaultApi(
@@ -91,12 +92,21 @@ export async function cleanUpApplicants() {
 
 export async function uploadDocument(
   applicant: Applicant,
-  documentType = "driving_licence",
+  documentType: DocumentTypes = DocumentTypes.DrivingLicence,
   location?: LocationBuilder
 ) {
   let fileTransfer = new FileTransfer("test/media/sample_driving_licence.png");
 
-  return onfido.uploadDocument(documentType, applicant.id, fileTransfer, undefined, undefined, undefined, undefined, location);
+  return onfido.uploadDocument(
+    documentType,
+    applicant.id,
+    fileTransfer,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    location
+  );
 }
 
 export async function uploadLivePhoto(

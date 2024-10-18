@@ -1,4 +1,4 @@
-import { Applicant, Document } from "onfido-node";
+import { Applicant, Document, DocumentTypes } from "onfido-node";
 
 import {
   onfido,
@@ -39,7 +39,7 @@ it("uploads a document", async () => {
 
 it("uploads a document with location", async () => {
   document = (
-    await uploadDocument(applicant, "driving_licence", {
+    await uploadDocument(applicant, DocumentTypes.DrivingLicence, {
       country_of_residence: "FRA"
     })
   ).data;
@@ -61,7 +61,9 @@ it("finds a document", async () => {
 });
 
 it("lists documents", async () => {
-  const anotherDocument = (await uploadDocument(applicant, "passport")).data;
+  const anotherDocument = (
+    await uploadDocument(applicant, DocumentTypes.Passport)
+  ).data;
   const documents = (
     await onfido.listDocuments(applicant.id)
   ).data.documents.sort(sortByDocumentType);
