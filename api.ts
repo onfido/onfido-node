@@ -423,11 +423,11 @@ export interface ApplicantBuilder {
      */
     'phone_number'?: string;
     /**
-     * 
-     * @type {ConsentsBuilder}
+     * The applicant\'s consents
+     * @type {Array<ApplicantConsentBuilder>}
      * @memberof ApplicantBuilder
      */
-    'consents'?: ConsentsBuilder;
+    'consents'?: Array<ApplicantConsentBuilder>;
     /**
      * 
      * @type {AddressBuilder}
@@ -456,6 +456,43 @@ export interface ApplicantBuilder {
 /**
  * 
  * @export
+ * @interface ApplicantConsentBuilder
+ */
+export interface ApplicantConsentBuilder {
+    /**
+     * 
+     * @type {ApplicantConsentName}
+     * @memberof ApplicantConsentBuilder
+     */
+    'name': ApplicantConsentName;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ApplicantConsentBuilder
+     */
+    'granted': boolean;
+}
+
+
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const ApplicantConsentName = {
+    PrivacyNoticesRead: 'privacy_notices_read',
+    SsnVerification: 'ssn_verification',
+    PhoneNumberVerification: 'phone_number_verification',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ApplicantConsentName = typeof ApplicantConsentName[keyof typeof ApplicantConsentName];
+
+
+/**
+ * 
+ * @export
  * @interface ApplicantCreate
  */
 export interface ApplicantCreate {
@@ -479,11 +516,11 @@ export interface ApplicantCreate {
  */
 export interface ApplicantRequest {
     /**
-     * 
-     * @type {ConsentsBuilder}
+     * The applicant\'s consents
+     * @type {Array<ApplicantConsentBuilder>}
      * @memberof ApplicantRequest
      */
-    'consents'?: ConsentsBuilder;
+    'consents'?: Array<ApplicantConsentBuilder>;
     /**
      * 
      * @type {AddressBuilder}
@@ -639,11 +676,11 @@ export interface ApplicantUpdater {
      */
     'phone_number'?: string;
     /**
-     * 
-     * @type {ConsentsBuilder}
+     * The applicant\'s consents
+     * @type {Array<ApplicantConsentBuilder>}
      * @memberof ApplicantUpdater
      */
-    'consents'?: ConsentsBuilder;
+    'consents'?: Array<ApplicantConsentBuilder>;
     /**
      * 
      * @type {AddressBuilder}
@@ -719,6 +756,12 @@ export interface Check {
      */
     'redirect_uri'?: string;
     /**
+     * 
+     * @type {boolean}
+     * @memberof Check
+     */
+    'privacy_notices_read_consent_given'?: boolean;
+    /**
      * The unique identifier for the check.
      * @type {string}
      * @memberof Check
@@ -737,11 +780,11 @@ export interface Check {
      */
     'href'?: string;
     /**
-     * The current state of the check in the checking process.
-     * @type {string}
+     * 
+     * @type {CheckStatus}
      * @memberof Check
      */
-    'status'?: CheckStatusEnum;
+    'status'?: CheckStatus;
     /**
      * The overall result of the check, based on the results of the constituent reports.
      * @type {string}
@@ -772,19 +815,20 @@ export interface Check {
      * @memberof Check
      */
     'sandbox'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Check
+     */
+    'paused'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof Check
+     */
+    'version'?: string;
 }
 
-export const CheckStatusEnum = {
-    InProgress: 'in_progress',
-    AwaitingApplicant: 'awaiting_applicant',
-    Complete: 'complete',
-    Withdrawn: 'withdrawn',
-    Paused: 'paused',
-    Reopened: 'reopened',
-    UnknownDefaultOpenApi: '11184809'
-} as const;
-
-export type CheckStatusEnum = typeof CheckStatusEnum[keyof typeof CheckStatusEnum];
 export const CheckResultEnum = {
     Clear: 'clear',
     Consider: 'consider',
@@ -829,6 +873,12 @@ export interface CheckBuilder {
      * @memberof CheckBuilder
      */
     'redirect_uri'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CheckBuilder
+     */
+    'privacy_notices_read_consent_given'?: boolean;
     /**
      * An array of report names (strings).
      * @type {Array<ReportName>}
@@ -952,11 +1002,11 @@ export interface CheckResponse {
      */
     'href'?: string;
     /**
-     * The current state of the check in the checking process.
-     * @type {string}
+     * 
+     * @type {CheckStatus}
      * @memberof CheckResponse
      */
-    'status'?: CheckResponseStatusEnum;
+    'status'?: CheckStatus;
     /**
      * The overall result of the check, based on the results of the constituent reports.
      * @type {string}
@@ -987,19 +1037,20 @@ export interface CheckResponse {
      * @memberof CheckResponse
      */
     'sandbox'?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CheckResponse
+     */
+    'paused'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof CheckResponse
+     */
+    'version'?: string;
 }
 
-export const CheckResponseStatusEnum = {
-    InProgress: 'in_progress',
-    AwaitingApplicant: 'awaiting_applicant',
-    Complete: 'complete',
-    Withdrawn: 'withdrawn',
-    Paused: 'paused',
-    Reopened: 'reopened',
-    UnknownDefaultOpenApi: '11184809'
-} as const;
-
-export type CheckResponseStatusEnum = typeof CheckResponseStatusEnum[keyof typeof CheckResponseStatusEnum];
 export const CheckResponseResultEnum = {
     Clear: 'clear',
     Consider: 'consider',
@@ -1044,7 +1095,32 @@ export interface CheckShared {
      * @memberof CheckShared
      */
     'redirect_uri'?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof CheckShared
+     */
+    'privacy_notices_read_consent_given'?: boolean;
 }
+/**
+ * The current state of the check in the checking process.
+ * @export
+ * @enum {string}
+ */
+
+export const CheckStatus = {
+    InProgress: 'in_progress',
+    AwaitingApplicant: 'awaiting_applicant',
+    Complete: 'complete',
+    Withdrawn: 'withdrawn',
+    Paused: 'paused',
+    Reopened: 'reopened',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type CheckStatus = typeof CheckStatus[keyof typeof CheckStatus];
+
+
 /**
  * 
  * @export
@@ -1078,42 +1154,6 @@ export interface CompleteTaskBuilder {
  */
 export type CompleteTaskDataBuilder = Array<object> | object;
 
-/**
- * The applicant\'s consents
- * @export
- * @interface ConsentItem
- */
-export interface ConsentItem {
-    /**
-     * 
-     * @type {string}
-     * @memberof ConsentItem
-     */
-    'name': ConsentItemNameEnum;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ConsentItem
-     */
-    'granted': boolean;
-}
-
-export const ConsentItemNameEnum = {
-    PrivacyNoticesRead: 'privacy_notices_read',
-    SsnVerification: 'ssn_verification',
-    PhoneNumberVerification: 'phone_number_verification',
-    UnknownDefaultOpenApi: '11184809'
-} as const;
-
-export type ConsentItemNameEnum = typeof ConsentItemNameEnum[keyof typeof ConsentItemNameEnum];
-
-/**
- * 
- * @export
- * @interface ConsentsBuilder
- */
-export interface ConsentsBuilder {
-}
 /**
  * 
  * @export
@@ -1533,34 +1573,6 @@ export interface DeviceIntelligenceBreakdownPropertiesDevice {
      */
     'fake_network_request'?: boolean;
     /**
-     * The true operating system of the device.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
-     * @deprecated
-     */
-    'true_os'?: string;
-    /**
-     * The likelihood of an operating system anomaly between the true OS and the OS sent by the device.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
-     * @deprecated
-     */
-    'os_anomaly'?: string;
-    /**
-     * Whether the device is rooted.
-     * @type {boolean}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
-     * @deprecated
-     */
-    'rooted'?: boolean;
-    /**
-     * Whether the device is controlled via remote software.
-     * @type {boolean}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
-     * @deprecated
-     */
-    'remote_software'?: boolean;
-    /**
      * Whether there is highly suspicious traffic related to the IP address. The risk depends on the overall ratio of clear checks on a given IP.
      * @type {string}
      * @memberof DeviceIntelligenceBreakdownPropertiesDevice
@@ -1670,27 +1682,6 @@ export interface DeviceIntelligenceBreakdownPropertiesIp {
      * @memberof DeviceIntelligenceBreakdownPropertiesIp
      */
     'address'?: string;
-    /**
-     * The likelihood of the network connection being a VPN.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesIp
-     * @deprecated
-     */
-    'vpn_detection'?: string;
-    /**
-     * The likelihood of the network connection being a Proxy.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesIp
-     * @deprecated
-     */
-    'proxy_detection'?: string;
-    /**
-     * The type of organization that owns this IP address.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesIp
-     * @deprecated
-     */
-    'type'?: string;
 }
 /**
  * 
@@ -1775,10 +1766,10 @@ export interface Document {
     'file_type'?: DocumentFileTypeEnum;
     /**
      * The type of document
-     * @type {string}
+     * @type {DocumentTypes}
      * @memberof Document
      */
-    'type'?: string;
+    'type'?: DocumentTypes;
     /**
      * The side of the document, if applicable. The possible values are front and back
      * @type {string}
@@ -3754,10 +3745,10 @@ export interface DocumentShared {
     'file_type'?: DocumentSharedFileTypeEnum;
     /**
      * The type of document
-     * @type {string}
+     * @type {DocumentTypes}
      * @memberof DocumentShared
      */
-    'type'?: string;
+    'type'?: DocumentTypes;
     /**
      * The side of the document, if applicable. The possible values are front and back
      * @type {string}
@@ -3827,6 +3818,11 @@ export const DocumentTypes = {
     ProfessionalQualificationCard: 'professional_qualification_card',
     ConsularId: 'consular_id',
     InternationalDrivingLicence: 'international_driving_licence',
+    HomeOfficeLetter: 'home_office_letter',
+    BirthCertificate: 'birth_certificate',
+    VehicleRegistrationCertificate: 'vehicle_registration_certificate',
+    FormForAffixingTheVisa: 'form_for_affixing_the_visa',
+    IdentificationNumberDocument: 'identification_number_document',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 
@@ -8045,11 +8041,23 @@ export interface TaskItem {
      */
     'id'?: string;
     /**
+     * The workflow run id the task belongs to.
+     * @type {string}
+     * @memberof TaskItem
+     */
+    'workflow_run_id'?: string;
+    /**
      * The identifier for the Task Definition.
      * @type {string}
      * @memberof TaskItem
      */
     'task_def_id'?: string;
+    /**
+     * The task definition version.
+     * @type {string}
+     * @memberof TaskItem
+     */
+    'task_def_version'?: string | null;
     /**
      * The date and time when the Task was created.
      * @type {string}
@@ -8814,6 +8822,7 @@ export interface WatchlistAmlProperties {
      * Returns any matches including, but not limited to, name and date of birth of match, aliases and associates, and relevant events and sources.
      * @type {Array<string>}
      * @memberof WatchlistAmlProperties
+     * @deprecated
      */
     'records'?: Array<string>;
 }
@@ -9685,6 +9694,7 @@ export interface WatchlistStandardProperties {
      * Returns any matches including, but not limited to, name and date of birth of match, aliases and associates, and relevant events and sources.
      * @type {Array<string>}
      * @memberof WatchlistStandardProperties
+     * @deprecated
      */
     'records'?: Array<string>;
 }
@@ -9882,6 +9892,38 @@ export interface WebhookEvent {
     'payload'?: WebhookEventPayload;
 }
 /**
+ * The current state of the object, if available.
+ * @export
+ * @enum {string}
+ */
+
+export const WebhookEventObjectStatus = {
+    Processing: 'processing',
+    AwaitingInput: 'awaiting_input',
+    AwaitingClientInput: 'awaiting_client_input',
+    Approved: 'approved',
+    Declined: 'declined',
+    Review: 'review',
+    Abandoned: 'abandoned',
+    Error: 'error',
+    Started: 'started',
+    Cancelled: 'cancelled',
+    Completed: 'completed',
+    AwaitingData: 'awaiting_data',
+    AwaitingApproval: 'awaiting_approval',
+    Complete: 'complete',
+    Withdrawn: 'withdrawn',
+    InProgress: 'in_progress',
+    AwaitingApplicant: 'awaiting_applicant',
+    Paused: 'paused',
+    Reopened: 'reopened',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type WebhookEventObjectStatus = typeof WebhookEventObjectStatus[keyof typeof WebhookEventObjectStatus];
+
+
+/**
  * 
  * @export
  * @interface WebhookEventPayload
@@ -9889,10 +9931,10 @@ export interface WebhookEvent {
 export interface WebhookEventPayload {
     /**
      * Indicates the resource affected by this event.
-     * @type {string}
+     * @type {WebhookEventResourceType}
      * @memberof WebhookEventPayload
      */
-    'resource_type': string;
+    'resource_type': WebhookEventResourceType;
     /**
      * The event that triggered this webhook.
      * @type {WebhookEventType}
@@ -9906,11 +9948,11 @@ export interface WebhookEventPayload {
      */
     'object'?: WebhookEventPayloadObject;
     /**
-     * The resource affected by this event.
-     * @type {object}
+     * 
+     * @type {WebhookEventPayloadResource}
      * @memberof WebhookEventPayload
      */
-    'resource'?: object;
+    'resource'?: WebhookEventPayloadResource;
 }
 
 
@@ -9927,11 +9969,11 @@ export interface WebhookEventPayloadObject {
      */
     'id': string;
     /**
-     * The current state of the object, if available.
-     * @type {string}
+     * 
+     * @type {WebhookEventObjectStatus}
      * @memberof WebhookEventPayloadObject
      */
-    'status'?: string;
+    'status'?: WebhookEventObjectStatus;
     /**
      * The date and time when the operation was started, if available.
      * @type {string}
@@ -9951,6 +9993,124 @@ export interface WebhookEventPayloadObject {
      */
     'href': string;
 }
+
+
+/**
+ * The resource affected by this event.
+ * @export
+ * @interface WebhookEventPayloadResource
+ */
+export interface WebhookEventPayloadResource {
+    /**
+     * The identifier of the resource.
+     * @type {string}
+     * @memberof WebhookEventPayloadResource
+     */
+    'id'?: string;
+    /**
+     * The unique identifier for the Applicant.
+     * @type {string}
+     * @memberof WebhookEventPayloadResource
+     */
+    'applicant_id'?: string;
+    /**
+     * The date and time when the resource was created.
+     * @type {string}
+     * @memberof WebhookEventPayloadResource
+     */
+    'created_at'?: string;
+    /**
+     * The date and time when the resource was last updated.
+     * @type {string}
+     * @memberof WebhookEventPayloadResource
+     */
+    'updated_at'?: string;
+    /**
+     * The URL for viewing the resource on Onfido Dashboard.
+     * @type {string}
+     * @memberof WebhookEventPayloadResource
+     */
+    'dashboard_url'?: string;
+    /**
+     * The unique identifier for the Workflow.
+     * @type {string}
+     * @memberof WebhookEventPayloadResource
+     */
+    'workflow_id'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof WebhookEventPayloadResource
+     */
+    'workflow_run_id'?: string;
+    /**
+     * The identifier for the Workflow version.
+     * @type {number}
+     * @memberof WebhookEventPayloadResource
+     */
+    'workflow_version_id'?: number;
+    /**
+     * The identifier for the Task Definition.
+     * @type {string}
+     * @memberof WebhookEventPayloadResource
+     */
+    'task_def_id'?: string;
+    /**
+     * The task definition version.
+     * @type {string}
+     * @memberof WebhookEventPayloadResource
+     */
+    'task_def_version'?: string | null;
+    /**
+     * Input object with the fields used by the Task execution.
+     * @type {object}
+     * @memberof WebhookEventPayloadResource
+     */
+    'input'?: object;
+    /**
+     * Output object with the fields produced by the Task execution.
+     * @type {object}
+     * @memberof WebhookEventPayloadResource
+     */
+    'output'?: object | null;
+    /**
+     * The reasons the Workflow Run outcome was reached. Configurable when creating the Workflow Version.
+     * @type {Array<string>}
+     * @memberof WebhookEventPayloadResource
+     */
+    'reasons'?: Array<string>;
+    /**
+     * Object for the configuration of the Workflow Run link.
+     * @type {WorkflowRunLink}
+     * @memberof WebhookEventPayloadResource
+     */
+    'link'?: WorkflowRunLink;
+    /**
+     * Error object that details why a Workflow Run is in Error status.
+     * @type {WorkflowRunError}
+     * @memberof WebhookEventPayloadResource
+     */
+    'error'?: WorkflowRunError;
+}
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+
+export const WebhookEventResourceType = {
+    Check: 'check',
+    Report: 'report',
+    AuditLog: 'audit_log',
+    WorkflowRun: 'workflow_run',
+    WorkflowTask: 'workflow_task',
+    WatchlistMonitor: 'watchlist_monitor',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type WebhookEventResourceType = typeof WebhookEventResourceType[keyof typeof WebhookEventResourceType];
+
+
 /**
  * 
  * @export
@@ -10171,11 +10331,11 @@ export interface WorkflowRun {
      */
     'customer_user_id'?: string;
     /**
-     * 
-     * @type {WorkflowRunSharedLink}
+     * Object for the configuration of the Workflow Run link.
+     * @type {WorkflowRunLink}
      * @memberof WorkflowRun
      */
-    'link'?: WorkflowRunSharedLink;
+    'link'?: WorkflowRunLink;
     /**
      * The date and time when the Workflow Run was created.
      * @type {string}
@@ -10208,10 +10368,10 @@ export interface WorkflowRun {
     'dashboard_url'?: string;
     /**
      * The status of the Workflow Run.
-     * @type {string}
+     * @type {WorkflowRunStatus}
      * @memberof WorkflowRun
      */
-    'status'?: WorkflowRunStatusEnum;
+    'status'?: WorkflowRunStatus;
     /**
      * Output object contains all of the properties configured on the Workflow version.
      * @type {object}
@@ -10225,11 +10385,11 @@ export interface WorkflowRun {
      */
     'reasons'?: Array<string>;
     /**
-     * 
-     * @type {WorkflowRunResponseError}
+     * Error object. Only set when the Workflow Run status is \'error\'.
+     * @type {WorkflowRunError}
      * @memberof WorkflowRun
      */
-    'error'?: WorkflowRunResponseError;
+    'error'?: WorkflowRunError;
     /**
      * Client token to use when loading this workflow run in the Onfido SDK.
      * @type {string}
@@ -10238,18 +10398,6 @@ export interface WorkflowRun {
     'sdk_token'?: string | null;
 }
 
-export const WorkflowRunStatusEnum = {
-    AwaitingInput: 'awaiting_input',
-    Processing: 'processing',
-    Abandoned: 'abandoned',
-    Error: 'error',
-    Approved: 'approved',
-    Review: 'review',
-    Declined: 'declined',
-    UnknownDefaultOpenApi: '11184809'
-} as const;
-
-export type WorkflowRunStatusEnum = typeof WorkflowRunStatusEnum[keyof typeof WorkflowRunStatusEnum];
 
 /**
  * 
@@ -10282,11 +10430,11 @@ export interface WorkflowRunBuilder {
      */
     'customer_user_id'?: string;
     /**
-     * 
-     * @type {WorkflowRunSharedLink}
+     * Object for the configuration of the Workflow Run link.
+     * @type {WorkflowRunLink}
      * @memberof WorkflowRunBuilder
      */
-    'link'?: WorkflowRunSharedLink;
+    'link'?: WorkflowRunLink;
     /**
      * The date and time when the Workflow Run was created.
      * @type {string}
@@ -10306,6 +10454,76 @@ export interface WorkflowRunBuilder {
      */
     'custom_data'?: { [key: string]: any; };
 }
+/**
+ * 
+ * @export
+ * @interface WorkflowRunError
+ */
+export interface WorkflowRunError {
+    /**
+     * The type of error.
+     * @type {string}
+     * @memberof WorkflowRunError
+     */
+    'type'?: string;
+    /**
+     * A textual description of the error.
+     * @type {string}
+     * @memberof WorkflowRunError
+     */
+    'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface WorkflowRunLink
+ */
+export interface WorkflowRunLink {
+    /**
+     * Link to access the Workflow Run without the need to integrate with Onfido\'s SDKs.
+     * @type {string}
+     * @memberof WorkflowRunLink
+     */
+    'url'?: string;
+    /**
+     * When the interactive section of the Workflow Run has completed successfully, the user will be redirected to this URL instead of seeing the default Onfido \'thank you\' page.
+     * @type {string}
+     * @memberof WorkflowRunLink
+     */
+    'completed_redirect_url'?: string | null;
+    /**
+     * When the link has expired, the user will be immediately redirected to this URL instead of seeing the default Onfido error message.
+     * @type {string}
+     * @memberof WorkflowRunLink
+     */
+    'expired_redirect_url'?: string | null;
+    /**
+     * Date and time when the link will expire.
+     * @type {string}
+     * @memberof WorkflowRunLink
+     */
+    'expires_at'?: string | null;
+    /**
+     * The code for the language when the workflow run is acessed using the link.
+     * @type {string}
+     * @memberof WorkflowRunLink
+     */
+    'language'?: WorkflowRunLinkLanguageEnum | null;
+}
+
+export const WorkflowRunLinkLanguageEnum = {
+    EnUs: 'en_US',
+    DeDe: 'de_DE',
+    EsEs: 'es_ES',
+    FrFr: 'fr_FR',
+    ItIt: 'it_IT',
+    PtPt: 'pt_PT',
+    NlNl: 'nl_NL',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type WorkflowRunLinkLanguageEnum = typeof WorkflowRunLinkLanguageEnum[keyof typeof WorkflowRunLinkLanguageEnum];
+
 /**
  * 
  * @export
@@ -10345,10 +10563,10 @@ export interface WorkflowRunResponse {
     'dashboard_url'?: string;
     /**
      * The status of the Workflow Run.
-     * @type {string}
+     * @type {WorkflowRunStatus}
      * @memberof WorkflowRunResponse
      */
-    'status'?: WorkflowRunResponseStatusEnum;
+    'status'?: WorkflowRunStatus;
     /**
      * Output object contains all of the properties configured on the Workflow version.
      * @type {object}
@@ -10362,11 +10580,11 @@ export interface WorkflowRunResponse {
      */
     'reasons'?: Array<string>;
     /**
-     * 
-     * @type {WorkflowRunResponseError}
+     * Error object. Only set when the Workflow Run status is \'error\'.
+     * @type {WorkflowRunError}
      * @memberof WorkflowRunResponse
      */
-    'error'?: WorkflowRunResponseError;
+    'error'?: WorkflowRunError;
     /**
      * Client token to use when loading this workflow run in the Onfido SDK.
      * @type {string}
@@ -10375,38 +10593,7 @@ export interface WorkflowRunResponse {
     'sdk_token'?: string | null;
 }
 
-export const WorkflowRunResponseStatusEnum = {
-    AwaitingInput: 'awaiting_input',
-    Processing: 'processing',
-    Abandoned: 'abandoned',
-    Error: 'error',
-    Approved: 'approved',
-    Review: 'review',
-    Declined: 'declined',
-    UnknownDefaultOpenApi: '11184809'
-} as const;
 
-export type WorkflowRunResponseStatusEnum = typeof WorkflowRunResponseStatusEnum[keyof typeof WorkflowRunResponseStatusEnum];
-
-/**
- * Error object. Only set when the Workflow Run status is \'error\'.
- * @export
- * @interface WorkflowRunResponseError
- */
-export interface WorkflowRunResponseError {
-    /**
-     * The type of error.
-     * @type {string}
-     * @memberof WorkflowRunResponseError
-     */
-    'type'?: string;
-    /**
-     * A textual description of the error.
-     * @type {string}
-     * @memberof WorkflowRunResponseError
-     */
-    'message'?: string;
-}
 /**
  * 
  * @export
@@ -10438,11 +10625,11 @@ export interface WorkflowRunShared {
      */
     'customer_user_id'?: string;
     /**
-     * 
-     * @type {WorkflowRunSharedLink}
+     * Object for the configuration of the Workflow Run link.
+     * @type {WorkflowRunLink}
      * @memberof WorkflowRunShared
      */
-    'link'?: WorkflowRunSharedLink;
+    'link'?: WorkflowRunLink;
     /**
      * The date and time when the Workflow Run was created.
      * @type {string}
@@ -10457,55 +10644,25 @@ export interface WorkflowRunShared {
     'updated_at'?: string;
 }
 /**
- * Object for the configuration of the Workflow Run link.
+ * 
  * @export
- * @interface WorkflowRunSharedLink
+ * @enum {string}
  */
-export interface WorkflowRunSharedLink {
-    /**
-     * Link to access the Workflow Run without the need to integrate with Onfido\'s SDKs.
-     * @type {string}
-     * @memberof WorkflowRunSharedLink
-     */
-    'url'?: string;
-    /**
-     * When the interactive section of the Workflow Run has completed successfully, the user will be redirected to this URL instead of seeing the default Onfido \'thank you\' page.
-     * @type {string}
-     * @memberof WorkflowRunSharedLink
-     */
-    'completed_redirect_url'?: string;
-    /**
-     * When the link has expired, the user will be immediately redirected to this URL instead of seeing the default Onfido error message.
-     * @type {string}
-     * @memberof WorkflowRunSharedLink
-     */
-    'expired_redirect_url'?: string;
-    /**
-     * Date and time when the link will expire.
-     * @type {string}
-     * @memberof WorkflowRunSharedLink
-     */
-    'expires_at'?: string;
-    /**
-     * The code for the language when the workflow run is acessed using the link.
-     * @type {string}
-     * @memberof WorkflowRunSharedLink
-     */
-    'language'?: WorkflowRunSharedLinkLanguageEnum;
-}
 
-export const WorkflowRunSharedLinkLanguageEnum = {
-    EnUs: 'en_US',
-    DeDe: 'de_DE',
-    EsEs: 'es_ES',
-    FrFr: 'fr_FR',
-    ItIt: 'it_IT',
-    PtPt: 'pt_PT',
-    NlNl: 'nl_NL',
+export const WorkflowRunStatus = {
+    Processing: 'processing',
+    AwaitingInput: 'awaiting_input',
+    AwaitingClientInput: 'awaiting_client_input',
+    Approved: 'approved',
+    Declined: 'declined',
+    Review: 'review',
+    Abandoned: 'abandoned',
+    Error: 'error',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 
-export type WorkflowRunSharedLinkLanguageEnum = typeof WorkflowRunSharedLinkLanguageEnum[keyof typeof WorkflowRunSharedLinkLanguageEnum];
+export type WorkflowRunStatus = typeof WorkflowRunStatus[keyof typeof WorkflowRunStatus];
+
 
 
 /**
@@ -12935,7 +13092,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * Documents are uploaded using this endpoint. Along with the file upload the relevant document type must be specified. Documents must be uploaded as a multipart form. The valid file types are: jpg, png and pdf. The file size must be between 2KB and 3MB. 
          * @summary Upload a document
-         * @param {string} type The type of document
+         * @param {DocumentTypes} type The type of document
          * @param {string} applicantId The ID of the applicant whose document is being uploaded.
          * @param {FileTransfer} file The file to be uploaded.
          * @param {UploadDocumentFileTypeEnum} [fileType] The file type of the uploaded file
@@ -12946,7 +13103,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadDocument: async (type: string, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        uploadDocument: async (type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'type' is not null or undefined
             assertParamExists('uploadDocument', 'type', type)
             // verify required parameter 'applicantId' is not null or undefined
@@ -13946,7 +14103,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * Documents are uploaded using this endpoint. Along with the file upload the relevant document type must be specified. Documents must be uploaded as a multipart form. The valid file types are: jpg, png and pdf. The file size must be between 2KB and 3MB. 
          * @summary Upload a document
-         * @param {string} type The type of document
+         * @param {DocumentTypes} type The type of document
          * @param {string} applicantId The ID of the applicant whose document is being uploaded.
          * @param {FileTransfer} file The file to be uploaded.
          * @param {UploadDocumentFileTypeEnum} [fileType] The file type of the uploaded file
@@ -13957,7 +14114,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadDocument(type: string, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Document>> {
+        async uploadDocument(type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Document>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadDocument(type, applicantId, file, fileType, side, issuingCountry, validateImageQuality, location, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.uploadDocument']?.[localVarOperationServerIndex]?.url;
@@ -14638,7 +14795,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * Documents are uploaded using this endpoint. Along with the file upload the relevant document type must be specified. Documents must be uploaded as a multipart form. The valid file types are: jpg, png and pdf. The file size must be between 2KB and 3MB. 
          * @summary Upload a document
-         * @param {string} type The type of document
+         * @param {DocumentTypes} type The type of document
          * @param {string} applicantId The ID of the applicant whose document is being uploaded.
          * @param {FileTransfer} file The file to be uploaded.
          * @param {UploadDocumentFileTypeEnum} [fileType] The file type of the uploaded file
@@ -14649,7 +14806,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadDocument(type: string, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: any): AxiosPromise<Document> {
+        uploadDocument(type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: any): AxiosPromise<Document> {
             return localVarFp.uploadDocument(type, applicantId, file, fileType, side, issuingCountry, validateImageQuality, location, options).then((request) => request(axios, basePath));
         },
         /**
@@ -15445,7 +15602,7 @@ export class DefaultApi extends BaseAPI {
     /**
      * Documents are uploaded using this endpoint. Along with the file upload the relevant document type must be specified. Documents must be uploaded as a multipart form. The valid file types are: jpg, png and pdf. The file size must be between 2KB and 3MB. 
      * @summary Upload a document
-     * @param {string} type The type of document
+     * @param {DocumentTypes} type The type of document
      * @param {string} applicantId The ID of the applicant whose document is being uploaded.
      * @param {FileTransfer} file The file to be uploaded.
      * @param {UploadDocumentFileTypeEnum} [fileType] The file type of the uploaded file
@@ -15457,7 +15614,7 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public uploadDocument(type: string, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig) {
+    public uploadDocument(type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).uploadDocument(type, applicantId, file, fileType, side, issuingCountry, validateImageQuality, location, options).then((request) => request(this.axios, this.basePath));
     }
 
