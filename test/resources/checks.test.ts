@@ -1,4 +1,4 @@
-import { Applicant, Check, Document, Webhook } from "onfido-node";
+import { Applicant, Check, Document, Webhook, CheckStatus } from "onfido-node";
 
 import {
   onfido,
@@ -54,14 +54,16 @@ afterAll(() => {
 
 it("creates a check", async () => {
   const check = await createCheck(applicant, document, {
-    webhook_ids: [webhook1.id, webhook2.id]
+    webhook_ids: [webhook1.id, webhook2.id],
+    privacy_notices_read_consent_given: true
   });
 
   expect(check.data).toEqual(
     getExpectedCheck(exampleCheck, {
       applicant_id: applicant.id,
       result: null,
-      status: "in_progress"
+      status: CheckStatus.InProgress,
+      privacy_notices_read_consent_given: true
     })
   );
 });
@@ -76,7 +78,7 @@ it("creates a check for generating a rejected sub-result for document report in 
     getExpectedCheck(exampleCheck, {
       applicant_id: applicant.id,
       result: null,
-      status: "in_progress"
+      status: CheckStatus.InProgress
     })
   );
 });
@@ -91,7 +93,7 @@ it("creates a check for generating a consider result for a report in the sandbox
     getExpectedCheck(exampleCheck, {
       applicant_id: applicant.id,
       result: null,
-      status: "in_progress"
+      status: CheckStatus.InProgress
     })
   );
 });

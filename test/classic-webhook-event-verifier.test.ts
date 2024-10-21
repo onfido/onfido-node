@@ -1,4 +1,10 @@
-import { OnfidoInvalidSignatureError, WebhookEventVerifier } from "onfido-node";
+import {
+  OnfidoInvalidSignatureError,
+  WebhookEventVerifier,
+  WebhookEventType,
+  WebhookEventResourceType,
+  WebhookEventObjectStatus
+} from "onfido-node";
 
 const webhookToken = "_ABC123abc123ABC123abc123ABC123_";
 const verifier = new WebhookEventVerifier(webhookToken);
@@ -7,12 +13,12 @@ const rawEvent = `{"payload":{"resource_type":"check","action":"check.completed"
 
 const expectedEvent = {
   payload: {
-    action: "check.completed",
-    resource_type: "check",
+    action: WebhookEventType.CheckCompleted,
+    resource_type: WebhookEventResourceType.Check,
     object: {
       id: "check-123",
       href: "https://api.onfido.com/v3/checks/check-123",
-      status: "complete",
+      status: WebhookEventObjectStatus.Complete,
       completed_at_iso8601: "2020-01-01T00:00:00Z"
     }
   }
