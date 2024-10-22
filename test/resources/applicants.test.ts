@@ -1,4 +1,4 @@
-import { Applicant } from "onfido-node";
+import { Applicant, ApplicantConsentName } from "onfido-node";
 
 import {
   onfido,
@@ -66,7 +66,15 @@ it("restores an applicant", async () => {
 
 it("lists applicants", async () => {
   const anotherApplicant = { ...exampleApplicant, first_name: "Another" };
-  await createApplicant({ first_name: "Another" });
+  await createApplicant({
+    first_name: "Another",
+    consents: [
+      {
+        name: ApplicantConsentName.PrivacyNoticesRead,
+        granted: true
+      }
+    ]
+  });
 
   const applicants = await onfido.listApplicants(1, 20, false);
 
