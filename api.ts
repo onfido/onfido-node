@@ -14166,7 +14166,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        cancelReport(reportId: string, options?: any): AxiosPromise<void> {
+        cancelReport(reportId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.cancelReport(reportId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14178,7 +14178,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        completeTask(workflowRunId: string, taskId: string, completeTaskBuilder: CompleteTaskBuilder, options?: any): AxiosPromise<void> {
+        completeTask(workflowRunId: string, taskId: string, completeTaskBuilder: CompleteTaskBuilder, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.completeTask(workflowRunId, taskId, completeTaskBuilder, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14188,7 +14188,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createApplicant(applicantBuilder: ApplicantBuilder, options?: any): AxiosPromise<Applicant> {
+        createApplicant(applicantBuilder: ApplicantBuilder, options?: RawAxiosRequestConfig): AxiosPromise<Applicant> {
             return localVarFp.createApplicant(applicantBuilder, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14198,7 +14198,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createCheck(checkBuilder: CheckBuilder, options?: any): AxiosPromise<Check> {
+        createCheck(checkBuilder: CheckBuilder, options?: RawAxiosRequestConfig): AxiosPromise<Check> {
             return localVarFp.createCheck(checkBuilder, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14208,7 +14208,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createTimelineFile(workflowRunId: string, options?: any): AxiosPromise<TimelineFileReference> {
+        createTimelineFile(workflowRunId: string, options?: RawAxiosRequestConfig): AxiosPromise<TimelineFileReference> {
             return localVarFp.createTimelineFile(workflowRunId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14218,7 +14218,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createWatchlistMonitor(watchlistMonitorBuilder: WatchlistMonitorBuilder, options?: any): AxiosPromise<WatchlistMonitor> {
+        createWatchlistMonitor(watchlistMonitorBuilder: WatchlistMonitorBuilder, options?: RawAxiosRequestConfig): AxiosPromise<WatchlistMonitor> {
             return localVarFp.createWatchlistMonitor(watchlistMonitorBuilder, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14228,7 +14228,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createWebhook(webhookBuilder: WebhookBuilder, options?: any): AxiosPromise<Webhook> {
+        createWebhook(webhookBuilder: WebhookBuilder, options?: RawAxiosRequestConfig): AxiosPromise<Webhook> {
             return localVarFp.createWebhook(webhookBuilder, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14238,7 +14238,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        createWorkflowRun(workflowRunBuilder: WorkflowRunBuilder, options?: any): AxiosPromise<WorkflowRun> {
+        createWorkflowRun(workflowRunBuilder: WorkflowRunBuilder, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowRun> {
             return localVarFp.createWorkflowRun(workflowRunBuilder, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14248,7 +14248,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteApplicant(applicantId: string, options?: any): AxiosPromise<void> {
+        deleteApplicant(applicantId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteApplicant(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14258,7 +14258,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteWatchlistMonitor(monitorId: string, options?: any): AxiosPromise<void> {
+        deleteWatchlistMonitor(monitorId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteWatchlistMonitor(monitorId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14268,7 +14268,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        deleteWebhook(webhookId: string, options?: any): AxiosPromise<void> {
+        deleteWebhook(webhookId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteWebhook(webhookId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14278,7 +14278,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadCheck(checkId: string, options?: any): AxiosPromise<FileTransfer> {
+        downloadCheck(checkId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
             return localVarFp.downloadCheck(checkId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14288,7 +14288,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadDocument(documentId: string, options?: any): AxiosPromise<FileTransfer> {
+        downloadDocument(documentId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
             return localVarFp.downloadDocument(documentId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14298,7 +14298,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadDocumentVideo(documentId: string, options?: any): AxiosPromise<FileTransfer> {
+        downloadDocumentVideo(documentId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
             return localVarFp.downloadDocumentVideo(documentId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14308,7 +14308,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadIdPhoto(idPhotoId: string, options?: any): AxiosPromise<FileTransfer> {
+        downloadIdPhoto(idPhotoId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
             return localVarFp.downloadIdPhoto(idPhotoId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14318,7 +14318,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadLivePhoto(livePhotoId: string, options?: any): AxiosPromise<FileTransfer> {
+        downloadLivePhoto(livePhotoId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
             return localVarFp.downloadLivePhoto(livePhotoId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14328,7 +14328,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadLiveVideo(liveVideoId: string, options?: any): AxiosPromise<FileTransfer> {
+        downloadLiveVideo(liveVideoId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
             return localVarFp.downloadLiveVideo(liveVideoId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14338,7 +14338,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadLiveVideoFrame(liveVideoId: string, options?: any): AxiosPromise<FileTransfer> {
+        downloadLiveVideoFrame(liveVideoId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
             return localVarFp.downloadLiveVideoFrame(liveVideoId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14348,7 +14348,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadMotionCapture(motionCaptureId: string, options?: any): AxiosPromise<FileTransfer> {
+        downloadMotionCapture(motionCaptureId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
             return localVarFp.downloadMotionCapture(motionCaptureId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14358,7 +14358,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadMotionCaptureFrame(motionCaptureId: string, options?: any): AxiosPromise<FileTransfer> {
+        downloadMotionCaptureFrame(motionCaptureId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
             return localVarFp.downloadMotionCaptureFrame(motionCaptureId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14369,7 +14369,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadQesDocument(workflowRunId: string, fileId: string, options?: any): AxiosPromise<FileTransfer> {
+        downloadQesDocument(workflowRunId: string, fileId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
             return localVarFp.downloadQesDocument(workflowRunId, fileId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14379,7 +14379,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        downloadSignedEvidenceFile(workflowRunId: string, options?: any): AxiosPromise<FileTransfer> {
+        downloadSignedEvidenceFile(workflowRunId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
             return localVarFp.downloadSignedEvidenceFile(workflowRunId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14389,7 +14389,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        extract(extractRequest: ExtractRequest, options?: any): AxiosPromise<Extraction> {
+        extract(extractRequest: ExtractRequest, options?: RawAxiosRequestConfig): AxiosPromise<Extraction> {
             return localVarFp.extract(extractRequest, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14399,7 +14399,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findAddresses(postcode: string, options?: any): AxiosPromise<AddressesList> {
+        findAddresses(postcode: string, options?: RawAxiosRequestConfig): AxiosPromise<AddressesList> {
             return localVarFp.findAddresses(postcode, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14409,7 +14409,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findApplicant(applicantId: string, options?: any): AxiosPromise<Applicant> {
+        findApplicant(applicantId: string, options?: RawAxiosRequestConfig): AxiosPromise<Applicant> {
             return localVarFp.findApplicant(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14419,7 +14419,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findCheck(checkId: string, options?: any): AxiosPromise<Check> {
+        findCheck(checkId: string, options?: RawAxiosRequestConfig): AxiosPromise<Check> {
             return localVarFp.findCheck(checkId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14429,7 +14429,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findDocument(documentId: string, options?: any): AxiosPromise<Document> {
+        findDocument(documentId: string, options?: RawAxiosRequestConfig): AxiosPromise<Document> {
             return localVarFp.findDocument(documentId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14439,7 +14439,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findIdPhoto(idPhotoId: string, options?: any): AxiosPromise<IdPhoto> {
+        findIdPhoto(idPhotoId: string, options?: RawAxiosRequestConfig): AxiosPromise<IdPhoto> {
             return localVarFp.findIdPhoto(idPhotoId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14449,7 +14449,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findLivePhoto(livePhotoId: string, options?: any): AxiosPromise<LivePhoto> {
+        findLivePhoto(livePhotoId: string, options?: RawAxiosRequestConfig): AxiosPromise<LivePhoto> {
             return localVarFp.findLivePhoto(livePhotoId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14459,7 +14459,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findLiveVideo(liveVideoId: string, options?: any): AxiosPromise<LiveVideo> {
+        findLiveVideo(liveVideoId: string, options?: RawAxiosRequestConfig): AxiosPromise<LiveVideo> {
             return localVarFp.findLiveVideo(liveVideoId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14469,7 +14469,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findMotionCapture(motionCaptureId: string, options?: any): AxiosPromise<MotionCapture> {
+        findMotionCapture(motionCaptureId: string, options?: RawAxiosRequestConfig): AxiosPromise<MotionCapture> {
             return localVarFp.findMotionCapture(motionCaptureId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14479,7 +14479,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findReport(reportId: string, options?: any): AxiosPromise<Report> {
+        findReport(reportId: string, options?: RawAxiosRequestConfig): AxiosPromise<Report> {
             return localVarFp.findReport(reportId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14490,7 +14490,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findTask(workflowRunId: string, taskId: string, options?: any): AxiosPromise<Task> {
+        findTask(workflowRunId: string, taskId: string, options?: RawAxiosRequestConfig): AxiosPromise<Task> {
             return localVarFp.findTask(workflowRunId, taskId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14501,7 +14501,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findTimelineFile(workflowRunId: string, timelineFileId: string, options?: any): AxiosPromise<FileTransfer> {
+        findTimelineFile(workflowRunId: string, timelineFileId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
             return localVarFp.findTimelineFile(workflowRunId, timelineFileId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14511,7 +14511,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findWatchlistMonitor(monitorId: string, options?: any): AxiosPromise<WatchlistMonitor> {
+        findWatchlistMonitor(monitorId: string, options?: RawAxiosRequestConfig): AxiosPromise<WatchlistMonitor> {
             return localVarFp.findWatchlistMonitor(monitorId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14521,7 +14521,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findWebhook(webhookId: string, options?: any): AxiosPromise<Webhook> {
+        findWebhook(webhookId: string, options?: RawAxiosRequestConfig): AxiosPromise<Webhook> {
             return localVarFp.findWebhook(webhookId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14531,7 +14531,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findWorkflowRun(workflowRunId: string, options?: any): AxiosPromise<WorkflowRun> {
+        findWorkflowRun(workflowRunId: string, options?: RawAxiosRequestConfig): AxiosPromise<WorkflowRun> {
             return localVarFp.findWorkflowRun(workflowRunId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14541,7 +14541,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        forceReportCreationFromWatchlistMonitor(monitorId: string, options?: any): AxiosPromise<void> {
+        forceReportCreationFromWatchlistMonitor(monitorId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.forceReportCreationFromWatchlistMonitor(monitorId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14551,7 +14551,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        generateSdkToken(sdkTokenBuilder: SdkTokenBuilder, options?: any): AxiosPromise<SdkToken> {
+        generateSdkToken(sdkTokenBuilder: SdkTokenBuilder, options?: RawAxiosRequestConfig): AxiosPromise<SdkToken> {
             return localVarFp.generateSdkToken(sdkTokenBuilder, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14563,7 +14563,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listApplicants(page?: number, perPage?: number, includeDeleted?: boolean, options?: any): AxiosPromise<ApplicantsList> {
+        listApplicants(page?: number, perPage?: number, includeDeleted?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<ApplicantsList> {
             return localVarFp.listApplicants(page, perPage, includeDeleted, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14573,7 +14573,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listChecks(applicantId: string, options?: any): AxiosPromise<ChecksList> {
+        listChecks(applicantId: string, options?: RawAxiosRequestConfig): AxiosPromise<ChecksList> {
             return localVarFp.listChecks(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14583,7 +14583,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listDocuments(applicantId: string, options?: any): AxiosPromise<DocumentsList> {
+        listDocuments(applicantId: string, options?: RawAxiosRequestConfig): AxiosPromise<DocumentsList> {
             return localVarFp.listDocuments(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14593,7 +14593,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listIdPhotos(applicantId: string, options?: any): AxiosPromise<IdPhotosList> {
+        listIdPhotos(applicantId: string, options?: RawAxiosRequestConfig): AxiosPromise<IdPhotosList> {
             return localVarFp.listIdPhotos(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14603,7 +14603,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listLivePhotos(applicantId: string, options?: any): AxiosPromise<LivePhotosList> {
+        listLivePhotos(applicantId: string, options?: RawAxiosRequestConfig): AxiosPromise<LivePhotosList> {
             return localVarFp.listLivePhotos(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14613,7 +14613,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listLiveVideos(applicantId: string, options?: any): AxiosPromise<LiveVideosList> {
+        listLiveVideos(applicantId: string, options?: RawAxiosRequestConfig): AxiosPromise<LiveVideosList> {
             return localVarFp.listLiveVideos(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14623,7 +14623,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listMotionCaptures(applicantId: string, options?: any): AxiosPromise<MotionCapturesList> {
+        listMotionCaptures(applicantId: string, options?: RawAxiosRequestConfig): AxiosPromise<MotionCapturesList> {
             return localVarFp.listMotionCaptures(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14633,7 +14633,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listRepeatAttempts(reportId: string, options?: any): AxiosPromise<RepeatAttemptsList> {
+        listRepeatAttempts(reportId: string, options?: RawAxiosRequestConfig): AxiosPromise<RepeatAttemptsList> {
             return localVarFp.listRepeatAttempts(reportId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14643,7 +14643,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listReports(checkId: string, options?: any): AxiosPromise<ReportsList> {
+        listReports(checkId: string, options?: RawAxiosRequestConfig): AxiosPromise<ReportsList> {
             return localVarFp.listReports(checkId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14653,7 +14653,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listTasks(workflowRunId: string, options?: any): AxiosPromise<Array<TaskItem>> {
+        listTasks(workflowRunId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<TaskItem>> {
             return localVarFp.listTasks(workflowRunId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14663,7 +14663,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listWatchlistMonitorMatches(monitorId: string, options?: any): AxiosPromise<WatchlistMonitorMatchesList> {
+        listWatchlistMonitorMatches(monitorId: string, options?: RawAxiosRequestConfig): AxiosPromise<WatchlistMonitorMatchesList> {
             return localVarFp.listWatchlistMonitorMatches(monitorId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14674,7 +14674,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listWatchlistMonitors(applicantId: string, includeDeleted?: boolean, options?: any): AxiosPromise<WatchlistMonitorsList> {
+        listWatchlistMonitors(applicantId: string, includeDeleted?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<WatchlistMonitorsList> {
             return localVarFp.listWatchlistMonitors(applicantId, includeDeleted, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14683,7 +14683,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listWebhooks(options?: any): AxiosPromise<WebhooksList> {
+        listWebhooks(options?: RawAxiosRequestConfig): AxiosPromise<WebhooksList> {
             return localVarFp.listWebhooks(options).then((request) => request(axios, basePath));
         },
         /**
@@ -14697,7 +14697,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, options?: any): AxiosPromise<Array<WorkflowRun>> {
+        listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, options?: RawAxiosRequestConfig): AxiosPromise<Array<WorkflowRun>> {
             return localVarFp.listWorkflowRuns(page, status, createdAtGt, createdAtLt, sort, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14706,7 +14706,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        ping(options?: any): AxiosPromise<string> {
+        ping(options?: RawAxiosRequestConfig): AxiosPromise<string> {
             return localVarFp.ping(options).then((request) => request(axios, basePath));
         },
         /**
@@ -14716,7 +14716,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        postResultsFeedback(resultsFeedback: ResultsFeedback, options?: any): AxiosPromise<ResultsFeedback> {
+        postResultsFeedback(resultsFeedback: ResultsFeedback, options?: RawAxiosRequestConfig): AxiosPromise<ResultsFeedback> {
             return localVarFp.postResultsFeedback(resultsFeedback, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14726,7 +14726,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resendWebhooks(webhookResend: WebhookResend, options?: any): AxiosPromise<void> {
+        resendWebhooks(webhookResend: WebhookResend, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.resendWebhooks(webhookResend, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14736,7 +14736,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        restoreApplicant(applicantId: string, options?: any): AxiosPromise<void> {
+        restoreApplicant(applicantId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.restoreApplicant(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14746,7 +14746,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resumeCheck(checkId: string, options?: any): AxiosPromise<void> {
+        resumeCheck(checkId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.resumeCheck(checkId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14756,7 +14756,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        resumeReport(reportId: string, options?: any): AxiosPromise<void> {
+        resumeReport(reportId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.resumeReport(reportId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14767,7 +14767,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateApplicant(applicantId: string, applicantUpdater: ApplicantUpdater, options?: any): AxiosPromise<Applicant> {
+        updateApplicant(applicantId: string, applicantUpdater: ApplicantUpdater, options?: RawAxiosRequestConfig): AxiosPromise<Applicant> {
             return localVarFp.updateApplicant(applicantId, applicantUpdater, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14778,7 +14778,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateWatchlistMonitorMatch(monitorId: string, watchlistMonitorMatchesUpdater: WatchlistMonitorMatchesUpdater, options?: any): AxiosPromise<WatchlistMonitorMatchesList> {
+        updateWatchlistMonitorMatch(monitorId: string, watchlistMonitorMatchesUpdater: WatchlistMonitorMatchesUpdater, options?: RawAxiosRequestConfig): AxiosPromise<WatchlistMonitorMatchesList> {
             return localVarFp.updateWatchlistMonitorMatch(monitorId, watchlistMonitorMatchesUpdater, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14789,7 +14789,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateWebhook(webhookId: string, webhookUpdater: WebhookUpdater, options?: any): AxiosPromise<Webhook> {
+        updateWebhook(webhookId: string, webhookUpdater: WebhookUpdater, options?: RawAxiosRequestConfig): AxiosPromise<Webhook> {
             return localVarFp.updateWebhook(webhookId, webhookUpdater, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14806,7 +14806,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadDocument(type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: any): AxiosPromise<Document> {
+        uploadDocument(type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig): AxiosPromise<Document> {
             return localVarFp.uploadDocument(type, applicantId, file, fileType, side, issuingCountry, validateImageQuality, location, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14817,7 +14817,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadIdPhoto(applicantId?: string, file?: FileTransfer, options?: any): AxiosPromise<IdPhoto> {
+        uploadIdPhoto(applicantId?: string, file?: FileTransfer, options?: RawAxiosRequestConfig): AxiosPromise<IdPhoto> {
             return localVarFp.uploadIdPhoto(applicantId, file, options).then((request) => request(axios, basePath));
         },
         /**
@@ -14829,7 +14829,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadLivePhoto(applicantId?: string, file?: FileTransfer, advancedValidation?: boolean, options?: any): AxiosPromise<LivePhoto> {
+        uploadLivePhoto(applicantId?: string, file?: FileTransfer, advancedValidation?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<LivePhoto> {
             return localVarFp.uploadLivePhoto(applicantId, file, advancedValidation, options).then((request) => request(axios, basePath));
         },
     };
