@@ -3,12 +3,13 @@
 ## v4.0.0 23rd October 2024
 
 - Release based on Onfido OpenAPI spec version [v4.0.0](https://github.com/onfido/onfido-openapi-spec/releases/tag/v4.0.0):
+  - [CAT-1379] Add a few missing properties
   - [CAT-1447] Fix applicant consents
   - [CAT-1379] Fix check creation, remove some deprecated properties and deprecate others
   - Use document-type enum for document upload
   - [CAT-1306] Add webhooks event resource
-  - Upgrade OpenAPI generator to v7.9.0 (was v7.6.0)
-  - [Migration Guide](MIGRATION.md#upgrading-from-3x-to-4x)
+  -  Upgrade OpenAPI generator to v7.9.0 (was v7.6.0)
+  - [Migration Guide](MIGRATION.md#upgrading-from-4x-to-5x)
 
 ## v3.6.0 20th September 2024
 
