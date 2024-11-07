@@ -1,6 +1,6 @@
 {
   "name": "@onfido/api",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Node.js library for the Onfido API",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
