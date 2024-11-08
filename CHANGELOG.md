@@ -1,5 +1,10 @@
 # Changelog
 
+## v4.1.0 8th November 2024
+
+- Release based on Onfido OpenAPI spec version [v4.1.0](https://github.com/onfido/onfido-openapi-spec/releases/tag/v4.1.0):
+  - [CAT-1528] Fix barcode field in document properties object
+
 ## v4.0.0 23rd October 2024
 
 - Release based on Onfido OpenAPI spec version [v4.0.0](https://github.com/onfido/onfido-openapi-spec/releases/tag/v4.0.0):
@@ -8,7 +13,7 @@
   - [CAT-1379] Fix check creation, remove some deprecated properties and deprecate others
   - Use document-type enum for document upload
   - [CAT-1306] Add webhooks event resource
-  -  Upgrade OpenAPI generator to v7.9.0 (was v7.6.0)
+  - Upgrade OpenAPI generator to v7.9.0 (was v7.6.0)
   - [Migration Guide](MIGRATION.md#upgrading-from-4x-to-5x)
 
 ## v3.6.0 20th September 2024
