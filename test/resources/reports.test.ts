@@ -66,6 +66,10 @@ it("lists reports", async () => {
       sub_result: reports[1].sub_result
     })
   ]);
+
+  expect(reports.find(report => report.name === "document").name).toEqual(
+    "document"
+  );
 });
 
 it("resumes a report", async () => {
