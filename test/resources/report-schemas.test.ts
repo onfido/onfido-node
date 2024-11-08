@@ -3,7 +3,9 @@ import {
   Check,
   Document,
   DocumentReport,
-  Report
+  DocumentWithAddressInformationReport,
+  Report,
+  ReportName
 } from "onfido-node";
 import {
   exampleDocumentReport,
@@ -72,7 +74,44 @@ it("schema of facial similarity photo report should be valid", async () => {
     "complete"
   );
 
+  const extraProperties = {
+    id_photos: [],
+    live_photos: [],
+    live_video: [],
+    motion_captures: []
+  };
+
   expect(report).toEqual(
-    getExpectedFacialSimilarityReport(exampleFacialSimilarityPhotoReport)
+    getExpectedFacialSimilarityReport(
+      exampleFacialSimilarityPhotoReport,
+      extraProperties
+    )
+  );
+}, 30000);
+
+it("schema of document with address information report should be valid", async () => {
+  await uploadLivePhoto(applicant);
+  const check: Check = (
+    await createCheck(applicant, document, {
+      report_names: [ReportName.DocumentWithAddressInformation]
+    })
+  ).data;
+
+  const report: Report = await repeatRequestUntilStatusChanges(
+    "findReport",
+    [check.report_ids[0]],
+    "complete"
+  );
+
+  const document_report = report as DocumentWithAddressInformationReport;
+
+  expect(document_report).toEqual(
+    getExpectedDocumentReport(exampleDocumentReport, {
+      name: "document_with_address_information"
+    })
+  );
+
+  expect(document_report.properties.barcode.document_type).toEqual(
+    "driving_licence"
   );
 }, 30000);
