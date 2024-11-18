@@ -644,6 +644,10 @@ export const exampleFacialSimilarityPhotoReport: FacialSimilarityPhotoReport = {
   name: "facial_similarity_photo_fully_auto",
   result: "clear",
   status: "complete",
+  id_photos: [],
+  live_photos: [],
+  live_videos: [],
+  motion_captures: [],
   sub_result: null,
   breakdown: {
     visual_authenticity: {

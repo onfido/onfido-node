@@ -112,7 +112,7 @@ describe("workflow runs outputs", () => {
           line2: expect.stringMatching(/^[0-9A-Za-z\s'-]+$/),
           line3: expect.stringMatching(/^[0-9A-Za-z\s'-]+$/),
           postcode: expect.stringMatching(/^[0-9A-Za-z\s-]+$/),
-          town: expect.stringMatching(/^[A-Za-z\s]+$/)
+          town: expect.stringMatching(/^[A-Za-z\s\.-]+$/)
         },
         country_residence: expect.stringMatching(/^[A-Z]{3}$/),
         dob: expect.stringMatching(/^[0-9-]+$/),

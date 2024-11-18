@@ -4,6 +4,7 @@ import {
   Document,
   DocumentReport,
   DocumentWithAddressInformationReport,
+  FacialSimilarityPhotoReport,
   Report,
   ReportName
 } from "onfido-node";
@@ -16,7 +17,7 @@ import {
   createApplicant,
   createCheck,
   getExpectedDocumentReport,
-  getExpectedFacialSimilarityReport,
+  getExpectedFacialSimilarityPhotoReport,
   repeatRequestUntilStatusChanges,
   uploadDocument,
   uploadLivePhoto
@@ -62,9 +63,10 @@ it("schema of document report should be valid", async () => {
 
 it("schema of facial similarity photo report should be valid", async () => {
   await uploadLivePhoto(applicant);
+
   const check: Check = (
     await createCheck(applicant, document, {
-      report_names: ["facial_similarity_photo_fully_auto"]
+      report_names: [ReportName.FacialSimilarityPhotoFullyAuto]
     })
   ).data;
 
@@ -74,18 +76,14 @@ it("schema of facial similarity photo report should be valid", async () => {
     "complete"
   );
 
-  const extraProperties = {
-    id_photos: [],
-    live_photos: [],
-    live_video: [],
-    motion_captures: []
-  };
-
   expect(report).toEqual(
-    getExpectedFacialSimilarityReport(
-      exampleFacialSimilarityPhotoReport,
-      extraProperties
-    )
+    getExpectedFacialSimilarityPhotoReport(exampleFacialSimilarityPhotoReport, {
+      live_photos: [
+        {
+          id: (report as FacialSimilarityPhotoReport).live_photos[0].id
+        }
+      ]
+    })
   );
 }, 30000);
 
