@@ -3823,6 +3823,52 @@ export const DocumentTypes = {
     VehicleRegistrationCertificate: 'vehicle_registration_certificate',
     FormForAffixingTheVisa: 'form_for_affixing_the_visa',
     IdentificationNumberDocument: 'identification_number_document',
+    AdoptionCertificate: 'adoption_certificate',
+    BankBuildingSocietyStatement: 'bank_building_society_statement',
+    BankStatement: 'bank_statement',
+    BenefitLetters: 'benefit_letters',
+    Cbt: 'cbt',
+    CertificateOfSponsorship: 'certificate_of_sponsorship',
+    CharacterReference: 'character_reference',
+    CivilPartnershipCertificate: 'civil_partnership_certificate',
+    CouncilTax: 'council_tax',
+    CreditCardStatement: 'credit_card_statement',
+    DeedPoll: 'deed_poll',
+    DivorceAbsoluteDecree: 'divorce_absolute_decree',
+    EducationalStatement: 'educational_statement',
+    ElectricityBill: 'electricity_bill',
+    GasBill: 'gas_bill',
+    GovernmentLetter: 'government_letter',
+    InternetBill: 'internet_bill',
+    MarriageCertificate: 'marriage_certificate',
+    MotorcycleInsurance: 'motorcycle_insurance',
+    NationalInsuranceCard: 'national_insurance_card',
+    NaturalisationCertificate: 'naturalisation_certificate',
+    NonUkDrivingLicence: 'non_uk_driving_licence',
+    P45P60: 'p45_p60',
+    Payslip: 'payslip',
+    PhoneBill: 'phone_bill',
+    ProfessionalIdentificationCard: 'professional_identification_card',
+    RightToWorkShareCodeResult: 'right_to_work_share_code_result',
+    StatementFact: 'statement_fact',
+    T4StudentUniversityTermDatesEvidence: 't4_student_university_term_dates_evidence',
+    UkBiometricResidencePermit: 'uk_biometric_residence_permit',
+    UkDrivingLicence: 'uk_driving_licence',
+    Unknown: 'unknown',
+    UtilityBill: 'utility_bill',
+    UtilityBillElectric: 'utility_bill_electric',
+    UtilityBillGas: 'utility_bill_gas',
+    UtilityBillOther: 'utility_bill_other',
+    WaterBill: 'water_bill',
+    AddressCertificate: 'address_certificate',
+    GeneralLetter: 'general_letter',
+    InsuranceStatement: 'insurance_statement',
+    PensionPropertyStatementLetter: 'pension_property_statement_letter',
+    MortgageStatement: 'mortgage_statement',
+    MobilePhoneBill: 'mobile_phone_bill',
+    IdentityDocumentWithAddress: 'identity_document_with_address',
+    ExchangeHouseStatement: 'exchange_house_statement',
+    AccommodationTenancyCertificate: 'accommodation_tenancy_certificate',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 
@@ -5195,6 +5241,30 @@ export interface FacialSimilarityMotionReport {
      */
     'name': ReportName;
     /**
+     * Array of objects with live photo ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityMotionReport
+     */
+    'live_photos'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with live video ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityMotionReport
+     */
+    'live_videos'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with motion capture ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityMotionReport
+     */
+    'motion_captures'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with id photo ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityMotionReport
+     */
+    'id_photos'?: Array<FacialSimilarityReportMedia>;
+    /**
      * 
      * @type {FacialSimilarityMotionBreakdown}
      * @memberof FacialSimilarityMotionReport
@@ -5600,6 +5670,30 @@ export interface FacialSimilarityPhotoFullyAutoReport {
      */
     'name': ReportName;
     /**
+     * Array of objects with live photo ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityPhotoFullyAutoReport
+     */
+    'live_photos'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with live video ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityPhotoFullyAutoReport
+     */
+    'live_videos'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with motion capture ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityPhotoFullyAutoReport
+     */
+    'motion_captures'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with id photo ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityPhotoFullyAutoReport
+     */
+    'id_photos'?: Array<FacialSimilarityReportMedia>;
+    /**
      * 
      * @type {FacialSimilarityPhotoFullyAutoBreakdown}
      * @memberof FacialSimilarityPhotoFullyAutoReport
@@ -5688,6 +5782,30 @@ export interface FacialSimilarityPhotoReport {
      */
     'name': ReportName;
     /**
+     * Array of objects with live photo ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityPhotoReport
+     */
+    'live_photos'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with live video ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityPhotoReport
+     */
+    'live_videos'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with motion capture ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityPhotoReport
+     */
+    'motion_captures'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with id photo ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityPhotoReport
+     */
+    'id_photos'?: Array<FacialSimilarityReportMedia>;
+    /**
      * 
      * @type {FacialSimilarityPhotoBreakdown}
      * @memberof FacialSimilarityPhotoReport
@@ -5702,6 +5820,50 @@ export interface FacialSimilarityPhotoReport {
 }
 
 
+/**
+ * 
+ * @export
+ * @interface FacialSimilarityReportMedia
+ */
+export interface FacialSimilarityReportMedia {
+    /**
+     * ID of uploaded biometric media to use.
+     * @type {string}
+     * @memberof FacialSimilarityReportMedia
+     */
+    'id': string;
+}
+/**
+ * 
+ * @export
+ * @interface FacialSimilarityReportShared
+ */
+export interface FacialSimilarityReportShared {
+    /**
+     * Array of objects with live photo ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityReportShared
+     */
+    'live_photos'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with live video ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityReportShared
+     */
+    'live_videos'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with motion capture ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityReportShared
+     */
+    'motion_captures'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with id photo ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityReportShared
+     */
+    'id_photos'?: Array<FacialSimilarityReportMedia>;
+}
 /**
  * 
  * @export
@@ -5971,6 +6133,30 @@ export interface FacialSimilarityVideoReport {
      * @memberof FacialSimilarityVideoReport
      */
     'name': ReportName;
+    /**
+     * Array of objects with live photo ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityVideoReport
+     */
+    'live_photos'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with live video ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityVideoReport
+     */
+    'live_videos'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with motion capture ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityVideoReport
+     */
+    'motion_captures'?: Array<FacialSimilarityReportMedia>;
+    /**
+     * Array of objects with id photo ids that were used in the Onfido engine.
+     * @type {Array<FacialSimilarityReportMedia>}
+     * @memberof FacialSimilarityVideoReport
+     */
+    'id_photos'?: Array<FacialSimilarityReportMedia>;
     /**
      * 
      * @type {FacialSimilarityVideoBreakdown}
