@@ -1,5 +1,5 @@
 import { isAxiosError } from "axios";
-import { createReadStream, readFileSync } from "fs";
+import { readFileSync } from "fs";
 import "dotenv/config";
 
 import {
@@ -255,7 +255,7 @@ export function getExpectedDocumentReport(
   });
 }
 
-export function getExpectedFacialSimilarityReport(
+export function getExpectedFacialSimilarityPhotoReport(
   exampleReport: FacialSimilarityPhotoReport,
   overrideProperties = {}
 ) {
