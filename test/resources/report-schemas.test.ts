@@ -109,7 +109,7 @@ it("schema of document with address information report should be valid", async (
     })
   );
 
-  expect(document_report.properties.barcode.document_type).toEqual(
+  expect(document_report.properties.barcode[0].document_type).toEqual(
     "driving_licence"
   );
 }, 30000);
