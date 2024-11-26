@@ -3101,10 +3101,10 @@ export interface DocumentProperties {
     'address_lines'?: DocumentPropertiesAddressLines;
     /**
      * 
-     * @type {DocumentPropertiesBarcode}
+     * @type {Array<DocumentPropertiesBarcodeInner>}
      * @memberof DocumentProperties
      */
-    'barcode'?: DocumentPropertiesBarcode;
+    'barcode'?: Array<DocumentPropertiesBarcodeInner>;
     /**
      * 
      * @type {DocumentPropertiesNfc}
@@ -3208,115 +3208,115 @@ export interface DocumentPropertiesAddressLines {
 /**
  * 
  * @export
- * @interface DocumentPropertiesBarcode
+ * @interface DocumentPropertiesBarcodeInner
  */
-export interface DocumentPropertiesBarcode {
+export interface DocumentPropertiesBarcodeInner {
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'first_name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'middle_name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'last_name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'document_type'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'date_of_expiry'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'date_of_birth'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'issuing_date'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'address_line_1'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'address_line_2'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'address_line_3'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'address_line_4'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'address_line_5'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'issuing_state'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'class'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'gender'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'issuing_country'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'document_number'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesBarcode
+     * @memberof DocumentPropertiesBarcodeInner
      */
     'real_id_classification'?: string;
 }
@@ -4423,10 +4423,10 @@ export interface DocumentWithDriverVerificationReportAllOfProperties {
     'address_lines'?: DocumentPropertiesAddressLines;
     /**
      * 
-     * @type {DocumentPropertiesBarcode}
+     * @type {Array<DocumentPropertiesBarcodeInner>}
      * @memberof DocumentWithDriverVerificationReportAllOfProperties
      */
-    'barcode'?: DocumentPropertiesBarcode;
+    'barcode'?: Array<DocumentPropertiesBarcodeInner>;
     /**
      * 
      * @type {DocumentPropertiesNfc}
