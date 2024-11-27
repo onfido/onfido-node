@@ -147,6 +147,6 @@ it("downloads a timeline file", async () => {
   ]);
 
   expect(file.status).toEqual(200);
-  expect(file.headers["content-type"]).toEqual("binary/octet-stream");
+  expect(file.headers["content-type"]).toEqual("application/pdf");
   expect(file.data.buffer.slice(0, 5)).toEqual("%PDF-");
 }, 60000);
