@@ -8196,7 +8196,7 @@ export interface Task {
      */
     'input'?: object;
     /**
-     * Output object with the fields produced by the Task execution.
+     * Value field (it can be an Object, List, etc.) with the fields produced by the Task execution.
      * @type {object}
      * @memberof Task
      */
@@ -10254,7 +10254,7 @@ export interface WebhookEventPayloadResource {
      */
     'input'?: object;
     /**
-     * Output object with the fields produced by the Task execution.
+     * Value field (it can be an Object, List, etc.) with the fields produced by the Task execution.
      * @type {object}
      * @memberof WebhookEventPayloadResource
      */
@@ -10291,6 +10291,8 @@ export const WebhookEventResourceType = {
     WorkflowRun: 'workflow_run',
     WorkflowTask: 'workflow_task',
     WatchlistMonitor: 'watchlist_monitor',
+    WorkflowTimelineFile: 'workflow_timeline_file',
+    WorkflowRunEvidenceFolder: 'workflow_run_evidence_folder',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 
@@ -10321,6 +10323,7 @@ export const WebhookEventType = {
     ReportCompleted: 'report.completed',
     WorkflowTimelineFileCreated: 'workflow_timeline_file.created',
     WorkflowSignedEvidenceFileCreated: 'workflow_signed_evidence_file.created',
+    WorkflowRunEvidenceFolderCreated: 'workflow_run_evidence_folder.created',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 
