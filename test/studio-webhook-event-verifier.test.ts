@@ -1,3 +1,5 @@
+import { readFileSync } from "fs";
+
 import {
   OnfidoInvalidSignatureError,
   WebhookEventVerifier,
@@ -69,4 +71,52 @@ it("throws an error if the signature is invalid", () => {
   expect(() => verifier.readPayload(rawEvent, signature)).toThrow(
     OnfidoInvalidSignatureError
   );
+});
+
+it("allows deconding a webhook studio payload with object in output", () => {
+  const signature =
+    "e3e5565647f5ccf07b2fd8ac22eab94a0a0619413d981fb768295c820523f7d7";
+
+  const rawEventFromFile = readFileSync(
+    "test/media/studio_webhook_event_with_object_in_output.json",
+    "utf8"
+  );
+
+  const event = verifier.readPayload(Buffer.from(rawEventFromFile), signature);
+
+  expect(event.payload.resource.output["properties"]).toEqual({
+    date_of_birth: "1990-01-01",
+    date_of_expiry: "2031-05-28",
+    document_number: "999999999",
+    document_numbers: [
+      {
+        type: "document_number",
+        value: "999999999"
+      }
+    ],
+    document_type: "passport",
+    first_name: "Jane",
+    issuing_country: "GBR",
+    last_name: "Doe"
+  });
+});
+
+it("allows deconding a webhook studio payload with list in output", () => {
+  const signature =
+    "f3a5170acfcecf8c1bf6d9cb9995c0d9dec941af83056a721530f8de7af2c293";
+
+  const rawEventFromFile = readFileSync(
+    "test/media/studio_webhook_event_with_list_in_output.json",
+    "utf8"
+  );
+
+  const event = verifier.readPayload(Buffer.from(rawEventFromFile), signature);
+
+  expect(event.payload.resource.output).toEqual([
+    {
+      checksum_sha256: "hiwV2PLmeQZzeySPGGwVL48sxVXcyfpXy9LDl1u3lWU=",
+      id: "7af75a3a-ba34-4aa5-9e3e-096c9f56256b",
+      type: "document_photo"
+    }
+  ]);
 });
