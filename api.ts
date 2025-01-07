@@ -11399,6 +11399,43 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Retrieves the evidence folder for the designated Workflow Run 
+         * @summary Retrieve Workflow Run Evidence Folder
+         * @param {string} workflowRunId Workflow Run ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadEvidenceFolder: async (workflowRunId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'workflowRunId' is not null or undefined
+            assertParamExists('downloadEvidenceFolder', 'workflowRunId', workflowRunId)
+            const localVarPath = `/workflow_runs/{workflow_run_id}/evidence_folder`
+                .replace(`{${"workflow_run_id"}}`, encodeURIComponent(String(workflowRunId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * ID photos are downloaded using this endpoint.
          * @summary Download ID photo
          * @param {string} idPhotoId The ID photo\&#39;s unique identifier.
@@ -13655,6 +13692,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Retrieves the evidence folder for the designated Workflow Run 
+         * @summary Retrieve Workflow Run Evidence Folder
+         * @param {string} workflowRunId Workflow Run ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async downloadEvidenceFolder(workflowRunId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.downloadEvidenceFolder(workflowRunId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadEvidenceFolder']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * ID photos are downloaded using this endpoint.
          * @summary Download ID photo
          * @param {string} idPhotoId The ID photo\&#39;s unique identifier.
@@ -14491,6 +14541,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.downloadDocumentVideo(documentId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves the evidence folder for the designated Workflow Run 
+         * @summary Retrieve Workflow Run Evidence Folder
+         * @param {string} workflowRunId Workflow Run ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadEvidenceFolder(workflowRunId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
+            return localVarFp.downloadEvidenceFolder(workflowRunId, options).then((request) => request(axios, basePath));
+        },
+        /**
          * ID photos are downloaded using this endpoint.
          * @summary Download ID photo
          * @param {string} idPhotoId The ID photo\&#39;s unique identifier.
@@ -15199,6 +15259,18 @@ export class DefaultApi extends BaseAPI {
      */
     public downloadDocumentVideo(documentId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadDocumentVideo(documentId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves the evidence folder for the designated Workflow Run 
+     * @summary Retrieve Workflow Run Evidence Folder
+     * @param {string} workflowRunId Workflow Run ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public downloadEvidenceFolder(workflowRunId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).downloadEvidenceFolder(workflowRunId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
