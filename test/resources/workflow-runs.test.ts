@@ -150,3 +150,20 @@ it("downloads a timeline file", async () => {
   expect(file.headers["content-type"]).toEqual("application/pdf");
   expect(file.data.buffer.slice(0, 5)).toEqual("%PDF-");
 }, 60000);
+
+it("downloads an evidence folder", async () => {
+  const workflowRunId = (await createWorkflowRun(applicant, workflowIdTimeline))
+    .data.id;
+
+  await repeatRequestUntilStatusChanges(
+    "findWorkflowRun",
+    [workflowRunId],
+    "approved"
+  );
+
+  const file = await onfido.downloadEvidenceFolder(workflowRunId);
+
+  expect(file.status).toEqual(200);
+  expect(file.headers["content-type"]).toEqual("application/zip");
+  expect(file.data.buffer.length).toBeGreaterThan(0);
+}, 60000);
