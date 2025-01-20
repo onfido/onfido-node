@@ -273,7 +273,7 @@ export async function repeatRequestUntilStatusChanges(
   fn: string,
   params: any[],
   expectedStatus: string,
-  maxRetries = 10,
+  maxRetries = 15,
   sleepTime = 1000
 ): Promise<any> {
   let instance = (await onfido[fn](...params)).data;
@@ -294,7 +294,7 @@ export async function repeatRequestUntilStatusChanges(
 export async function repeatRequestUntilTaskOutputChanges(
   fn: string,
   params: any[],
-  maxRetries = 10,
+  maxRetries = 15,
   sleepTime = 1000
 ): Promise<any> {
   let instance = (await onfido[fn](...params)).data;
@@ -315,7 +315,7 @@ export async function repeatRequestUntilTaskOutputChanges(
 export async function repeatRequestUntilHttpCodeChanges(
   fn: string,
   params: any[],
-  maxRetries: number = 10,
+  maxRetries: number = 15,
   sleepTime: number = 1000
 ): Promise<any> {
   let iteration = 0;
