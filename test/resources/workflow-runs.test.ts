@@ -161,7 +161,10 @@ it("downloads an evidence folder", async () => {
     "approved"
   );
 
-  const file = await onfido.downloadEvidenceFolder(workflowRunId);
+  const file = await repeatRequestUntilHttpCodeChanges(
+    "downloadEvidenceFolder",
+    [workflowRunId]
+  );
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toEqual("application/zip");
