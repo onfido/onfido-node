@@ -6,7 +6,8 @@ import {
   createApplicant,
   uploadDocument,
   createCheck,
-  sortByReportName
+  sortByReportName,
+  repeatRequestUntilStatusChanges
 } from "../test-helpers";
 
 function getExpectedReport(exampleReport: Report, overrideProperties = {}) {
@@ -35,17 +36,21 @@ const exampleReport: Report = {
   created_at: "2020-01-01T00:00:00Z",
   name: "document",
   href: "https://api.onfido.com/v3.6/reports/123-abc",
-  status: "awaiting_data",
-  result: null,
-  sub_result: null,
+  status: "complete",
+  result: "clear",
+  sub_result: "clear",
   documents: [{ id: "document-id" }],
   check_id: "aa111111-1111-1111-1111-111111111111"
 };
 
 it("finds a report", async () => {
-  const report = await onfido.findReport(check.report_ids[1]);
+  const report: Report = await repeatRequestUntilStatusChanges(
+    "findReport",
+    [check.report_ids[1]],
+    "complete"
+  );
 
-  expect(report.data).toEqual(getExpectedReport(exampleReport));
+  expect(report).toEqual(getExpectedReport(exampleReport));
 });
 
 it("lists reports", async () => {
