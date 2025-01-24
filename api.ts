@@ -6203,6 +6203,7 @@ export const IdNumberTypeEnum = {
     SocialInsurance: 'social_insurance',
     TaxId: 'tax_id',
     IdentityCard: 'identity_card',
+    DrivingLicense: 'driving_license',
     DrivingLicence: 'driving_licence',
     ShareCode: 'share_code',
     VoterId: 'voter_id',
@@ -10277,6 +10278,12 @@ export interface WebhookEventPayloadResource {
      * @memberof WebhookEventPayloadResource
      */
     'error'?: WorkflowRunError;
+    /**
+     * Customer-provided user identifier.
+     * @type {string}
+     * @memberof WebhookEventPayloadResource
+     */
+    'customer_user_id'?: string;
 }
 /**
  * 
