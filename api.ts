@@ -1732,12 +1732,6 @@ export interface DeviceIntelligenceReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof DeviceIntelligenceReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof DeviceIntelligenceReport
@@ -1763,7 +1757,7 @@ export interface Document {
      * @type {string}
      * @memberof Document
      */
-    'file_type'?: DocumentFileTypeEnum;
+    'file_type'?: string;
     /**
      * The type of document
      * @type {DocumentTypes}
@@ -1826,15 +1820,6 @@ export interface Document {
     'file_size'?: number;
 }
 
-export const DocumentFileTypeEnum = {
-    Jpg: 'jpg',
-    Jpeg: 'jpeg',
-    Png: 'png',
-    Pdf: 'pdf',
-    UnknownDefaultOpenApi: '11184809'
-} as const;
-
-export type DocumentFileTypeEnum = typeof DocumentFileTypeEnum[keyof typeof DocumentFileTypeEnum];
 export const DocumentSideEnum = {
     Front: 'front',
     Back: 'back',
@@ -3662,17 +3647,17 @@ export interface DocumentReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof DocumentReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof DocumentReport
      */
     'name': ReportName;
+    /**
+     * Array of objects with document ids that were used in the Onfido engine.
+     * @type {Array<ReportDocument>}
+     * @memberof DocumentReport
+     */
+    'documents'?: Array<ReportDocument>;
     /**
      * 
      * @type {DocumentBreakdown}
@@ -3688,6 +3673,19 @@ export interface DocumentReport {
 }
 
 
+/**
+ * 
+ * @export
+ * @interface DocumentReportShared
+ */
+export interface DocumentReportShared {
+    /**
+     * Array of objects with document ids that were used in the Onfido engine.
+     * @type {Array<ReportDocument>}
+     * @memberof DocumentReportShared
+     */
+    'documents'?: Array<ReportDocument>;
+}
 /**
  * 
  * @export
@@ -3742,7 +3740,7 @@ export interface DocumentShared {
      * @type {string}
      * @memberof DocumentShared
      */
-    'file_type'?: DocumentSharedFileTypeEnum;
+    'file_type'?: string;
     /**
      * The type of document
      * @type {DocumentTypes}
@@ -3769,15 +3767,6 @@ export interface DocumentShared {
     'applicant_id'?: string;
 }
 
-export const DocumentSharedFileTypeEnum = {
-    Jpg: 'jpg',
-    Jpeg: 'jpeg',
-    Png: 'png',
-    Pdf: 'pdf',
-    UnknownDefaultOpenApi: '11184809'
-} as const;
-
-export type DocumentSharedFileTypeEnum = typeof DocumentSharedFileTypeEnum[keyof typeof DocumentSharedFileTypeEnum];
 export const DocumentSharedSideEnum = {
     Front: 'front',
     Back: 'back',
@@ -3924,17 +3913,17 @@ export interface DocumentVideoReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof DocumentVideoReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof DocumentVideoReport
      */
     'name': ReportName;
+    /**
+     * Array of objects with document ids that were used in the Onfido engine.
+     * @type {Array<ReportDocument>}
+     * @memberof DocumentVideoReport
+     */
+    'documents'?: Array<ReportDocument>;
     /**
      * 
      * @type {DocumentBreakdown}
@@ -3999,17 +3988,17 @@ export interface DocumentVideoWithAddressInformationReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof DocumentVideoWithAddressInformationReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof DocumentVideoWithAddressInformationReport
      */
     'name': ReportName;
+    /**
+     * Array of objects with document ids that were used in the Onfido engine.
+     * @type {Array<ReportDocument>}
+     * @memberof DocumentVideoWithAddressInformationReport
+     */
+    'documents'?: Array<ReportDocument>;
     /**
      * 
      * @type {DocumentBreakdown}
@@ -4074,17 +4063,17 @@ export interface DocumentWithAddressInformationReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof DocumentWithAddressInformationReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof DocumentWithAddressInformationReport
      */
     'name': ReportName;
+    /**
+     * Array of objects with document ids that were used in the Onfido engine.
+     * @type {Array<ReportDocument>}
+     * @memberof DocumentWithAddressInformationReport
+     */
+    'documents'?: Array<ReportDocument>;
     /**
      * 
      * @type {DocumentBreakdown}
@@ -4149,17 +4138,17 @@ export interface DocumentWithDriverVerificationReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof DocumentWithDriverVerificationReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof DocumentWithDriverVerificationReport
      */
     'name': ReportName;
+    /**
+     * Array of objects with document ids that were used in the Onfido engine.
+     * @type {Array<ReportDocument>}
+     * @memberof DocumentWithDriverVerificationReport
+     */
+    'documents'?: Array<ReportDocument>;
     /**
      * 
      * @type {DocumentBreakdown}
@@ -4625,17 +4614,17 @@ export interface DocumentWithDrivingLicenceInformationReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof DocumentWithDrivingLicenceInformationReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof DocumentWithDrivingLicenceInformationReport
      */
     'name': ReportName;
+    /**
+     * Array of objects with document ids that were used in the Onfido engine.
+     * @type {Array<ReportDocument>}
+     * @memberof DocumentWithDrivingLicenceInformationReport
+     */
+    'documents'?: Array<ReportDocument>;
     /**
      * 
      * @type {DocumentBreakdown}
@@ -5229,17 +5218,17 @@ export interface FacialSimilarityMotionReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof FacialSimilarityMotionReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof FacialSimilarityMotionReport
      */
     'name': ReportName;
+    /**
+     * Array of objects with document ids that were used in the Onfido engine.
+     * @type {Array<ReportDocument>}
+     * @memberof FacialSimilarityMotionReport
+     */
+    'documents'?: Array<ReportDocument>;
     /**
      * Array of objects with live photo ids that were used in the Onfido engine.
      * @type {Array<FacialSimilarityReportMedia>}
@@ -5658,17 +5647,17 @@ export interface FacialSimilarityPhotoFullyAutoReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof FacialSimilarityPhotoFullyAutoReport
      */
     'name': ReportName;
+    /**
+     * Array of objects with document ids that were used in the Onfido engine.
+     * @type {Array<ReportDocument>}
+     * @memberof FacialSimilarityPhotoFullyAutoReport
+     */
+    'documents'?: Array<ReportDocument>;
     /**
      * Array of objects with live photo ids that were used in the Onfido engine.
      * @type {Array<FacialSimilarityReportMedia>}
@@ -5770,17 +5759,17 @@ export interface FacialSimilarityPhotoReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof FacialSimilarityPhotoReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof FacialSimilarityPhotoReport
      */
     'name': ReportName;
+    /**
+     * Array of objects with document ids that were used in the Onfido engine.
+     * @type {Array<ReportDocument>}
+     * @memberof FacialSimilarityPhotoReport
+     */
+    'documents'?: Array<ReportDocument>;
     /**
      * Array of objects with live photo ids that were used in the Onfido engine.
      * @type {Array<FacialSimilarityReportMedia>}
@@ -5839,6 +5828,12 @@ export interface FacialSimilarityReportMedia {
  * @interface FacialSimilarityReportShared
  */
 export interface FacialSimilarityReportShared {
+    /**
+     * Array of objects with document ids that were used in the Onfido engine.
+     * @type {Array<ReportDocument>}
+     * @memberof FacialSimilarityReportShared
+     */
+    'documents'?: Array<ReportDocument>;
     /**
      * Array of objects with live photo ids that were used in the Onfido engine.
      * @type {Array<FacialSimilarityReportMedia>}
@@ -6122,17 +6117,17 @@ export interface FacialSimilarityVideoReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof FacialSimilarityVideoReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof FacialSimilarityVideoReport
      */
     'name': ReportName;
+    /**
+     * Array of objects with document ids that were used in the Onfido engine.
+     * @type {Array<ReportDocument>}
+     * @memberof FacialSimilarityVideoReport
+     */
+    'documents'?: Array<ReportDocument>;
     /**
      * Array of objects with live photo ids that were used in the Onfido engine.
      * @type {Array<FacialSimilarityReportMedia>}
@@ -6710,12 +6705,6 @@ export interface IdentityEnhancedReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof IdentityEnhancedReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof IdentityEnhancedReport
@@ -6784,12 +6773,6 @@ export interface IndiaPanReport {
      * @memberof IndiaPanReport
      */
     'check_id'?: string;
-    /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof IndiaPanReport
-     */
-    'documents'?: Array<ReportDocument>;
     /**
      * 
      * @type {ReportName}
@@ -7044,12 +7027,6 @@ export interface KnownFacesReport {
      * @memberof KnownFacesReport
      */
     'check_id'?: string;
-    /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof KnownFacesReport
-     */
-    'documents'?: Array<ReportDocument>;
     /**
      * 
      * @type {ReportName}
@@ -7717,12 +7694,6 @@ export interface ProofOfAddressReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof ProofOfAddressReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof ProofOfAddressReport
@@ -7969,12 +7940,6 @@ export interface ReportShared {
      * @memberof ReportShared
      */
     'check_id'?: string;
-    /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof ReportShared
-     */
-    'documents'?: Array<ReportDocument>;
     /**
      * 
      * @type {ReportName}
@@ -8713,12 +8678,6 @@ export interface UsDrivingLicenceReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof UsDrivingLicenceReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof UsDrivingLicenceReport
@@ -9007,11 +8966,11 @@ export interface WatchlistAmlBreakdownSanction {
 export interface WatchlistAmlProperties {
     /**
      * Returns any matches including, but not limited to, name and date of birth of match, aliases and associates, and relevant events and sources.
-     * @type {Array<string>}
+     * @type {Array<object>}
      * @memberof WatchlistAmlProperties
      * @deprecated
      */
-    'records'?: Array<string>;
+    'records'?: Array<object>;
 }
 /**
  * 
@@ -9061,12 +9020,6 @@ export interface WatchlistAmlReport {
      * @memberof WatchlistAmlReport
      */
     'check_id'?: string;
-    /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof WatchlistAmlReport
-     */
-    'documents'?: Array<ReportDocument>;
     /**
      * 
      * @type {ReportName}
@@ -9449,12 +9402,6 @@ export interface WatchlistEnhancedReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof WatchlistEnhancedReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof WatchlistEnhancedReport
@@ -9745,12 +9692,6 @@ export interface WatchlistPepsOnlyReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof WatchlistPepsOnlyReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof WatchlistPepsOnlyReport
@@ -9820,12 +9761,6 @@ export interface WatchlistSanctionsOnlyReport {
      */
     'check_id'?: string;
     /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof WatchlistSanctionsOnlyReport
-     */
-    'documents'?: Array<ReportDocument>;
-    /**
      * 
      * @type {ReportName}
      * @memberof WatchlistSanctionsOnlyReport
@@ -9879,11 +9814,11 @@ export interface WatchlistStandardBreakdown {
 export interface WatchlistStandardProperties {
     /**
      * Returns any matches including, but not limited to, name and date of birth of match, aliases and associates, and relevant events and sources.
-     * @type {Array<string>}
+     * @type {Array<object>}
      * @memberof WatchlistStandardProperties
      * @deprecated
      */
-    'records'?: Array<string>;
+    'records'?: Array<object>;
 }
 /**
  * 
@@ -9933,12 +9868,6 @@ export interface WatchlistStandardReport {
      * @memberof WatchlistStandardReport
      */
     'check_id'?: string;
-    /**
-     * Array of objects with document ids that were used in the Onfido engine. [ONLY POPULATED FOR DOCUMENT AND FACIAL SIMILARITY REPORTS]
-     * @type {Array<ReportDocument>}
-     * @memberof WatchlistStandardReport
-     */
-    'documents'?: Array<ReportDocument>;
     /**
      * 
      * @type {ReportName}
@@ -10178,7 +10107,7 @@ export interface WebhookEventPayloadObject {
      * @type {string}
      * @memberof WebhookEventPayloadObject
      */
-    'href': string;
+    'href'?: string;
 }
 
 
@@ -10329,7 +10258,6 @@ export const WebhookEventType = {
     ReportAwaitingApproval: 'report.awaiting_approval',
     ReportCompleted: 'report.completed',
     WorkflowTimelineFileCreated: 'workflow_timeline_file.created',
-    WorkflowSignedEvidenceFileCreated: 'workflow_signed_evidence_file.created',
     WorkflowRunEvidenceFolderCreated: 'workflow_run_evidence_folder.created',
     UnknownDefaultOpenApi: '11184809'
 } as const;
@@ -11665,6 +11593,43 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Downloads digital photos extracted from specific documents belonging to an applicant. If successful, the response will be the binary data representing the image. 
+         * @summary Download NFC face
+         * @param {string} documentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadNfcFace: async (documentId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'documentId' is not null or undefined
+            assertParamExists('downloadNfcFace', 'documentId', documentId)
+            const localVarPath = `/documents/{document_id}/nfc_face`
+                .replace(`{${"document_id"}}`, encodeURIComponent(String(documentId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Retrieves the signed document or application form depending on the file_id provided. 
          * @summary Retrieves the signed document or application form
          * @param {string} workflowRunId The unique identifier of the Workflow Run for which you want to retrieve the signed document.
@@ -12917,10 +12882,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [createdAtGt] A ISO-8601 date to filter results with a created date greater than (after) the one provided.
          * @param {string} [createdAtLt] A ISO-8601 date to filter results with a created date less than (before) the one provided.
          * @param {ListWorkflowRunsSortEnum} [sort] A string with the value \&#39;desc\&#39; or \&#39;asc\&#39; that allows to sort the returned list by the completed datetime either descending or ascending, respectively. If not specified, defaults to \&#39;desc\&#39;.
+         * @param {string} [applicantId] the applicant\&#39;s id.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listWorkflowRuns: async (page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listWorkflowRuns: async (page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, applicantId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/workflow_runs`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -12958,6 +12924,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (sort !== undefined) {
                 localVarQueryParameter['sort'] = sort;
+            }
+
+            if (applicantId !== undefined) {
+                localVarQueryParameter['applicant_id'] = applicantId;
             }
 
 
@@ -13328,7 +13298,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {DocumentTypes} type The type of document
          * @param {string} applicantId The ID of the applicant whose document is being uploaded.
          * @param {FileTransfer} file The file to be uploaded.
-         * @param {UploadDocumentFileTypeEnum} [fileType] The file type of the uploaded file
+         * @param {string} [fileType] The file type of the uploaded file
          * @param {UploadDocumentSideEnum} [side] The side of the document, if applicable. The possible values are front and back
          * @param {CountryCodes} [issuingCountry] The issuing country of the document, a 3-letter ISO code.
          * @param {boolean} [validateImageQuality] Defaults to false. When true the submitted image will undergo an image quality validation which may take up to 5 seconds.
@@ -13336,7 +13306,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadDocument: async (type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        uploadDocument: async (type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: string, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'type' is not null or undefined
             assertParamExists('uploadDocument', 'type', type)
             // verify required parameter 'applicantId' is not null or undefined
@@ -13790,6 +13760,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Downloads digital photos extracted from specific documents belonging to an applicant. If successful, the response will be the binary data representing the image. 
+         * @summary Download NFC face
+         * @param {string} documentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async downloadNfcFace(documentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.downloadNfcFace(documentId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadNfcFace']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Retrieves the signed document or application form depending on the file_id provided. 
          * @summary Retrieves the signed document or application form
          * @param {string} workflowRunId The unique identifier of the Workflow Run for which you want to retrieve the signed document.
@@ -14218,11 +14201,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [createdAtGt] A ISO-8601 date to filter results with a created date greater than (after) the one provided.
          * @param {string} [createdAtLt] A ISO-8601 date to filter results with a created date less than (before) the one provided.
          * @param {ListWorkflowRunsSortEnum} [sort] A string with the value \&#39;desc\&#39; or \&#39;asc\&#39; that allows to sort the returned list by the completed datetime either descending or ascending, respectively. If not specified, defaults to \&#39;desc\&#39;.
+         * @param {string} [applicantId] the applicant\&#39;s id.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<WorkflowRun>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listWorkflowRuns(page, status, createdAtGt, createdAtLt, sort, options);
+        async listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, applicantId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<WorkflowRun>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listWorkflowRuns(page, status, createdAtGt, createdAtLt, sort, applicantId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listWorkflowRuns']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -14352,7 +14336,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {DocumentTypes} type The type of document
          * @param {string} applicantId The ID of the applicant whose document is being uploaded.
          * @param {FileTransfer} file The file to be uploaded.
-         * @param {UploadDocumentFileTypeEnum} [fileType] The file type of the uploaded file
+         * @param {string} [fileType] The file type of the uploaded file
          * @param {UploadDocumentSideEnum} [side] The side of the document, if applicable. The possible values are front and back
          * @param {CountryCodes} [issuingCountry] The issuing country of the document, a 3-letter ISO code.
          * @param {boolean} [validateImageQuality] Defaults to false. When true the submitted image will undergo an image quality validation which may take up to 5 seconds.
@@ -14360,7 +14344,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async uploadDocument(type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Document>> {
+        async uploadDocument(type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: string, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Document>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadDocument(type, applicantId, file, fileType, side, issuingCountry, validateImageQuality, location, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.uploadDocument']?.[localVarOperationServerIndex]?.url;
@@ -14616,6 +14600,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         downloadMotionCaptureFrame(motionCaptureId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
             return localVarFp.downloadMotionCaptureFrame(motionCaptureId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Downloads digital photos extracted from specific documents belonging to an applicant. If successful, the response will be the binary data representing the image. 
+         * @summary Download NFC face
+         * @param {string} documentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadNfcFace(documentId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
+            return localVarFp.downloadNfcFace(documentId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves the signed document or application form depending on the file_id provided. 
@@ -14950,11 +14944,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {string} [createdAtGt] A ISO-8601 date to filter results with a created date greater than (after) the one provided.
          * @param {string} [createdAtLt] A ISO-8601 date to filter results with a created date less than (before) the one provided.
          * @param {ListWorkflowRunsSortEnum} [sort] A string with the value \&#39;desc\&#39; or \&#39;asc\&#39; that allows to sort the returned list by the completed datetime either descending or ascending, respectively. If not specified, defaults to \&#39;desc\&#39;.
+         * @param {string} [applicantId] the applicant\&#39;s id.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, options?: RawAxiosRequestConfig): AxiosPromise<Array<WorkflowRun>> {
-            return localVarFp.listWorkflowRuns(page, status, createdAtGt, createdAtLt, sort, options).then((request) => request(axios, basePath));
+        listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, applicantId?: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<WorkflowRun>> {
+            return localVarFp.listWorkflowRuns(page, status, createdAtGt, createdAtLt, sort, applicantId, options).then((request) => request(axios, basePath));
         },
         /**
          * Run a health check on the Onfido API 
@@ -15054,7 +15049,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {DocumentTypes} type The type of document
          * @param {string} applicantId The ID of the applicant whose document is being uploaded.
          * @param {FileTransfer} file The file to be uploaded.
-         * @param {UploadDocumentFileTypeEnum} [fileType] The file type of the uploaded file
+         * @param {string} [fileType] The file type of the uploaded file
          * @param {UploadDocumentSideEnum} [side] The side of the document, if applicable. The possible values are front and back
          * @param {CountryCodes} [issuingCountry] The issuing country of the document, a 3-letter ISO code.
          * @param {boolean} [validateImageQuality] Defaults to false. When true the submitted image will undergo an image quality validation which may take up to 5 seconds.
@@ -15062,7 +15057,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        uploadDocument(type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig): AxiosPromise<Document> {
+        uploadDocument(type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: string, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig): AxiosPromise<Document> {
             return localVarFp.uploadDocument(type, applicantId, file, fileType, side, issuingCountry, validateImageQuality, location, options).then((request) => request(axios, basePath));
         },
         /**
@@ -15350,6 +15345,18 @@ export class DefaultApi extends BaseAPI {
      */
     public downloadMotionCaptureFrame(motionCaptureId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadMotionCaptureFrame(motionCaptureId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Downloads digital photos extracted from specific documents belonging to an applicant. If successful, the response will be the binary data representing the image. 
+     * @summary Download NFC face
+     * @param {string} documentId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public downloadNfcFace(documentId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).downloadNfcFace(documentId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -15749,12 +15756,13 @@ export class DefaultApi extends BaseAPI {
      * @param {string} [createdAtGt] A ISO-8601 date to filter results with a created date greater than (after) the one provided.
      * @param {string} [createdAtLt] A ISO-8601 date to filter results with a created date less than (before) the one provided.
      * @param {ListWorkflowRunsSortEnum} [sort] A string with the value \&#39;desc\&#39; or \&#39;asc\&#39; that allows to sort the returned list by the completed datetime either descending or ascending, respectively. If not specified, defaults to \&#39;desc\&#39;.
+     * @param {string} [applicantId] the applicant\&#39;s id.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).listWorkflowRuns(page, status, createdAtGt, createdAtLt, sort, options).then((request) => request(this.axios, this.basePath));
+    public listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, applicantId?: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).listWorkflowRuns(page, status, createdAtGt, createdAtLt, sort, applicantId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -15873,7 +15881,7 @@ export class DefaultApi extends BaseAPI {
      * @param {DocumentTypes} type The type of document
      * @param {string} applicantId The ID of the applicant whose document is being uploaded.
      * @param {FileTransfer} file The file to be uploaded.
-     * @param {UploadDocumentFileTypeEnum} [fileType] The file type of the uploaded file
+     * @param {string} [fileType] The file type of the uploaded file
      * @param {UploadDocumentSideEnum} [side] The side of the document, if applicable. The possible values are front and back
      * @param {CountryCodes} [issuingCountry] The issuing country of the document, a 3-letter ISO code.
      * @param {boolean} [validateImageQuality] Defaults to false. When true the submitted image will undergo an image quality validation which may take up to 5 seconds.
@@ -15882,7 +15890,7 @@ export class DefaultApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public uploadDocument(type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: UploadDocumentFileTypeEnum, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig) {
+    public uploadDocument(type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: string, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).uploadDocument(type, applicantId, file, fileType, side, issuingCountry, validateImageQuality, location, options).then((request) => request(this.axios, this.basePath));
     }
 
@@ -15923,17 +15931,6 @@ export const ListWorkflowRunsSortEnum = {
     UnknownDefaultOpenApi: '11184809'
 } as const;
 export type ListWorkflowRunsSortEnum = typeof ListWorkflowRunsSortEnum[keyof typeof ListWorkflowRunsSortEnum];
-/**
- * @export
- */
-export const UploadDocumentFileTypeEnum = {
-    Jpg: 'jpg',
-    Jpeg: 'jpeg',
-    Png: 'png',
-    Pdf: 'pdf',
-    UnknownDefaultOpenApi: '11184809'
-} as const;
-export type UploadDocumentFileTypeEnum = typeof UploadDocumentFileTypeEnum[keyof typeof UploadDocumentFileTypeEnum];
 /**
  * @export
  */
