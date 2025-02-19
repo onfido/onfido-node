@@ -93,9 +93,10 @@ export async function cleanUpApplicants() {
 export async function uploadDocument(
   applicant: Applicant,
   documentType: DocumentTypes = DocumentTypes.DrivingLicence,
-  location?: LocationBuilder
+  location?: LocationBuilder,
+  filePath: string = "test/media/sample_driving_licence.png"
 ) {
-  let fileTransfer = new FileTransfer("test/media/sample_driving_licence.png");
+  let fileTransfer = new FileTransfer(filePath);
 
   return onfido.uploadDocument(
     documentType,

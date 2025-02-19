@@ -9,6 +9,7 @@ import {
   sortByDocumentType
 } from "../test-helpers";
 import { exampleDocument } from "../test-examples";
+import { AxiosError } from "axios";
 
 function getExpectedDocument(
   exampleDocument: Document,
@@ -23,6 +24,8 @@ function getExpectedDocument(
 
 let applicant: Applicant;
 let document: Document;
+
+const nonExistingId = "00000000-0000-0000-0000-000000000000";
 
 beforeEach(async () => {
   applicant = (await createApplicant()).data;
@@ -78,4 +81,31 @@ it("lists documents", async () => {
       type: "passport"
     })
   ]);
+});
+
+it("downloads an NFC face", async () => {
+  const nfcFace = (
+    await uploadDocument(
+      applicant,
+      DocumentTypes.Passport,
+      {},
+      "test/media/nfc_data.json"
+    )
+  ).data;
+
+  const file = await onfido.downloadNfcFace(nfcFace.id);
+
+  expect(file.status).toEqual(200);
+  expect(file.headers["content-type"]).toEqual("image/png");
+  expect(file.data.buffer.slice(1, 4)).toEqual("PNG");
+  expect(file.data.filename).toBeTruthy();
+});
+
+it("throws an error if the NFC face is not found", async () => {
+  try {
+    await onfido.downloadNfcFace(nonExistingId);
+  } catch (error) {
+    expect(error).toBeInstanceOf(AxiosError);
+    expect(error.response.status).toEqual(404);
+  }
 });
