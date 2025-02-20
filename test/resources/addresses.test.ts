@@ -8,9 +8,9 @@ const exampleAddress: Address = {
   flat_number: "",
   building_number: "2",
   building_name: "",
-  street: "RAWSON CLOSE",
-  sub_street: "",
-  town: "SHEFFIELD"
+  street: "Rawson Close",
+  sub_street: null,
+  town: "Sheffield"
 };
 
 const exampleAddress2 = {
