@@ -100,8 +100,10 @@ export class Configuration {
         this.basePath = param.basePath || BASE_PATH.replace('.eu.', `.${Region[param.region || Region.EU].toLowerCase()}.`);
         this.baseOptions = {...{ timeout: 30_000 },
                             ...param.baseOptions,
-                            ...{ headers: {...param.baseOptions?.headers,
-                                           ...{'User-Agent': 'onfido-node/5.0.0'}}}};
+            headers: {...param.baseOptions?.headers,
+                'User-Agent': "onfido-node/5.0.0"
+            },
+        };
         this.formDataCtor = param.formDataCtor || require('form-data');         // Injiect form data constructor (if needed)
     }
 
