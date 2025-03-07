@@ -456,6 +456,33 @@ export interface ApplicantBuilder {
 /**
  * 
  * @export
+ * @interface ApplicantConsent
+ */
+export interface ApplicantConsent {
+    /**
+     * 
+     * @type {ApplicantConsentName}
+     * @memberof ApplicantConsent
+     */
+    'name': ApplicantConsentName;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ApplicantConsent
+     */
+    'granted': boolean;
+    /**
+     * The date and time when this applicant consent was granted, if not granted the value is nil.
+     * @type {string}
+     * @memberof ApplicantConsent
+     */
+    'granted_at': string | null;
+}
+
+
+/**
+ * 
+ * @export
  * @interface ApplicantConsentBuilder
  */
 export interface ApplicantConsentBuilder {
@@ -11830,6 +11857,43 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Retrieves consents for single applicant. 
+         * @summary Retrieve Applicant Consents
+         * @param {string} applicantId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findApplicantConsents: async (applicantId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'applicantId' is not null or undefined
+            assertParamExists('findApplicantConsents', 'applicantId', applicantId)
+            const localVarPath = `/applicants/{applicant_id}/consents`
+                .replace(`{${"applicant_id"}}`, encodeURIComponent(String(applicantId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Retrieves a single check. Returns a check object. 
          * @summary Retrieve a Check
          * @param {string} checkId 
@@ -13839,6 +13903,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Retrieves consents for single applicant. 
+         * @summary Retrieve Applicant Consents
+         * @param {string} applicantId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async findApplicantConsents(applicantId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<ApplicantConsent>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.findApplicantConsents(applicantId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.findApplicantConsents']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Retrieves a single check. Returns a check object. 
          * @summary Retrieve a Check
          * @param {string} checkId 
@@ -14663,6 +14740,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.findApplicant(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves consents for single applicant. 
+         * @summary Retrieve Applicant Consents
+         * @param {string} applicantId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findApplicantConsents(applicantId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<ApplicantConsent>> {
+            return localVarFp.findApplicantConsents(applicantId, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Retrieves a single check. Returns a check object. 
          * @summary Retrieve a Check
          * @param {string} checkId 
@@ -15418,6 +15505,18 @@ export class DefaultApi extends BaseAPI {
      */
     public findApplicant(applicantId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findApplicant(applicantId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves consents for single applicant. 
+     * @summary Retrieve Applicant Consents
+     * @param {string} applicantId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public findApplicantConsents(applicantId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).findApplicantConsents(applicantId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
