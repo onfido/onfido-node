@@ -54,6 +54,43 @@ it("updates an applicant", async () => {
   );
 });
 
+it("lists an applicant's consents", async () => {
+  const consents = [
+    {
+      name: ApplicantConsentName.PrivacyNoticesRead,
+      granted: true
+    },
+    {
+      name: ApplicantConsentName.SsnVerification,
+      granted: true
+    },
+    {
+      name: ApplicantConsentName.PhoneNumberVerification,
+      granted: true
+    }
+  ];
+  const applicant = await createApplicant({
+    first_name: "Sir Consents",
+    consents: consents
+  });
+
+  const consentsList = await onfido.findApplicantConsents(applicant.data.id);
+
+  // sorting to ensure the order is consistent
+  const actualConsentsSorted = consentsList.data.sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+  const expectedConsentsSorted = consents.sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
+
+  expectedConsentsSorted.forEach((expected, index) => {
+    const actual = actualConsentsSorted[index];
+    expect(actual.name).toBe(expected.name);
+    expect(actual.granted).toBe(expected.granted);
+  });
+});
+
 it("deletes an applicant", async () => {
   expect((await deleteApplicant(applicant)).status).toEqual(204);
 });
