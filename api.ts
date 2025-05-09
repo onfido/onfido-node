@@ -1452,14 +1452,22 @@ export type CountryCodes = typeof CountryCodes[keyof typeof CountryCodes];
 export interface DeviceIntelligenceBreakdown {
     /**
      * 
+     * @type {DeviceIntelligenceBreakdownDevice}
+     * @memberof DeviceIntelligenceBreakdown
+     */
+    'device'?: DeviceIntelligenceBreakdownDevice;
+    /**
+     * 
      * @type {DeviceIntelligenceBreakdownBreakdown}
      * @memberof DeviceIntelligenceBreakdown
+     * @deprecated
      */
     'breakdown'?: DeviceIntelligenceBreakdownBreakdown;
     /**
      * 
      * @type {DeviceIntelligenceBreakdownProperties}
      * @memberof DeviceIntelligenceBreakdown
+     * @deprecated
      */
     'properties'?: DeviceIntelligenceBreakdownProperties;
 }
@@ -1471,46 +1479,46 @@ export interface DeviceIntelligenceBreakdown {
 export interface DeviceIntelligenceBreakdownBreakdown {
     /**
      * 
-     * @type {DeviceIntelligenceBreakdownBreakdownDevice}
+     * @type {DeviceIntelligenceBreakdownDevice}
      * @memberof DeviceIntelligenceBreakdownBreakdown
      */
-    'device'?: DeviceIntelligenceBreakdownBreakdownDevice;
+    'device'?: DeviceIntelligenceBreakdownDevice;
 }
 /**
  * Asserts whether the device used to upload the media is trustworthy, i.e. it is a real, physical device.
  * @export
- * @interface DeviceIntelligenceBreakdownBreakdownDevice
+ * @interface DeviceIntelligenceBreakdownDevice
  */
-export interface DeviceIntelligenceBreakdownBreakdownDevice {
+export interface DeviceIntelligenceBreakdownDevice {
     /**
      * 
-     * @type {DeviceIntelligenceBreakdownBreakdownDeviceBreakdown}
-     * @memberof DeviceIntelligenceBreakdownBreakdownDevice
+     * @type {DeviceIntelligenceBreakdownDeviceBreakdown}
+     * @memberof DeviceIntelligenceBreakdownDevice
      */
-    'breakdown'?: DeviceIntelligenceBreakdownBreakdownDeviceBreakdown;
+    'breakdown'?: DeviceIntelligenceBreakdownDeviceBreakdown;
 }
 /**
  * 
  * @export
- * @interface DeviceIntelligenceBreakdownBreakdownDeviceBreakdown
+ * @interface DeviceIntelligenceBreakdownDeviceBreakdown
  */
-export interface DeviceIntelligenceBreakdownBreakdownDeviceBreakdown {
+export interface DeviceIntelligenceBreakdownDeviceBreakdown {
     /**
      * 
      * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DeviceIntelligenceBreakdownBreakdownDeviceBreakdown
+     * @memberof DeviceIntelligenceBreakdownDeviceBreakdown
      */
     'application_authenticity'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
     /**
      * 
      * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DeviceIntelligenceBreakdownBreakdownDeviceBreakdown
+     * @memberof DeviceIntelligenceBreakdownDeviceBreakdown
      */
     'device_integrity'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
     /**
      * 
      * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DeviceIntelligenceBreakdownBreakdownDeviceBreakdown
+     * @memberof DeviceIntelligenceBreakdownDeviceBreakdown
      */
     'device_reputation'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
 }
@@ -1713,6 +1721,31 @@ export interface DeviceIntelligenceBreakdownPropertiesIp {
 /**
  * 
  * @export
+ * @interface DeviceIntelligenceProperties
+ */
+export interface DeviceIntelligenceProperties {
+    /**
+     * 
+     * @type {DeviceIntelligenceBreakdownPropertiesDevice}
+     * @memberof DeviceIntelligenceProperties
+     */
+    'device'?: DeviceIntelligenceBreakdownPropertiesDevice;
+    /**
+     * 
+     * @type {DeviceIntelligenceBreakdownPropertiesIp}
+     * @memberof DeviceIntelligenceProperties
+     */
+    'ip'?: DeviceIntelligenceBreakdownPropertiesIp;
+    /**
+     * 
+     * @type {DeviceIntelligenceBreakdownPropertiesGeolocation}
+     * @memberof DeviceIntelligenceProperties
+     */
+    'geolocation'?: DeviceIntelligenceBreakdownPropertiesGeolocation;
+}
+/**
+ * 
+ * @export
  * @interface DeviceIntelligenceReport
  */
 export interface DeviceIntelligenceReport {
@@ -1770,6 +1803,12 @@ export interface DeviceIntelligenceReport {
      * @memberof DeviceIntelligenceReport
      */
     'breakdown'?: DeviceIntelligenceBreakdown;
+    /**
+     * 
+     * @type {DeviceIntelligenceProperties}
+     * @memberof DeviceIntelligenceReport
+     */
+    'properties'?: DeviceIntelligenceProperties;
 }
 
 
@@ -3125,10 +3164,10 @@ export interface DocumentProperties {
     'nfc'?: DocumentPropertiesNfc;
     /**
      * 
-     * @type {DocumentPropertiesDrivingLicenceInformation}
+     * @type {Array<DocumentPropertiesDrivingLicenceInformationItem>}
      * @memberof DocumentProperties
      */
-    'driving_licence_information'?: DocumentPropertiesDrivingLicenceInformation;
+    'driving_licence_information'?: Array<DocumentPropertiesDrivingLicenceInformationItem>;
     /**
      * 
      * @type {DocumentPropertiesDocumentClassification}
@@ -3379,31 +3418,31 @@ export interface DocumentPropertiesDocumentNumbersInner {
 /**
  * 
  * @export
- * @interface DocumentPropertiesDrivingLicenceInformation
+ * @interface DocumentPropertiesDrivingLicenceInformationItem
  */
-export interface DocumentPropertiesDrivingLicenceInformation {
+export interface DocumentPropertiesDrivingLicenceInformationItem {
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesDrivingLicenceInformation
+     * @memberof DocumentPropertiesDrivingLicenceInformationItem
      */
     'category'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesDrivingLicenceInformation
+     * @memberof DocumentPropertiesDrivingLicenceInformationItem
      */
     'obtainment_date'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesDrivingLicenceInformation
+     * @memberof DocumentPropertiesDrivingLicenceInformationItem
      */
     'expiry_date'?: string;
     /**
      * 
      * @type {string}
-     * @memberof DocumentPropertiesDrivingLicenceInformation
+     * @memberof DocumentPropertiesDrivingLicenceInformationItem
      */
     'codes'?: string;
 }
@@ -4451,10 +4490,10 @@ export interface DocumentWithDriverVerificationReportAllOfProperties {
     'nfc'?: DocumentPropertiesNfc;
     /**
      * 
-     * @type {DocumentPropertiesDrivingLicenceInformation}
+     * @type {Array<DocumentPropertiesDrivingLicenceInformationItem>}
      * @memberof DocumentWithDriverVerificationReportAllOfProperties
      */
-    'driving_licence_information'?: DocumentPropertiesDrivingLicenceInformation;
+    'driving_licence_information'?: Array<DocumentPropertiesDrivingLicenceInformationItem>;
     /**
      * 
      * @type {DocumentPropertiesDocumentClassification}
@@ -9947,6 +9986,36 @@ export interface Webhook {
      */
     'payload_version'?: number;
     /**
+     * Determines if the webhook will fetch OAuth access tokens to send in the Authorization header.
+     * @type {boolean}
+     * @memberof Webhook
+     */
+    'oauth_enabled'?: boolean;
+    /**
+     * The url to fetch the OAuth access token using client credentials grant.
+     * @type {string}
+     * @memberof Webhook
+     */
+    'oauth_server_url'?: string;
+    /**
+     * The client id to authenticate the client credentials grant.
+     * @type {string}
+     * @memberof Webhook
+     */
+    'oauth_server_client_id'?: string;
+    /**
+     * The client secret to authenticate the client credentials grant.
+     * @type {string}
+     * @memberof Webhook
+     */
+    'oauth_server_client_secret'?: string;
+    /**
+     * The scopes to be sent when requesting the access token.
+     * @type {string}
+     * @memberof Webhook
+     */
+    'oauth_server_scope'?: string;
+    /**
      * The unique identifier of the webhook.
      * @type {string}
      * @memberof Webhook
@@ -10001,6 +10070,36 @@ export interface WebhookBuilder {
      * @memberof WebhookBuilder
      */
     'payload_version'?: number;
+    /**
+     * Determines if the webhook will fetch OAuth access tokens to send in the Authorization header.
+     * @type {boolean}
+     * @memberof WebhookBuilder
+     */
+    'oauth_enabled'?: boolean;
+    /**
+     * The url to fetch the OAuth access token using client credentials grant.
+     * @type {string}
+     * @memberof WebhookBuilder
+     */
+    'oauth_server_url'?: string;
+    /**
+     * The client id to authenticate the client credentials grant.
+     * @type {string}
+     * @memberof WebhookBuilder
+     */
+    'oauth_server_client_id'?: string;
+    /**
+     * The client secret to authenticate the client credentials grant.
+     * @type {string}
+     * @memberof WebhookBuilder
+     */
+    'oauth_server_client_secret'?: string;
+    /**
+     * The scopes to be sent when requesting the access token.
+     * @type {string}
+     * @memberof WebhookBuilder
+     */
+    'oauth_server_scope'?: string;
     /**
      * The url that will listen to notifications (must be https).
      * @type {string}
@@ -10366,6 +10465,36 @@ export interface WebhookShared {
      * @memberof WebhookShared
      */
     'payload_version'?: number;
+    /**
+     * Determines if the webhook will fetch OAuth access tokens to send in the Authorization header.
+     * @type {boolean}
+     * @memberof WebhookShared
+     */
+    'oauth_enabled'?: boolean;
+    /**
+     * The url to fetch the OAuth access token using client credentials grant.
+     * @type {string}
+     * @memberof WebhookShared
+     */
+    'oauth_server_url'?: string;
+    /**
+     * The client id to authenticate the client credentials grant.
+     * @type {string}
+     * @memberof WebhookShared
+     */
+    'oauth_server_client_id'?: string;
+    /**
+     * The client secret to authenticate the client credentials grant.
+     * @type {string}
+     * @memberof WebhookShared
+     */
+    'oauth_server_client_secret'?: string;
+    /**
+     * The scopes to be sent when requesting the access token.
+     * @type {string}
+     * @memberof WebhookShared
+     */
+    'oauth_server_scope'?: string;
 }
 /**
  * 
@@ -10410,6 +10539,36 @@ export interface WebhookUpdater {
      * @memberof WebhookUpdater
      */
     'payload_version'?: number;
+    /**
+     * Determines if the webhook will fetch OAuth access tokens to send in the Authorization header.
+     * @type {boolean}
+     * @memberof WebhookUpdater
+     */
+    'oauth_enabled'?: boolean;
+    /**
+     * The url to fetch the OAuth access token using client credentials grant.
+     * @type {string}
+     * @memberof WebhookUpdater
+     */
+    'oauth_server_url'?: string;
+    /**
+     * The client id to authenticate the client credentials grant.
+     * @type {string}
+     * @memberof WebhookUpdater
+     */
+    'oauth_server_client_id'?: string;
+    /**
+     * The client secret to authenticate the client credentials grant.
+     * @type {string}
+     * @memberof WebhookUpdater
+     */
+    'oauth_server_client_secret'?: string;
+    /**
+     * The scopes to be sent when requesting the access token.
+     * @type {string}
+     * @memberof WebhookUpdater
+     */
+    'oauth_server_scope'?: string;
     /**
      * The url that will listen to notifications (must be https).
      * @type {string}

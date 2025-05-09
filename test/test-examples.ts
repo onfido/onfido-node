@@ -81,7 +81,12 @@ export const exampleWebhook: Webhook = {
   token: "webhook-token",
   href: "/v3/webhooks/abc-132",
   environments: ["sandbox"],
-  payload_version: 3
+  payload_version: 3,
+  oauth_enabled: false,
+  oauth_server_url: null,
+  oauth_server_client_id: null,
+  oauth_server_client_secret: null,
+  oauth_server_scope: null
 };
 
 export const exampleWorkflowRun: WorkflowRun = {

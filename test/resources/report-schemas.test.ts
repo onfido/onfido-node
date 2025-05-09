@@ -1,9 +1,11 @@
 import {
   Applicant,
   Check,
+  DeviceIntelligenceReport,
   Document,
   DocumentReport,
   DocumentWithAddressInformationReport,
+  DocumentWithDrivingLicenceInformationReport,
   FacialSimilarityPhotoReport,
   Report,
   ReportName
@@ -112,4 +114,47 @@ it("schema of document with address information report should be valid", async (
   expect(document_report.properties.barcode[0].document_type).toEqual(
     "driving_licence"
   );
+}, 30000);
+
+it("schema of document with driving license information report should be valid", async () => {
+  await uploadLivePhoto(applicant);
+  const check: Check = (
+    await createCheck(applicant, document, {
+      report_names: [ReportName.DocumentWithDrivingLicenceInformation]
+    })
+  ).data;
+
+  const report: Report = await repeatRequestUntilStatusChanges(
+    "findReport",
+    [check.report_ids[0]],
+    "complete"
+  );
+
+  const document_report = report as DocumentWithDrivingLicenceInformationReport;
+
+  expect(document_report.name).toEqual(
+    "document_with_driving_licence_information"
+  );
+  expect(document_report.properties.driving_licence_information).not.toBeNull();
+}, 30000);
+
+it("schema of device intelligence report should be valid", async () => {
+  await uploadLivePhoto(applicant);
+  const check: Check = (
+    await createCheck(applicant, document, {
+      report_names: [ReportName.DeviceIntelligence]
+    })
+  ).data;
+
+  const report: Report = await repeatRequestUntilStatusChanges(
+    "findReport",
+    [check.report_ids[0]],
+    "complete"
+  );
+
+  const device_intelligence = report as DeviceIntelligenceReport;
+
+  expect(device_intelligence.name).toEqual("device_intelligence");
+  expect(device_intelligence.breakdown).not.toBeNull();
+  expect(device_intelligence.properties).not.toBeNull();
 }, 30000);
