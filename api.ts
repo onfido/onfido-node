@@ -948,6 +948,13 @@ export interface CheckBuilder {
      * @memberof CheckBuilder
      */
     'us_driving_licence'?: UsDrivingLicenceBuilder;
+    /**
+     * 
+     * @type {ReportConfiguration}
+     * @memberof CheckBuilder
+     * @deprecated
+     */
+    'report_configuration'?: ReportConfiguration;
 }
 /**
  * 
@@ -1003,6 +1010,13 @@ export interface CheckRequest {
      * @memberof CheckRequest
      */
     'us_driving_licence'?: UsDrivingLicenceBuilder;
+    /**
+     * 
+     * @type {ReportConfiguration}
+     * @memberof CheckRequest
+     * @deprecated
+     */
+    'report_configuration'?: ReportConfiguration;
 }
 /**
  * 
@@ -7894,6 +7908,59 @@ export type RepeatAttemptsListRepeatAttemptsInnerResultEnum = typeof RepeatAttem
  * @export
  */
 export type Report = { name: 'device_intelligence' } & DeviceIntelligenceReport | { name: 'document' } & DocumentReport | { name: 'document_video' } & DocumentVideoReport | { name: 'document_video_with_address_information' } & DocumentVideoWithAddressInformationReport | { name: 'document_with_address_information' } & DocumentWithAddressInformationReport | { name: 'document_with_driver_verification' } & DocumentWithDriverVerificationReport | { name: 'document_with_driving_licence_information' } & DocumentWithDrivingLicenceInformationReport | { name: 'facial_similarity_motion' } & FacialSimilarityMotionReport | { name: 'facial_similarity_photo' } & FacialSimilarityPhotoReport | { name: 'facial_similarity_photo_fully_auto' } & FacialSimilarityPhotoFullyAutoReport | { name: 'facial_similarity_video' } & FacialSimilarityVideoReport | { name: 'identity_enhanced' } & IdentityEnhancedReport | { name: 'india_pan' } & IndiaPanReport | { name: 'known_faces' } & KnownFacesReport | { name: 'proof_of_address' } & ProofOfAddressReport | { name: 'us_driving_licence' } & UsDrivingLicenceReport | { name: 'watchlist_aml' } & WatchlistAmlReport | { name: 'watchlist_enhanced' } & WatchlistEnhancedReport | { name: 'watchlist_peps_only' } & WatchlistPepsOnlyReport | { name: 'watchlist_sanctions_only' } & WatchlistSanctionsOnlyReport | { name: 'watchlist_standard' } & WatchlistStandardReport;
+
+/**
+ * Defines configuration options for facial similarity checks used to distinguish between onboarding and reverification scenarios. 
+ * @export
+ * @interface ReportConfiguration
+ */
+export interface ReportConfiguration {
+    /**
+     * 
+     * @type {ReportConfigurationFacialSimilarity}
+     * @memberof ReportConfiguration
+     */
+    'facial_similarity_photo'?: ReportConfigurationFacialSimilarity;
+    /**
+     * 
+     * @type {ReportConfigurationFacialSimilarity}
+     * @memberof ReportConfiguration
+     */
+    'facial_similarity_photo_fully_auto'?: ReportConfigurationFacialSimilarity;
+    /**
+     * 
+     * @type {ReportConfigurationFacialSimilarity}
+     * @memberof ReportConfiguration
+     */
+    'facial_similarity_video'?: ReportConfigurationFacialSimilarity;
+    /**
+     * 
+     * @type {ReportConfigurationFacialSimilarity}
+     * @memberof ReportConfiguration
+     */
+    'facial_similarity_motion'?: ReportConfigurationFacialSimilarity;
+}
+/**
+ * 
+ * @export
+ * @interface ReportConfigurationFacialSimilarity
+ */
+export interface ReportConfigurationFacialSimilarity {
+    /**
+     * You should set it to \"reverification\" on a post-onboarding scenario (e.g. ongoing authentication). 
+     * @type {string}
+     * @memberof ReportConfigurationFacialSimilarity
+     */
+    'use_case'?: ReportConfigurationFacialSimilarityUseCaseEnum;
+}
+
+export const ReportConfigurationFacialSimilarityUseCaseEnum = {
+    Onboarding: 'onboarding',
+    Reverification: 'reverification',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type ReportConfigurationFacialSimilarityUseCaseEnum = typeof ReportConfigurationFacialSimilarityUseCaseEnum[keyof typeof ReportConfigurationFacialSimilarityUseCaseEnum];
 
 /**
  * 
