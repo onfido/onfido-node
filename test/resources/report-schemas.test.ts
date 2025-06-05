@@ -8,6 +8,7 @@ import {
   DocumentWithDrivingLicenceInformationReport,
   FacialSimilarityPhotoReport,
   Report,
+  ReportConfigurationFacialSimilarityUseCaseEnum,
   ReportName
 } from "onfido-node";
 import {
@@ -68,7 +69,13 @@ it("schema of facial similarity photo report should be valid", async () => {
 
   const check: Check = (
     await createCheck(applicant, document, {
-      report_names: [ReportName.FacialSimilarityPhotoFullyAuto]
+      report_names: [ReportName.FacialSimilarityPhotoFullyAuto],
+      report_configuration: {
+        facial_similarity_photo_fully_auto: {
+          use_case:
+            ReportConfigurationFacialSimilarityUseCaseEnum.Reverification
+        }
+      }
     })
   ).data;
 
