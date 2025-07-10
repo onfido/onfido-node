@@ -4545,6 +4545,12 @@ export interface DocumentWithDriverVerificationReportAllOfProperties {
      */
     'raw_vehicle_classes'?: string;
     /**
+     * True if the user is not qualified to drive a manual transmission
+     * @type {boolean}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'manual_transmission_restriction'?: boolean;
+    /**
      * Detailed classes/categories information
      * @type {Array<DocumentWithDriverVerificationReportAllOfPropertiesAllOfVehicleClassDetailsInner>}
      * @memberof DocumentWithDriverVerificationReportAllOfProperties
