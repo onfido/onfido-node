@@ -11482,6 +11482,53 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Retrieves the signed document or signing transaction receipt depending on the id provided. 
+         * @summary Retrieves the signed document or signing transaction receipt
+         * @param {string} workflowRunId The unique identifier of the Workflow Run for which you want to retrieve the signed document.
+         * @param {string} id The unique identifier of the file which you want to retrieve.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadAesDocument: async (workflowRunId: string, id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'workflowRunId' is not null or undefined
+            assertParamExists('downloadAesDocument', 'workflowRunId', workflowRunId)
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('downloadAesDocument', 'id', id)
+            const localVarPath = `/advanced_electronic_signature/documents`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (workflowRunId !== undefined) {
+                localVarQueryParameter['workflow_run_id'] = workflowRunId;
+            }
+
+            if (id !== undefined) {
+                localVarQueryParameter['id'] = id;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Downloads a PDF of a check with a given check ID. Returns the binary data representing the PDF. 
          * @summary Download check
          * @param {string} checkId 
@@ -13926,6 +13973,20 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Retrieves the signed document or signing transaction receipt depending on the id provided. 
+         * @summary Retrieves the signed document or signing transaction receipt
+         * @param {string} workflowRunId The unique identifier of the Workflow Run for which you want to retrieve the signed document.
+         * @param {string} id The unique identifier of the file which you want to retrieve.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async downloadAesDocument(workflowRunId: string, id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.downloadAesDocument(workflowRunId, id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadAesDocument']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Downloads a PDF of a check with a given check ID. Returns the binary data representing the PDF. 
          * @summary Download check
          * @param {string} checkId 
@@ -14811,6 +14872,17 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.deleteWebhook(webhookId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves the signed document or signing transaction receipt depending on the id provided. 
+         * @summary Retrieves the signed document or signing transaction receipt
+         * @param {string} workflowRunId The unique identifier of the Workflow Run for which you want to retrieve the signed document.
+         * @param {string} id The unique identifier of the file which you want to retrieve.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadAesDocument(workflowRunId: string, id: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
+            return localVarFp.downloadAesDocument(workflowRunId, id, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Downloads a PDF of a check with a given check ID. Returns the binary data representing the PDF. 
          * @summary Download check
          * @param {string} checkId 
@@ -15544,6 +15616,19 @@ export class DefaultApi extends BaseAPI {
      */
     public deleteWebhook(webhookId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).deleteWebhook(webhookId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves the signed document or signing transaction receipt depending on the id provided. 
+     * @summary Retrieves the signed document or signing transaction receipt
+     * @param {string} workflowRunId The unique identifier of the Workflow Run for which you want to retrieve the signed document.
+     * @param {string} id The unique identifier of the file which you want to retrieve.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public downloadAesDocument(workflowRunId: string, id: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).downloadAesDocument(workflowRunId, id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
