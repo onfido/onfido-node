@@ -18,6 +18,10 @@ on:
       - published
   schedule:
     - cron: "0 12 * * 0"   # Every Sunday, at midday
+
+permissions:
+  contents: read
+
 jobs:
   integration-tests:
     runs-on: ubuntu-latest
@@ -66,6 +70,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: integration-tests
     environment: delivery
+    permissions:
+      contents: write
     if: github.event_name == 'release'
     steps:
       - uses: actions/checkout@v4
