@@ -24,12 +24,13 @@ const exampleLiveVideo: LiveVideo = {
 
 function getExpectedLiveVideo(
   exampleLivePhoto: LiveVideo,
-  liveVideoId: string
+  liveVideoId: string,
+  challenge: any | Array<any> = null
 ) {
   return getExpectedObject(exampleLivePhoto, {
     id: liveVideoId,
     languages: null,
-    challenge: expect.anything(),
+    challenge: challenge,
     download_href: expect.stringMatching(
       /^\/v3.6\/live_videos\/[0-9a-z-]+\/download$/
     )
@@ -57,7 +58,11 @@ it("finds a live video", async () => {
   const liveVideo = (await onfido.findLiveVideo(sampleLiveVideoId1)).data;
 
   expect(liveVideo).toEqual(
-    getExpectedLiveVideo(exampleLiveVideo, sampleLiveVideoId1)
+    getExpectedLiveVideo(
+      exampleLiveVideo,
+      sampleLiveVideoId1,
+      expect.anything()
+    )
   );
 });
 
