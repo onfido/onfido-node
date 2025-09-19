@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Onfido API v3.6
- * The Onfido API (v3.6)
+ * Onfido Public API v3.6
+ * The Onfido Public API (v3.6)
  *
  * The version of the OpenAPI document: v3.6
  * 
@@ -101,7 +101,7 @@ export class Configuration {
         this.baseOptions = {...{ timeout: 30_000 },
                             ...param.baseOptions,
             headers: {...param.baseOptions?.headers,
-                'User-Agent': "onfido-node/5.4.0"
+                'User-Agent': "onfido-node/5.5.0"
             },
         };
         this.formDataCtor = param.formDataCtor || require('form-data');         // Injiect form data constructor (if needed)

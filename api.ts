@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Onfido API v3.6
- * The Onfido API (v3.6)
+ * Onfido Public API v3.6
+ * The Onfido Public API (v3.6)
  *
  * The version of the OpenAPI document: v3.6
  * 
@@ -6436,6 +6436,18 @@ export interface IdentityEnhancedBreakdown {
      * @memberof IdentityEnhancedBreakdown
      */
     'mortality'?: IdentityEnhancedBreakdownMortality;
+    /**
+     * 
+     * @type {IdrSsnBreakdown}
+     * @memberof IdentityEnhancedBreakdown
+     */
+    'ssn'?: IdrSsnBreakdown;
+    /**
+     * 
+     * @type {IdrSsnBreakdown}
+     * @memberof IdentityEnhancedBreakdown
+     */
+    'ssn1'?: IdrSsnBreakdown;
 }
 /**
  * Asserts if the applicant\'s address matches any sources.
@@ -6811,6 +6823,82 @@ export interface IdentityEnhancedReport {
 }
 
 
+/**
+ * 
+ * @export
+ * @interface IdrSsnBreakdown
+ */
+export interface IdrSsnBreakdown {
+    /**
+     * 
+     * @type {string}
+     * @memberof IdrSsnBreakdown
+     */
+    'result'?: string;
+    /**
+     * 
+     * @type {IdrSsnBreakdownBreakdown}
+     * @memberof IdrSsnBreakdown
+     */
+    'breakdown'?: IdrSsnBreakdownBreakdown;
+}
+/**
+ * 
+ * @export
+ * @interface IdrSsnBreakdownBreakdown
+ */
+export interface IdrSsnBreakdownBreakdown {
+    /**
+     * 
+     * @type {IdrSsnBreakdownBreakdownLast4DigitsMatch}
+     * @memberof IdrSsnBreakdownBreakdown
+     */
+    'last_4_digits_match'?: IdrSsnBreakdownBreakdownLast4DigitsMatch;
+    /**
+     * 
+     * @type {IdrSsnBreakdownBreakdownFullMatch}
+     * @memberof IdrSsnBreakdownBreakdown
+     */
+    'full_match'?: IdrSsnBreakdownBreakdownFullMatch;
+}
+/**
+ * Social security number fully matches
+ * @export
+ * @interface IdrSsnBreakdownBreakdownFullMatch
+ */
+export interface IdrSsnBreakdownBreakdownFullMatch {
+    /**
+     * 
+     * @type {string}
+     * @memberof IdrSsnBreakdownBreakdownFullMatch
+     */
+    'result'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof IdrSsnBreakdownBreakdownFullMatch
+     */
+    'properties'?: object;
+}
+/**
+ * Last 4 digits of social security number match
+ * @export
+ * @interface IdrSsnBreakdownBreakdownLast4DigitsMatch
+ */
+export interface IdrSsnBreakdownBreakdownLast4DigitsMatch {
+    /**
+     * 
+     * @type {string}
+     * @memberof IdrSsnBreakdownBreakdownLast4DigitsMatch
+     */
+    'result'?: string;
+    /**
+     * 
+     * @type {object}
+     * @memberof IdrSsnBreakdownBreakdownLast4DigitsMatch
+     */
+    'properties'?: object;
+}
 /**
  * 
  * @export
