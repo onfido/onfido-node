@@ -4879,9 +4879,29 @@ export interface ExtractionDocumentClassification {
 }
 
 export const ExtractionDocumentClassificationSubtypeEnum = {
+    Spe: 'SPE',
+    Ali: 'ali',
+    Alien: 'alien',
+    Com: 'com',
+    Commercial: 'commercial',
+    Dom: 'dom',
+    Domestic: 'domestic',
     Full: 'full',
     NotFull: 'not_full',
+    FullDrivingLicence: 'full driving licence',
+    HeavyVehicle: 'heavy_vehicle',
+    Learner: 'learner',
+    MinorU21OrU18: 'minor (u21 or u18)',
+    Mot: 'mot',
+    Mul: 'mul',
     Provisional: 'provisional',
+    ProvisionalDrivingLicence: 'provisional driving licence',
+    Ser: 'ser',
+    Spe2: 'spe',
+    Special: 'special',
+    Standard: 'standard',
+    Tem: 'tem',
+    U21: 'u21',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 
@@ -7814,6 +7834,13 @@ export const ProofOfAddressPropertiesDocumentTypeEnum = {
     PensionPropertyStatementLetter: 'pension_property_statement_letter',
     IdentityDocumentWithAddress: 'identity_document_with_address',
     ExchangeHouseStatement: 'exchange_house_statement',
+    AccommodationTenancyCertificate: 'accommodation_tenancy_certificate',
+    AddressCertificate: 'address_certificate',
+    ElectricityBill: 'electricity_bill',
+    GasBill: 'gas_bill',
+    InternetBill: 'internet_bill',
+    PhoneBill: 'phone_bill',
+    WaterBill: 'water_bill',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 
@@ -10500,6 +10527,12 @@ export interface WebhookEventPayloadResource {
      * @memberof WebhookEventPayloadResource
      */
     'customer_user_id'?: string;
+    /**
+     * Pre-signed URL to download the timeline file for the Workflow Run.
+     * @type {string}
+     * @memberof WebhookEventPayloadResource
+     */
+    'timeline_file_download_url'?: string;
 }
 /**
  * 
