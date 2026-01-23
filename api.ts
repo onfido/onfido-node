@@ -7562,6 +7562,87 @@ export interface MotionCapturesList {
 /**
  * 
  * @export
+ * @interface Passkey
+ */
+export interface Passkey {
+    /**
+     * Passkey identifier.
+     * @type {string}
+     * @memberof Passkey
+     */
+    'id': string;
+    /**
+     * domain that the passkey is registered to, the rpId.
+     * @type {string}
+     * @memberof Passkey
+     */
+    'application_domain': string;
+    /**
+     * Current passkey state.
+     * @type {string}
+     * @memberof Passkey
+     */
+    'state': PasskeyStateEnum;
+    /**
+     * Timestamp when the passkey was created.
+     * @type {string}
+     * @memberof Passkey
+     */
+    'created_at': string;
+    /**
+     * Timestamp when the passkey was last used.
+     * @type {string}
+     * @memberof Passkey
+     */
+    'last_used_at'?: string;
+}
+
+export const PasskeyStateEnum = {
+    Active: 'ACTIVE',
+    Inactive: 'INACTIVE',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type PasskeyStateEnum = typeof PasskeyStateEnum[keyof typeof PasskeyStateEnum];
+
+/**
+ * 
+ * @export
+ * @interface PasskeyUpdater
+ */
+export interface PasskeyUpdater {
+    /**
+     * Desired passkey state value.
+     * @type {string}
+     * @memberof PasskeyUpdater
+     */
+    'state': PasskeyUpdaterStateEnum;
+}
+
+export const PasskeyUpdaterStateEnum = {
+    Active: 'ACTIVE',
+    Inactive: 'INACTIVE',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type PasskeyUpdaterStateEnum = typeof PasskeyUpdaterStateEnum[keyof typeof PasskeyUpdaterStateEnum];
+
+/**
+ * 
+ * @export
+ * @interface PasskeysList
+ */
+export interface PasskeysList {
+    /**
+     * 
+     * @type {Array<Passkey>}
+     * @memberof PasskeysList
+     */
+    'passkeys': Array<Passkey>;
+}
+/**
+ * 
+ * @export
  * @interface PhotoAutoReasons
  */
 export interface PhotoAutoReasons {
@@ -8378,6 +8459,136 @@ export interface SdkTokenResponse {
      * @memberof SdkTokenResponse
      */
     'token': string;
+}
+/**
+ * 
+ * @export
+ * @interface SigningDocument
+ */
+export interface SigningDocument {
+    /**
+     * The ID of the applicant whose signing document is being uploaded.
+     * @type {string}
+     * @memberof SigningDocument
+     */
+    'applicant_id'?: string;
+    /**
+     * The unique identifier for the signing document
+     * @type {string}
+     * @memberof SigningDocument
+     */
+    'id': string;
+    /**
+     * The date and time at which the signing document was uploaded
+     * @type {string}
+     * @memberof SigningDocument
+     */
+    'created_at'?: string;
+    /**
+     * The uri of this resource
+     * @type {string}
+     * @memberof SigningDocument
+     */
+    'href'?: string;
+    /**
+     * The uri that can be used to download the signing document
+     * @type {string}
+     * @memberof SigningDocument
+     */
+    'download_href'?: string;
+    /**
+     * The file type of the uploaded file
+     * @type {string}
+     * @memberof SigningDocument
+     */
+    'file_type'?: string;
+    /**
+     * The name of the uploaded file
+     * @type {string}
+     * @memberof SigningDocument
+     */
+    'file_name'?: string;
+    /**
+     * The size of the file in bytes
+     * @type {number}
+     * @memberof SigningDocument
+     */
+    'file_size'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface SigningDocumentResponse
+ */
+export interface SigningDocumentResponse {
+    /**
+     * The unique identifier for the signing document
+     * @type {string}
+     * @memberof SigningDocumentResponse
+     */
+    'id': string;
+    /**
+     * The date and time at which the signing document was uploaded
+     * @type {string}
+     * @memberof SigningDocumentResponse
+     */
+    'created_at'?: string;
+    /**
+     * The uri of this resource
+     * @type {string}
+     * @memberof SigningDocumentResponse
+     */
+    'href'?: string;
+    /**
+     * The uri that can be used to download the signing document
+     * @type {string}
+     * @memberof SigningDocumentResponse
+     */
+    'download_href'?: string;
+    /**
+     * The file type of the uploaded file
+     * @type {string}
+     * @memberof SigningDocumentResponse
+     */
+    'file_type'?: string;
+    /**
+     * The name of the uploaded file
+     * @type {string}
+     * @memberof SigningDocumentResponse
+     */
+    'file_name'?: string;
+    /**
+     * The size of the file in bytes
+     * @type {number}
+     * @memberof SigningDocumentResponse
+     */
+    'file_size'?: number;
+}
+/**
+ * 
+ * @export
+ * @interface SigningDocumentShared
+ */
+export interface SigningDocumentShared {
+    /**
+     * The ID of the applicant whose signing document is being uploaded.
+     * @type {string}
+     * @memberof SigningDocumentShared
+     */
+    'applicant_id'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface SigningDocumentsList
+ */
+export interface SigningDocumentsList {
+    /**
+     * 
+     * @type {Array<SigningDocument>}
+     * @memberof SigningDocumentsList
+     */
+    'signing_documents': Array<SigningDocument>;
 }
 /**
  * 
@@ -11529,6 +11740,84 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Deletes a passkey. 
+         * @summary Delete passkey
+         * @param {string} username Username that owns the passkey.
+         * @param {string} passkeyId Passkey ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePasskey: async (username: string, passkeyId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'username' is not null or undefined
+            assertParamExists('deletePasskey', 'username', username)
+            // verify required parameter 'passkeyId' is not null or undefined
+            assertParamExists('deletePasskey', 'passkeyId', passkeyId)
+            const localVarPath = `/passkeys/{username}/{passkey_id}`
+                .replace(`{${"username"}}`, encodeURIComponent(String(username)))
+                .replace(`{${"passkey_id"}}`, encodeURIComponent(String(passkeyId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Removes every passkey for the username. 
+         * @summary Delete passkeys
+         * @param {string} username Username whose passkeys will be deleted.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePasskeys: async (username: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'username' is not null or undefined
+            assertParamExists('deletePasskeys', 'username', username)
+            const localVarPath = `/passkeys/{username}`
+                .replace(`{${"username"}}`, encodeURIComponent(String(username)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Deactivates the given monitor 
          * @summary Delete monitor
          * @param {string} monitorId 
@@ -12104,6 +12393,53 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Retrieves the signed document or signing transaction receipt depending on the id provided. 
+         * @summary Retrieves the signed document or signing transaction receipt
+         * @param {string} workflowRunId The unique identifier of the Workflow Run for which you want to retrieve the signed document.
+         * @param {string} id The unique identifier of the file which you want to retrieve.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadSesDocument: async (workflowRunId: string, id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'workflowRunId' is not null or undefined
+            assertParamExists('downloadSesDocument', 'workflowRunId', workflowRunId)
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('downloadSesDocument', 'id', id)
+            const localVarPath = `/simple_electronic_signature/documents`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (workflowRunId !== undefined) {
+                localVarQueryParameter['workflow_run_id'] = workflowRunId;
+            }
+
+            if (id !== undefined) {
+                localVarQueryParameter['id'] = id;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Retrieves the signed evidence file for the designated Workflow Run 
          * @summary Retrieve Workflow Run Evidence Summary File
          * @param {string} workflowRunId Workflow Run ID
@@ -12115,6 +12451,43 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('downloadSignedEvidenceFile', 'workflowRunId', workflowRunId)
             const localVarPath = `/workflow_runs/{workflow_run_id}/signed_evidence_file`
                 .replace(`{${"workflow_run_id"}}`, encodeURIComponent(String(workflowRunId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Downloads specific signing documents belonging to an applicant. If successful, the response will be the binary data representing the pdf. 
+         * @summary Download signing document
+         * @param {string} signingDocumentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadSigningDocument: async (signingDocumentId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'signingDocumentId' is not null or undefined
+            assertParamExists('downloadSigningDocument', 'signingDocumentId', signingDocumentId)
+            const localVarPath = `/signing_documents/{signing_document_id}/download`
+                .replace(`{${"signing_document_id"}}`, encodeURIComponent(String(signingDocumentId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -12516,6 +12889,47 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Returns a passkey\'s details. 
+         * @summary Retrieve passkey
+         * @param {string} username Username that owns the passkey.
+         * @param {string} passkeyId Passkey ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findPasskey: async (username: string, passkeyId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'username' is not null or undefined
+            assertParamExists('findPasskey', 'username', username)
+            // verify required parameter 'passkeyId' is not null or undefined
+            assertParamExists('findPasskey', 'passkeyId', passkeyId)
+            const localVarPath = `/passkeys/{username}/{passkey_id}`
+                .replace(`{${"username"}}`, encodeURIComponent(String(username)))
+                .replace(`{${"passkey_id"}}`, encodeURIComponent(String(passkeyId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * A single report can be retrieved using this endpoint with the corresponding unique identifier. 
          * @summary Retrieve report
          * @param {string} reportId 
@@ -12527,6 +12941,43 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             assertParamExists('findReport', 'reportId', reportId)
             const localVarPath = `/reports/{report_id}`
                 .replace(`{${"report_id"}}`, encodeURIComponent(String(reportId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * A single signing document can be retrieved by calling this endpoint with the signing document\'s unique identifier. 
+         * @summary Retrieve signing document
+         * @param {string} signingDocumentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findSigningDocument: async (signingDocumentId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'signingDocumentId' is not null or undefined
+            assertParamExists('findSigningDocument', 'signingDocumentId', signingDocumentId)
+            const localVarPath = `/signing_documents/{signing_document_id}`
+                .replace(`{${"signing_document_id"}}`, encodeURIComponent(String(signingDocumentId)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -13110,6 +13561,43 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Returns every passkey registered under the supplied username. 
+         * @summary List passkeys
+         * @param {string} username Username that owns the passkeys.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listPasskeys: async (username: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'username' is not null or undefined
+            assertParamExists('listPasskeys', 'username', username)
+            const localVarPath = `/passkeys/{username}`
+                .replace(`{${"username"}}`, encodeURIComponent(String(username)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Returns all repeat attempts for a given Document report 
          * @summary Retrieve repeat attempts
          * @param {string} reportId 
@@ -13173,6 +13661,46 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (checkId !== undefined) {
                 localVarQueryParameter['check_id'] = checkId;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * All signing documents belonging to an applicant can be listed from this endpoint
+         * @summary List signing documents
+         * @param {string} applicantId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSigningDocuments: async (applicantId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'applicantId' is not null or undefined
+            assertParamExists('listSigningDocuments', 'applicantId', applicantId)
+            const localVarPath = `/signing_documents`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (applicantId !== undefined) {
+                localVarQueryParameter['applicant_id'] = applicantId;
             }
 
 
@@ -13671,6 +14199,53 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Updates a passkey\'s state. 
+         * @summary Update passkey
+         * @param {string} username Username that owns the passkey.
+         * @param {string} passkeyId Passkey ID.
+         * @param {PasskeyUpdater} passkeyUpdater Passkey update payload.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updatePasskey: async (username: string, passkeyId: string, passkeyUpdater: PasskeyUpdater, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'username' is not null or undefined
+            assertParamExists('updatePasskey', 'username', username)
+            // verify required parameter 'passkeyId' is not null or undefined
+            assertParamExists('updatePasskey', 'passkeyId', passkeyId)
+            // verify required parameter 'passkeyUpdater' is not null or undefined
+            assertParamExists('updatePasskey', 'passkeyUpdater', passkeyUpdater)
+            const localVarPath = `/passkeys/{username}/{passkey_id}`
+                .replace(`{${"username"}}`, encodeURIComponent(String(username)))
+                .replace(`{${"passkey_id"}}`, encodeURIComponent(String(passkeyId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(passkeyUpdater, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Update the status of the given matches 
          * @summary Set match status (BETA)
          * @param {string} monitorId 
@@ -13938,6 +14513,57 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * Signing documents are uploaded using this endpoint. Signing documents must be uploaded as a multipart form. The only valid file type is pdf. The file size must be between 2KB and 3MB. 
+         * @summary Upload a signing document
+         * @param {string} applicantId The ID of the applicant whose signing document is being uploaded.
+         * @param {FileTransfer} file The file to be uploaded.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        uploadSigningDocument: async (applicantId: string, file: FileTransfer, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'applicantId' is not null or undefined
+            assertParamExists('uploadSigningDocument', 'applicantId', applicantId)
+            // verify required parameter 'file' is not null or undefined
+            assertParamExists('uploadSigningDocument', 'file', file)
+            const localVarPath = `/signing_documents`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+            const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+            if (applicantId !== undefined) { 
+                localVarFormParams.append('applicant_id', applicantId as any);
+            }
+    
+            if (file !== undefined) { 
+                localVarFormParams.append('file', file.buffer as any, file.filename);
+            }
+    
+    
+            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = localVarFormParams;
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -14065,6 +14691,33 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.deleteApplicant(applicantId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.deleteApplicant']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Deletes a passkey. 
+         * @summary Delete passkey
+         * @param {string} username Username that owns the passkey.
+         * @param {string} passkeyId Passkey ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deletePasskey(username: string, passkeyId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePasskey(username, passkeyId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.deletePasskey']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Removes every passkey for the username. 
+         * @summary Delete passkeys
+         * @param {string} username Username whose passkeys will be deleted.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async deletePasskeys(username: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.deletePasskeys(username, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.deletePasskeys']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -14265,6 +14918,20 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Retrieves the signed document or signing transaction receipt depending on the id provided. 
+         * @summary Retrieves the signed document or signing transaction receipt
+         * @param {string} workflowRunId The unique identifier of the Workflow Run for which you want to retrieve the signed document.
+         * @param {string} id The unique identifier of the file which you want to retrieve.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async downloadSesDocument(workflowRunId: string, id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.downloadSesDocument(workflowRunId, id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadSesDocument']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Retrieves the signed evidence file for the designated Workflow Run 
          * @summary Retrieve Workflow Run Evidence Summary File
          * @param {string} workflowRunId Workflow Run ID
@@ -14275,6 +14942,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.downloadSignedEvidenceFile(workflowRunId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadSignedEvidenceFile']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Downloads specific signing documents belonging to an applicant. If successful, the response will be the binary data representing the pdf. 
+         * @summary Download signing document
+         * @param {string} signingDocumentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async downloadSigningDocument(signingDocumentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FileTransfer>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.downloadSigningDocument(signingDocumentId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.downloadSigningDocument']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -14408,6 +15088,20 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Returns a passkey\'s details. 
+         * @summary Retrieve passkey
+         * @param {string} username Username that owns the passkey.
+         * @param {string} passkeyId Passkey ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async findPasskey(username: string, passkeyId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Passkey>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.findPasskey(username, passkeyId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.findPasskey']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * A single report can be retrieved using this endpoint with the corresponding unique identifier. 
          * @summary Retrieve report
          * @param {string} reportId 
@@ -14418,6 +15112,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.findReport(reportId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.findReport']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * A single signing document can be retrieved by calling this endpoint with the signing document\'s unique identifier. 
+         * @summary Retrieve signing document
+         * @param {string} signingDocumentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async findSigningDocument(signingDocumentId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SigningDocument>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.findSigningDocument(signingDocumentId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.findSigningDocument']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -14607,6 +15314,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Returns every passkey registered under the supplied username. 
+         * @summary List passkeys
+         * @param {string} username Username that owns the passkeys.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listPasskeys(username: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PasskeysList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listPasskeys(username, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.listPasskeys']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Returns all repeat attempts for a given Document report 
          * @summary Retrieve repeat attempts
          * @param {string} reportId 
@@ -14630,6 +15350,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listReports(checkId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listReports']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * All signing documents belonging to an applicant can be listed from this endpoint
+         * @summary List signing documents
+         * @param {string} applicantId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listSigningDocuments(applicantId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SigningDocumentsList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listSigningDocuments(applicantId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.listSigningDocuments']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -14794,6 +15527,21 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Updates a passkey\'s state. 
+         * @summary Update passkey
+         * @param {string} username Username that owns the passkey.
+         * @param {string} passkeyId Passkey ID.
+         * @param {PasskeyUpdater} passkeyUpdater Passkey update payload.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updatePasskey(username: string, passkeyId: string, passkeyUpdater: PasskeyUpdater, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Passkey>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updatePasskey(username, passkeyId, passkeyUpdater, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.updatePasskey']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Update the status of the given matches 
          * @summary Set match status (BETA)
          * @param {string} monitorId 
@@ -14868,6 +15616,20 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.uploadLivePhoto(applicantId, file, advancedValidation, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.uploadLivePhoto']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Signing documents are uploaded using this endpoint. Signing documents must be uploaded as a multipart form. The only valid file type is pdf. The file size must be between 2KB and 3MB. 
+         * @summary Upload a signing document
+         * @param {string} applicantId The ID of the applicant whose signing document is being uploaded.
+         * @param {FileTransfer} file The file to be uploaded.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async uploadSigningDocument(applicantId: string, file: FileTransfer, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<SigningDocument>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.uploadSigningDocument(applicantId, file, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.uploadSigningDocument']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
@@ -14971,6 +15733,27 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         deleteApplicant(applicantId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
             return localVarFp.deleteApplicant(applicantId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Deletes a passkey. 
+         * @summary Delete passkey
+         * @param {string} username Username that owns the passkey.
+         * @param {string} passkeyId Passkey ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePasskey(username: string, passkeyId: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.deletePasskey(username, passkeyId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Removes every passkey for the username. 
+         * @summary Delete passkeys
+         * @param {string} username Username whose passkeys will be deleted.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        deletePasskeys(username: string, options?: RawAxiosRequestConfig): AxiosPromise<void> {
+            return localVarFp.deletePasskeys(username, options).then((request) => request(axios, basePath));
         },
         /**
          * Deactivates the given monitor 
@@ -15125,6 +15908,17 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.downloadQesDocument(workflowRunId, fileId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Retrieves the signed document or signing transaction receipt depending on the id provided. 
+         * @summary Retrieves the signed document or signing transaction receipt
+         * @param {string} workflowRunId The unique identifier of the Workflow Run for which you want to retrieve the signed document.
+         * @param {string} id The unique identifier of the file which you want to retrieve.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadSesDocument(workflowRunId: string, id: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
+            return localVarFp.downloadSesDocument(workflowRunId, id, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Retrieves the signed evidence file for the designated Workflow Run 
          * @summary Retrieve Workflow Run Evidence Summary File
          * @param {string} workflowRunId Workflow Run ID
@@ -15133,6 +15927,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         downloadSignedEvidenceFile(workflowRunId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
             return localVarFp.downloadSignedEvidenceFile(workflowRunId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Downloads specific signing documents belonging to an applicant. If successful, the response will be the binary data representing the pdf. 
+         * @summary Download signing document
+         * @param {string} signingDocumentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        downloadSigningDocument(signingDocumentId: string, options?: RawAxiosRequestConfig): AxiosPromise<FileTransfer> {
+            return localVarFp.downloadSigningDocument(signingDocumentId, options).then((request) => request(axios, basePath));
         },
         /**
          * Extract information from a document 
@@ -15235,6 +16039,17 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.findMotionCapture(motionCaptureId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Returns a passkey\'s details. 
+         * @summary Retrieve passkey
+         * @param {string} username Username that owns the passkey.
+         * @param {string} passkeyId Passkey ID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findPasskey(username: string, passkeyId: string, options?: RawAxiosRequestConfig): AxiosPromise<Passkey> {
+            return localVarFp.findPasskey(username, passkeyId, options).then((request) => request(axios, basePath));
+        },
+        /**
          * A single report can be retrieved using this endpoint with the corresponding unique identifier. 
          * @summary Retrieve report
          * @param {string} reportId 
@@ -15243,6 +16058,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         findReport(reportId: string, options?: RawAxiosRequestConfig): AxiosPromise<Report> {
             return localVarFp.findReport(reportId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * A single signing document can be retrieved by calling this endpoint with the signing document\'s unique identifier. 
+         * @summary Retrieve signing document
+         * @param {string} signingDocumentId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findSigningDocument(signingDocumentId: string, options?: RawAxiosRequestConfig): AxiosPromise<SigningDocument> {
+            return localVarFp.findSigningDocument(signingDocumentId, options).then((request) => request(axios, basePath));
         },
         /**
          * A single task can be retrieved by calling this endpoint with the unique identifier of the Task and Workflow Run. 
@@ -15389,6 +16214,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.listMotionCaptures(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Returns every passkey registered under the supplied username. 
+         * @summary List passkeys
+         * @param {string} username Username that owns the passkeys.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listPasskeys(username: string, options?: RawAxiosRequestConfig): AxiosPromise<PasskeysList> {
+            return localVarFp.listPasskeys(username, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Returns all repeat attempts for a given Document report 
          * @summary Retrieve repeat attempts
          * @param {string} reportId 
@@ -15407,6 +16242,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         listReports(checkId: string, options?: RawAxiosRequestConfig): AxiosPromise<ReportsList> {
             return localVarFp.listReports(checkId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * All signing documents belonging to an applicant can be listed from this endpoint
+         * @summary List signing documents
+         * @param {string} applicantId 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listSigningDocuments(applicantId: string, options?: RawAxiosRequestConfig): AxiosPromise<SigningDocumentsList> {
+            return localVarFp.listSigningDocuments(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
          * The tasks of a Workflow can be retrieved by calling this endpoint with the unique identifier of the Workflow Run. 
@@ -15534,6 +16379,18 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.updateApplicant(applicantId, applicantUpdater, options).then((request) => request(axios, basePath));
         },
         /**
+         * Updates a passkey\'s state. 
+         * @summary Update passkey
+         * @param {string} username Username that owns the passkey.
+         * @param {string} passkeyId Passkey ID.
+         * @param {PasskeyUpdater} passkeyUpdater Passkey update payload.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updatePasskey(username: string, passkeyId: string, passkeyUpdater: PasskeyUpdater, options?: RawAxiosRequestConfig): AxiosPromise<Passkey> {
+            return localVarFp.updatePasskey(username, passkeyId, passkeyUpdater, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Update the status of the given matches 
          * @summary Set match status (BETA)
          * @param {string} monitorId 
@@ -15594,6 +16451,17 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         uploadLivePhoto(applicantId?: string, file?: FileTransfer, advancedValidation?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<LivePhoto> {
             return localVarFp.uploadLivePhoto(applicantId, file, advancedValidation, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Signing documents are uploaded using this endpoint. Signing documents must be uploaded as a multipart form. The only valid file type is pdf. The file size must be between 2KB and 3MB. 
+         * @summary Upload a signing document
+         * @param {string} applicantId The ID of the applicant whose signing document is being uploaded.
+         * @param {FileTransfer} file The file to be uploaded.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        uploadSigningDocument(applicantId: string, file: FileTransfer, options?: RawAxiosRequestConfig): AxiosPromise<SigningDocument> {
+            return localVarFp.uploadSigningDocument(applicantId, file, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -15713,6 +16581,31 @@ export class DefaultApi extends BaseAPI {
      */
     public deleteApplicant(applicantId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).deleteApplicant(applicantId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Deletes a passkey. 
+     * @summary Delete passkey
+     * @param {string} username Username that owns the passkey.
+     * @param {string} passkeyId Passkey ID.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public deletePasskey(username: string, passkeyId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).deletePasskey(username, passkeyId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Removes every passkey for the username. 
+     * @summary Delete passkeys
+     * @param {string} username Username whose passkeys will be deleted.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public deletePasskeys(username: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).deletePasskeys(username, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -15898,6 +16791,19 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * Retrieves the signed document or signing transaction receipt depending on the id provided. 
+     * @summary Retrieves the signed document or signing transaction receipt
+     * @param {string} workflowRunId The unique identifier of the Workflow Run for which you want to retrieve the signed document.
+     * @param {string} id The unique identifier of the file which you want to retrieve.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public downloadSesDocument(workflowRunId: string, id: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).downloadSesDocument(workflowRunId, id, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Retrieves the signed evidence file for the designated Workflow Run 
      * @summary Retrieve Workflow Run Evidence Summary File
      * @param {string} workflowRunId Workflow Run ID
@@ -15907,6 +16813,18 @@ export class DefaultApi extends BaseAPI {
      */
     public downloadSignedEvidenceFile(workflowRunId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadSignedEvidenceFile(workflowRunId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Downloads specific signing documents belonging to an applicant. If successful, the response will be the binary data representing the pdf. 
+     * @summary Download signing document
+     * @param {string} signingDocumentId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public downloadSigningDocument(signingDocumentId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).downloadSigningDocument(signingDocumentId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -16030,6 +16948,19 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * Returns a passkey\'s details. 
+     * @summary Retrieve passkey
+     * @param {string} username Username that owns the passkey.
+     * @param {string} passkeyId Passkey ID.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public findPasskey(username: string, passkeyId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).findPasskey(username, passkeyId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * A single report can be retrieved using this endpoint with the corresponding unique identifier. 
      * @summary Retrieve report
      * @param {string} reportId 
@@ -16039,6 +16970,18 @@ export class DefaultApi extends BaseAPI {
      */
     public findReport(reportId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findReport(reportId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * A single signing document can be retrieved by calling this endpoint with the signing document\'s unique identifier. 
+     * @summary Retrieve signing document
+     * @param {string} signingDocumentId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public findSigningDocument(signingDocumentId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).findSigningDocument(signingDocumentId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -16214,6 +17157,18 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * Returns every passkey registered under the supplied username. 
+     * @summary List passkeys
+     * @param {string} username Username that owns the passkeys.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public listPasskeys(username: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).listPasskeys(username, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Returns all repeat attempts for a given Document report 
      * @summary Retrieve repeat attempts
      * @param {string} reportId 
@@ -16235,6 +17190,18 @@ export class DefaultApi extends BaseAPI {
      */
     public listReports(checkId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listReports(checkId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * All signing documents belonging to an applicant can be listed from this endpoint
+     * @summary List signing documents
+     * @param {string} applicantId 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public listSigningDocuments(applicantId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).listSigningDocuments(applicantId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -16387,6 +17354,20 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * Updates a passkey\'s state. 
+     * @summary Update passkey
+     * @param {string} username Username that owns the passkey.
+     * @param {string} passkeyId Passkey ID.
+     * @param {PasskeyUpdater} passkeyUpdater Passkey update payload.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public updatePasskey(username: string, passkeyId: string, passkeyUpdater: PasskeyUpdater, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updatePasskey(username, passkeyId, passkeyUpdater, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Update the status of the given matches 
      * @summary Set match status (BETA)
      * @param {string} monitorId 
@@ -16456,6 +17437,19 @@ export class DefaultApi extends BaseAPI {
      */
     public uploadLivePhoto(applicantId?: string, file?: FileTransfer, advancedValidation?: boolean, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).uploadLivePhoto(applicantId, file, advancedValidation, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Signing documents are uploaded using this endpoint. Signing documents must be uploaded as a multipart form. The only valid file type is pdf. The file size must be between 2KB and 3MB. 
+     * @summary Upload a signing document
+     * @param {string} applicantId The ID of the applicant whose signing document is being uploaded.
+     * @param {FileTransfer} file The file to be uploaded.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public uploadSigningDocument(applicantId: string, file: FileTransfer, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).uploadSigningDocument(applicantId, file, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
