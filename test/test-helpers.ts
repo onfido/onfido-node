@@ -129,6 +129,15 @@ export async function uploadIdPhoto(applicant: Applicant) {
   return onfido.uploadIdPhoto(applicant.id, fileTransfer);
 }
 
+export async function uploadSigningDocument(
+  applicant: Applicant,
+  filePath: string = "test/media/sample_signing_document.pdf"
+) {
+  const fileTransfer = new FileTransfer(filePath);
+
+  return onfido.uploadSigningDocument(applicant.id, fileTransfer);
+}
+
 export async function createWebhook() {
   return onfido.createWebhook({
     url: "https://example.com",
