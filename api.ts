@@ -3007,6 +3007,12 @@ export interface DocumentProperties {
      * @type {string}
      * @memberof DocumentProperties
      */
+    'valid_from'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentProperties
+     */
     'categorisation'?: string;
     /**
      * 
@@ -4328,6 +4334,12 @@ export interface DocumentWithDriverVerificationReportAllOfProperties {
      * @memberof DocumentWithDriverVerificationReportAllOfProperties
      */
     'issuing_date'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentWithDriverVerificationReportAllOfProperties
+     */
+    'valid_from'?: string;
     /**
      * 
      * @type {string}
