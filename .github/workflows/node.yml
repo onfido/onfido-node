@@ -50,9 +50,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Run linter over tests
-        run: |
-            npm install prettier
-            npx prettier -c test/**/*.ts
+        run: npx prettier -c test/**/*.ts
       - name: Run integration tests with NPM
         if: ${{ matrix.node-version == '18.x' &&
           github.repository_owner == 'onfido' &&
