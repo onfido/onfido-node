@@ -4,7 +4,7 @@ import {
   getExpectedObject,
   onfido,
   sampleapplicant_id,
-  sortByMotionCaptureId
+  sortByMotionCaptureId,
 } from "../test-helpers";
 
 const sampleId1 = process.env.ONFIDO_SAMPLE_MOTION_ID_1;
@@ -17,19 +17,19 @@ const exampleMotionCapture: MotionCapture = {
   download_href: "https://api.onfido.com/v3.6/motion_captures/id/download",
   file_name: "id.mp4",
   file_type: "video/mp4",
-  file_size: 2_720_276
+  file_size: 2_720_276,
 };
 
 function getExpectedMotionCapture(
   example: MotionCapture,
-  exampleId: string
+  exampleId: string,
 ): MotionCapture {
   return getExpectedObject(example, {
     id: exampleId,
     file_name: exampleId + ".mp4",
     download_href: expect.stringMatching(
-      /^\/v3\.6\/motion_captures\/[0-9a-z-]+\/download$/
-    )
+      /^\/v3\.6\/motion_captures\/[0-9a-z-]+\/download$/,
+    ),
   });
 }
 
@@ -54,7 +54,7 @@ it("finds a motion capture", async () => {
   const motionCapture = (await onfido.findMotionCapture(sampleId1)).data;
 
   expect(motionCapture).toEqual(
-    getExpectedMotionCapture(exampleMotionCapture, sampleId1)
+    getExpectedMotionCapture(exampleMotionCapture, sampleId1),
   );
 });
 
@@ -64,6 +64,6 @@ it("lists motion captures", async () => {
 
   expect(motionCaptures.sort(sortByMotionCaptureId)).toEqual([
     getExpectedMotionCapture(exampleMotionCapture, sampleId2),
-    getExpectedMotionCapture(exampleMotionCapture, sampleId1)
+    getExpectedMotionCapture(exampleMotionCapture, sampleId1),
   ]);
 });

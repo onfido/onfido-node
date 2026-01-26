@@ -5,14 +5,14 @@ import {
   getExpectedObject,
   createApplicant,
   cleanUpApplicants,
-  uploadDocument
+  uploadDocument,
 } from "../test-helpers";
 
 const exampleAutofillE2e = {
   document_id: "21345-xxx",
   document_classification: {
     issuing_country: "GBR",
-    document_type: "driving_licence"
+    document_type: "driving_licence",
   },
   extracted_data: {
     date_of_birth: "1976-03-11",
@@ -20,8 +20,8 @@ const exampleAutofillE2e = {
     document_number: "200407512345",
     first_name: "SARAH",
     gender: "Female",
-    last_name: "MORGAN"
-  }
+    last_name: "MORGAN",
+  },
 };
 
 let applicant: Applicant;
@@ -40,6 +40,6 @@ it("performs autofill", async () => {
   const result = await onfido.extract({ document_id: document.id });
 
   expect(result.data).toEqual(
-    getExpectedObject(exampleAutofillE2e, { document_id: document.id })
+    getExpectedObject(exampleAutofillE2e, { document_id: document.id }),
   );
 });

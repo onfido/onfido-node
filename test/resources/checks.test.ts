@@ -8,7 +8,7 @@ import {
   uploadDocument,
   createWebhook,
   createCheck,
-  cleanUpWebhooks
+  cleanUpWebhooks,
 } from "../test-helpers";
 import { exampleCheck } from "../test-examples";
 
@@ -16,12 +16,12 @@ function getExpectedCheck(exampleCheck: Check, overrideProperties = {}) {
   return getExpectedObject(exampleCheck, {
     applicant_id: expect.stringMatching(/^[0-9a-z-]+$/),
     results_uri: expect.stringMatching(
-      /^https\:\/\/dashboard\.onfido\.com\/checks\/[0-9a-z-]+$/
+      /^https\:\/\/dashboard\.onfido\.com\/checks\/[0-9a-z-]+$/,
     ),
     privacy_notices_read_consent_given: null,
     report_ids: [
       expect.stringMatching(/^[0-9a-z-]+$/),
-      expect.stringMatching(/^[0-9a-z-]+$/)
+      expect.stringMatching(/^[0-9a-z-]+$/),
     ],
     webhook_ids: expect.arrayContaining([webhook1.id, webhook2.id]),
     result: expect.anything(),
@@ -29,7 +29,7 @@ function getExpectedCheck(exampleCheck: Check, overrideProperties = {}) {
     version: "3.6",
     sandbox: true,
     paused: false,
-    ...overrideProperties
+    ...overrideProperties,
   });
 }
 
@@ -55,7 +55,7 @@ afterAll(() => {
 it("creates a check", async () => {
   const check = await createCheck(applicant, document, {
     webhook_ids: [webhook1.id, webhook2.id],
-    privacy_notices_read_consent_given: true
+    privacy_notices_read_consent_given: true,
   });
 
   expect(check.data).toEqual(
@@ -63,44 +63,44 @@ it("creates a check", async () => {
       applicant_id: applicant.id,
       result: null,
       status: CheckStatus.InProgress,
-      privacy_notices_read_consent_given: true
-    })
+      privacy_notices_read_consent_given: true,
+    }),
   );
 });
 
 it("creates a check for generating a rejected sub-result for document report in the sandbox", async () => {
   const check = await createCheck(applicant, document, {
     webhook_ids: [webhook1.id, webhook2.id],
-    sub_result: "rejected"
+    sub_result: "rejected",
   });
 
   expect(check.data).toEqual(
     getExpectedCheck(exampleCheck, {
       applicant_id: applicant.id,
       result: null,
-      status: CheckStatus.InProgress
-    })
+      status: CheckStatus.InProgress,
+    }),
   );
 });
 
 it("creates a check for generating a consider result for a report in the sandbox", async () => {
   const check = await createCheck(applicant, document, {
     webhook_ids: [webhook1.id, webhook2.id],
-    consider: ["identity_enhanced"]
+    consider: ["identity_enhanced"],
   });
 
   expect(check.data).toEqual(
     getExpectedCheck(exampleCheck, {
       applicant_id: applicant.id,
       result: null,
-      status: CheckStatus.InProgress
-    })
+      status: CheckStatus.InProgress,
+    }),
   );
 });
 
 it("finds a check", async () => {
   const check = await createCheck(applicant, document, {
-    webhook_ids: [webhook1.id, webhook2.id]
+    webhook_ids: [webhook1.id, webhook2.id],
   });
 
   const lookupCheck = (await onfido.findCheck(check.data.id)).data;
@@ -110,17 +110,17 @@ it("finds a check", async () => {
     getExpectedCheck(exampleCheck, {
       applicant_id: applicant.id,
       status: lookupCheck.status,
-      result: lookupCheck.result
-    })
+      result: lookupCheck.result,
+    }),
   );
 });
 
 it("lists checks", async () => {
   await createCheck(applicant, document, {
-    webhook_ids: [webhook1.id, webhook2.id]
+    webhook_ids: [webhook1.id, webhook2.id],
   });
   await createCheck(applicant, document, {
-    webhook_ids: [webhook1.id, webhook2.id]
+    webhook_ids: [webhook1.id, webhook2.id],
   });
 
   const checks = (await onfido.listChecks(applicant.id)).data.checks;
@@ -129,18 +129,18 @@ it("lists checks", async () => {
   expect(checks).toEqual([
     getExpectedCheck(exampleCheck, {
       status: checks[0].status,
-      result: checks[0].result
+      result: checks[0].result,
     }),
     getExpectedCheck(exampleCheck, {
       status: checks[1].status,
-      result: checks[1].result
-    })
+      result: checks[1].result,
+    }),
   ]);
 });
 
 it("resumes a check", async () => {
   const check = await createCheck(applicant, document, {
-    webhook_ids: [webhook1.id, webhook2.id]
+    webhook_ids: [webhook1.id, webhook2.id],
   });
 
   expect((await onfido.resumeCheck(check.data.id)).status).toEqual(204);
@@ -148,7 +148,7 @@ it("resumes a check", async () => {
 
 it("downloads a check", async () => {
   const check = await createCheck(applicant, document, {
-    webhook_ids: [webhook1.id, webhook2.id]
+    webhook_ids: [webhook1.id, webhook2.id],
   });
 
   const file = await onfido.downloadCheck(check.data.id);

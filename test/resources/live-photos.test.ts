@@ -5,7 +5,7 @@ import {
   getExpectedObject,
   createApplicant,
   cleanUpApplicants,
-  uploadLivePhoto
+  uploadLivePhoto,
 } from "../test-helpers";
 
 const exampleLivePhoto: LivePhoto = {
@@ -15,14 +15,14 @@ const exampleLivePhoto: LivePhoto = {
   download_href: "/v3.6/live_photos/123-abc/download",
   file_name: "sample_photo.png",
   file_type: "image/png",
-  file_size: 395_856
+  file_size: 395_856,
 };
 
 function getExpectedLivePhoto(exampleLivePhoto: LivePhoto) {
   return getExpectedObject(exampleLivePhoto, {
     download_href: expect.stringMatching(
-      /^\/v3.6\/live_photos\/[0-9a-z-]+\/download$/
-    )
+      /^\/v3.6\/live_photos\/[0-9a-z-]+\/download$/,
+    ),
   });
 }
 
@@ -74,6 +74,6 @@ it("lists live photos", async () => {
 
   expect(livePhotos.data.live_photos).toEqual([
     getExpectedLivePhoto(exampleLivePhoto),
-    getExpectedLivePhoto(exampleLivePhoto)
+    getExpectedLivePhoto(exampleLivePhoto),
   ]);
 });

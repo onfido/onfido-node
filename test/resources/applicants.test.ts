@@ -5,14 +5,14 @@ import {
   getExpectedObject,
   createApplicant,
   cleanUpApplicants,
-  sortByApplicantfirst_name
+  sortByApplicantfirst_name,
 } from "../test-helpers";
 import { exampleApplicant } from "../test-examples";
 import { AxiosError, isAxiosError } from "axios";
 
 function getExpectedApplicant(exampleApplicant: Applicant) {
   return getExpectedObject(exampleApplicant, {
-    sandbox: true
+    sandbox: true,
   });
 }
 
@@ -38,7 +38,7 @@ it("finds an applicant", async () => {
   const lookupApplicant = await onfido.findApplicant(applicant.id);
 
   expect(lookupApplicant.data).toMatchObject(
-    getExpectedApplicant(exampleApplicant)
+    getExpectedApplicant(exampleApplicant),
   );
 });
 
@@ -46,11 +46,11 @@ it("updates an applicant", async () => {
   const modifiedApplicant = { ...exampleApplicant, first_name: "Test2" };
 
   const updatedApplicant = await onfido.updateApplicant(applicant.id, {
-    first_name: "Test2"
+    first_name: "Test2",
   });
 
   expect(updatedApplicant.data).toMatchObject(
-    getExpectedApplicant(modifiedApplicant)
+    getExpectedApplicant(modifiedApplicant),
   );
 });
 
@@ -58,30 +58,30 @@ it("lists an applicant's consents", async () => {
   const consents = [
     {
       name: ApplicantConsentName.PrivacyNoticesRead,
-      granted: true
+      granted: true,
     },
     {
       name: ApplicantConsentName.SsnVerification,
-      granted: true
+      granted: true,
     },
     {
       name: ApplicantConsentName.PhoneNumberVerification,
-      granted: true
-    }
+      granted: true,
+    },
   ];
   const applicant = await createApplicant({
     first_name: "Sir Consents",
-    consents: consents
+    consents: consents,
   });
 
   const consentsList = await onfido.findApplicantConsents(applicant.data.id);
 
   // sorting to ensure the order is consistent
   const actualConsentsSorted = consentsList.data.sort((a, b) =>
-    a.name.localeCompare(b.name)
+    a.name.localeCompare(b.name),
   );
   const expectedConsentsSorted = consents.sort((a, b) =>
-    a.name.localeCompare(b.name)
+    a.name.localeCompare(b.name),
   );
 
   expectedConsentsSorted.forEach((expected, index) => {
@@ -108,9 +108,9 @@ it("lists applicants", async () => {
     consents: [
       {
         name: ApplicantConsentName.PrivacyNoticesRead,
-        granted: true
-      }
-    ]
+        granted: true,
+      },
+    ],
   });
 
   const applicants = await onfido.listApplicants(1, 20, false);
@@ -118,8 +118,8 @@ it("lists applicants", async () => {
   expect(applicants.data.applicants.sort(sortByApplicantfirst_name)).toEqual(
     expect.arrayContaining([
       getExpectedApplicant(anotherApplicant),
-      getExpectedApplicant(exampleApplicant)
-    ])
+      getExpectedApplicant(exampleApplicant),
+    ]),
   );
 });
 
@@ -134,7 +134,7 @@ it("finds a non existent applicant", async () => {
     const error_details = error.response?.data.error;
     expect(isAxiosError(error)).toBe(true);
     expect(error_details.message).toBe(
-      "Could not find the following resource: Applicant with id=invalid-applicant-id"
+      "Could not find the following resource: Applicant with id=invalid-applicant-id",
     );
     expect(error_details.type).toBe("resource_not_found");
   }

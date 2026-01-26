@@ -3,7 +3,7 @@ import {
   WebhookEventVerifier,
   WebhookEventType,
   WebhookEventResourceType,
-  WebhookEventObjectStatus
+  WebhookEventObjectStatus,
 } from "onfido-node";
 
 const webhookToken = "_ABC123abc123ABC123abc123ABC123_";
@@ -19,9 +19,9 @@ const expectedEvent = {
       id: "check-123",
       href: "https://api.onfido.com/v3/checks/check-123",
       status: WebhookEventObjectStatus.Complete,
-      completed_at_iso8601: "2020-01-01T00:00:00Z"
-    }
-  }
+      completed_at_iso8601: "2020-01-01T00:00:00Z",
+    },
+  },
 };
 
 it("returns the event if the signature is valid", () => {
@@ -41,7 +41,7 @@ it("allows passing the body as a buffer", () => {
 
   expect(event).toEqual(expectedEvent);
   expect(event.payload.object.href).toEqual(
-    "https://api.onfido.com/v3/checks/check-123"
+    "https://api.onfido.com/v3/checks/check-123",
   );
 
   // Test alternative way to access fields (it also works for additional properties)
@@ -53,6 +53,6 @@ it("throws an error if the signature is invalid", () => {
     "b0082d7481f9f0a2907583dbe1f344d6d4c0d9989df2fd804f98479f60cd760e";
 
   expect(() => verifier.readPayload(rawEvent, signature)).toThrow(
-    OnfidoInvalidSignatureError
+    OnfidoInvalidSignatureError,
   );
 });

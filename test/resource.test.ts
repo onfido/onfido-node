@@ -4,8 +4,8 @@ import { AxiosError } from "axios";
 
 const onfido_bad_token = new DefaultApi(
   new Configuration({
-    apiToken: "bad-token" // Use an invalid token
-  })
+    apiToken: "bad-token", // Use an invalid token
+  }),
 );
 
 describe("error handling", () => {
@@ -16,12 +16,12 @@ describe("error handling", () => {
         last_name: "Applicant",
         address: {
           postcode: "AB12 3AB",
-          country: "GBR"
+          country: "GBR",
         },
         location: {
           ip_address: "127.0.0.1",
-          country_of_residence: "GBR"
-        }
+          country_of_residence: "GBR",
+        },
       });
       fail(); // We should never be here
     } catch (error) {

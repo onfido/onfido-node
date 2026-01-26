@@ -2,7 +2,7 @@ import {
   Applicant,
   TimelineFileReference,
   WorkflowRun,
-  WorkflowRunBuilder
+  WorkflowRunBuilder,
 } from "onfido-node";
 
 import { exampleWorkflowRun } from "../test-examples";
@@ -15,12 +15,12 @@ import {
   getExpectedObject,
   onfido,
   repeatRequestUntilHttpCodeChanges,
-  repeatRequestUntilStatusChanges
+  repeatRequestUntilStatusChanges,
 } from "../test-helpers";
 
 function getExpectedWorkflowRun(
   exampleWorkflowRun: WorkflowRun,
-  overrideProperties = {}
+  overrideProperties = {},
 ) {
   return getExpectedObject(exampleWorkflowRun, {
     applicant_id: expect.stringMatching(/^[0-9a-z-]+$/),
@@ -37,7 +37,7 @@ function getExpectedWorkflowRun(
     link: expect.anything(),
     created_at: expect.anything(),
     updated_at: expect.anything(),
-    ...overrideProperties
+    ...overrideProperties,
   });
 }
 
@@ -64,15 +64,14 @@ it("creates a workflow run with custom inputs", async () => {
   const workflowRunBuilder: WorkflowRunBuilder = {
     applicant_id: applicant.id,
     workflow_id: workflow_id_with_custom_inputs,
-    custom_data: { age: 18, is_employed: false }
+    custom_data: { age: 18, is_employed: false },
   };
 
-  const workflowRunWithCustomInputs = await createWorkflowRunWithCustomInputs(
-    workflowRunBuilder
-  );
+  const workflowRunWithCustomInputs =
+    await createWorkflowRunWithCustomInputs(workflowRunBuilder);
 
   expect(workflowRunWithCustomInputs.data).toEqual(
-    getExpectedWorkflowRun(exampleWorkflowRun)
+    getExpectedWorkflowRun(exampleWorkflowRun),
   );
 });
 
@@ -83,7 +82,7 @@ it("finds a workflow run", async () => {
 
   // Providing actual status and result as parameter since they might have changed overtime
   expect(lookupworkflowRun.data).toEqual(
-    getExpectedWorkflowRun(exampleWorkflowRun)
+    getExpectedWorkflowRun(exampleWorkflowRun),
   );
 });
 
@@ -96,8 +95,8 @@ it("lists workflow runs", async () => {
   expect(workflowRuns.data).toEqual(
     expect.arrayContaining([
       getExpectedWorkflowRun(exampleWorkflowRun),
-      getExpectedWorkflowRun(exampleWorkflowRun)
-    ])
+      getExpectedWorkflowRun(exampleWorkflowRun),
+    ]),
   );
 });
 
@@ -118,7 +117,7 @@ it("generates a timeline file", async () => {
   await repeatRequestUntilStatusChanges(
     "findWorkflowRun",
     [workflowRunId],
-    "approved"
+    "approved",
   );
 
   const timelineFileData: TimelineFileReference = (
@@ -135,7 +134,7 @@ it("downloads a timeline file", async () => {
   await repeatRequestUntilStatusChanges(
     "findWorkflowRun",
     [workflowRunId],
-    "approved"
+    "approved",
   );
 
   const timelineFileId = (await onfido.createTimelineFile(workflowRunId)).data
@@ -143,7 +142,7 @@ it("downloads a timeline file", async () => {
 
   const file = await repeatRequestUntilHttpCodeChanges("findTimelineFile", [
     workflowRunId,
-    timelineFileId
+    timelineFileId,
   ]);
 
   expect(file.status).toEqual(200);
@@ -158,12 +157,12 @@ it("downloads an evidence folder", async () => {
   await repeatRequestUntilStatusChanges(
     "findWorkflowRun",
     [workflowRunId],
-    "approved"
+    "approved",
   );
 
   const file = await repeatRequestUntilHttpCodeChanges(
     "downloadEvidenceFolder",
-    [workflowRunId]
+    [workflowRunId],
   );
 
   expect(file.status).toEqual(200);

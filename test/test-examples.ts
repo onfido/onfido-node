@@ -7,7 +7,7 @@ import {
   Task,
   WatchlistMonitor,
   Webhook,
-  WorkflowRun
+  WorkflowRun,
 } from "onfido-node";
 
 export const exampleApplicant: Applicant = {
@@ -32,13 +32,13 @@ export const exampleApplicant: Applicant = {
     state: null,
     line1: null,
     line2: null,
-    line3: null
+    line3: null,
   },
   phone_number: "351911111111",
   location: {
     ip_address: "127.0.0.1",
-    country_of_residence: "GBR"
-  }
+    country_of_residence: "GBR",
+  },
 };
 
 export const exampleCheck: Check = {
@@ -56,7 +56,7 @@ export const exampleCheck: Check = {
   redirect_uri: null,
   results_uri: "https://dashboard.onfido.com/checks/123-abc",
   // privacy_notices_read_consent_given: true,
-  webhook_ids: ["webhook-123"]
+  webhook_ids: ["webhook-123"],
 };
 
 export const exampleDocument: Document = {
@@ -70,7 +70,7 @@ export const exampleDocument: Document = {
   file_size: 361_771,
   type: "driving_licence",
   side: null,
-  issuing_country: null
+  issuing_country: null,
 };
 
 export const exampleWebhook: Webhook = {
@@ -86,7 +86,7 @@ export const exampleWebhook: Webhook = {
   oauth_server_url: null,
   oauth_server_client_id: null,
   oauth_server_client_secret: null,
-  oauth_server_scope: null
+  oauth_server_scope: null,
 };
 
 export const exampleWorkflowRun: WorkflowRun = {
@@ -102,7 +102,7 @@ export const exampleWorkflowRun: WorkflowRun = {
   link: null,
   created_at: "2022-06-28T15:39:42Z",
   updated_at: "2022-06-28T15:39:42Z",
-  tags: []
+  tags: [],
 };
 
 export const exampleWorkflowRunOutputProfileDataCapture: object = {
@@ -112,7 +112,7 @@ export const exampleWorkflowRunOutputProfileDataCapture: object = {
     line2: "Reichel Mall",
     line3: "Sherwood Drives",
     postcode: "38074",
-    town: "Keeblerview"
+    town: "Keeblerview",
   },
   country_residence: "TTO",
   dob: "1976-08-31",
@@ -121,7 +121,7 @@ export const exampleWorkflowRunOutputProfileDataCapture: object = {
   last_name: "Kihn",
   nationality: "SWZ",
   phone_number: "+351930983797",
-  phone_number_consent_granted: true
+  phone_number_consent_granted: true,
 };
 
 export const exampleWorkflowRunOutputDocumentReport: object = {
@@ -130,202 +130,202 @@ export const exampleWorkflowRunOutputDocumentReport: object = {
       breakdown: {
         minimum_accepted_age: {
           properties: {},
-          result: "clear"
-        }
+          result: "clear",
+        },
       },
-      result: "clear"
+      result: "clear",
     },
     compromised_document: {
       breakdown: {
         document_database: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         repeat_attempts: {
           properties: {},
-          result: "clear"
-        }
+          result: "clear",
+        },
       },
-      result: "clear"
+      result: "clear",
     },
     data_comparison: {
       breakdown: {
         date_of_birth: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         date_of_expiry: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         document_numbers: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         document_type: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         first_name: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         gender: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         issuing_country: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         last_name: {
           properties: {},
-          result: "clear"
-        }
+          result: "clear",
+        },
       },
-      result: "clear"
+      result: "clear",
     },
     data_consistency: {
       breakdown: {
         date_of_birth: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         date_of_expiry: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         document_numbers: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         document_type: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         first_name: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         gender: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         issuing_country: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         last_name: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         multiple_data_sources_present: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         nationality: {
           properties: {},
-          result: "clear"
-        }
+          result: "clear",
+        },
       },
-      result: "clear"
+      result: "clear",
     },
     data_validation: {
       breakdown: {
         date_of_birth: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         document_expiration: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         document_numbers: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         expiry_date: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         gender: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         mrz: {
           properties: {},
-          result: "clear"
-        }
+          result: "clear",
+        },
       },
-      result: "clear"
+      result: "clear",
     },
     image_integrity: {
       breakdown: {
         colour_picture: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         conclusive_document_quality: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         image_quality: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         supported_document: {
           properties: {},
-          result: "clear"
-        }
+          result: "clear",
+        },
       },
-      result: "clear"
+      result: "clear",
     },
     police_record: {
       breakdown: {
         "document_has_not_been_recorded_as_lost,_stolen_or_compromised": {
           properties: {},
-          result: "clear"
-        }
+          result: "clear",
+        },
       },
-      result: "clear"
+      result: "clear",
     },
     visual_authenticity: {
       breakdown: {
         digital_tampering: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         face_detection: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         fonts: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         original_document_present: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         other: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         picture_face_integrity: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         security_features: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         template: {
           properties: {},
-          result: "clear"
-        }
+          result: "clear",
+        },
       },
-      result: "clear"
-    }
+      result: "clear",
+    },
   },
   properties: {
     date_of_birth: "1990-01-01",
@@ -334,25 +334,25 @@ export const exampleWorkflowRunOutputDocumentReport: object = {
     document_numbers: [
       {
         type: "document_number",
-        value: "999999999"
-      }
+        value: "999999999",
+      },
     ],
     document_type: "passport",
     first_name: "Broderick",
     issuing_country: "GBR",
-    last_name: "Altenwerth"
+    last_name: "Altenwerth",
   },
   repeat_attempts: {
     attempts_clear_rate: 0,
     attempts_count: 1,
     repeat_attempts: [],
     report_id: "00000000-0000-0000-0000-000000000000",
-    unique_mismatches_count: 0
+    unique_mismatches_count: 0,
   },
   result: "clear",
   status: "complete",
   sub_result: "clear",
-  uuid: "9d2d7ca9-73c6-4dc8-9185-7bcc62f8a1c5"
+  uuid: "9d2d7ca9-73c6-4dc8-9185-7bcc62f8a1c5",
 };
 
 export const exampleWorkflowRunOutputFacialSimilarityReport: object = {
@@ -362,50 +362,50 @@ export const exampleWorkflowRunOutputFacialSimilarityReport: object = {
         face_match: {
           properties: {
             document_id: "0925205f-1af3-4874-8d14-f2d2a81fb75d",
-            score: 0.6512
+            score: 0.6512,
           },
-          result: "clear"
-        }
+          result: "clear",
+        },
       },
-      result: "clear"
+      result: "clear",
     },
     image_integrity: {
       breakdown: {
         face_detected: {
           properties: {},
-          result: "clear"
+          result: "clear",
         },
         source_integrity: {
           properties: {},
-          result: "clear"
-        }
+          result: "clear",
+        },
       },
-      result: "clear"
+      result: "clear",
     },
     visual_authenticity: {
       breakdown: {
         spoofing_detection: {
           properties: {
-            score: 0.9512
+            score: 0.9512,
           },
-          result: "clear"
-        }
+          result: "clear",
+        },
       },
-      result: "clear"
-    }
+      result: "clear",
+    },
   },
   properties: {},
   result: "clear",
   status: "complete",
   sub_result: null,
-  uuid: "9cb47ea9-bc41-4e98-8005-51de3d8174b7"
+  uuid: "9cb47ea9-bc41-4e98-8005-51de3d8174b7",
 };
 
 export const exampleTask: Task = {
   id: "abc-123",
   task_def_id: "task_123",
   created_at: "2022-06-28T15:39:42Z",
-  updated_at: "2022-07-28T15:40:42Z"
+  updated_at: "2022-07-28T15:40:42Z",
 };
 
 export const exampleDocumentReport: DocumentReport = {
@@ -413,8 +413,8 @@ export const exampleDocumentReport: DocumentReport = {
   created_at: "2024-04-26T11:27:05Z",
   documents: [
     {
-      id: "dcfa6ae8-4e37-4717-a72b-b6510d24396e"
-    }
+      id: "dcfa6ae8-4e37-4717-a72b-b6510d24396e",
+    },
   ],
   href: "/v3.6/reports/ebc7a6b9-d8b2-4ceb-8940-9c8cd70f2b51",
   id: "ebc7a6b9-d8b2-4ceb-8940-9c8cd70f2b51",
@@ -425,15 +425,15 @@ export const exampleDocumentReport: DocumentReport = {
     document_numbers: [
       {
         type: "document_number",
-        value: "999999999"
-      }
+        value: "999999999",
+      },
     ],
     document_type: "passport",
     first_name: "laboris nulla",
     gender: null,
     issuing_country: "GBR",
     last_name: "elit",
-    nationality: null
+    nationality: null,
   },
   result: "clear",
   status: "complete",
@@ -444,196 +444,196 @@ export const exampleDocumentReport: DocumentReport = {
       breakdown: {
         gender: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         date_of_birth: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         document_numbers: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         document_expiration: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         expiry_date: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         mrz: {
           result: "clear",
-          properties: {}
-        }
-      }
+          properties: {},
+        },
+      },
     },
     visual_authenticity: {
       result: "clear",
       breakdown: {
         fonts: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         picture_face_integrity: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         template: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         security_features: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         original_document_present: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         digital_tampering: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         other: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         face_detection: {
           result: "clear",
-          properties: {}
-        }
-      }
+          properties: {},
+        },
+      },
     },
     compromised_document: {
       result: "clear",
       breakdown: {
         document_database: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         repeat_attempts: {
           result: "clear",
-          properties: {}
-        }
-      }
+          properties: {},
+        },
+      },
     },
     data_consistency: {
       result: "clear",
       breakdown: {
         date_of_expiry: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         document_numbers: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         issuing_country: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         document_type: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         date_of_birth: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         gender: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         multiple_data_sources_present: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         first_name: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         last_name: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         nationality: {
           result: "clear",
-          properties: {}
-        }
-      }
+          properties: {},
+        },
+      },
     },
     data_comparison: {
       result: "clear",
       breakdown: {
         issuing_country: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         gender: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         date_of_expiry: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         last_name: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         document_type: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         document_numbers: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         first_name: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         date_of_birth: {
           result: "clear",
-          properties: {}
-        }
-      }
+          properties: {},
+        },
+      },
     },
     image_integrity: {
       result: "clear",
       breakdown: {
         image_quality: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         conclusive_document_quality: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         supported_document: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         colour_picture: {
           result: "clear",
-          properties: {}
-        }
-      }
+          properties: {},
+        },
+      },
     },
     police_record: {
-      result: "clear"
+      result: "clear",
     },
     age_validation: {
       result: "clear",
       breakdown: {
         minimum_accepted_age: {
           result: "clear",
-          properties: {}
-        }
-      }
-    }
-  }
+          properties: {},
+        },
+      },
+    },
+  },
 };
 
 export const exampleFacialSimilarityPhotoReport: FacialSimilarityPhotoReport = {
@@ -641,8 +641,8 @@ export const exampleFacialSimilarityPhotoReport: FacialSimilarityPhotoReport = {
   created_at: "2024-04-30T13:31:43Z",
   documents: [
     {
-      id: "83bab412-6253-4a2b-9a91-658a864e379f"
-    }
+      id: "83bab412-6253-4a2b-9a91-658a864e379f",
+    },
   ],
   href: "/v3.6/reports/c39c01da-a6d4-4921-a3c5-72d78eb51236",
   id: "c39c01da-a6d4-4921-a3c5-72d78eb51236",
@@ -661,23 +661,23 @@ export const exampleFacialSimilarityPhotoReport: FacialSimilarityPhotoReport = {
         spoofing_detection: {
           result: "clear",
           properties: {
-            score: 0.9512
-          }
-        }
-      }
+            score: 0.9512,
+          },
+        },
+      },
     },
     image_integrity: {
       result: "clear",
       breakdown: {
         source_integrity: {
           result: "clear",
-          properties: {}
+          properties: {},
         },
         face_detected: {
           result: "clear",
-          properties: {}
-        }
-      }
+          properties: {},
+        },
+      },
     },
     face_comparison: {
       result: "clear",
@@ -686,12 +686,12 @@ export const exampleFacialSimilarityPhotoReport: FacialSimilarityPhotoReport = {
           result: "clear",
           properties: {
             score: 0.6512,
-            document_id: "83bab412-6253-4a2b-9a91-658a864e379f"
-          }
-        }
-      }
-    }
-  }
+            document_id: "83bab412-6253-4a2b-9a91-658a864e379f",
+          },
+        },
+      },
+    },
+  },
 };
 
 export const exampleWatchlistMonitor: WatchlistMonitor = {
@@ -701,5 +701,5 @@ export const exampleWatchlistMonitor: WatchlistMonitor = {
   deleted_at: null,
   tags: [],
   is_sandbox: true,
-  created_at: "2022-06-28T15:39:42Z"
+  created_at: "2022-06-28T15:39:42Z",
 };

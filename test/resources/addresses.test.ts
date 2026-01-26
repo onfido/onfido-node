@@ -10,18 +10,18 @@ const exampleAddress: Address = {
   building_name: "",
   street: "RAWSON CLOSE",
   sub_street: "",
-  town: "SHEFFIELD"
+  town: "SHEFFIELD",
 };
 
 const exampleAddress2 = {
   ...exampleAddress,
-  building_number: "18"
+  building_number: "18",
 };
 
 it("allows picking addresses", async () => {
   const addresses = await onfido.findAddresses("S2 2DF");
 
   expect(addresses.data.addresses).toEqual(
-    expect.arrayContaining([exampleAddress, exampleAddress2])
+    expect.arrayContaining([exampleAddress, exampleAddress2]),
   );
 });

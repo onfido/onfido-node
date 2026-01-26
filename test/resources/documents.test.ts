@@ -6,19 +6,19 @@ import {
   createApplicant,
   cleanUpApplicants,
   uploadDocument,
-  sortByDocumentType
+  sortByDocumentType,
 } from "../test-helpers";
 import { exampleDocument } from "../test-examples";
 import { AxiosError } from "axios";
 
 function getExpectedDocument(
   exampleDocument: Document,
-  overrideProperties = {}
+  overrideProperties = {},
 ) {
   return getExpectedObject(exampleDocument, {
     applicant_id: applicant.id,
     download_href: expect.stringMatching(/^\/.+/),
-    ...overrideProperties
+    ...overrideProperties,
   });
 }
 
@@ -43,7 +43,7 @@ it("uploads a document", async () => {
 it("uploads a document with location", async () => {
   document = (
     await uploadDocument(applicant, DocumentTypes.DrivingLicence, {
-      country_of_residence: "FRA"
+      country_of_residence: "FRA",
     })
   ).data;
 });
@@ -74,12 +74,12 @@ it("lists documents", async () => {
   expect(documents).toEqual([
     getExpectedDocument(exampleDocument, {
       id: document.id,
-      type: "driving_licence"
+      type: "driving_licence",
     }),
     getExpectedDocument(exampleDocument, {
       id: anotherDocument.id,
-      type: "passport"
-    })
+      type: "passport",
+    }),
   ]);
 });
 
@@ -89,7 +89,7 @@ it("downloads an NFC face", async () => {
       applicant,
       DocumentTypes.Passport,
       {},
-      "test/media/nfc_data.json"
+      "test/media/nfc_data.json",
     )
   ).data;
 

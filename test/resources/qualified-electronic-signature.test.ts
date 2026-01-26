@@ -5,7 +5,7 @@ import {
   repeatRequestUntilTaskOutputChanges,
   createWorkflowRunWithCustomInputs,
   onfido,
-  sleep
+  sleep,
 } from "../test-helpers";
 
 import { WorkflowRunBuilder } from "onfido-node";
@@ -35,13 +35,12 @@ it("downloads a signed document file", async () => {
       document_number: "Example string",
       document_to_sign_url:
         "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      document_type: "driving_licence"
-    }
+      document_type: "driving_licence",
+    },
   };
 
-  const workflowRun = await createWorkflowRunWithCustomInputs(
-    workflowRunBuilder
-  );
+  const workflowRun =
+    await createWorkflowRunWithCustomInputs(workflowRunBuilder);
   const taskId = (await onfido.listTasks(workflowRun.data.id)).data[1].id;
 
   const output = (
@@ -49,7 +48,7 @@ it("downloads a signed document file", async () => {
       "findTask",
       [workflowRun.data.id, taskId],
       10,
-      3000
+      3000,
     )
   )["output"];
 
