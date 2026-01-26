@@ -4,13 +4,13 @@ import {
   onfido,
   getExpectedObject,
   cleanUpWebhooks,
-  createWebhook
+  createWebhook,
 } from "../test-helpers";
 import { exampleWebhook } from "../test-examples";
 
 function getExpectedWebhook(exampleWebhook: Webhook) {
   return getExpectedObject(exampleWebhook, {
-    token: expect.stringMatching(/^[0-9a-zA-Z_-]+$/)
+    token: expect.stringMatching(/^[0-9a-zA-Z_-]+$/),
   });
 }
 
@@ -38,11 +38,11 @@ it("updates a webhook", async () => {
   var patchedWebhook = { ...exampleWebhook, enabled: false };
 
   const updatedWebhook = await onfido.updateWebhook(webhook.id, {
-    enabled: false
+    enabled: false,
   });
 
   expect(updatedWebhook.data).toEqual(
-    getExpectedWebhook({ ...exampleWebhook, enabled: false })
+    getExpectedWebhook({ ...exampleWebhook, enabled: false }),
   );
 });
 
@@ -59,7 +59,7 @@ it("lists webhooks", async () => {
   expect(webhooks.data.webhooks).toEqual(
     expect.arrayContaining([
       getExpectedWebhook(exampleWebhook),
-      getExpectedWebhook(exampleWebhook)
-    ])
+      getExpectedWebhook(exampleWebhook),
+    ]),
   );
 });

@@ -5,7 +5,7 @@ import {
   onfido,
   createApplicant,
   cleanUpApplicants,
-  uploadSigningDocument
+  uploadSigningDocument,
 } from "../test-helpers";
 
 const nonExistingId = "00000000-0000-0000-0000-000000000000";
@@ -51,16 +51,15 @@ it("finds a signing document", async () => {
 });
 
 it("lists signing documents", async () => {
-  const documents = (
-    await onfido.listSigningDocuments(applicant.id)
-  ).data.signing_documents;
+  const documents = (await onfido.listSigningDocuments(applicant.id)).data
+    .signing_documents;
 
-  expect(documents.some(doc => doc.id === signingDocument.id)).toBeTruthy();
+  expect(documents.some((doc) => doc.id === signingDocument.id)).toBeTruthy();
 });
 
 it("throws an error when uploading a signing document with null params", async () => {
   await expect(
-    onfido.uploadSigningDocument(undefined as any, undefined as any)
+    onfido.uploadSigningDocument(undefined as any, undefined as any),
   ).rejects.toThrow(/Required parameter applicantId/);
 });
 

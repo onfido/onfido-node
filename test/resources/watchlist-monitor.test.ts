@@ -2,7 +2,7 @@ import {
   Applicant,
   WatchlistMonitor,
   WatchlistMonitorMatch,
-  WatchlistMonitorReportNameEnum
+  WatchlistMonitorReportNameEnum,
 } from "onfido-node";
 
 import { exampleWatchlistMonitor } from "../test-examples";
@@ -12,12 +12,12 @@ import {
   createApplicant,
   createWatchlistMonitor,
   getExpectedObject,
-  onfido
+  onfido,
 } from "../test-helpers";
 
 function getExpectedWatchlistMonitor(
   exampleWatchlistMonitor: WatchlistMonitor,
-  overrideProperties = {}
+  overrideProperties = {},
 ) {
   return getExpectedObject(exampleWatchlistMonitor, {
     applicant_id: expect.stringMatching(/^[0-9a-z-]+$/),
@@ -27,7 +27,7 @@ function getExpectedWatchlistMonitor(
     tags: expect.anything(),
     is_sandbox: expect.anything(),
     created_at: expect.anything(),
-    ...overrideProperties
+    ...overrideProperties,
   });
 }
 
@@ -45,17 +45,17 @@ it("creates a watchlist standard monitor", async () => {
   const watchlistMonitor: WatchlistMonitor = (
     await createWatchlistMonitor(
       applicant,
-      WatchlistMonitorReportNameEnum.Standard
+      WatchlistMonitorReportNameEnum.Standard,
     )
   ).data;
 
   expect(watchlistMonitor).toEqual(
-    getExpectedWatchlistMonitor(exampleWatchlistMonitor)
+    getExpectedWatchlistMonitor(exampleWatchlistMonitor),
   );
 
   expect(watchlistMonitor.applicant_id).toEqual(applicant.id);
   expect(watchlistMonitor.report_name).toEqual(
-    WatchlistMonitorReportNameEnum.Standard
+    WatchlistMonitorReportNameEnum.Standard,
   );
 });
 
@@ -65,12 +65,12 @@ it("creates a watchlist AML monitor", async () => {
   ).data;
 
   expect(watchlistMonitor).toEqual(
-    getExpectedWatchlistMonitor(exampleWatchlistMonitor)
+    getExpectedWatchlistMonitor(exampleWatchlistMonitor),
   );
 
   expect(watchlistMonitor.applicant_id).toEqual(applicant.id);
   expect(watchlistMonitor.report_name).toEqual(
-    WatchlistMonitorReportNameEnum.Aml
+    WatchlistMonitorReportNameEnum.Aml,
   );
 });
 
@@ -78,7 +78,7 @@ it("finds a watchlist monitor", async () => {
   const watchlistMonitor: WatchlistMonitor = (
     await createWatchlistMonitor(
       applicant,
-      WatchlistMonitorReportNameEnum.Standard
+      WatchlistMonitorReportNameEnum.Standard,
     )
   ).data;
 
@@ -87,7 +87,7 @@ it("finds a watchlist monitor", async () => {
   ).data;
 
   expect(lookupWatchlistMonitor).toEqual(
-    getExpectedWatchlistMonitor(exampleWatchlistMonitor)
+    getExpectedWatchlistMonitor(exampleWatchlistMonitor),
   );
   expect(lookupWatchlistMonitor.id).toEqual(watchlistMonitor.id);
 });
@@ -95,7 +95,7 @@ it("finds a watchlist monitor", async () => {
 it("lists watchlist monitors", async () => {
   await createWatchlistMonitor(
     applicant,
-    WatchlistMonitorReportNameEnum.Standard
+    WatchlistMonitorReportNameEnum.Standard,
   );
 
   const watchlistMonitorsList: WatchlistMonitor[] = (
@@ -104,8 +104,8 @@ it("lists watchlist monitors", async () => {
 
   expect(watchlistMonitorsList).toEqual(
     expect.arrayContaining([
-      getExpectedWatchlistMonitor(exampleWatchlistMonitor)
-    ])
+      getExpectedWatchlistMonitor(exampleWatchlistMonitor),
+    ]),
   );
 });
 
@@ -113,12 +113,12 @@ it("deletes a watchlist monitor", async () => {
   const watchlistMonitor: WatchlistMonitor = (
     await createWatchlistMonitor(
       applicant,
-      WatchlistMonitorReportNameEnum.Standard
+      WatchlistMonitorReportNameEnum.Standard,
     )
   ).data;
 
   const deleteResponse = await onfido.deleteWatchlistMonitor(
-    watchlistMonitor.id
+    watchlistMonitor.id,
   );
   expect(deleteResponse.status).toEqual(204);
 });
@@ -127,7 +127,7 @@ it("lists watchlist monitor matches", async () => {
   const watchlistMonitor: WatchlistMonitor = (
     await createWatchlistMonitor(
       applicant,
-      WatchlistMonitorReportNameEnum.Standard
+      WatchlistMonitorReportNameEnum.Standard,
     )
   ).data;
 
@@ -142,12 +142,12 @@ it("forces report creation", async () => {
   const watchlistMonitor: WatchlistMonitor = (
     await createWatchlistMonitor(
       applicant,
-      WatchlistMonitorReportNameEnum.Standard
+      WatchlistMonitorReportNameEnum.Standard,
     )
   ).data;
 
   const response = await onfido.forceReportCreationFromWatchlistMonitor(
-    watchlistMonitor.id
+    watchlistMonitor.id,
   );
 
   expect(response.status).toEqual(201);

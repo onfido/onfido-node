@@ -7,7 +7,7 @@ import {
   uploadDocument,
   createCheck,
   sortByReportName,
-  repeatRequestUntilStatusChanges
+  repeatRequestUntilStatusChanges,
 } from "../test-helpers";
 
 function getExpectedReport(exampleReport: Report, overrideProperties = {}) {
@@ -17,7 +17,7 @@ function getExpectedReport(exampleReport: Report, overrideProperties = {}) {
     breakdown: expect.anything(),
     properties: expect.anything(),
     status: expect.anything(),
-    ...overrideProperties
+    ...overrideProperties,
   });
 }
 
@@ -40,14 +40,14 @@ const exampleReport: Report = {
   result: "clear",
   sub_result: "clear",
   documents: [{ id: "document-id" }],
-  check_id: "aa111111-1111-1111-1111-111111111111"
+  check_id: "aa111111-1111-1111-1111-111111111111",
 };
 
 it("finds a report", async () => {
   const report: Report = await repeatRequestUntilStatusChanges(
     "findReport",
     [check.report_ids[1]],
-    "complete"
+    "complete",
   );
 
   expect(report).toEqual(getExpectedReport(exampleReport));
@@ -55,7 +55,7 @@ it("finds a report", async () => {
 
 it("lists reports", async () => {
   const reports = (await onfido.listReports(check.id)).data.reports.sort(
-    sortByReportName
+    sortByReportName,
   );
 
   // Providing actual result and sub_result as parameter as they might change overtime
@@ -63,17 +63,17 @@ it("lists reports", async () => {
     getExpectedReport(exampleReport, {
       name: "document",
       result: reports[0].result,
-      sub_result: reports[0].sub_result
+      sub_result: reports[0].sub_result,
     }),
     getExpectedReport(exampleReport, {
       name: "identity_enhanced",
       result: reports[1].result,
-      sub_result: reports[1].sub_result
-    })
+      sub_result: reports[1].sub_result,
+    }),
   ]);
 
-  expect(reports.find(report => report.name === "document").name).toEqual(
-    "document"
+  expect(reports.find((report) => report.name === "document").name).toEqual(
+    "document",
   );
 });
 

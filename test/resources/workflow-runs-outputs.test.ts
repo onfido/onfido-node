@@ -5,7 +5,7 @@ import {
   exampleWorkflowRun,
   exampleWorkflowRunOutputDocumentReport,
   exampleWorkflowRunOutputFacialSimilarityReport,
-  exampleWorkflowRunOutputProfileDataCapture
+  exampleWorkflowRunOutputProfileDataCapture,
 } from "../test-examples";
 import {
   cleanUpApplicants,
@@ -16,12 +16,12 @@ import {
   onfido,
   repeatRequestUntilStatusChanges,
   uploadDocument,
-  uploadLivePhoto
+  uploadLivePhoto,
 } from "../test-helpers";
 
 function getExpectedWorkflowRun(
   exampleWorkflowRun: WorkflowRun,
-  overrideProperties = {}
+  overrideProperties = {},
 ) {
   return getExpectedObject(exampleWorkflowRun, {
     applicant_id: expect.stringMatching(/^[0-9a-z-]+$/),
@@ -38,13 +38,13 @@ function getExpectedWorkflowRun(
     link: expect.anything(),
     created_at: expect.anything(),
     updated_at: expect.anything(),
-    ...overrideProperties
+    ...overrideProperties,
   });
 }
 
 function getExpectedWorkflowRunOutput(
   exampleWorkflowRunOutput: object,
-  expectedObject = {}
+  expectedObject = {},
 ) {
   return getExpectedObject(exampleWorkflowRunOutput, expectedObject);
 }
@@ -66,7 +66,7 @@ describe("workflow runs outputs", () => {
       .id;
 
     const taskId = (await onfido.listTasks(workflowRunId)).data.filter(
-      task => task.id !== "start"
+      (task) => task.id !== "start",
     )[0].id;
 
     const taskData = {
@@ -74,10 +74,7 @@ describe("workflow runs outputs", () => {
       first_name: faker.person.firstName(),
       last_name: faker.person.lastName(),
       // birthdate().toISOString() yields 1977-07-10T01:37:30.719Z format, discard the time
-      dob: faker.date
-        .birthdate()
-        .toISOString()
-        .split("T")[0],
+      dob: faker.date.birthdate().toISOString().split("T")[0],
       email: faker.internet.email(),
       phone_number: faker.helpers.fromRegExp(/[\+]3519[1236][0-9]{7}/),
       nationality: faker.location.countryCode("alpha-3"),
@@ -88,18 +85,18 @@ describe("workflow runs outputs", () => {
         line2: faker.location.street(),
         line3: faker.location.street(),
         town: faker.location.city(),
-        postcode: faker.location.zipCode()
-      }
+        postcode: faker.location.zipCode(),
+      },
     };
 
     await completeTask(workflowRunId, taskId, {
-      data: taskData
+      data: taskData,
     });
 
     const workflowRun = await onfido.findWorkflowRun(workflowRunId);
 
     expect(workflowRun.data).toEqual(
-      getExpectedWorkflowRun(exampleWorkflowRun)
+      getExpectedWorkflowRun(exampleWorkflowRun),
     );
 
     // workflow run has configured as output the result of the
@@ -112,7 +109,7 @@ describe("workflow runs outputs", () => {
           line2: expect.stringMatching(/^[0-9A-Za-z\s'-]+$/),
           line3: expect.stringMatching(/^[0-9A-Za-z\s'-]+$/),
           postcode: expect.stringMatching(/^[0-9A-Za-z\s-]+$/),
-          town: expect.stringMatching(/^[A-Za-z\s\.-]+$/)
+          town: expect.stringMatching(/^[A-Za-z\s\.-]+$/),
         },
         country_residence: expect.stringMatching(/^[A-Z]{3}$/),
         dob: expect.stringMatching(/^[0-9-]+$/),
@@ -121,8 +118,8 @@ describe("workflow runs outputs", () => {
         last_name: expect.stringMatching(/^[A-Za-z\s-]+$/),
         nationality: expect.stringMatching(/^[A-Z]{3}$/),
         phone_number: expect.stringMatching(/^\+[0-9]+$/),
-        phone_number_consent_granted: expect.anything()
-      })
+        phone_number_consent_granted: expect.anything(),
+      }),
     );
   });
 
@@ -133,37 +130,37 @@ describe("workflow runs outputs", () => {
 
     const profileDataCaptureTaskId = (
       await onfido.listTasks(workflowRunId)
-    ).data.filter(task => task.id.includes("profile"))[0].id;
+    ).data.filter((task) => task.id.includes("profile"))[0].id;
 
     await completeTask(workflowRunId, profileDataCaptureTaskId, {
       data: {
         first_name: faker.person.firstName(),
-        last_name: faker.person.lastName()
-      }
+        last_name: faker.person.lastName(),
+      },
     });
 
     const documentCaptureTaskId = (
       await onfido.listTasks(workflowRunId)
-    ).data.filter(task => task.id.includes("document_photo"))[0].id;
+    ).data.filter((task) => task.id.includes("document_photo"))[0].id;
 
     const documentId = (await uploadDocument(applicant)).data.id;
     await completeTask(workflowRunId, documentCaptureTaskId, {
-      data: [{ id: documentId }]
+      data: [{ id: documentId }],
     });
 
     const photoCaptureTaskId = (
       await onfido.listTasks(workflowRunId)
-    ).data.filter(task => task.id.includes("face_photo"))[0].id;
+    ).data.filter((task) => task.id.includes("face_photo"))[0].id;
 
     const photoId = (await uploadLivePhoto(applicant)).data.id;
     await completeTask(workflowRunId, photoCaptureTaskId, {
-      data: [{ id: photoId }]
+      data: [{ id: photoId }],
     });
 
     const workflowRun = await repeatRequestUntilStatusChanges(
       "findWorkflowRun",
       [workflowRunId],
-      "approved"
+      "approved",
     );
 
     expect(workflowRun).toEqual(getExpectedWorkflowRun(exampleWorkflowRun));
@@ -177,8 +174,8 @@ describe("workflow runs outputs", () => {
         status: expect.stringMatching(/^[a-z]+$/),
         result: expect.stringMatching(/^[a-z]+$/),
         sub_result: expect.stringMatching(/^[a-z]+$/),
-        uuid: expect.stringMatching(/^[0-9A-Za-z-]+$/)
-      })
+        uuid: expect.stringMatching(/^[0-9A-Za-z-]+$/),
+      }),
     );
 
     expect(workflowRun.output["selfie"]).toEqual(
@@ -190,9 +187,9 @@ describe("workflow runs outputs", () => {
           status: expect.stringMatching(/^[a-z]+$/),
           result: expect.stringMatching(/^[a-z]+$/),
           sub_result: null,
-          uuid: expect.stringMatching(/^[0-9A-Za-z-]+$/)
-        }
-      )
+          uuid: expect.stringMatching(/^[0-9A-Za-z-]+$/),
+        },
+      ),
     );
   }, 30000);
 });

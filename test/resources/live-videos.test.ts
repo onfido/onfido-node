@@ -4,7 +4,7 @@ import {
   onfido,
   getExpectedObject,
   sampleapplicant_id,
-  sortByLiveVideoId
+  sortByLiveVideoId,
 } from "../test-helpers";
 
 const sampleLiveVideoId1 =
@@ -19,21 +19,21 @@ const exampleLiveVideo: LiveVideo = {
   download_href: "https://api.onfido.com/v3.6/live_videos/123-abc/download",
   file_name: "video.mov",
   file_type: "video/quicktime",
-  file_size: 165_093
+  file_size: 165_093,
 };
 
 function getExpectedLiveVideo(
   exampleLivePhoto: LiveVideo,
   liveVideoId: string,
-  challenge: any | Array<any> = null
+  challenge: any | Array<any> = null,
 ) {
   return getExpectedObject(exampleLivePhoto, {
     id: liveVideoId,
     languages: null,
     challenge: challenge,
     download_href: expect.stringMatching(
-      /^\/v3.6\/live_videos\/[0-9a-z-]+\/download$/
-    )
+      /^\/v3.6\/live_videos\/[0-9a-z-]+\/download$/,
+    ),
   });
 }
 
@@ -61,8 +61,8 @@ it("finds a live video", async () => {
     getExpectedLiveVideo(
       exampleLiveVideo,
       sampleLiveVideoId1,
-      expect.anything()
-    )
+      expect.anything(),
+    ),
   );
 });
 
@@ -72,6 +72,6 @@ it("lists live videos", async () => {
 
   expect(liveVideos.sort(sortByLiveVideoId)).toEqual([
     getExpectedLiveVideo(exampleLiveVideo, sampleLiveVideoId1),
-    getExpectedLiveVideo(exampleLiveVideo, sampleLiveVideoId2)
+    getExpectedLiveVideo(exampleLiveVideo, sampleLiveVideoId2),
   ]);
 });

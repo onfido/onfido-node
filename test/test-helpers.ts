@@ -17,14 +17,14 @@ import {
   Report,
   WatchlistMonitorReportNameEnum,
   WorkflowRunBuilder,
-  DocumentTypes
+  DocumentTypes,
 } from "onfido-node";
 
 export const onfido = new DefaultApi(
   new Configuration({
     apiToken: process.env.ONFIDO_API_TOKEN,
-    baseOptions: { timeout: 60_000 }
-  })
+    baseOptions: { timeout: 60_000 },
+  }),
 );
 
 jest.setTimeout(60_000);
@@ -53,15 +53,15 @@ export async function createApplicant(overrideProperties = {}) {
     last_name: "Applicant",
     address: {
       postcode: "AB12 3AB",
-      country: "GBR"
+      country: "GBR",
     },
     location: {
       ip_address: "127.0.0.1",
-      country_of_residence: "GBR"
+      country_of_residence: "GBR",
     },
     email: "first.last@gmail.com",
     phone_number: "351911111111",
-    ...overrideProperties
+    ...overrideProperties,
   });
 }
 
@@ -73,7 +73,7 @@ export async function cleanUpApplicants() {
 
   const applicants = await onfido.listApplicants(1, 20, false);
 
-  applicants.data.applicants.forEach(async function(applicant) {
+  applicants.data.applicants.forEach(async function (applicant) {
     try {
       if (applicant.id != sampleapplicant_id) {
         await onfido.deleteApplicant(applicant.id);
@@ -94,7 +94,7 @@ export async function uploadDocument(
   applicant: Applicant,
   documentType: DocumentTypes = DocumentTypes.DrivingLicence,
   location?: LocationBuilder,
-  filePath: string = "test/media/sample_driving_licence.png"
+  filePath: string = "test/media/sample_driving_licence.png",
 ) {
   let fileTransfer = new FileTransfer(filePath);
 
@@ -106,20 +106,20 @@ export async function uploadDocument(
     undefined,
     undefined,
     undefined,
-    location
+    location,
   );
 }
 
 export async function uploadLivePhoto(
   applicant: Applicant,
-  advancedValidation?: boolean
+  advancedValidation?: boolean,
 ) {
   let buffer = readFileSync("test/media/sample_photo.png");
 
   return onfido.uploadLivePhoto(
     applicant.id,
     new FileTransfer(buffer, "sample_photo.png"),
-    advancedValidation
+    advancedValidation,
   );
 }
 
@@ -131,7 +131,7 @@ export async function uploadIdPhoto(applicant: Applicant) {
 
 export async function uploadSigningDocument(
   applicant: Applicant,
-  filePath: string = "test/media/sample_signing_document.pdf"
+  filePath: string = "test/media/sample_signing_document.pdf",
 ) {
   const fileTransfer = new FileTransfer(filePath);
 
@@ -141,14 +141,14 @@ export async function uploadSigningDocument(
 export async function createWebhook() {
   return onfido.createWebhook({
     url: "https://example.com",
-    events: ["check.completed", "report.completed"]
+    events: ["check.completed", "report.completed"],
   });
 }
 
 export async function cleanUpWebhooks() {
   const webhooks = await onfido.listWebhooks();
 
-  webhooks.data.webhooks.forEach(async function(webhook) {
+  webhooks.data.webhooks.forEach(async function (webhook) {
     expect((await onfido.deleteWebhook(webhook.id)).status).toEqual(204);
   });
 }
@@ -156,23 +156,23 @@ export async function cleanUpWebhooks() {
 export async function createCheck(
   applicant: Applicant,
   document: Document,
-  overrideProperties = {}
+  overrideProperties = {},
 ) {
   return onfido.createCheck({
     applicant_id: applicant.id,
     report_names: ["document", "identity_enhanced"],
     document_ids: [document.id],
-    ...overrideProperties
+    ...overrideProperties,
   });
 }
 
 export async function createWatchlistMonitor(
   applicant: Applicant,
-  reportName: WatchlistMonitorReportNameEnum
+  reportName: WatchlistMonitorReportNameEnum,
 ) {
   return onfido.createWatchlistMonitor({
     applicant_id: applicant.id,
-    report_name: reportName
+    report_name: reportName,
   });
 }
 
@@ -229,12 +229,12 @@ export function sortByReportName(a: Report, b: Report) {
 export function createWorkflowRun(applicant: Applicant, workflow_id: string) {
   return onfido.createWorkflowRun({
     applicant_id: applicant.id,
-    workflow_id: workflow_id
+    workflow_id: workflow_id,
   });
 }
 
 export function createWorkflowRunWithCustomInputs(
-  workflowRunBuilder: WorkflowRunBuilder
+  workflowRunBuilder: WorkflowRunBuilder,
 ) {
   return onfido.createWorkflowRun(workflowRunBuilder);
 }
@@ -242,18 +242,18 @@ export function createWorkflowRunWithCustomInputs(
 export function completeTask(
   workflowRunId: string,
   taskId: string,
-  taskData: CompleteTaskBuilder
+  taskData: CompleteTaskBuilder,
 ) {
   return onfido.completeTask(workflowRunId, taskId, taskData);
 }
 
 export async function sleep(msec: number) {
-  return new Promise(resolve => setTimeout(resolve, msec));
+  return new Promise((resolve) => setTimeout(resolve, msec));
 }
 
 export function getExpectedDocumentReport(
   exampleReport: DocumentReport,
-  overrideProperties = {}
+  overrideProperties = {},
 ) {
   return getExpectedObject(exampleReport, {
     check_id: expect.stringMatching(/^[0-9a-z-]+$/),
@@ -261,13 +261,13 @@ export function getExpectedDocumentReport(
     breakdown: expect.anything(),
     properties: expect.anything(),
     status: expect.anything(),
-    ...overrideProperties
+    ...overrideProperties,
   });
 }
 
 export function getExpectedFacialSimilarityPhotoReport(
   exampleReport: FacialSimilarityPhotoReport,
-  overrideProperties = {}
+  overrideProperties = {},
 ) {
   return getExpectedObject(exampleReport, {
     check_id: expect.stringMatching(/^[0-9a-z-]+$/),
@@ -275,7 +275,7 @@ export function getExpectedFacialSimilarityPhotoReport(
     breakdown: expect.anything(),
     properties: expect.anything(),
     status: expect.anything(),
-    ...overrideProperties
+    ...overrideProperties,
   });
 }
 
@@ -284,7 +284,7 @@ export async function repeatRequestUntilStatusChanges(
   params: any[],
   expectedStatus: string,
   maxRetries = 15,
-  sleepTime = 1000
+  sleepTime = 1000,
 ): Promise<any> {
   let instance = (await onfido[fn](...params)).data;
   let iteration = 0;
@@ -305,7 +305,7 @@ export async function repeatRequestUntilTaskOutputChanges(
   fn: string,
   params: any[],
   maxRetries = 15,
-  sleepTime = 1000
+  sleepTime = 1000,
 ): Promise<any> {
   let instance = (await onfido[fn](...params)).data;
   let iteration = 0;
@@ -326,7 +326,7 @@ export async function repeatRequestUntilHttpCodeChanges(
   fn: string,
   params: any[],
   maxRetries: number = 15,
-  sleepTime: number = 1000
+  sleepTime: number = 1000,
 ): Promise<any> {
   let iteration = 0;
   let instance: any;

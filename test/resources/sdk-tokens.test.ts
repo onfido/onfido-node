@@ -15,10 +15,10 @@ afterAll(() => {
 it("generates an sdk token", async () => {
   const sdkToken = await onfido.generateSdkToken({
     applicant_id: applicant.id,
-    referrer: "https://*.example.com/*"
+    referrer: "https://*.example.com/*",
   });
 
   expect(sdkToken.data.token).toEqual(
-    expect.stringMatching(/^[0-9a-zA-Z\._-]+$/)
+    expect.stringMatching(/^[0-9a-zA-Z\._-]+$/),
   );
 });

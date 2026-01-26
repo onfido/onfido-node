@@ -9,7 +9,7 @@ import {
   completeTask,
   createWorkflowRun,
   getExpectedObject,
-  onfido
+  onfido,
 } from "../test-helpers";
 
 function getExpectedTask(exampleTask: Task, overrideProperties = {}) {
@@ -19,7 +19,7 @@ function getExpectedTask(exampleTask: Task, overrideProperties = {}) {
     workflow_run_id: expect.stringMatching(/^[0-9a-z-]+$/),
     created_at: expect.anything(),
     updated_at: expect.anything(),
-    ...overrideProperties
+    ...overrideProperties,
   });
 }
 
@@ -41,7 +41,7 @@ it("lists tasks", async () => {
 
   expect(tasks.data).toEqual([
     getExpectedTask(exampleTask),
-    getExpectedTask(exampleTask)
+    getExpectedTask(exampleTask),
   ]);
 });
 
@@ -53,21 +53,21 @@ it("finds a task", async () => {
   expect(task.data).toEqual(
     getExpectedTask(exampleTask, {
       input: expect.anything(),
-      output: expect.anything()
-    })
+      output: expect.anything(),
+    }),
   );
 });
 
 it("completes a task", async () => {
   const taskId = (await onfido.listTasks(workflowRunId)).data.filter(
-    task => task.id !== "start"
+    (task) => task.id !== "start",
   )[0].id;
 
   const completedTask = await completeTask(workflowRunId, taskId, {
     data: {
       first_name: faker.person.firstName(),
-      last_name: faker.person.lastName()
-    }
+      last_name: faker.person.lastName(),
+    },
   });
   expect(completedTask.status).toEqual(200);
   expect(completedTask.data).toEqual({});

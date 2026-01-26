@@ -4,7 +4,7 @@ import {
   createApplicant,
   repeatRequestUntilTaskOutputChanges,
   createWorkflowRunWithCustomInputs,
-  onfido
+  onfido,
 } from "../test-helpers";
 
 import { WorkflowRunBuilder } from "onfido-node";
@@ -22,13 +22,12 @@ it("downloads a signed document file", async () => {
     custom_data: {
       doc_result: "clear",
       face_result: "clear",
-      transaction_id: "995bf84c-d708-4977-8b88-d4b66bebdaf6"
-    }
+      transaction_id: "995bf84c-d708-4977-8b88-d4b66bebdaf6",
+    },
   };
 
-  const workflowRun = await createWorkflowRunWithCustomInputs(
-    workflowRunBuilder
-  );
+  const workflowRun =
+    await createWorkflowRunWithCustomInputs(workflowRunBuilder);
   const taskId = (await onfido.listTasks(workflowRun.data.id)).data[1].id;
 
   const output = (
@@ -36,7 +35,7 @@ it("downloads a signed document file", async () => {
       "findTask",
       [workflowRun.data.id, taskId],
       10,
-      3000
+      3000,
     )
   )["output"];
 
@@ -46,11 +45,11 @@ it("downloads a signed document file", async () => {
 
   const signedDocument = await onfido.downloadAesDocument(
     workflowRun.data.id,
-    signedDocumentFileId
+    signedDocumentFileId,
   );
   const receiptDocument = await onfido.downloadAesDocument(
     workflowRun.data.id,
-    receiptDocumentFileId
+    receiptDocumentFileId,
   );
 
   expect(signedDocument.status).toEqual(200);
