@@ -56,7 +56,9 @@ jobs:
       - name: Run integration tests with NPM
         if: ${{ matrix.node-version == '18.x' &&
           github.repository_owner == 'onfido' &&
-          (github.event_name == 'pull_request' || github.event_name == 'release') }}
+          (github.event_name == 'pull_request' ||
+           github.event_name == 'release' ||
+           github.event_name == 'workflow_dispatch') }}
         run: npm test -- -i
         env:
           ONFIDO_API_TOKEN: ${{ secrets.ONFIDO_API_TOKEN }}
