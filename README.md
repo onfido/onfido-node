@@ -42,7 +42,7 @@ Require the package:
 const {
   DefaultApi,
   Configuration,
-  WebhookEventVerifier
+  WebhookEventVerifier,
 } = require("@onfido/api");
 const { isAxiosError } = require("axios");
 ```
@@ -54,7 +54,7 @@ import {
   DefaultApi,
   Configuration,
   Region,
-  WebhookEventVerifier
+  WebhookEventVerifier,
 } from "@onfido/api";
 import { isAxiosError } from "axios";
 ```
@@ -66,8 +66,8 @@ const onfido = new DefaultApi(
   new Configuration({
     apiToken: process.env.ONFIDO_API_TOKEN,
     region: Region.EU, // Supports Region.EU (Europe), Region.US (United States), and Region.CA (Canada)
-    baseOptions: { timeout: 60_000 } // Additional Axios options (timeout, etc.)
-  })
+    baseOptions: { timeout: 60_000 }, // Additional Axios options (timeout, etc.)
+  }),
 );
 ```
 
@@ -85,8 +85,8 @@ Using `async`/`await` (in an `async function`):
       last_name: "Doe",
       location: {
         ip_address: "127.0.0.1",
-        country_of_residence: "GBR"
-      }
+        country_of_residence: "GBR",
+      },
     });
 
     // ...
@@ -161,7 +161,7 @@ File upload should make use of the provided `FileTransfer` class, e.g.:
 onfido.uploadDocument(
   "passport",
   "<APPLICANT_ID>",
-  new FileTransfer(Buffer.from(document.buffer), document.filename)
+  new FileTransfer(Buffer.from(document.buffer), document.filename),
 );
 ```
 
