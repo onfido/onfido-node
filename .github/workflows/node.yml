@@ -35,19 +35,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Get npm cache directory
-        id: npm-cache-dir
-        shell: bash
-        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-      - uses: actions/cache@v4
-        id: cache
-        with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node${{ matrix.node-version }}-
+          cache: npm
+          cache-dependency-path: package-lock.json
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Run linter over tests
         run: npx prettier -c test/**/*.ts
@@ -82,6 +72,8 @@ jobs:
         with:
           node-version: 18.x
           registry-url: https://registry.npmjs.org/
+          cache: npm
+          cache-dependency-path: package-lock.json
       - name: Validate release
         uses: onfido/onfido-actions/release-check@main
       - name: Install dependencies
