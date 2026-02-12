@@ -1472,31 +1472,11 @@ export interface DeviceIntelligenceBreakdown {
     'device'?: DeviceIntelligenceBreakdownDevice;
     /**
      * 
-     * @type {DeviceIntelligenceBreakdownBreakdown}
-     * @memberof DeviceIntelligenceBreakdown
-     * @deprecated
-     */
-    'breakdown'?: DeviceIntelligenceBreakdownBreakdown;
-    /**
-     * 
      * @type {DeviceIntelligenceBreakdownProperties}
      * @memberof DeviceIntelligenceBreakdown
      * @deprecated
      */
     'properties'?: DeviceIntelligenceBreakdownProperties;
-}
-/**
- * 
- * @export
- * @interface DeviceIntelligenceBreakdownBreakdown
- */
-export interface DeviceIntelligenceBreakdownBreakdown {
-    /**
-     * 
-     * @type {DeviceIntelligenceBreakdownDevice}
-     * @memberof DeviceIntelligenceBreakdownBreakdown
-     */
-    'device'?: DeviceIntelligenceBreakdownDevice;
 }
 /**
  * Asserts whether the device used to upload the media is trustworthy, i.e. it is a real, physical device.
@@ -3184,12 +3164,6 @@ export interface DocumentProperties {
     'nfc'?: DocumentPropertiesNfc;
     /**
      * 
-     * @type {Array<DocumentPropertiesDrivingLicenceInformationItem>}
-     * @memberof DocumentProperties
-     */
-    'driving_licence_information'?: Array<DocumentPropertiesDrivingLicenceInformationItem>;
-    /**
-     * 
      * @type {DocumentPropertiesDocumentClassification}
      * @memberof DocumentProperties
      */
@@ -3684,6 +3658,321 @@ export interface DocumentPropertiesNfc {
      */
     'issuing_authority'?: string;
 }
+/**
+ * 
+ * @export
+ * @interface DocumentPropertiesWithDrivingLicenceInformation
+ */
+export interface DocumentPropertiesWithDrivingLicenceInformation {
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'date_of_birth'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'date_of_expiry'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'personal_number'?: string;
+    /**
+     * 
+     * @type {Array<DocumentPropertiesDocumentNumbersInner>}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'document_numbers'?: Array<DocumentPropertiesDocumentNumbersInner>;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'document_type'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'first_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'middle_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'last_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'gender'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'issuing_country'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'nationality'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'issuing_state'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'issuing_date'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'valid_from'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'categorisation'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'mrz_line1'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'mrz_line2'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'mrz_line3'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'address'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'place_of_birth'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'spouse_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'widow_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'alias_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'issuing_authority'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'remarks'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'civil_state'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'expatriation'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'father_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'mother_name'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'religion'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'type_of_permit'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'version_number'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'document_subtype'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'profession'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'security_document_number'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'tax_number'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'nist_identity_evidence_strength'?: DocumentPropertiesWithDrivingLicenceInformationNistIdentityEvidenceStrengthEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'has_issuance_confirmation'?: DocumentPropertiesWithDrivingLicenceInformationHasIssuanceConfirmationEnum;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'real_id_compliance'?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'security_tier'?: DocumentPropertiesWithDrivingLicenceInformationSecurityTierEnum;
+    /**
+     * 
+     * @type {DocumentPropertiesAddressLines}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'address_lines'?: DocumentPropertiesAddressLines;
+    /**
+     * 
+     * @type {Array<DocumentPropertiesBarcodeInner>}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'barcode'?: Array<DocumentPropertiesBarcodeInner>;
+    /**
+     * 
+     * @type {DocumentPropertiesNfc}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'nfc'?: DocumentPropertiesNfc;
+    /**
+     * 
+     * @type {DocumentPropertiesDocumentClassification}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'document_classification'?: DocumentPropertiesDocumentClassification;
+    /**
+     * 
+     * @type {DocumentPropertiesExtractedData}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'extracted_data'?: DocumentPropertiesExtractedData;
+    /**
+     * 
+     * @type {Array<DocumentPropertiesDrivingLicenceInformationItem>}
+     * @memberof DocumentPropertiesWithDrivingLicenceInformation
+     */
+    'driving_licence_information'?: Array<DocumentPropertiesDrivingLicenceInformationItem>;
+}
+
+export const DocumentPropertiesWithDrivingLicenceInformationNistIdentityEvidenceStrengthEnum = {
+    Superior: 'superior',
+    Strong: 'strong',
+    Fair: 'fair',
+    Weak: 'weak',
+    Unacceptable: 'unacceptable',
+    UnspecifiedIdentityEvidenceStrength: 'unspecified_identity_evidence_strength',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type DocumentPropertiesWithDrivingLicenceInformationNistIdentityEvidenceStrengthEnum = typeof DocumentPropertiesWithDrivingLicenceInformationNistIdentityEvidenceStrengthEnum[keyof typeof DocumentPropertiesWithDrivingLicenceInformationNistIdentityEvidenceStrengthEnum];
+export const DocumentPropertiesWithDrivingLicenceInformationHasIssuanceConfirmationEnum = {
+    True: 'true',
+    False: 'false',
+    Unspecified: 'unspecified',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type DocumentPropertiesWithDrivingLicenceInformationHasIssuanceConfirmationEnum = typeof DocumentPropertiesWithDrivingLicenceInformationHasIssuanceConfirmationEnum[keyof typeof DocumentPropertiesWithDrivingLicenceInformationHasIssuanceConfirmationEnum];
+export const DocumentPropertiesWithDrivingLicenceInformationSecurityTierEnum = {
+    Tier1: 'tier_1',
+    Tier2: 'tier_2',
+    Tier3: 'tier_3',
+    Tier4: 'tier_4',
+    Tier5: 'tier_5',
+    UnspecifiedSecurityTier: 'unspecified_security_tier',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type DocumentPropertiesWithDrivingLicenceInformationSecurityTierEnum = typeof DocumentPropertiesWithDrivingLicenceInformationSecurityTierEnum[keyof typeof DocumentPropertiesWithDrivingLicenceInformationSecurityTierEnum];
+
 /**
  * 
  * @export
@@ -4516,12 +4805,6 @@ export interface DocumentWithDriverVerificationReportAllOfProperties {
     'nfc'?: DocumentPropertiesNfc;
     /**
      * 
-     * @type {Array<DocumentPropertiesDrivingLicenceInformationItem>}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
-    'driving_licence_information'?: Array<DocumentPropertiesDrivingLicenceInformationItem>;
-    /**
-     * 
      * @type {DocumentPropertiesDocumentClassification}
      * @memberof DocumentWithDriverVerificationReportAllOfProperties
      */
@@ -4731,10 +5014,10 @@ export interface DocumentWithDrivingLicenceInformationReport {
     'breakdown'?: DocumentBreakdown;
     /**
      * 
-     * @type {DocumentProperties}
+     * @type {DocumentPropertiesWithDrivingLicenceInformation}
      * @memberof DocumentWithDrivingLicenceInformationReport
      */
-    'properties'?: DocumentProperties;
+    'properties'?: DocumentPropertiesWithDrivingLicenceInformation;
 }
 
 
@@ -6552,10 +6835,10 @@ export interface IdentityEnhancedBreakdownAddressBreakdownCreditAgencies {
 export interface IdentityEnhancedBreakdownAddressBreakdownCreditAgenciesProperties {
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof IdentityEnhancedBreakdownAddressBreakdownCreditAgenciesProperties
      */
-    'number_of_matches'?: number;
+    'number_of_matches'?: string;
 }
 /**
  * Address match against telephone database.
@@ -6743,10 +7026,10 @@ export interface IdentityEnhancedBreakdownSourcesBreakdownTotalSources {
 export interface IdentityEnhancedBreakdownSourcesBreakdownTotalSourcesProperties {
     /**
      * 
-     * @type {number}
+     * @type {string}
      * @memberof IdentityEnhancedBreakdownSourcesBreakdownTotalSourcesProperties
      */
-    'total_number_of_sources'?: number;
+    'total_number_of_sources'?: string;
 }
 /**
  * 
@@ -10733,6 +11016,12 @@ export interface WebhookEventPayloadResource {
      */
     'reasons'?: Array<string>;
     /**
+     * A list of tags associated with the Workflow Run.
+     * @type {Array<string>}
+     * @memberof WebhookEventPayloadResource
+     */
+    'tags'?: Array<string>;
+    /**
      * Object for the configuration of the Workflow Run link.
      * @type {WorkflowRunLink}
      * @memberof WebhookEventPayloadResource
@@ -13887,10 +14176,11 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [createdAtLt] A ISO-8601 date to filter results with a created date less than (before) the one provided.
          * @param {ListWorkflowRunsSortEnum} [sort] A string with the value \&#39;desc\&#39; or \&#39;asc\&#39; that allows to sort the returned list by the completed datetime either descending or ascending, respectively. If not specified, defaults to \&#39;desc\&#39;.
          * @param {string} [applicantId] the applicant\&#39;s id.
+         * @param {Array<string>} [tags] A list of tags to filter the results.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listWorkflowRuns: async (page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, applicantId?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        listWorkflowRuns: async (page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, applicantId?: string, tags?: Array<string>, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/workflow_runs`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -13916,13 +14206,13 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (createdAtGt !== undefined) {
                 localVarQueryParameter['created_at_gt'] = (createdAtGt as any instanceof Date) ?
-                    (createdAtGt as any).toISOString() :
+                    (createdAtGt as any).toISOString().substring(0,10) :
                     createdAtGt;
             }
 
             if (createdAtLt !== undefined) {
                 localVarQueryParameter['created_at_lt'] = (createdAtLt as any instanceof Date) ?
-                    (createdAtLt as any).toISOString() :
+                    (createdAtLt as any).toISOString().substring(0,10) :
                     createdAtLt;
             }
 
@@ -13932,6 +14222,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
             if (applicantId !== undefined) {
                 localVarQueryParameter['applicant_id'] = applicantId;
+            }
+
+            if (tags) {
+                localVarQueryParameter['tags'] = tags.join(COLLECTION_FORMATS.csv);
             }
 
 
@@ -15438,11 +15732,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {string} [createdAtLt] A ISO-8601 date to filter results with a created date less than (before) the one provided.
          * @param {ListWorkflowRunsSortEnum} [sort] A string with the value \&#39;desc\&#39; or \&#39;asc\&#39; that allows to sort the returned list by the completed datetime either descending or ascending, respectively. If not specified, defaults to \&#39;desc\&#39;.
          * @param {string} [applicantId] the applicant\&#39;s id.
+         * @param {Array<string>} [tags] A list of tags to filter the results.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, applicantId?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<WorkflowRun>>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.listWorkflowRuns(page, status, createdAtGt, createdAtLt, sort, applicantId, options);
+        async listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, applicantId?: string, tags?: Array<string>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<WorkflowRun>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listWorkflowRuns(page, status, createdAtGt, createdAtLt, sort, applicantId, tags, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listWorkflowRuns']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -16314,11 +16609,12 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {string} [createdAtLt] A ISO-8601 date to filter results with a created date less than (before) the one provided.
          * @param {ListWorkflowRunsSortEnum} [sort] A string with the value \&#39;desc\&#39; or \&#39;asc\&#39; that allows to sort the returned list by the completed datetime either descending or ascending, respectively. If not specified, defaults to \&#39;desc\&#39;.
          * @param {string} [applicantId] the applicant\&#39;s id.
+         * @param {Array<string>} [tags] A list of tags to filter the results.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, applicantId?: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<WorkflowRun>> {
-            return localVarFp.listWorkflowRuns(page, status, createdAtGt, createdAtLt, sort, applicantId, options).then((request) => request(axios, basePath));
+        listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, applicantId?: string, tags?: Array<string>, options?: RawAxiosRequestConfig): AxiosPromise<Array<WorkflowRun>> {
+            return localVarFp.listWorkflowRuns(page, status, createdAtGt, createdAtLt, sort, applicantId, tags, options).then((request) => request(axios, basePath));
         },
         /**
          * Run a health check on the Onfido API 
@@ -17273,12 +17569,13 @@ export class DefaultApi extends BaseAPI {
      * @param {string} [createdAtLt] A ISO-8601 date to filter results with a created date less than (before) the one provided.
      * @param {ListWorkflowRunsSortEnum} [sort] A string with the value \&#39;desc\&#39; or \&#39;asc\&#39; that allows to sort the returned list by the completed datetime either descending or ascending, respectively. If not specified, defaults to \&#39;desc\&#39;.
      * @param {string} [applicantId] the applicant\&#39;s id.
+     * @param {Array<string>} [tags] A list of tags to filter the results.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, applicantId?: string, options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).listWorkflowRuns(page, status, createdAtGt, createdAtLt, sort, applicantId, options).then((request) => request(this.axios, this.basePath));
+    public listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, applicantId?: string, tags?: Array<string>, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).listWorkflowRuns(page, status, createdAtGt, createdAtLt, sort, applicantId, tags, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
