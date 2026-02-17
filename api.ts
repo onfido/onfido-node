@@ -51,461 +51,252 @@ globalAxios.interceptors.response.use(async (response) => {
   });
 
 
-/**
- * 
- * @export
- * @interface Address
- */
 export interface Address {
     /**
      * The flat number of this address
-     * @type {string}
-     * @memberof Address
      */
     'flat_number'?: string;
     /**
      * The building number of this address
-     * @type {string}
-     * @memberof Address
      */
     'building_number'?: string;
     /**
      * The building name of this address
-     * @type {string}
-     * @memberof Address
      */
     'building_name'?: string;
     /**
      * The street of the applicant\'s address
-     * @type {string}
-     * @memberof Address
      */
     'street'?: string;
     /**
      * The sub-street of the applicant\'s address
-     * @type {string}
-     * @memberof Address
      */
     'sub_street'?: string;
     /**
      * The town of the applicant\'s address
-     * @type {string}
-     * @memberof Address
      */
     'town'?: string;
     /**
      * The postcode or ZIP of the applicant\'s address
-     * @type {string}
-     * @memberof Address
      */
     'postcode': string;
     /**
      * The 3 character ISO country code of this address. For example, GBR is the country code for the United Kingdom
-     * @type {CountryCodes}
-     * @memberof Address
      */
     'country': CountryCodes;
     /**
      * The address state. US states must use the USPS abbreviation (see also ISO 3166-2:US), for example AK, CA, or TX.
-     * @type {string}
-     * @memberof Address
      */
     'state'?: string;
     /**
      * Line 1 of the applicant\'s address
-     * @type {string}
-     * @memberof Address
      */
     'line1'?: string | null;
     /**
      * Line 2 of the applicant\'s address
-     * @type {string}
-     * @memberof Address
      */
     'line2'?: string | null;
     /**
      * Line 3 of the applicant\'s address
-     * @type {string}
-     * @memberof Address
      */
     'line3'?: string | null;
 }
 
 
-/**
- * 
- * @export
- * @interface AddressBuilder
- */
 export interface AddressBuilder {
     /**
      * The flat number of this address
-     * @type {string}
-     * @memberof AddressBuilder
      */
     'flat_number'?: string;
     /**
      * The building number of this address
-     * @type {string}
-     * @memberof AddressBuilder
      */
     'building_number'?: string;
     /**
      * The building name of this address
-     * @type {string}
-     * @memberof AddressBuilder
      */
     'building_name'?: string;
     /**
      * The street of the applicant\'s address
-     * @type {string}
-     * @memberof AddressBuilder
      */
     'street'?: string;
     /**
      * The sub-street of the applicant\'s address
-     * @type {string}
-     * @memberof AddressBuilder
      */
     'sub_street'?: string;
     /**
      * The town of the applicant\'s address
-     * @type {string}
-     * @memberof AddressBuilder
      */
     'town'?: string;
     /**
      * The postcode or ZIP of the applicant\'s address
-     * @type {string}
-     * @memberof AddressBuilder
      */
     'postcode': string;
     /**
      * The 3 character ISO country code of this address. For example, GBR is the country code for the United Kingdom
-     * @type {CountryCodes}
-     * @memberof AddressBuilder
      */
     'country': CountryCodes;
     /**
      * The address state. US states must use the USPS abbreviation (see also ISO 3166-2:US), for example AK, CA, or TX.
-     * @type {string}
-     * @memberof AddressBuilder
      */
     'state'?: string;
     /**
      * Line 1 of the applicant\'s address
-     * @type {string}
-     * @memberof AddressBuilder
      */
     'line1'?: string | null;
     /**
      * Line 2 of the applicant\'s address
-     * @type {string}
-     * @memberof AddressBuilder
      */
     'line2'?: string | null;
     /**
      * Line 3 of the applicant\'s address
-     * @type {string}
-     * @memberof AddressBuilder
      */
     'line3'?: string | null;
 }
 
 
-/**
- * 
- * @export
- * @interface AddressShared
- */
 export interface AddressShared {
     /**
      * The flat number of this address
-     * @type {string}
-     * @memberof AddressShared
      */
     'flat_number'?: string;
     /**
      * The building number of this address
-     * @type {string}
-     * @memberof AddressShared
      */
     'building_number'?: string;
     /**
      * The building name of this address
-     * @type {string}
-     * @memberof AddressShared
      */
     'building_name'?: string;
     /**
      * The street of the applicant\'s address
-     * @type {string}
-     * @memberof AddressShared
      */
     'street'?: string;
     /**
      * The sub-street of the applicant\'s address
-     * @type {string}
-     * @memberof AddressShared
      */
     'sub_street'?: string;
     /**
      * The town of the applicant\'s address
-     * @type {string}
-     * @memberof AddressShared
      */
     'town'?: string;
     /**
      * The postcode or ZIP of the applicant\'s address
-     * @type {string}
-     * @memberof AddressShared
      */
     'postcode': string;
     /**
      * The 3 character ISO country code of this address. For example, GBR is the country code for the United Kingdom
-     * @type {CountryCodes}
-     * @memberof AddressShared
      */
     'country': CountryCodes;
     /**
      * The address state. US states must use the USPS abbreviation (see also ISO 3166-2:US), for example AK, CA, or TX.
-     * @type {string}
-     * @memberof AddressShared
      */
     'state'?: string;
     /**
      * Line 1 of the applicant\'s address
-     * @type {string}
-     * @memberof AddressShared
      */
     'line1'?: string | null;
     /**
      * Line 2 of the applicant\'s address
-     * @type {string}
-     * @memberof AddressShared
      */
     'line2'?: string | null;
     /**
      * Line 3 of the applicant\'s address
-     * @type {string}
-     * @memberof AddressShared
      */
     'line3'?: string | null;
 }
 
 
-/**
- * 
- * @export
- * @interface AddressesList
- */
 export interface AddressesList {
-    /**
-     * 
-     * @type {Array<Address>}
-     * @memberof AddressesList
-     */
     'addresses'?: Array<Address>;
 }
-/**
- * 
- * @export
- * @interface Applicant
- */
 export interface Applicant {
     /**
      * The applicant\'s email address. Required if doing a US check, or a UK check for which `applicant_provides_data` is `true`.
-     * @type {string}
-     * @memberof Applicant
      */
     'email'?: string;
     /**
      * The applicant\'s date of birth
-     * @type {string}
-     * @memberof Applicant
      */
     'dob'?: string;
-    /**
-     * 
-     * @type {Array<IdNumber>}
-     * @memberof Applicant
-     */
     'id_numbers'?: Array<IdNumber>;
     /**
      * The applicant\'s phone number
-     * @type {string}
-     * @memberof Applicant
      */
     'phone_number'?: string;
     /**
      * The applicant\'s first name
-     * @type {string}
-     * @memberof Applicant
      */
     'first_name'?: string;
     /**
      * The applicant\'s surname
-     * @type {string}
-     * @memberof Applicant
      */
     'last_name'?: string;
     /**
      * The unique identifier for the applicant.
-     * @type {string}
-     * @memberof Applicant
      */
     'id': string;
     /**
      * The date and time when this applicant was created.
-     * @type {string}
-     * @memberof Applicant
      */
     'created_at'?: string;
     /**
      * The date and time when this applicant is scheduled to be deleted.
-     * @type {string}
-     * @memberof Applicant
      */
     'delete_at'?: string;
     /**
      * The uri of this resource.
-     * @type {string}
-     * @memberof Applicant
      */
     'href'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Applicant
-     */
     'sandbox'?: boolean;
-    /**
-     * 
-     * @type {Address}
-     * @memberof Applicant
-     */
     'address'?: Address;
-    /**
-     * 
-     * @type {Location}
-     * @memberof Applicant
-     */
     'location'?: Location;
 }
-/**
- * 
- * @export
- * @interface ApplicantBuilder
- */
 export interface ApplicantBuilder {
     /**
      * The applicant\'s email address. Required if doing a US check, or a UK check for which `applicant_provides_data` is `true`.
-     * @type {string}
-     * @memberof ApplicantBuilder
      */
     'email'?: string;
     /**
      * The applicant\'s date of birth
-     * @type {string}
-     * @memberof ApplicantBuilder
      */
     'dob'?: string;
-    /**
-     * 
-     * @type {Array<IdNumber>}
-     * @memberof ApplicantBuilder
-     */
     'id_numbers'?: Array<IdNumber>;
     /**
      * The applicant\'s phone number
-     * @type {string}
-     * @memberof ApplicantBuilder
      */
     'phone_number'?: string;
     /**
      * The applicant\'s consents
-     * @type {Array<ApplicantConsentBuilder>}
-     * @memberof ApplicantBuilder
      */
     'consents'?: Array<ApplicantConsentBuilder>;
-    /**
-     * 
-     * @type {AddressBuilder}
-     * @memberof ApplicantBuilder
-     */
     'address'?: AddressBuilder;
-    /**
-     * 
-     * @type {LocationBuilder}
-     * @memberof ApplicantBuilder
-     */
     'location'?: LocationBuilder;
     /**
      * The applicant\'s first name
-     * @type {string}
-     * @memberof ApplicantBuilder
      */
     'first_name': string;
     /**
      * The applicant\'s surname
-     * @type {string}
-     * @memberof ApplicantBuilder
      */
     'last_name': string;
 }
-/**
- * 
- * @export
- * @interface ApplicantConsent
- */
 export interface ApplicantConsent {
-    /**
-     * 
-     * @type {ApplicantConsentName}
-     * @memberof ApplicantConsent
-     */
     'name': ApplicantConsentName;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ApplicantConsent
-     */
     'granted': boolean;
     /**
      * The date and time when this applicant consent was granted, if not granted the value is nil.
-     * @type {string}
-     * @memberof ApplicantConsent
      */
     'granted_at': string | null;
 }
 
 
-/**
- * 
- * @export
- * @interface ApplicantConsentBuilder
- */
 export interface ApplicantConsentBuilder {
-    /**
-     * 
-     * @type {ApplicantConsentName}
-     * @memberof ApplicantConsentBuilder
-     */
     'name': ApplicantConsentName;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ApplicantConsentBuilder
-     */
     'granted': boolean;
 }
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const ApplicantConsentName = {
     PrivacyNoticesRead: 'privacy_notices_read',
@@ -517,342 +308,166 @@ export const ApplicantConsentName = {
 export type ApplicantConsentName = typeof ApplicantConsentName[keyof typeof ApplicantConsentName];
 
 
-/**
- * 
- * @export
- * @interface ApplicantCreate
- */
 export interface ApplicantCreate {
     /**
      * The applicant\'s first name
-     * @type {string}
-     * @memberof ApplicantCreate
      */
     'first_name': string;
     /**
      * The applicant\'s surname
-     * @type {string}
-     * @memberof ApplicantCreate
      */
     'last_name': string;
 }
-/**
- * 
- * @export
- * @interface ApplicantRequest
- */
 export interface ApplicantRequest {
     /**
      * The applicant\'s consents
-     * @type {Array<ApplicantConsentBuilder>}
-     * @memberof ApplicantRequest
      */
     'consents'?: Array<ApplicantConsentBuilder>;
-    /**
-     * 
-     * @type {AddressBuilder}
-     * @memberof ApplicantRequest
-     */
     'address'?: AddressBuilder;
-    /**
-     * 
-     * @type {LocationBuilder}
-     * @memberof ApplicantRequest
-     */
     'location'?: LocationBuilder;
 }
-/**
- * 
- * @export
- * @interface ApplicantResponse
- */
 export interface ApplicantResponse {
     /**
      * The applicant\'s first name
-     * @type {string}
-     * @memberof ApplicantResponse
      */
     'first_name'?: string;
     /**
      * The applicant\'s surname
-     * @type {string}
-     * @memberof ApplicantResponse
      */
     'last_name'?: string;
     /**
      * The unique identifier for the applicant.
-     * @type {string}
-     * @memberof ApplicantResponse
      */
     'id': string;
     /**
      * The date and time when this applicant was created.
-     * @type {string}
-     * @memberof ApplicantResponse
      */
     'created_at'?: string;
     /**
      * The date and time when this applicant is scheduled to be deleted.
-     * @type {string}
-     * @memberof ApplicantResponse
      */
     'delete_at'?: string;
     /**
      * The uri of this resource.
-     * @type {string}
-     * @memberof ApplicantResponse
      */
     'href'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ApplicantResponse
-     */
     'sandbox'?: boolean;
-    /**
-     * 
-     * @type {Address}
-     * @memberof ApplicantResponse
-     */
     'address'?: Address;
-    /**
-     * 
-     * @type {Location}
-     * @memberof ApplicantResponse
-     */
     'location'?: Location;
 }
-/**
- * 
- * @export
- * @interface ApplicantShared
- */
 export interface ApplicantShared {
     /**
      * The applicant\'s email address. Required if doing a US check, or a UK check for which `applicant_provides_data` is `true`.
-     * @type {string}
-     * @memberof ApplicantShared
      */
     'email'?: string;
     /**
      * The applicant\'s date of birth
-     * @type {string}
-     * @memberof ApplicantShared
      */
     'dob'?: string;
-    /**
-     * 
-     * @type {Array<IdNumber>}
-     * @memberof ApplicantShared
-     */
     'id_numbers'?: Array<IdNumber>;
     /**
      * The applicant\'s phone number
-     * @type {string}
-     * @memberof ApplicantShared
      */
     'phone_number'?: string;
 }
-/**
- * 
- * @export
- * @interface ApplicantUpdate
- */
 export interface ApplicantUpdate {
     /**
      * The applicant\'s first name
-     * @type {string}
-     * @memberof ApplicantUpdate
      */
     'first_name'?: string;
     /**
      * The applicant\'s surname
-     * @type {string}
-     * @memberof ApplicantUpdate
      */
     'last_name'?: string;
 }
-/**
- * 
- * @export
- * @interface ApplicantUpdater
- */
 export interface ApplicantUpdater {
     /**
      * The applicant\'s email address. Required if doing a US check, or a UK check for which `applicant_provides_data` is `true`.
-     * @type {string}
-     * @memberof ApplicantUpdater
      */
     'email'?: string;
     /**
      * The applicant\'s date of birth
-     * @type {string}
-     * @memberof ApplicantUpdater
      */
     'dob'?: string;
-    /**
-     * 
-     * @type {Array<IdNumber>}
-     * @memberof ApplicantUpdater
-     */
     'id_numbers'?: Array<IdNumber>;
     /**
      * The applicant\'s phone number
-     * @type {string}
-     * @memberof ApplicantUpdater
      */
     'phone_number'?: string;
     /**
      * The applicant\'s consents
-     * @type {Array<ApplicantConsentBuilder>}
-     * @memberof ApplicantUpdater
      */
     'consents'?: Array<ApplicantConsentBuilder>;
-    /**
-     * 
-     * @type {AddressBuilder}
-     * @memberof ApplicantUpdater
-     */
     'address'?: AddressBuilder;
-    /**
-     * 
-     * @type {LocationBuilder}
-     * @memberof ApplicantUpdater
-     */
     'location'?: LocationBuilder;
     /**
      * The applicant\'s first name
-     * @type {string}
-     * @memberof ApplicantUpdater
      */
     'first_name'?: string;
     /**
      * The applicant\'s surname
-     * @type {string}
-     * @memberof ApplicantUpdater
      */
     'last_name'?: string;
 }
-/**
- * 
- * @export
- * @interface ApplicantsList
- */
 export interface ApplicantsList {
-    /**
-     * 
-     * @type {Array<Applicant>}
-     * @memberof ApplicantsList
-     */
     'applicants': Array<Applicant>;
 }
-/**
- * 
- * @export
- * @interface Check
- */
 export interface Check {
     /**
      * An array of webhook ids describing which webhooks to trigger for this check.
-     * @type {Array<string>}
-     * @memberof Check
      */
     'webhook_ids'?: Array<string>;
     /**
      * The ID of the applicant to do the check on.
-     * @type {string}
-     * @memberof Check
      */
     'applicant_id': string;
     /**
      * Send an applicant form to applicant to complete to proceed with check. Defaults to false. 
-     * @type {boolean}
-     * @memberof Check
      */
     'applicant_provides_data'?: boolean;
     /**
      * Array of tags being assigned to this check.
-     * @type {Array<string>}
-     * @memberof Check
      */
     'tags'?: Array<string>;
     /**
      * For checks where `applicant_provides_data` is `true`, redirect to this URI when the applicant has submitted their data.
-     * @type {string}
-     * @memberof Check
      */
     'redirect_uri'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Check
-     */
     'privacy_notices_read_consent_given'?: boolean;
     /**
      * The unique identifier for the check.
-     * @type {string}
-     * @memberof Check
      */
     'id': string;
     /**
      * The date and time when this check was created.
-     * @type {string}
-     * @memberof Check
      */
     'created_at'?: string;
     /**
      * The uri of this resource.
-     * @type {string}
-     * @memberof Check
      */
     'href'?: string;
-    /**
-     * 
-     * @type {CheckStatus}
-     * @memberof Check
-     */
     'status'?: CheckStatus;
     /**
      * The overall result of the check, based on the results of the constituent reports.
-     * @type {string}
-     * @memberof Check
      */
     'result'?: CheckResultEnum;
     /**
      * A link to the applicant form, if `applicant_provides_data` is `true`.
-     * @type {string}
-     * @memberof Check
      */
     'form_uri'?: string;
     /**
      * A link to the corresponding results page on the Onfido dashboard.
-     * @type {string}
-     * @memberof Check
      */
     'results_uri'?: string;
     /**
      * An array of report ids.
-     * @type {Array<string>}
-     * @memberof Check
      */
     'report_ids'?: Array<string>;
     /**
      * Indicates whether the object was created in the sandbox or not.
-     * @type {boolean}
-     * @memberof Check
      */
     'sandbox'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Check
-     */
     'paused'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof Check
-     */
     'version'?: string;
 }
 
@@ -864,231 +479,128 @@ export const CheckResultEnum = {
 
 export type CheckResultEnum = typeof CheckResultEnum[keyof typeof CheckResultEnum];
 
-/**
- * 
- * @export
- * @interface CheckBuilder
- */
 export interface CheckBuilder {
     /**
      * An array of webhook ids describing which webhooks to trigger for this check.
-     * @type {Array<string>}
-     * @memberof CheckBuilder
      */
     'webhook_ids'?: Array<string>;
     /**
      * The ID of the applicant to do the check on.
-     * @type {string}
-     * @memberof CheckBuilder
      */
     'applicant_id': string;
     /**
      * Send an applicant form to applicant to complete to proceed with check. Defaults to false.
-     * @type {boolean}
-     * @memberof CheckBuilder
      */
     'applicant_provides_data'?: boolean;
     /**
      * Array of tags being assigned to this check.
-     * @type {Array<string>}
-     * @memberof CheckBuilder
      */
     'tags'?: Array<string>;
     /**
      * For checks where `applicant_provides_data` is `true`, redirect to this URI when the applicant has submitted their data.
-     * @type {string}
-     * @memberof CheckBuilder
      */
     'redirect_uri'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CheckBuilder
-     */
     'privacy_notices_read_consent_given'?: boolean;
     /**
      * An array of report names (strings).
-     * @type {Array<ReportName>}
-     * @memberof CheckBuilder
      */
     'report_names': Array<ReportName>;
     /**
      * Optional. An array of document ids, for use with Document reports only. If omitted, the Document report will use the most recently uploaded document by default.
-     * @type {Array<string>}
-     * @memberof CheckBuilder
      */
     'document_ids'?: Array<string>;
     /**
      * Defaults to `true`. If set to `false`, you will only receive a response when all reports in your check have completed. 
-     * @type {boolean}
-     * @memberof CheckBuilder
      */
     'asynchronous'?: boolean;
     /**
      * For checks where `applicant_provides_data` is `true`, applicant form will not be automatically sent if `suppress_form_emails` is set to `true`. You can manually send the form at any time after the check has been created, using the link found in the form_uri attribute of the check object. Write-only. Defaults to false. 
-     * @type {boolean}
-     * @memberof CheckBuilder
      */
     'suppress_form_emails'?: boolean;
     /**
      * Triggers responses for particular sub-results for sandbox Document reports.
-     * @type {string}
-     * @memberof CheckBuilder
      */
     'sub_result'?: string;
     /**
      * Array of names of particular reports to return consider as their results. This is a feature available in sandbox testing
-     * @type {Array<ReportName>}
-     * @memberof CheckBuilder
      */
     'consider'?: Array<ReportName>;
-    /**
-     * 
-     * @type {UsDrivingLicenceBuilder}
-     * @memberof CheckBuilder
-     */
     'us_driving_licence'?: UsDrivingLicenceBuilder;
     /**
-     * 
-     * @type {ReportConfiguration}
-     * @memberof CheckBuilder
      * @deprecated
      */
     'report_configuration'?: ReportConfiguration;
 }
-/**
- * 
- * @export
- * @interface CheckRequest
- */
 export interface CheckRequest {
     /**
      * An array of report names (strings).
-     * @type {Array<ReportName>}
-     * @memberof CheckRequest
      */
     'report_names': Array<ReportName>;
     /**
      * Optional. An array of document ids, for use with Document reports only. If omitted, the Document report will use the most recently uploaded document by default.
-     * @type {Array<string>}
-     * @memberof CheckRequest
      */
     'document_ids'?: Array<string>;
     /**
      * Send an applicant form to applicant to complete to proceed with check. Defaults to false.
-     * @type {boolean}
-     * @memberof CheckRequest
      */
     'applicant_provides_data'?: boolean;
     /**
      * Defaults to `true`. If set to `false`, you will only receive a response when all reports in your check have completed. 
-     * @type {boolean}
-     * @memberof CheckRequest
      */
     'asynchronous'?: boolean;
     /**
      * For checks where `applicant_provides_data` is `true`, applicant form will not be automatically sent if `suppress_form_emails` is set to `true`. You can manually send the form at any time after the check has been created, using the link found in the form_uri attribute of the check object. Write-only. Defaults to false. 
-     * @type {boolean}
-     * @memberof CheckRequest
      */
     'suppress_form_emails'?: boolean;
     /**
      * Triggers responses for particular sub-results for sandbox Document reports.
-     * @type {string}
-     * @memberof CheckRequest
      */
     'sub_result'?: string;
     /**
      * Array of names of particular reports to return consider as their results. This is a feature available in sandbox testing
-     * @type {Array<ReportName>}
-     * @memberof CheckRequest
      */
     'consider'?: Array<ReportName>;
-    /**
-     * 
-     * @type {UsDrivingLicenceBuilder}
-     * @memberof CheckRequest
-     */
     'us_driving_licence'?: UsDrivingLicenceBuilder;
     /**
-     * 
-     * @type {ReportConfiguration}
-     * @memberof CheckRequest
      * @deprecated
      */
     'report_configuration'?: ReportConfiguration;
 }
-/**
- * 
- * @export
- * @interface CheckResponse
- */
 export interface CheckResponse {
     /**
      * The unique identifier for the check.
-     * @type {string}
-     * @memberof CheckResponse
      */
     'id': string;
     /**
      * The date and time when this check was created.
-     * @type {string}
-     * @memberof CheckResponse
      */
     'created_at'?: string;
     /**
      * The uri of this resource.
-     * @type {string}
-     * @memberof CheckResponse
      */
     'href'?: string;
-    /**
-     * 
-     * @type {CheckStatus}
-     * @memberof CheckResponse
-     */
     'status'?: CheckStatus;
     /**
      * The overall result of the check, based on the results of the constituent reports.
-     * @type {string}
-     * @memberof CheckResponse
      */
     'result'?: CheckResponseResultEnum;
     /**
      * A link to the applicant form, if `applicant_provides_data` is `true`.
-     * @type {string}
-     * @memberof CheckResponse
      */
     'form_uri'?: string;
     /**
      * A link to the corresponding results page on the Onfido dashboard.
-     * @type {string}
-     * @memberof CheckResponse
      */
     'results_uri'?: string;
     /**
      * An array of report ids.
-     * @type {Array<string>}
-     * @memberof CheckResponse
      */
     'report_ids'?: Array<string>;
     /**
      * Indicates whether the object was created in the sandbox or not.
-     * @type {boolean}
-     * @memberof CheckResponse
      */
     'sandbox'?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CheckResponse
-     */
     'paused'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof CheckResponse
-     */
     'version'?: string;
 }
 
@@ -1100,53 +612,31 @@ export const CheckResponseResultEnum = {
 
 export type CheckResponseResultEnum = typeof CheckResponseResultEnum[keyof typeof CheckResponseResultEnum];
 
-/**
- * 
- * @export
- * @interface CheckShared
- */
 export interface CheckShared {
     /**
      * An array of webhook ids describing which webhooks to trigger for this check.
-     * @type {Array<string>}
-     * @memberof CheckShared
      */
     'webhook_ids'?: Array<string>;
     /**
      * The ID of the applicant to do the check on.
-     * @type {string}
-     * @memberof CheckShared
      */
     'applicant_id': string;
     /**
      * Send an applicant form to applicant to complete to proceed with check. Defaults to false. 
-     * @type {boolean}
-     * @memberof CheckShared
      */
     'applicant_provides_data'?: boolean;
     /**
      * Array of tags being assigned to this check.
-     * @type {Array<string>}
-     * @memberof CheckShared
      */
     'tags'?: Array<string>;
     /**
      * For checks where `applicant_provides_data` is `true`, redirect to this URI when the applicant has submitted their data.
-     * @type {string}
-     * @memberof CheckShared
      */
     'redirect_uri'?: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CheckShared
-     */
     'privacy_notices_read_consent_given'?: boolean;
 }
 /**
  * The current state of the check in the checking process.
- * @export
- * @enum {string}
  */
 
 export const CheckStatus = {
@@ -1162,44 +652,18 @@ export const CheckStatus = {
 export type CheckStatus = typeof CheckStatus[keyof typeof CheckStatus];
 
 
-/**
- * 
- * @export
- * @interface ChecksList
- */
 export interface ChecksList {
-    /**
-     * 
-     * @type {Array<Check>}
-     * @memberof ChecksList
-     */
     'checks': Array<Check>;
 }
-/**
- * 
- * @export
- * @interface CompleteTaskBuilder
- */
 export interface CompleteTaskBuilder {
-    /**
-     * 
-     * @type {CompleteTaskDataBuilder}
-     * @memberof CompleteTaskBuilder
-     */
     'data': CompleteTaskDataBuilder;
 }
 /**
  * @type CompleteTaskDataBuilder
  * The Task completion payload.
- * @export
  */
 export type CompleteTaskDataBuilder = Array<object> | object;
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const CountryCodes = {
     Abw: 'ABW',
@@ -1458,177 +922,84 @@ export const CountryCodes = {
 export type CountryCodes = typeof CountryCodes[keyof typeof CountryCodes];
 
 
-/**
- * 
- * @export
- * @interface DeviceIntelligenceBreakdown
- */
 export interface DeviceIntelligenceBreakdown {
-    /**
-     * 
-     * @type {DeviceIntelligenceBreakdownDevice}
-     * @memberof DeviceIntelligenceBreakdown
-     */
     'device'?: DeviceIntelligenceBreakdownDevice;
     /**
-     * 
-     * @type {DeviceIntelligenceBreakdownProperties}
-     * @memberof DeviceIntelligenceBreakdown
      * @deprecated
      */
     'properties'?: DeviceIntelligenceBreakdownProperties;
 }
 /**
  * Asserts whether the device used to upload the media is trustworthy, i.e. it is a real, physical device.
- * @export
- * @interface DeviceIntelligenceBreakdownDevice
  */
 export interface DeviceIntelligenceBreakdownDevice {
-    /**
-     * 
-     * @type {DeviceIntelligenceBreakdownDeviceBreakdown}
-     * @memberof DeviceIntelligenceBreakdownDevice
-     */
     'breakdown'?: DeviceIntelligenceBreakdownDeviceBreakdown;
 }
-/**
- * 
- * @export
- * @interface DeviceIntelligenceBreakdownDeviceBreakdown
- */
 export interface DeviceIntelligenceBreakdownDeviceBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DeviceIntelligenceBreakdownDeviceBreakdown
-     */
     'application_authenticity'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DeviceIntelligenceBreakdownDeviceBreakdown
-     */
     'device_integrity'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DeviceIntelligenceBreakdownDeviceBreakdown
-     */
     'device_reputation'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
 }
-/**
- * 
- * @export
- * @interface DeviceIntelligenceBreakdownProperties
- */
 export interface DeviceIntelligenceBreakdownProperties {
-    /**
-     * 
-     * @type {DeviceIntelligenceBreakdownPropertiesDevice}
-     * @memberof DeviceIntelligenceBreakdownProperties
-     */
     'device'?: DeviceIntelligenceBreakdownPropertiesDevice;
-    /**
-     * 
-     * @type {DeviceIntelligenceBreakdownPropertiesIp}
-     * @memberof DeviceIntelligenceBreakdownProperties
-     */
     'ip'?: DeviceIntelligenceBreakdownPropertiesIp;
-    /**
-     * 
-     * @type {DeviceIntelligenceBreakdownPropertiesGeolocation}
-     * @memberof DeviceIntelligenceBreakdownProperties
-     */
     'geolocation'?: DeviceIntelligenceBreakdownPropertiesGeolocation;
 }
-/**
- * 
- * @export
- * @interface DeviceIntelligenceBreakdownPropertiesDevice
- */
 export interface DeviceIntelligenceBreakdownPropertiesDevice {
     /**
      * The SDK version that was used.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
      */
     'sdk_version'?: string;
     /**
      * The SDK used to upload the media.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
      */
     'sdk_source'?: DeviceIntelligenceBreakdownPropertiesDeviceSdkSourceEnum;
     /**
      * The token used to authenticate the request.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
      */
     'authentication_type'?: DeviceIntelligenceBreakdownPropertiesDeviceAuthenticationTypeEnum;
     /**
      * The model as set by the phone manufacturer (for Android and iOS) or the browser manufacturer (for Web). The model can be presented in name or number form depending on each manufacturer implementation.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
      */
     'raw_model'?: string;
     /**
      * The operating system of the device. The value came from manufacturer implementation (for Android and iOS) or browser\'s user agent (for Web).
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
      */
     'os'?: string;
     /**
      * The browser name reported by the browser\'s user agent.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
      */
     'browser'?: string;
     /**
      * Whether the device is an emulator.
-     * @type {boolean}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
      */
     'emulator'?: boolean;
     /**
      * Whether the device is providing false randomized device and network information.
-     * @type {boolean}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
      */
     'randomized_device'?: boolean;
     /**
      * Whether device is using stolen security tokens to send the network information.
-     * @type {boolean}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
      */
     'fake_network_request'?: boolean;
     /**
      * Whether there is highly suspicious traffic related to the IP address. The risk depends on the overall ratio of clear checks on a given IP.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
      */
     'ip_reputation'?: DeviceIntelligenceBreakdownPropertiesDeviceIpReputationEnum;
     /**
      * The number of times the device was used to create a report for a new applicant. A value greater than 1 indicates potential device reuse.
-     * @type {number}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
      */
     'device_fingerprint_reuse'?: number;
     /**
      * Whether the document or biometric media were uploaded from a single device.
-     * @type {boolean}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
      */
     'single_device_used'?: boolean | null;
     /**
      * Whether the document media were live captured from the device camera.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
      */
     'document_capture'?: DeviceIntelligenceBreakdownPropertiesDeviceDocumentCaptureEnum;
     /**
      * Whether the biometric media were live captured from the device camera.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesDevice
      */
     'biometric_capture'?: DeviceIntelligenceBreakdownPropertiesDeviceBiometricCaptureEnum;
 }
@@ -1672,210 +1043,102 @@ export const DeviceIntelligenceBreakdownPropertiesDeviceBiometricCaptureEnum = {
 
 export type DeviceIntelligenceBreakdownPropertiesDeviceBiometricCaptureEnum = typeof DeviceIntelligenceBreakdownPropertiesDeviceBiometricCaptureEnum[keyof typeof DeviceIntelligenceBreakdownPropertiesDeviceBiometricCaptureEnum];
 
-/**
- * 
- * @export
- * @interface DeviceIntelligenceBreakdownPropertiesGeolocation
- */
 export interface DeviceIntelligenceBreakdownPropertiesGeolocation {
     /**
      * City location of the IP address.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesGeolocation
      */
     'city'?: string;
     /**
      * Region location of the IP address.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesGeolocation
      */
     'region'?: string;
     /**
      * Country location of the IP address in a three letter format.
-     * @type {CountryCodes}
-     * @memberof DeviceIntelligenceBreakdownPropertiesGeolocation
      */
     'country'?: CountryCodes;
 }
 
 
-/**
- * 
- * @export
- * @interface DeviceIntelligenceBreakdownPropertiesIp
- */
 export interface DeviceIntelligenceBreakdownPropertiesIp {
     /**
      * The IP address that uploaded the media.
-     * @type {string}
-     * @memberof DeviceIntelligenceBreakdownPropertiesIp
      */
     'address'?: string;
 }
-/**
- * 
- * @export
- * @interface DeviceIntelligenceProperties
- */
 export interface DeviceIntelligenceProperties {
-    /**
-     * 
-     * @type {DeviceIntelligenceBreakdownPropertiesDevice}
-     * @memberof DeviceIntelligenceProperties
-     */
     'device'?: DeviceIntelligenceBreakdownPropertiesDevice;
-    /**
-     * 
-     * @type {DeviceIntelligenceBreakdownPropertiesIp}
-     * @memberof DeviceIntelligenceProperties
-     */
     'ip'?: DeviceIntelligenceBreakdownPropertiesIp;
-    /**
-     * 
-     * @type {DeviceIntelligenceBreakdownPropertiesGeolocation}
-     * @memberof DeviceIntelligenceProperties
-     */
     'geolocation'?: DeviceIntelligenceBreakdownPropertiesGeolocation;
 }
-/**
- * 
- * @export
- * @interface DeviceIntelligenceReport
- */
 export interface DeviceIntelligenceReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof DeviceIntelligenceReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof DeviceIntelligenceReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof DeviceIntelligenceReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof DeviceIntelligenceReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof DeviceIntelligenceReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof DeviceIntelligenceReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof DeviceIntelligenceReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof DeviceIntelligenceReport
-     */
     'name': ReportName;
-    /**
-     * 
-     * @type {DeviceIntelligenceBreakdown}
-     * @memberof DeviceIntelligenceReport
-     */
     'breakdown'?: DeviceIntelligenceBreakdown;
-    /**
-     * 
-     * @type {DeviceIntelligenceProperties}
-     * @memberof DeviceIntelligenceReport
-     */
     'properties'?: DeviceIntelligenceProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface Document
- */
 export interface Document {
     /**
      * The file type of the uploaded file
-     * @type {string}
-     * @memberof Document
      */
     'file_type'?: string;
     /**
      * The type of document
-     * @type {DocumentTypes}
-     * @memberof Document
      */
     'type'?: DocumentTypes;
     /**
      * The side of the document, if applicable. The possible values are front and back
-     * @type {string}
-     * @memberof Document
      */
     'side'?: DocumentSideEnum;
     /**
      * The issuing country of the document, a 3-letter ISO code.
-     * @type {CountryCodes}
-     * @memberof Document
      */
     'issuing_country'?: CountryCodes;
     /**
      * The ID of the applicant whose document is being uploaded.
-     * @type {string}
-     * @memberof Document
      */
     'applicant_id'?: string;
     /**
      * The unique identifier for the document
-     * @type {string}
-     * @memberof Document
      */
     'id': string;
     /**
      * The date and time at which the document was uploaded
-     * @type {string}
-     * @memberof Document
      */
     'created_at'?: string;
     /**
      * The uri of this resource
-     * @type {string}
-     * @memberof Document
      */
     'href'?: string;
     /**
      * The uri that can be used to download the document
-     * @type {string}
-     * @memberof Document
      */
     'download_href'?: string;
     /**
      * The name of the uploaded file
-     * @type {string}
-     * @memberof Document
      */
     'file_name'?: string;
     /**
      * The size of the file in bytes
-     * @type {number}
-     * @memberof Document
      */
     'file_size'?: number;
 }
@@ -1888,1291 +1151,392 @@ export const DocumentSideEnum = {
 
 export type DocumentSideEnum = typeof DocumentSideEnum[keyof typeof DocumentSideEnum];
 
-/**
- * 
- * @export
- * @interface DocumentBreakdown
- */
 export interface DocumentBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparison}
-     * @memberof DocumentBreakdown
-     */
     'data_comparison'?: DocumentBreakdownDataComparison;
-    /**
-     * 
-     * @type {DocumentBreakdownDataValidation}
-     * @memberof DocumentBreakdown
-     */
     'data_validation'?: DocumentBreakdownDataValidation;
-    /**
-     * 
-     * @type {DocumentBreakdownImageIntegrity}
-     * @memberof DocumentBreakdown
-     */
     'image_integrity'?: DocumentBreakdownImageIntegrity;
-    /**
-     * 
-     * @type {DocumentBreakdownVisualAuthenticity}
-     * @memberof DocumentBreakdown
-     */
     'visual_authenticity'?: DocumentBreakdownVisualAuthenticity;
-    /**
-     * 
-     * @type {DocumentBreakdownDataConsistency}
-     * @memberof DocumentBreakdown
-     */
     'data_consistency'?: DocumentBreakdownDataConsistency;
-    /**
-     * 
-     * @type {DocumentBreakdownPoliceRecord}
-     * @memberof DocumentBreakdown
-     */
     'police_record'?: DocumentBreakdownPoliceRecord;
-    /**
-     * 
-     * @type {DocumentBreakdownCompromisedDocument}
-     * @memberof DocumentBreakdown
-     */
     'compromised_document'?: DocumentBreakdownCompromisedDocument;
-    /**
-     * 
-     * @type {DocumentBreakdownAgeValidation}
-     * @memberof DocumentBreakdown
-     */
     'age_validation'?: DocumentBreakdownAgeValidation;
-    /**
-     * 
-     * @type {DocumentBreakdownIssuingAuthority}
-     * @memberof DocumentBreakdown
-     */
     'issuing_authority'?: DocumentBreakdownIssuingAuthority;
 }
 /**
  * Asserts whether the age calculated from the document\'s date of birth data point is greater than or equal to the minimum accepted age.
- * @export
- * @interface DocumentBreakdownAgeValidation
  */
 export interface DocumentBreakdownAgeValidation {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownAgeValidation
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {DocumentBreakdownAgeValidationBreakdown}
-     * @memberof DocumentBreakdownAgeValidation
-     */
     'breakdown'?: DocumentBreakdownAgeValidationBreakdown;
 }
-/**
- * 
- * @export
- * @interface DocumentBreakdownAgeValidationBreakdown
- */
 export interface DocumentBreakdownAgeValidationBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownAgeValidationBreakdown
-     */
     'minimum_accepted_age'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
 }
 /**
  * Asserts whether the image of the document has been found in our internal database or if it was used in a suspicious way.
- * @export
- * @interface DocumentBreakdownCompromisedDocument
  */
 export interface DocumentBreakdownCompromisedDocument {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownCompromisedDocument
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {DocumentBreakdownCompromisedDocumentBreakdown}
-     * @memberof DocumentBreakdownCompromisedDocument
-     */
     'breakdown'?: DocumentBreakdownCompromisedDocumentBreakdown;
 }
-/**
- * 
- * @export
- * @interface DocumentBreakdownCompromisedDocumentBreakdown
- */
 export interface DocumentBreakdownCompromisedDocumentBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownCompromisedDocumentBreakdown
-     */
     'document_database'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownCompromisedDocumentBreakdown
-     */
     'repeat_attempts'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
 }
 /**
  * Asserts whether data on the document is consistent with data provided when creating an applicant through the API.
- * @export
- * @interface DocumentBreakdownDataComparison
  */
 export interface DocumentBreakdownDataComparison {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownDataComparison
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdown}
-     * @memberof DocumentBreakdownDataComparison
-     */
     'breakdown'?: DocumentBreakdownDataComparisonBreakdown;
 }
-/**
- * 
- * @export
- * @interface DocumentBreakdownDataComparisonBreakdown
- */
 export interface DocumentBreakdownDataComparisonBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataComparisonBreakdown
-     */
     'issuing_country'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataComparisonBreakdown
-     */
     'gender'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataComparisonBreakdown
-     */
     'date_of_expiry'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataComparisonBreakdown
-     */
     'last_name'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataComparisonBreakdown
-     */
     'document_type'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataComparisonBreakdown
-     */
     'document_numbers'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataComparisonBreakdown
-     */
     'first_name'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataComparisonBreakdown
-     */
     'date_of_birth'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
 }
-/**
- * 
- * @export
- * @interface DocumentBreakdownDataComparisonBreakdownIssuingCountry
- */
 export interface DocumentBreakdownDataComparisonBreakdownIssuingCountry {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownDataComparisonBreakdownIssuingCountry
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof DocumentBreakdownDataComparisonBreakdownIssuingCountry
-     */
     'properties'?: object;
 }
 /**
  * Asserts whether data represented in multiple places on the document is consistent.
- * @export
- * @interface DocumentBreakdownDataConsistency
  */
 export interface DocumentBreakdownDataConsistency {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownDataConsistency
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {DocumentBreakdownDataConsistencyBreakdown}
-     * @memberof DocumentBreakdownDataConsistency
-     */
     'breakdown'?: DocumentBreakdownDataConsistencyBreakdown;
 }
-/**
- * 
- * @export
- * @interface DocumentBreakdownDataConsistencyBreakdown
- */
 export interface DocumentBreakdownDataConsistencyBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataConsistencyBreakdown
-     */
     'date_of_expiry'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataConsistencyBreakdown
-     */
     'document_numbers'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataConsistencyBreakdown
-     */
     'issuing_country'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataConsistencyBreakdown
-     */
     'document_type'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataConsistencyBreakdown
-     */
     'date_of_birth'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataConsistencyBreakdown
-     */
     'gender'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataConsistencyBreakdown
-     */
     'first_name'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataConsistencyBreakdown
-     */
     'nationality'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataConsistencyBreakdown
-     */
     'last_name'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataConsistencyBreakdown
-     */
     'multiple_data_sources_present'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
 }
 /**
  * Asserts whether algorithmically validatable elements are correct.
- * @export
- * @interface DocumentBreakdownDataValidation
  */
 export interface DocumentBreakdownDataValidation {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownDataValidation
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {DocumentBreakdownDataValidationBreakdown}
-     * @memberof DocumentBreakdownDataValidation
-     */
     'breakdown'?: DocumentBreakdownDataValidationBreakdown;
 }
-/**
- * 
- * @export
- * @interface DocumentBreakdownDataValidationBreakdown
- */
 export interface DocumentBreakdownDataValidationBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataValidationBreakdown
-     */
     'gender'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataValidationBreakdown
-     */
     'date_of_birth'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataValidationBreakdown
-     */
     'document_numbers'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataValidationBreakdownDocumentExpiration}
-     * @memberof DocumentBreakdownDataValidationBreakdown
-     */
     'document_expiration'?: DocumentBreakdownDataValidationBreakdownDocumentExpiration;
-    /**
-     * 
-     * @type {DocumentBreakdownDataValidationBreakdownExpiryDate}
-     * @memberof DocumentBreakdownDataValidationBreakdown
-     */
     'expiry_date'?: DocumentBreakdownDataValidationBreakdownExpiryDate;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataValidationBreakdown
-     */
     'mrz'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof DocumentBreakdownDataValidationBreakdown
-     */
     'barcode'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
 }
 /**
  * If this is flagged, the document has expired.
- * @export
- * @interface DocumentBreakdownDataValidationBreakdownDocumentExpiration
  */
 export interface DocumentBreakdownDataValidationBreakdownDocumentExpiration {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownDataValidationBreakdownDocumentExpiration
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof DocumentBreakdownDataValidationBreakdownDocumentExpiration
-     */
     'properties'?: object;
 }
 /**
  * If this is flagged, the expiration date has the incorrect format.
- * @export
- * @interface DocumentBreakdownDataValidationBreakdownExpiryDate
  */
 export interface DocumentBreakdownDataValidationBreakdownExpiryDate {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownDataValidationBreakdownExpiryDate
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof DocumentBreakdownDataValidationBreakdownExpiryDate
-     */
     'properties'?: object;
 }
 /**
  * Asserts if the document is of sufficient quality to verify.
- * @export
- * @interface DocumentBreakdownImageIntegrity
  */
 export interface DocumentBreakdownImageIntegrity {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownImageIntegrity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {DocumentBreakdownImageIntegrityBreakdown}
-     * @memberof DocumentBreakdownImageIntegrity
-     */
     'breakdown'?: DocumentBreakdownImageIntegrityBreakdown;
 }
-/**
- * 
- * @export
- * @interface DocumentBreakdownImageIntegrityBreakdown
- */
 export interface DocumentBreakdownImageIntegrityBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownImageIntegrityBreakdownImageQuality}
-     * @memberof DocumentBreakdownImageIntegrityBreakdown
-     */
     'image_quality'?: DocumentBreakdownImageIntegrityBreakdownImageQuality;
-    /**
-     * 
-     * @type {DocumentBreakdownImageIntegrityBreakdownSupportedDocument}
-     * @memberof DocumentBreakdownImageIntegrityBreakdown
-     */
     'supported_document'?: DocumentBreakdownImageIntegrityBreakdownSupportedDocument;
-    /**
-     * 
-     * @type {DocumentBreakdownImageIntegrityBreakdownColourPicture}
-     * @memberof DocumentBreakdownImageIntegrityBreakdown
-     */
     'colour_picture'?: DocumentBreakdownImageIntegrityBreakdownColourPicture;
-    /**
-     * 
-     * @type {DocumentBreakdownImageIntegrityBreakdownConclusiveDocumentQuality}
-     * @memberof DocumentBreakdownImageIntegrityBreakdown
-     */
     'conclusive_document_quality'?: DocumentBreakdownImageIntegrityBreakdownConclusiveDocumentQuality;
 }
 /**
  * Asserts whether the image was a colour one.
- * @export
- * @interface DocumentBreakdownImageIntegrityBreakdownColourPicture
  */
 export interface DocumentBreakdownImageIntegrityBreakdownColourPicture {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownImageIntegrityBreakdownColourPicture
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof DocumentBreakdownImageIntegrityBreakdownColourPicture
-     */
     'properties'?: object;
 }
 /**
  * Asserts if the document was of enough quality to be able to perform a fraud inspection.
- * @export
- * @interface DocumentBreakdownImageIntegrityBreakdownConclusiveDocumentQuality
  */
 export interface DocumentBreakdownImageIntegrityBreakdownConclusiveDocumentQuality {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownImageIntegrityBreakdownConclusiveDocumentQuality
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {DocumentCDQReasons}
-     * @memberof DocumentBreakdownImageIntegrityBreakdownConclusiveDocumentQuality
-     */
     'properties'?: DocumentCDQReasons;
 }
 /**
  * Asserts whether the quality of the image was sufficient for processing.
- * @export
- * @interface DocumentBreakdownImageIntegrityBreakdownImageQuality
  */
 export interface DocumentBreakdownImageIntegrityBreakdownImageQuality {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownImageIntegrityBreakdownImageQuality
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {DocumentIQReasons}
-     * @memberof DocumentBreakdownImageIntegrityBreakdownImageQuality
-     */
     'properties'?: DocumentIQReasons;
 }
 /**
  * Asserts whether the submitted document is supported.
- * @export
- * @interface DocumentBreakdownImageIntegrityBreakdownSupportedDocument
  */
 export interface DocumentBreakdownImageIntegrityBreakdownSupportedDocument {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownImageIntegrityBreakdownSupportedDocument
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof DocumentBreakdownImageIntegrityBreakdownSupportedDocument
-     */
     'properties'?: object;
 }
 /**
  * Asserts whether data on the document matches the issuing authority data.
- * @export
- * @interface DocumentBreakdownIssuingAuthority
  */
 export interface DocumentBreakdownIssuingAuthority {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownIssuingAuthority
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {DocumentBreakdownIssuingAuthorityBreakdown}
-     * @memberof DocumentBreakdownIssuingAuthority
-     */
     'breakdown'?: DocumentBreakdownIssuingAuthorityBreakdown;
 }
-/**
- * 
- * @export
- * @interface DocumentBreakdownIssuingAuthorityBreakdown
- */
 export interface DocumentBreakdownIssuingAuthorityBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownIssuingAuthorityBreakdownNfcActiveAuthentication}
-     * @memberof DocumentBreakdownIssuingAuthorityBreakdown
-     */
     'nfc_active_authentication'?: DocumentBreakdownIssuingAuthorityBreakdownNfcActiveAuthentication;
-    /**
-     * 
-     * @type {DocumentBreakdownIssuingAuthorityBreakdownNfcPassiveAuthentication}
-     * @memberof DocumentBreakdownIssuingAuthorityBreakdown
-     */
     'nfc_passive_authentication'?: DocumentBreakdownIssuingAuthorityBreakdownNfcPassiveAuthentication;
 }
 /**
  * Asserts whether the document NFC chip is original or cloned.
- * @export
- * @interface DocumentBreakdownIssuingAuthorityBreakdownNfcActiveAuthentication
  */
 export interface DocumentBreakdownIssuingAuthorityBreakdownNfcActiveAuthentication {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownIssuingAuthorityBreakdownNfcActiveAuthentication
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof DocumentBreakdownIssuingAuthorityBreakdownNfcActiveAuthentication
-     */
     'properties'?: object;
 }
 /**
  * Asserts whether the document NFC chip data was tampered.
- * @export
- * @interface DocumentBreakdownIssuingAuthorityBreakdownNfcPassiveAuthentication
  */
 export interface DocumentBreakdownIssuingAuthorityBreakdownNfcPassiveAuthentication {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownIssuingAuthorityBreakdownNfcPassiveAuthentication
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof DocumentBreakdownIssuingAuthorityBreakdownNfcPassiveAuthentication
-     */
     'properties'?: object;
 }
 /**
  * Asserts whether the document had been identified as lost, stolen or otherwise compromised.
- * @export
- * @interface DocumentBreakdownPoliceRecord
  */
 export interface DocumentBreakdownPoliceRecord {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownPoliceRecord
-     */
     'result'?: string;
 }
 /**
  * Asserts whether visual, non-textual, elements are correct given the type of document.
- * @export
- * @interface DocumentBreakdownVisualAuthenticity
  */
 export interface DocumentBreakdownVisualAuthenticity {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownVisualAuthenticity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {DocumentBreakdownVisualAuthenticityBreakdown}
-     * @memberof DocumentBreakdownVisualAuthenticity
-     */
     'breakdown'?: DocumentBreakdownVisualAuthenticityBreakdown;
 }
-/**
- * 
- * @export
- * @interface DocumentBreakdownVisualAuthenticityBreakdown
- */
 export interface DocumentBreakdownVisualAuthenticityBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownVisualAuthenticityBreakdownFonts}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdown
-     */
     'fonts'?: DocumentBreakdownVisualAuthenticityBreakdownFonts;
-    /**
-     * 
-     * @type {DocumentBreakdownVisualAuthenticityBreakdownPictureFaceIntegrity}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdown
-     */
     'picture_face_integrity'?: DocumentBreakdownVisualAuthenticityBreakdownPictureFaceIntegrity;
-    /**
-     * 
-     * @type {DocumentBreakdownVisualAuthenticityBreakdownTemplate}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdown
-     */
     'template'?: DocumentBreakdownVisualAuthenticityBreakdownTemplate;
-    /**
-     * 
-     * @type {DocumentBreakdownVisualAuthenticityBreakdownSecurityFeatures}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdown
-     */
     'security_features'?: DocumentBreakdownVisualAuthenticityBreakdownSecurityFeatures;
-    /**
-     * 
-     * @type {DocumentBreakdownVisualAuthenticityBreakdownOriginalDocumentPresent}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdown
-     */
     'original_document_present'?: DocumentBreakdownVisualAuthenticityBreakdownOriginalDocumentPresent;
-    /**
-     * 
-     * @type {DocumentBreakdownVisualAuthenticityBreakdownDigitalTampering}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdown
-     */
     'digital_tampering'?: DocumentBreakdownVisualAuthenticityBreakdownDigitalTampering;
-    /**
-     * 
-     * @type {DocumentBreakdownVisualAuthenticityBreakdownOther}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdown
-     */
     'other'?: DocumentBreakdownVisualAuthenticityBreakdownOther;
-    /**
-     * 
-     * @type {DocumentBreakdownVisualAuthenticityBreakdownFaceDetection}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdown
-     */
     'face_detection'?: DocumentBreakdownVisualAuthenticityBreakdownFaceDetection;
 }
 /**
  * Indication of digital tampering in the image.
- * @export
- * @interface DocumentBreakdownVisualAuthenticityBreakdownDigitalTampering
  */
 export interface DocumentBreakdownVisualAuthenticityBreakdownDigitalTampering {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownDigitalTampering
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownDigitalTampering
-     */
     'properties'?: object;
 }
 /**
  * No face was detected on the document.
- * @export
- * @interface DocumentBreakdownVisualAuthenticityBreakdownFaceDetection
  */
 export interface DocumentBreakdownVisualAuthenticityBreakdownFaceDetection {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownFaceDetection
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownFaceDetection
-     */
     'properties'?: object;
 }
 /**
  * Fonts in the document don\'t match the expected ones.
- * @export
- * @interface DocumentBreakdownVisualAuthenticityBreakdownFonts
  */
 export interface DocumentBreakdownVisualAuthenticityBreakdownFonts {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownFonts
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownFonts
-     */
     'properties'?: object;
 }
 /**
  * The document was not present when the photo was taken.
- * @export
- * @interface DocumentBreakdownVisualAuthenticityBreakdownOriginalDocumentPresent
  */
 export interface DocumentBreakdownVisualAuthenticityBreakdownOriginalDocumentPresent {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownOriginalDocumentPresent
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {DocumentODPReasons}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownOriginalDocumentPresent
-     */
     'properties'?: DocumentODPReasons;
 }
 /**
  * This sub-breakdown is returned for backward compatibility reasons. Its value will be consider when at least one of the other breakdowns is consider, and clear when all the other breakdowns are clear.
- * @export
- * @interface DocumentBreakdownVisualAuthenticityBreakdownOther
  */
 export interface DocumentBreakdownVisualAuthenticityBreakdownOther {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownOther
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownOther
-     */
     'properties'?: object;
 }
 /**
  * The pictures of the person identified on the document show signs of tampering or alteration.
- * @export
- * @interface DocumentBreakdownVisualAuthenticityBreakdownPictureFaceIntegrity
  */
 export interface DocumentBreakdownVisualAuthenticityBreakdownPictureFaceIntegrity {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownPictureFaceIntegrity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownPictureFaceIntegrity
-     */
     'properties'?: object;
 }
 /**
  * Security features expected on the document are missing or wrong.
- * @export
- * @interface DocumentBreakdownVisualAuthenticityBreakdownSecurityFeatures
  */
 export interface DocumentBreakdownVisualAuthenticityBreakdownSecurityFeatures {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownSecurityFeatures
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownSecurityFeatures
-     */
     'properties'?: object;
 }
 /**
  * The document doesn\'t match the expected template for the document type and country it is from.
- * @export
- * @interface DocumentBreakdownVisualAuthenticityBreakdownTemplate
  */
 export interface DocumentBreakdownVisualAuthenticityBreakdownTemplate {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownTemplate
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof DocumentBreakdownVisualAuthenticityBreakdownTemplate
-     */
     'properties'?: object;
 }
-/**
- * 
- * @export
- * @interface DocumentCDQReasons
- */
 export interface DocumentCDQReasons {
     /**
      * When data points are obscured to the point that we cannot confirm if the fonts match the expected ones.
-     * @type {string}
-     * @memberof DocumentCDQReasons
      */
     'obscured_data_points'?: string;
     /**
      * When a critical security feature is obscured. This can also refer to when the holder\'s wet signature, necessary for the document to be valid, is not present.
-     * @type {string}
-     * @memberof DocumentCDQReasons
      */
     'obscured_security_features'?: string;
     /**
      * One of 3 reasons (1) OCR Assisted Scans (i.e. when you\'re able to move the mouse and highlight part of text), (2) Severely Washed out Background, (3) Overlapping Text.
-     * @type {string}
-     * @memberof DocumentCDQReasons
      */
     'abnormal_document_features'?: string;
     /**
      * Any digital text or electronic watermarks on the document.
-     * @type {string}
-     * @memberof DocumentCDQReasons
      */
     'watermarks_digital_text_overlay'?: string;
     /**
      * If the corner has been physically cut off. This can be found on some documents that are no longer valid.
-     * @type {string}
-     * @memberof DocumentCDQReasons
      */
     'corner_removed'?: string;
     /**
      * A punched hole is present.
-     * @type {string}
-     * @memberof DocumentCDQReasons
      */
     'punctured_document'?: string;
     /**
      * When the back of a document is needed for processing, but is not available.
-     * @type {string}
-     * @memberof DocumentCDQReasons
      */
     'missing_back'?: string;
     /**
      * When a document has been published digitally, there aren\'t enough security features to review so we cannot perform a full fraud assessment.
-     * @type {string}
-     * @memberof DocumentCDQReasons
      */
     'digital_document'?: string;
 }
-/**
- * 
- * @export
- * @interface DocumentIQReasons
- */
 export interface DocumentIQReasons {
     /**
      * When an image of the document is too dark to be able to see data points.
-     * @type {string}
-     * @memberof DocumentIQReasons
      */
     'dark_photo'?: string;
     /**
      * When there is light reflecting on the document causing glare to obstruct data points.
-     * @type {string}
-     * @memberof DocumentIQReasons
      */
     'glare_on_photo'?: string;
     /**
      * When data points are blurred and no reference can be made elsewhere in the document or if the data points are too blurry and \'they could be something else\'.
-     * @type {string}
-     * @memberof DocumentIQReasons
      */
     'blurred_photo'?: string;
     /**
      * When data points have been covered either by the applicant or by another object such as a sticker.
-     * @type {string}
-     * @memberof DocumentIQReasons
      */
     'covered_photo'?: string;
     /**
      * Any other reason not listed, such as when holograms are obscuring data points.
-     * @type {string}
-     * @memberof DocumentIQReasons
      */
     'other_photo_issue'?: string;
     /**
      * When a document is damaged and we are unable to make out data points.
-     * @type {string}
-     * @memberof DocumentIQReasons
      */
     'damaged_document'?: string;
     /**
      * When the incorrect side of a document has been uploaded, and we have not received the front.
-     * @type {string}
-     * @memberof DocumentIQReasons
      */
     'incorrect_side'?: string;
     /**
      * When data points are not included in the image due to the document being cut off.
-     * @type {string}
-     * @memberof DocumentIQReasons
      */
     'cut_off_document'?: string;
     /**
      * If no document has been uploaded or there is a blank image.
-     * @type {string}
-     * @memberof DocumentIQReasons
      */
     'no_document_in_image'?: string;
     /**
      * When 2 different documents are submitted in the same check.
-     * @type {string}
-     * @memberof DocumentIQReasons
      */
     'two_documents_uploaded'?: string;
 }
-/**
- * 
- * @export
- * @interface DocumentODPReasons
- */
 export interface DocumentODPReasons {
     /**
      * When the applicant\'s document is on a physical screen or device.
-     * @type {string}
-     * @memberof DocumentODPReasons
      */
     'photo_of_screen'?: string;
     /**
      * When the applicant has used their mobile phone, tablet, or computer to take a photo within the device.
-     * @type {string}
-     * @memberof DocumentODPReasons
      */
     'screenshot'?: string;
     /**
      * When the applicant has previously captured an image of the document, printed it out, and has now taken a photo of this print out to upload.
-     * @type {string}
-     * @memberof DocumentODPReasons
      */
     'document_on_printed_paper'?: string;
     /**
      * When the document has clearly been captured using a scanner and there are visible indicators of this
-     * @type {string}
-     * @memberof DocumentODPReasons
      */
     'scan'?: string;
 }
-/**
- * 
- * @export
- * @interface DocumentProperties
- */
 export interface DocumentProperties {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'date_of_birth'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'date_of_expiry'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'personal_number'?: string;
-    /**
-     * 
-     * @type {Array<DocumentPropertiesDocumentNumbersInner>}
-     * @memberof DocumentProperties
-     */
     'document_numbers'?: Array<DocumentPropertiesDocumentNumbersInner>;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'document_type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'first_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'middle_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'last_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'gender'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'issuing_country'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'nationality'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'issuing_state'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'issuing_date'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'valid_from'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'categorisation'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'mrz_line1'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'mrz_line2'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'mrz_line3'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'address'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'place_of_birth'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'spouse_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'widow_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'alias_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'issuing_authority'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'remarks'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'civil_state'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'expatriation'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'father_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'mother_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'religion'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'type_of_permit'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'version_number'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'document_subtype'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'profession'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'security_document_number'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'tax_number'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'nist_identity_evidence_strength'?: DocumentPropertiesNistIdentityEvidenceStrengthEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'has_issuance_confirmation'?: DocumentPropertiesHasIssuanceConfirmationEnum;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DocumentProperties
-     */
     'real_id_compliance'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentProperties
-     */
     'security_tier'?: DocumentPropertiesSecurityTierEnum;
-    /**
-     * 
-     * @type {DocumentPropertiesAddressLines}
-     * @memberof DocumentProperties
-     */
     'address_lines'?: DocumentPropertiesAddressLines;
-    /**
-     * 
-     * @type {Array<DocumentPropertiesBarcodeInner>}
-     * @memberof DocumentProperties
-     */
     'barcode'?: Array<DocumentPropertiesBarcodeInner>;
-    /**
-     * 
-     * @type {DocumentPropertiesNfc}
-     * @memberof DocumentProperties
-     */
     'nfc'?: DocumentPropertiesNfc;
-    /**
-     * 
-     * @type {DocumentPropertiesDocumentClassification}
-     * @memberof DocumentProperties
-     */
     'document_classification'?: DocumentPropertiesDocumentClassification;
-    /**
-     * 
-     * @type {DocumentPropertiesExtractedData}
-     * @memberof DocumentProperties
-     */
     'extracted_data'?: DocumentPropertiesExtractedData;
 }
 
@@ -3207,738 +1571,133 @@ export const DocumentPropertiesSecurityTierEnum = {
 
 export type DocumentPropertiesSecurityTierEnum = typeof DocumentPropertiesSecurityTierEnum[keyof typeof DocumentPropertiesSecurityTierEnum];
 
-/**
- * 
- * @export
- * @interface DocumentPropertiesAddressLines
- */
 export interface DocumentPropertiesAddressLines {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesAddressLines
-     */
     'street_address'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesAddressLines
-     */
     'state'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesAddressLines
-     */
     'postal_code'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesAddressLines
-     */
     'country'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesAddressLines
-     */
     'city'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesAddressLines
-     */
     'country_code'?: string;
 }
-/**
- * 
- * @export
- * @interface DocumentPropertiesBarcodeInner
- */
 export interface DocumentPropertiesBarcodeInner {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'first_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'middle_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'last_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'document_type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'date_of_expiry'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'date_of_birth'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'issuing_date'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'address_line_1'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'address_line_2'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'address_line_3'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'address_line_4'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'address_line_5'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'issuing_state'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'class'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'gender'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'issuing_country'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'document_number'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesBarcodeInner
-     */
     'real_id_classification'?: string;
 }
-/**
- * 
- * @export
- * @interface DocumentPropertiesDocumentClassification
- */
 export interface DocumentPropertiesDocumentClassification {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesDocumentClassification
-     */
     'issuing_country'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesDocumentClassification
-     */
     'document_type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesDocumentClassification
-     */
     'issuing_state'?: string;
 }
-/**
- * 
- * @export
- * @interface DocumentPropertiesDocumentNumbersInner
- */
 export interface DocumentPropertiesDocumentNumbersInner {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesDocumentNumbersInner
-     */
     'value'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesDocumentNumbersInner
-     */
     'type'?: string;
 }
-/**
- * 
- * @export
- * @interface DocumentPropertiesDrivingLicenceInformationItem
- */
 export interface DocumentPropertiesDrivingLicenceInformationItem {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesDrivingLicenceInformationItem
-     */
     'category'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesDrivingLicenceInformationItem
-     */
     'obtainment_date'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesDrivingLicenceInformationItem
-     */
     'expiry_date'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesDrivingLicenceInformationItem
-     */
     'codes'?: string;
 }
-/**
- * 
- * @export
- * @interface DocumentPropertiesExtractedData
- */
 export interface DocumentPropertiesExtractedData {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'document_number'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'date_of_birth'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'date_of_expiry'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'first_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'last_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'middle_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'full_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'spouse_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'widow_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'alias_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'gender'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'mrz_line1'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'mrz_line2'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'mrz_line3'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'nationality'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'address_line_1'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'address_line_2'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'address_line_3'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'address_line_4'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'address_line_5'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesExtractedData
-     */
     'issuing_authority'?: string;
 }
-/**
- * 
- * @export
- * @interface DocumentPropertiesNfc
- */
 export interface DocumentPropertiesNfc {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesNfc
-     */
     'document_type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesNfc
-     */
     'issuing_country'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesNfc
-     */
     'full_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesNfc
-     */
     'document_number'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesNfc
-     */
     'nationality'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesNfc
-     */
     'date_of_birth'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesNfc
-     */
     'gender'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesNfc
-     */
     'date_of_expiry'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesNfc
-     */
     'personal_number'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesNfc
-     */
     'place_of_birth'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesNfc
-     */
     'address'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesNfc
-     */
     'issuing_date'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesNfc
-     */
     'issuing_authority'?: string;
 }
-/**
- * 
- * @export
- * @interface DocumentPropertiesWithDrivingLicenceInformation
- */
 export interface DocumentPropertiesWithDrivingLicenceInformation {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'date_of_birth'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'date_of_expiry'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'personal_number'?: string;
-    /**
-     * 
-     * @type {Array<DocumentPropertiesDocumentNumbersInner>}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'document_numbers'?: Array<DocumentPropertiesDocumentNumbersInner>;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'document_type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'first_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'middle_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'last_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'gender'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'issuing_country'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'nationality'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'issuing_state'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'issuing_date'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'valid_from'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'categorisation'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'mrz_line1'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'mrz_line2'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'mrz_line3'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'address'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'place_of_birth'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'spouse_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'widow_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'alias_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'issuing_authority'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'remarks'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'civil_state'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'expatriation'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'father_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'mother_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'religion'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'type_of_permit'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'version_number'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'document_subtype'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'profession'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'security_document_number'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'tax_number'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'nist_identity_evidence_strength'?: DocumentPropertiesWithDrivingLicenceInformationNistIdentityEvidenceStrengthEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'has_issuance_confirmation'?: DocumentPropertiesWithDrivingLicenceInformationHasIssuanceConfirmationEnum;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'real_id_compliance'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'security_tier'?: DocumentPropertiesWithDrivingLicenceInformationSecurityTierEnum;
-    /**
-     * 
-     * @type {DocumentPropertiesAddressLines}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'address_lines'?: DocumentPropertiesAddressLines;
-    /**
-     * 
-     * @type {Array<DocumentPropertiesBarcodeInner>}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'barcode'?: Array<DocumentPropertiesBarcodeInner>;
-    /**
-     * 
-     * @type {DocumentPropertiesNfc}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'nfc'?: DocumentPropertiesNfc;
-    /**
-     * 
-     * @type {DocumentPropertiesDocumentClassification}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'document_classification'?: DocumentPropertiesDocumentClassification;
-    /**
-     * 
-     * @type {DocumentPropertiesExtractedData}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'extracted_data'?: DocumentPropertiesExtractedData;
-    /**
-     * 
-     * @type {Array<DocumentPropertiesDrivingLicenceInformationItem>}
-     * @memberof DocumentPropertiesWithDrivingLicenceInformation
-     */
     'driving_licence_information'?: Array<DocumentPropertiesDrivingLicenceInformationItem>;
 }
 
@@ -3973,171 +1732,87 @@ export const DocumentPropertiesWithDrivingLicenceInformationSecurityTierEnum = {
 
 export type DocumentPropertiesWithDrivingLicenceInformationSecurityTierEnum = typeof DocumentPropertiesWithDrivingLicenceInformationSecurityTierEnum[keyof typeof DocumentPropertiesWithDrivingLicenceInformationSecurityTierEnum];
 
-/**
- * 
- * @export
- * @interface DocumentReport
- */
 export interface DocumentReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof DocumentReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof DocumentReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof DocumentReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof DocumentReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof DocumentReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof DocumentReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof DocumentReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof DocumentReport
-     */
     'name': ReportName;
     /**
      * Array of objects with document ids that were used in the Onfido engine.
-     * @type {Array<ReportDocument>}
-     * @memberof DocumentReport
      */
     'documents'?: Array<ReportDocument>;
-    /**
-     * 
-     * @type {DocumentBreakdown}
-     * @memberof DocumentReport
-     */
     'breakdown'?: DocumentBreakdown;
-    /**
-     * 
-     * @type {DocumentProperties}
-     * @memberof DocumentReport
-     */
     'properties'?: DocumentProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface DocumentReportShared
- */
 export interface DocumentReportShared {
     /**
      * Array of objects with document ids that were used in the Onfido engine.
-     * @type {Array<ReportDocument>}
-     * @memberof DocumentReportShared
      */
     'documents'?: Array<ReportDocument>;
 }
-/**
- * 
- * @export
- * @interface DocumentResponse
- */
 export interface DocumentResponse {
     /**
      * The unique identifier for the document
-     * @type {string}
-     * @memberof DocumentResponse
      */
     'id': string;
     /**
      * The date and time at which the document was uploaded
-     * @type {string}
-     * @memberof DocumentResponse
      */
     'created_at'?: string;
     /**
      * The uri of this resource
-     * @type {string}
-     * @memberof DocumentResponse
      */
     'href'?: string;
     /**
      * The uri that can be used to download the document
-     * @type {string}
-     * @memberof DocumentResponse
      */
     'download_href'?: string;
     /**
      * The name of the uploaded file
-     * @type {string}
-     * @memberof DocumentResponse
      */
     'file_name'?: string;
     /**
      * The size of the file in bytes
-     * @type {number}
-     * @memberof DocumentResponse
      */
     'file_size'?: number;
 }
-/**
- * 
- * @export
- * @interface DocumentShared
- */
 export interface DocumentShared {
     /**
      * The file type of the uploaded file
-     * @type {string}
-     * @memberof DocumentShared
      */
     'file_type'?: string;
     /**
      * The type of document
-     * @type {DocumentTypes}
-     * @memberof DocumentShared
      */
     'type'?: DocumentTypes;
     /**
      * The side of the document, if applicable. The possible values are front and back
-     * @type {string}
-     * @memberof DocumentShared
      */
     'side'?: DocumentSharedSideEnum;
     /**
      * The issuing country of the document, a 3-letter ISO code.
-     * @type {CountryCodes}
-     * @memberof DocumentShared
      */
     'issuing_country'?: CountryCodes;
     /**
      * The ID of the applicant whose document is being uploaded.
-     * @type {string}
-     * @memberof DocumentShared
      */
     'applicant_id'?: string;
 }
@@ -4150,11 +1825,6 @@ export const DocumentSharedSideEnum = {
 
 export type DocumentSharedSideEnum = typeof DocumentSharedSideEnum[keyof typeof DocumentSharedSideEnum];
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const DocumentTypes = {
     Passport: 'passport',
@@ -4239,623 +1909,196 @@ export const DocumentTypes = {
 export type DocumentTypes = typeof DocumentTypes[keyof typeof DocumentTypes];
 
 
-/**
- * 
- * @export
- * @interface DocumentVideoReport
- */
 export interface DocumentVideoReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof DocumentVideoReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof DocumentVideoReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof DocumentVideoReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof DocumentVideoReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof DocumentVideoReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof DocumentVideoReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof DocumentVideoReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof DocumentVideoReport
-     */
     'name': ReportName;
     /**
      * Array of objects with document ids that were used in the Onfido engine.
-     * @type {Array<ReportDocument>}
-     * @memberof DocumentVideoReport
      */
     'documents'?: Array<ReportDocument>;
-    /**
-     * 
-     * @type {DocumentBreakdown}
-     * @memberof DocumentVideoReport
-     */
     'breakdown'?: DocumentBreakdown;
-    /**
-     * 
-     * @type {DocumentProperties}
-     * @memberof DocumentVideoReport
-     */
     'properties'?: DocumentProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface DocumentVideoWithAddressInformationReport
- */
 export interface DocumentVideoWithAddressInformationReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof DocumentVideoWithAddressInformationReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof DocumentVideoWithAddressInformationReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof DocumentVideoWithAddressInformationReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof DocumentVideoWithAddressInformationReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof DocumentVideoWithAddressInformationReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof DocumentVideoWithAddressInformationReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof DocumentVideoWithAddressInformationReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof DocumentVideoWithAddressInformationReport
-     */
     'name': ReportName;
     /**
      * Array of objects with document ids that were used in the Onfido engine.
-     * @type {Array<ReportDocument>}
-     * @memberof DocumentVideoWithAddressInformationReport
      */
     'documents'?: Array<ReportDocument>;
-    /**
-     * 
-     * @type {DocumentBreakdown}
-     * @memberof DocumentVideoWithAddressInformationReport
-     */
     'breakdown'?: DocumentBreakdown;
-    /**
-     * 
-     * @type {DocumentProperties}
-     * @memberof DocumentVideoWithAddressInformationReport
-     */
     'properties'?: DocumentProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface DocumentWithAddressInformationReport
- */
 export interface DocumentWithAddressInformationReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof DocumentWithAddressInformationReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof DocumentWithAddressInformationReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof DocumentWithAddressInformationReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof DocumentWithAddressInformationReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof DocumentWithAddressInformationReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof DocumentWithAddressInformationReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof DocumentWithAddressInformationReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof DocumentWithAddressInformationReport
-     */
     'name': ReportName;
     /**
      * Array of objects with document ids that were used in the Onfido engine.
-     * @type {Array<ReportDocument>}
-     * @memberof DocumentWithAddressInformationReport
      */
     'documents'?: Array<ReportDocument>;
-    /**
-     * 
-     * @type {DocumentBreakdown}
-     * @memberof DocumentWithAddressInformationReport
-     */
     'breakdown'?: DocumentBreakdown;
-    /**
-     * 
-     * @type {DocumentProperties}
-     * @memberof DocumentWithAddressInformationReport
-     */
     'properties'?: DocumentProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface DocumentWithDriverVerificationReport
- */
 export interface DocumentWithDriverVerificationReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof DocumentWithDriverVerificationReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof DocumentWithDriverVerificationReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof DocumentWithDriverVerificationReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof DocumentWithDriverVerificationReport
-     */
     'name': ReportName;
     /**
      * Array of objects with document ids that were used in the Onfido engine.
-     * @type {Array<ReportDocument>}
-     * @memberof DocumentWithDriverVerificationReport
      */
     'documents'?: Array<ReportDocument>;
-    /**
-     * 
-     * @type {DocumentBreakdown}
-     * @memberof DocumentWithDriverVerificationReport
-     */
     'breakdown'?: DocumentBreakdown;
-    /**
-     * 
-     * @type {DocumentWithDriverVerificationReportAllOfProperties}
-     * @memberof DocumentWithDriverVerificationReport
-     */
     'properties'?: DocumentWithDriverVerificationReportAllOfProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface DocumentWithDriverVerificationReportAllOfProperties
- */
 export interface DocumentWithDriverVerificationReportAllOfProperties {
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'date_of_birth'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'date_of_expiry'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'personal_number'?: string;
-    /**
-     * 
-     * @type {Array<DocumentPropertiesDocumentNumbersInner>}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'document_numbers'?: Array<DocumentPropertiesDocumentNumbersInner>;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'document_type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'first_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'middle_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'last_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'gender'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'issuing_country'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'nationality'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'issuing_state'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'issuing_date'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'valid_from'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'categorisation'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'mrz_line1'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'mrz_line2'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'mrz_line3'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'address'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'place_of_birth'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'spouse_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'widow_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'alias_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'issuing_authority'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'remarks'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'civil_state'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'expatriation'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'father_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'mother_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'religion'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'type_of_permit'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'version_number'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'document_subtype'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'profession'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'security_document_number'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'tax_number'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'nist_identity_evidence_strength'?: DocumentWithDriverVerificationReportAllOfPropertiesNistIdentityEvidenceStrengthEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'has_issuance_confirmation'?: DocumentWithDriverVerificationReportAllOfPropertiesHasIssuanceConfirmationEnum;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'real_id_compliance'?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'security_tier'?: DocumentWithDriverVerificationReportAllOfPropertiesSecurityTierEnum;
-    /**
-     * 
-     * @type {DocumentPropertiesAddressLines}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'address_lines'?: DocumentPropertiesAddressLines;
-    /**
-     * 
-     * @type {Array<DocumentPropertiesBarcodeInner>}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'barcode'?: Array<DocumentPropertiesBarcodeInner>;
-    /**
-     * 
-     * @type {DocumentPropertiesNfc}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'nfc'?: DocumentPropertiesNfc;
-    /**
-     * 
-     * @type {DocumentPropertiesDocumentClassification}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'document_classification'?: DocumentPropertiesDocumentClassification;
-    /**
-     * 
-     * @type {DocumentPropertiesExtractedData}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'extracted_data'?: DocumentPropertiesExtractedData;
     /**
      * True for **non-restricted** driving licences
-     * @type {boolean}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
      */
     'drivers_licence'?: boolean;
     /**
      * True for **limited/restricted** driving license, including learner\'s permits
-     * @type {boolean}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
      */
     'restricted_licence'?: boolean;
     /**
      * Underlying, non-normalised, licence category (e.g. \"Junior operators license\")
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
      */
     'raw_licence_category'?: string;
     /**
      * Comma-separated vehicle classes that the user is qualified for
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
      */
     'raw_vehicle_classes'?: string;
     /**
      * True if the user is not qualified to drive a manual transmission
-     * @type {boolean}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
      */
     'manual_transmission_restriction'?: boolean;
     /**
      * Detailed classes/categories information
-     * @type {Array<DocumentWithDriverVerificationReportAllOfPropertiesAllOfVehicleClassDetailsInner>}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
      */
     'vehicle_class_details'?: Array<DocumentWithDriverVerificationReportAllOfPropertiesAllOfVehicleClassDetailsInner>;
-    /**
-     * 
-     * @type {DocumentWithDriverVerificationReportAllOfPropertiesAllOfPassengerVehicle}
-     * @memberof DocumentWithDriverVerificationReportAllOfProperties
-     */
     'passenger_vehicle'?: DocumentWithDriverVerificationReportAllOfPropertiesAllOfPassengerVehicle;
 }
 
@@ -4892,283 +2135,121 @@ export type DocumentWithDriverVerificationReportAllOfPropertiesSecurityTierEnum 
 
 /**
  * Normalised data for passenger cars
- * @export
- * @interface DocumentWithDriverVerificationReportAllOfPropertiesAllOfPassengerVehicle
  */
 export interface DocumentWithDriverVerificationReportAllOfPropertiesAllOfPassengerVehicle {
     /**
      * Whether they are qualified for a passenger car, such as a “B” class in the UK
-     * @type {boolean}
-     * @memberof DocumentWithDriverVerificationReportAllOfPropertiesAllOfPassengerVehicle
      */
     'is_qualified'?: boolean;
     /**
      * Date the class qualification was obtained
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfPropertiesAllOfPassengerVehicle
      */
     'obtainment_date'?: string;
     /**
      * Date the class qualification expires, which may be different to doc expiry
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfPropertiesAllOfPassengerVehicle
      */
     'expiry_date'?: string;
 }
-/**
- * 
- * @export
- * @interface DocumentWithDriverVerificationReportAllOfPropertiesAllOfVehicleClassDetailsInner
- */
 export interface DocumentWithDriverVerificationReportAllOfPropertiesAllOfVehicleClassDetailsInner {
     /**
      * Vehicle class/category
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfPropertiesAllOfVehicleClassDetailsInner
      */
     'category'?: string;
     /**
      * Special conditions driver must meet
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfPropertiesAllOfVehicleClassDetailsInner
      */
     'codes'?: string;
     /**
      * Category obtainment date
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfPropertiesAllOfVehicleClassDetailsInner
      */
     'obtainment_date'?: string;
     /**
      * Category expiry date
-     * @type {string}
-     * @memberof DocumentWithDriverVerificationReportAllOfPropertiesAllOfVehicleClassDetailsInner
      */
     'expiry_date'?: string;
 }
-/**
- * 
- * @export
- * @interface DocumentWithDrivingLicenceInformationReport
- */
 export interface DocumentWithDrivingLicenceInformationReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof DocumentWithDrivingLicenceInformationReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof DocumentWithDrivingLicenceInformationReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof DocumentWithDrivingLicenceInformationReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof DocumentWithDrivingLicenceInformationReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof DocumentWithDrivingLicenceInformationReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof DocumentWithDrivingLicenceInformationReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof DocumentWithDrivingLicenceInformationReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof DocumentWithDrivingLicenceInformationReport
-     */
     'name': ReportName;
     /**
      * Array of objects with document ids that were used in the Onfido engine.
-     * @type {Array<ReportDocument>}
-     * @memberof DocumentWithDrivingLicenceInformationReport
      */
     'documents'?: Array<ReportDocument>;
-    /**
-     * 
-     * @type {DocumentBreakdown}
-     * @memberof DocumentWithDrivingLicenceInformationReport
-     */
     'breakdown'?: DocumentBreakdown;
-    /**
-     * 
-     * @type {DocumentPropertiesWithDrivingLicenceInformation}
-     * @memberof DocumentWithDrivingLicenceInformationReport
-     */
     'properties'?: DocumentPropertiesWithDrivingLicenceInformation;
 }
 
 
-/**
- * 
- * @export
- * @interface DocumentsList
- */
 export interface DocumentsList {
-    /**
-     * 
-     * @type {Array<Document>}
-     * @memberof DocumentsList
-     */
     'documents': Array<Document>;
 }
-/**
- * 
- * @export
- * @interface Error1
- */
 export interface Error1 {
     /**
      * The unique identifier of the uploaded document
-     * @type {string}
-     * @memberof Error1
      */
     'document_id'?: string;
-    /**
-     * 
-     * @type {ErrorProperties1}
-     * @memberof Error1
-     */
     'error'?: ErrorProperties1;
 }
-/**
- * 
- * @export
- * @interface ErrorProperties
- */
 export interface ErrorProperties {
-    /**
-     * 
-     * @type {string}
-     * @memberof ErrorProperties
-     */
     'type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ErrorProperties
-     */
     'message'?: string;
-    /**
-     * 
-     * @type {{ [key: string]: any; }}
-     * @memberof ErrorProperties
-     */
     'fields'?: { [key: string]: any; };
 }
-/**
- * 
- * @export
- * @interface ErrorProperties1
- */
 export interface ErrorProperties1 {
-    /**
-     * 
-     * @type {string}
-     * @memberof ErrorProperties1
-     */
     'type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ErrorProperties1
-     */
     'message'?: string;
 }
-/**
- * 
- * @export
- * @interface ExtractRequest
- */
 export interface ExtractRequest {
     /**
      * The unique identifier of the uploaded document to run extraction on
-     * @type {string}
-     * @memberof ExtractRequest
      */
     'document_id': string;
 }
-/**
- * 
- * @export
- * @interface Extraction
- */
 export interface Extraction {
     /**
      * The unique identifier of the uploaded document.
-     * @type {string}
-     * @memberof Extraction
      */
     'document_id'?: string;
-    /**
-     * 
-     * @type {ExtractionDocumentClassification}
-     * @memberof Extraction
-     */
     'document_classification'?: ExtractionDocumentClassification;
-    /**
-     * 
-     * @type {ExtractionExtractedData}
-     * @memberof Extraction
-     */
     'extracted_data'?: ExtractionExtractedData;
 }
-/**
- * 
- * @export
- * @interface ExtractionDocumentClassification
- */
 export interface ExtractionDocumentClassification {
     /**
      * Document country in 3-letter ISO code.
-     * @type {CountryCodes}
-     * @memberof ExtractionDocumentClassification
      */
     'issuing_country'?: CountryCodes;
     /**
      * Type of document.
-     * @type {DocumentTypes}
-     * @memberof ExtractionDocumentClassification
      */
     'document_type'?: DocumentTypes;
     /**
      * The state that issued the document (if available).
-     * @type {string}
-     * @memberof ExtractionDocumentClassification
      */
     'issuing_state'?: string;
     /**
      * The document subtype (if available).
-     * @type {string}
-     * @memberof ExtractionDocumentClassification
      */
     'subtype'?: ExtractionDocumentClassificationSubtypeEnum;
     /**
      * The document issuing version (if available).
-     * @type {string}
-     * @memberof ExtractionDocumentClassification
      */
     'version'?: string;
 }
@@ -5202,172 +2283,113 @@ export const ExtractionDocumentClassificationSubtypeEnum = {
 
 export type ExtractionDocumentClassificationSubtypeEnum = typeof ExtractionDocumentClassificationSubtypeEnum[keyof typeof ExtractionDocumentClassificationSubtypeEnum];
 
-/**
- * 
- * @export
- * @interface ExtractionExtractedData
- */
 export interface ExtractionExtractedData {
     /**
      * The official document number.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'document_number'?: string;
     /**
      * First name.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'first_name'?: string;
     /**
      * Last name.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'last_name'?: string;
     /**
      * Full name.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'full_name'?: string;
     /**
      * Spouse name (French documents only).
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'spouse_name'?: string;
     /**
      * Widow name (French documents only).
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'widow_name'?: string;
     /**
      * Alias name (French documents only).
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'alias_name'?: string;
     /**
      * Gender (Valid values are Male and Female).
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'gender'?: ExtractionExtractedDataGenderEnum;
     /**
      * Date of birth in YYYY-MM-DD format.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'date_of_birth'?: string;
     /**
      * Date of expiry in YYYY-MM-DD format.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'date_of_expiry'?: string;
     /**
      * Date of expiry in YYYY-MM-DD format.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'expiry_date'?: string;
     /**
      * Nationality in 3-letter ISO code.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'nationality'?: string;
     /**
      * Line 1 of the MRZ code.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'mrz_line_1'?: string;
     /**
      * Line 2 of the MRZ code.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'mrz_line_2'?: string;
     /**
      * Line 3 of the MRZ code.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'mrz_line_3'?: string;
     /**
      * Line 1 of the address.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'address_1'?: string;
     /**
      * Line 2 of the address.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'address_2'?: string;
     /**
      * Line 3 of the address.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'address_3'?: string;
     /**
      * Line 4 of the address.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'address_4'?: string;
     /**
      * Line 5 of the address.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'address_5'?: string;
     /**
      * Issuing authority.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'issuing_authority'?: string;
     /**
      * Document country in 3-letter ISO code.
-     * @type {CountryCodes}
-     * @memberof ExtractionExtractedData
      */
     'issuing_country'?: CountryCodes;
     /**
      * Type of document.
-     * @type {DocumentTypes}
-     * @memberof ExtractionExtractedData
      */
     'document_type'?: DocumentTypes;
     /**
      * Place of birth.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'place_of_birth'?: string;
     /**
      * The state that issued the document.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'issuing_state'?: string;
     /**
      * Issuing date in YYYY-MM-DD format.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'issuing_date'?: string;
     /**
      * The owner\'s unique identification number.
-     * @type {string}
-     * @memberof ExtractionExtractedData
      */
     'personal_number'?: string;
 }
@@ -5380,1216 +2402,473 @@ export const ExtractionExtractedDataGenderEnum = {
 
 export type ExtractionExtractedDataGenderEnum = typeof ExtractionExtractedDataGenderEnum[keyof typeof ExtractionExtractedDataGenderEnum];
 
-/**
- * 
- * @export
- * @interface FacialSimilarityMotionBreakdown
- */
 export interface FacialSimilarityMotionBreakdown {
-    /**
-     * 
-     * @type {FacialSimilarityMotionBreakdownFaceComparison}
-     * @memberof FacialSimilarityMotionBreakdown
-     */
     'face_comparison'?: FacialSimilarityMotionBreakdownFaceComparison;
-    /**
-     * 
-     * @type {FacialSimilarityMotionBreakdownImageIntegrity}
-     * @memberof FacialSimilarityMotionBreakdown
-     */
     'image_integrity'?: FacialSimilarityMotionBreakdownImageIntegrity;
-    /**
-     * 
-     * @type {FacialSimilarityMotionBreakdownVisualAuthenticity}
-     * @memberof FacialSimilarityMotionBreakdown
-     */
     'visual_authenticity'?: FacialSimilarityMotionBreakdownVisualAuthenticity;
 }
 /**
  * Asserts whether the face in the document matches the face in the motion capture.
- * @export
- * @interface FacialSimilarityMotionBreakdownFaceComparison
  */
 export interface FacialSimilarityMotionBreakdownFaceComparison {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityMotionBreakdownFaceComparison
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownFaceComparisonBreakdown}
-     * @memberof FacialSimilarityMotionBreakdownFaceComparison
-     */
     'breakdown'?: FacialSimilarityPhotoBreakdownFaceComparisonBreakdown;
 }
 /**
  * Asserts whether the quality and integrity of the uploaded files were sufficient to perform a face comparison.
- * @export
- * @interface FacialSimilarityMotionBreakdownImageIntegrity
  */
 export interface FacialSimilarityMotionBreakdownImageIntegrity {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityMotionBreakdownImageIntegrity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {FacialSimilarityMotionBreakdownImageIntegrityBreakdown}
-     * @memberof FacialSimilarityMotionBreakdownImageIntegrity
-     */
     'breakdown'?: FacialSimilarityMotionBreakdownImageIntegrityBreakdown;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityMotionBreakdownImageIntegrityBreakdown
- */
 export interface FacialSimilarityMotionBreakdownImageIntegrityBreakdown {
-    /**
-     * 
-     * @type {FacialSimilarityMotionBreakdownImageIntegrityBreakdownFaceDetected}
-     * @memberof FacialSimilarityMotionBreakdownImageIntegrityBreakdown
-     */
     'face_detected'?: FacialSimilarityMotionBreakdownImageIntegrityBreakdownFaceDetected;
-    /**
-     * 
-     * @type {FacialSimilarityMotionBreakdownImageIntegrityBreakdownSourceIntegrity}
-     * @memberof FacialSimilarityMotionBreakdownImageIntegrityBreakdown
-     */
     'source_integrity'?: FacialSimilarityMotionBreakdownImageIntegrityBreakdownSourceIntegrity;
 }
 /**
  * Asserts a single face of good enough quality has been found in both the document image and in the motion capture.
- * @export
- * @interface FacialSimilarityMotionBreakdownImageIntegrityBreakdownFaceDetected
  */
 export interface FacialSimilarityMotionBreakdownImageIntegrityBreakdownFaceDetected {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityMotionBreakdownImageIntegrityBreakdownFaceDetected
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof FacialSimilarityMotionBreakdownImageIntegrityBreakdownFaceDetected
-     */
     'properties'?: object;
 }
 /**
  * Asserts whether the motion capture is trustworthy - e.g. not from a fake webcam.
- * @export
- * @interface FacialSimilarityMotionBreakdownImageIntegrityBreakdownSourceIntegrity
  */
 export interface FacialSimilarityMotionBreakdownImageIntegrityBreakdownSourceIntegrity {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityMotionBreakdownImageIntegrityBreakdownSourceIntegrity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {VideoReasons}
-     * @memberof FacialSimilarityMotionBreakdownImageIntegrityBreakdownSourceIntegrity
-     */
     'properties'?: VideoReasons;
 }
 /**
  * Asserts whether the person in the motion capture is real (not a spoof) and live.
- * @export
- * @interface FacialSimilarityMotionBreakdownVisualAuthenticity
  */
 export interface FacialSimilarityMotionBreakdownVisualAuthenticity {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityMotionBreakdownVisualAuthenticity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {FacialSimilarityMotionBreakdownVisualAuthenticityBreakdown}
-     * @memberof FacialSimilarityMotionBreakdownVisualAuthenticity
-     */
     'breakdown'?: FacialSimilarityMotionBreakdownVisualAuthenticityBreakdown;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityMotionBreakdownVisualAuthenticityBreakdown
- */
 export interface FacialSimilarityMotionBreakdownVisualAuthenticityBreakdown {
-    /**
-     * 
-     * @type {FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownLivenessDetected}
-     * @memberof FacialSimilarityMotionBreakdownVisualAuthenticityBreakdown
-     */
     'liveness_detected'?: FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownLivenessDetected;
-    /**
-     * 
-     * @type {FacialSimilarityMotionBreakdownVisualAuthenticityBreakdownSpoofingDetection}
-     * @memberof FacialSimilarityMotionBreakdownVisualAuthenticityBreakdown
-     */
     'spoofing_detection'?: FacialSimilarityMotionBreakdownVisualAuthenticityBreakdownSpoofingDetection;
 }
 /**
  * Asserts whether the motion capture is not a spoof (such as videos of digital screens).
- * @export
- * @interface FacialSimilarityMotionBreakdownVisualAuthenticityBreakdownSpoofingDetection
  */
 export interface FacialSimilarityMotionBreakdownVisualAuthenticityBreakdownSpoofingDetection {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityMotionBreakdownVisualAuthenticityBreakdownSpoofingDetection
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetectionProperties}
-     * @memberof FacialSimilarityMotionBreakdownVisualAuthenticityBreakdownSpoofingDetection
-     */
     'properties'?: FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetectionProperties;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityMotionProperties
- */
 export interface FacialSimilarityMotionProperties {
     /**
      * A floating point number between 0 and 1. The closer the score is to 0, the more likely it is to be a spoof (i.e. videos of digital screens, masks or print-outs). Conversely, the closer it is to 1, the less likely it is to be a spoof. 
-     * @type {number}
-     * @memberof FacialSimilarityMotionProperties
      */
     'score'?: number;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityMotionReport
- */
 export interface FacialSimilarityMotionReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityMotionReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityMotionReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityMotionReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof FacialSimilarityMotionReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof FacialSimilarityMotionReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof FacialSimilarityMotionReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityMotionReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof FacialSimilarityMotionReport
-     */
     'name': ReportName;
     /**
      * Array of objects with document ids that were used in the Onfido engine.
-     * @type {Array<ReportDocument>}
-     * @memberof FacialSimilarityMotionReport
      */
     'documents'?: Array<ReportDocument>;
     /**
      * Array of objects with live photo ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityMotionReport
      */
     'live_photos'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with live video ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityMotionReport
      */
     'live_videos'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with motion capture ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityMotionReport
      */
     'motion_captures'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with id photo ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityMotionReport
      */
     'id_photos'?: Array<FacialSimilarityReportMedia>;
-    /**
-     * 
-     * @type {FacialSimilarityMotionBreakdown}
-     * @memberof FacialSimilarityMotionReport
-     */
     'breakdown'?: FacialSimilarityMotionBreakdown;
-    /**
-     * 
-     * @type {FacialSimilarityMotionProperties}
-     * @memberof FacialSimilarityMotionReport
-     */
     'properties'?: FacialSimilarityMotionProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface FacialSimilarityPhotoBreakdown
- */
 export interface FacialSimilarityPhotoBreakdown {
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownFaceComparison}
-     * @memberof FacialSimilarityPhotoBreakdown
-     */
     'face_comparison'?: FacialSimilarityPhotoBreakdownFaceComparison;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownImageIntegrity}
-     * @memberof FacialSimilarityPhotoBreakdown
-     */
     'image_integrity'?: FacialSimilarityPhotoBreakdownImageIntegrity;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownVisualAuthenticity}
-     * @memberof FacialSimilarityPhotoBreakdown
-     */
     'visual_authenticity'?: FacialSimilarityPhotoBreakdownVisualAuthenticity;
 }
 /**
  * Asserts whether the face in the document matches the face in the live photo.
- * @export
- * @interface FacialSimilarityPhotoBreakdownFaceComparison
  */
 export interface FacialSimilarityPhotoBreakdownFaceComparison {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityPhotoBreakdownFaceComparison
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownFaceComparisonBreakdown}
-     * @memberof FacialSimilarityPhotoBreakdownFaceComparison
-     */
     'breakdown'?: FacialSimilarityPhotoBreakdownFaceComparisonBreakdown;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityPhotoBreakdownFaceComparisonBreakdown
- */
 export interface FacialSimilarityPhotoBreakdownFaceComparisonBreakdown {
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownFaceComparisonBreakdownFaceMatch}
-     * @memberof FacialSimilarityPhotoBreakdownFaceComparisonBreakdown
-     */
     'face_match'?: FacialSimilarityPhotoBreakdownFaceComparisonBreakdownFaceMatch;
 }
 /**
  * Contains a score value under the properties bag.
- * @export
- * @interface FacialSimilarityPhotoBreakdownFaceComparisonBreakdownFaceMatch
  */
 export interface FacialSimilarityPhotoBreakdownFaceComparisonBreakdownFaceMatch {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityPhotoBreakdownFaceComparisonBreakdownFaceMatch
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownFaceComparisonBreakdownFaceMatchProperties}
-     * @memberof FacialSimilarityPhotoBreakdownFaceComparisonBreakdownFaceMatch
-     */
     'properties'?: FacialSimilarityPhotoBreakdownFaceComparisonBreakdownFaceMatchProperties;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityPhotoBreakdownFaceComparisonBreakdownFaceMatchProperties
- */
 export interface FacialSimilarityPhotoBreakdownFaceComparisonBreakdownFaceMatchProperties {
     /**
      * A floating point number between 0 and 1 that expresses how similar the two faces are, where 1 is a perfect match.
-     * @type {number}
-     * @memberof FacialSimilarityPhotoBreakdownFaceComparisonBreakdownFaceMatchProperties
      */
     'score'?: number;
     /**
      * The UUID for the document containing the extracted face that was used for face matching.
-     * @type {string}
-     * @memberof FacialSimilarityPhotoBreakdownFaceComparisonBreakdownFaceMatchProperties
      */
     'document_id'?: string;
 }
 /**
  * Asserts whether the quality and integrity of the uploaded files were sufficient to perform a face comparison.
- * @export
- * @interface FacialSimilarityPhotoBreakdownImageIntegrity
  */
 export interface FacialSimilarityPhotoBreakdownImageIntegrity {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityPhotoBreakdownImageIntegrity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownImageIntegrityBreakdown}
-     * @memberof FacialSimilarityPhotoBreakdownImageIntegrity
-     */
     'breakdown'?: FacialSimilarityPhotoBreakdownImageIntegrityBreakdown;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityPhotoBreakdownImageIntegrityBreakdown
- */
 export interface FacialSimilarityPhotoBreakdownImageIntegrityBreakdown {
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownImageIntegrityBreakdownFaceDetected}
-     * @memberof FacialSimilarityPhotoBreakdownImageIntegrityBreakdown
-     */
     'face_detected'?: FacialSimilarityPhotoBreakdownImageIntegrityBreakdownFaceDetected;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownImageIntegrityBreakdownSourceIntegrity}
-     * @memberof FacialSimilarityPhotoBreakdownImageIntegrityBreakdown
-     */
     'source_integrity'?: FacialSimilarityPhotoBreakdownImageIntegrityBreakdownSourceIntegrity;
 }
 /**
  * Asserts a single face of good enough quality has been found in both the document image and the live photo.
- * @export
- * @interface FacialSimilarityPhotoBreakdownImageIntegrityBreakdownFaceDetected
  */
 export interface FacialSimilarityPhotoBreakdownImageIntegrityBreakdownFaceDetected {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityPhotoBreakdownImageIntegrityBreakdownFaceDetected
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof FacialSimilarityPhotoBreakdownImageIntegrityBreakdownFaceDetected
-     */
     'properties'?: object;
 }
 /**
  * Asserts whether the live photo is trustworthy - i.e. not digitally tampered, from a fake webcam, or from other dubious sources.
- * @export
- * @interface FacialSimilarityPhotoBreakdownImageIntegrityBreakdownSourceIntegrity
  */
 export interface FacialSimilarityPhotoBreakdownImageIntegrityBreakdownSourceIntegrity {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityPhotoBreakdownImageIntegrityBreakdownSourceIntegrity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {PhotoReasons}
-     * @memberof FacialSimilarityPhotoBreakdownImageIntegrityBreakdownSourceIntegrity
-     */
     'properties'?: PhotoReasons;
 }
 /**
  * Asserts whether the person in the live photo is real and not a spoof.
- * @export
- * @interface FacialSimilarityPhotoBreakdownVisualAuthenticity
  */
 export interface FacialSimilarityPhotoBreakdownVisualAuthenticity {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityPhotoBreakdownVisualAuthenticity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdown}
-     * @memberof FacialSimilarityPhotoBreakdownVisualAuthenticity
-     */
     'breakdown'?: FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdown;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdown
- */
 export interface FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdown {
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetection}
-     * @memberof FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdown
-     */
     'spoofing_detection'?: FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetection;
 }
 /**
  * Contains a score value under the properties bag.
- * @export
- * @interface FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetection
  */
 export interface FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetection {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetection
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetectionProperties}
-     * @memberof FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetection
-     */
     'properties'?: FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetectionProperties;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetectionProperties
- */
 export interface FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetectionProperties {
     /**
      * A floating point number between 0 and 1. The closer the score is to 0, the more likely it is to be a spoof.
-     * @type {number}
-     * @memberof FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetectionProperties
      */
     'score'?: number;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityPhotoFullyAutoBreakdown
- */
 export interface FacialSimilarityPhotoFullyAutoBreakdown {
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownFaceComparison}
-     * @memberof FacialSimilarityPhotoFullyAutoBreakdown
-     */
     'face_comparison'?: FacialSimilarityPhotoBreakdownFaceComparison;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoFullyAutoBreakdownImageIntegrity}
-     * @memberof FacialSimilarityPhotoFullyAutoBreakdown
-     */
     'image_integrity'?: FacialSimilarityPhotoFullyAutoBreakdownImageIntegrity;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownVisualAuthenticity}
-     * @memberof FacialSimilarityPhotoFullyAutoBreakdown
-     */
     'visual_authenticity'?: FacialSimilarityPhotoBreakdownVisualAuthenticity;
 }
 /**
  * Asserts whether the quality and integrity of the uploaded files were sufficient to perform a face comparison.
- * @export
- * @interface FacialSimilarityPhotoFullyAutoBreakdownImageIntegrity
  */
 export interface FacialSimilarityPhotoFullyAutoBreakdownImageIntegrity {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityPhotoFullyAutoBreakdownImageIntegrity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoFullyAutoBreakdownImageIntegrityBreakdown}
-     * @memberof FacialSimilarityPhotoFullyAutoBreakdownImageIntegrity
-     */
     'breakdown'?: FacialSimilarityPhotoFullyAutoBreakdownImageIntegrityBreakdown;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityPhotoFullyAutoBreakdownImageIntegrityBreakdown
- */
 export interface FacialSimilarityPhotoFullyAutoBreakdownImageIntegrityBreakdown {
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownImageIntegrityBreakdownFaceDetected}
-     * @memberof FacialSimilarityPhotoFullyAutoBreakdownImageIntegrityBreakdown
-     */
     'face_detected'?: FacialSimilarityPhotoBreakdownImageIntegrityBreakdownFaceDetected;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoFullyAutoBreakdownImageIntegrityBreakdownSourceIntegrity}
-     * @memberof FacialSimilarityPhotoFullyAutoBreakdownImageIntegrityBreakdown
-     */
     'source_integrity'?: FacialSimilarityPhotoFullyAutoBreakdownImageIntegrityBreakdownSourceIntegrity;
 }
 /**
  * Asserts whether the live photo is trustworthy - i.e. not digitally tampered, from a fake webcam, or from other dubious sources.
- * @export
- * @interface FacialSimilarityPhotoFullyAutoBreakdownImageIntegrityBreakdownSourceIntegrity
  */
 export interface FacialSimilarityPhotoFullyAutoBreakdownImageIntegrityBreakdownSourceIntegrity {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityPhotoFullyAutoBreakdownImageIntegrityBreakdownSourceIntegrity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {PhotoAutoReasons}
-     * @memberof FacialSimilarityPhotoFullyAutoBreakdownImageIntegrityBreakdownSourceIntegrity
-     */
     'properties'?: PhotoAutoReasons;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityPhotoFullyAutoProperties
- */
 export interface FacialSimilarityPhotoFullyAutoProperties {
     /**
      * A floating point number between 0 and 1. The closer the score is to 0, the more likely it is to be a spoof (i.e. photos of printed photos, or photos of digital screens). Conversely, the closer it is to 1, the less likely it is to be a spoof. 
-     * @type {number}
-     * @memberof FacialSimilarityPhotoFullyAutoProperties
      */
     'score'?: number;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityPhotoFullyAutoReport
- */
 export interface FacialSimilarityPhotoFullyAutoReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
-     */
     'name': ReportName;
     /**
      * Array of objects with document ids that were used in the Onfido engine.
-     * @type {Array<ReportDocument>}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
      */
     'documents'?: Array<ReportDocument>;
     /**
      * Array of objects with live photo ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
      */
     'live_photos'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with live video ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
      */
     'live_videos'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with motion capture ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
      */
     'motion_captures'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with id photo ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
      */
     'id_photos'?: Array<FacialSimilarityReportMedia>;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoFullyAutoBreakdown}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
-     */
     'breakdown'?: FacialSimilarityPhotoFullyAutoBreakdown;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoFullyAutoProperties}
-     * @memberof FacialSimilarityPhotoFullyAutoReport
-     */
     'properties'?: FacialSimilarityPhotoFullyAutoProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface FacialSimilarityPhotoProperties
- */
 export interface FacialSimilarityPhotoProperties {
     /**
      * A floating point number between 0 and 1. The closer the score is to 0, the more likely it is to be a spoof (i.e. photos of printed photos, or photos of digital screens). Conversely, the closer it is to 1, the less likely it is to be a spoof. 
-     * @type {number}
-     * @memberof FacialSimilarityPhotoProperties
      */
     'score'?: number;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityPhotoReport
- */
 export interface FacialSimilarityPhotoReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityPhotoReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityPhotoReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityPhotoReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof FacialSimilarityPhotoReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof FacialSimilarityPhotoReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof FacialSimilarityPhotoReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityPhotoReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof FacialSimilarityPhotoReport
-     */
     'name': ReportName;
     /**
      * Array of objects with document ids that were used in the Onfido engine.
-     * @type {Array<ReportDocument>}
-     * @memberof FacialSimilarityPhotoReport
      */
     'documents'?: Array<ReportDocument>;
     /**
      * Array of objects with live photo ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityPhotoReport
      */
     'live_photos'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with live video ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityPhotoReport
      */
     'live_videos'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with motion capture ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityPhotoReport
      */
     'motion_captures'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with id photo ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityPhotoReport
      */
     'id_photos'?: Array<FacialSimilarityReportMedia>;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdown}
-     * @memberof FacialSimilarityPhotoReport
-     */
     'breakdown'?: FacialSimilarityPhotoBreakdown;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoProperties}
-     * @memberof FacialSimilarityPhotoReport
-     */
     'properties'?: FacialSimilarityPhotoProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface FacialSimilarityReportMedia
- */
 export interface FacialSimilarityReportMedia {
     /**
      * ID of uploaded biometric media to use.
-     * @type {string}
-     * @memberof FacialSimilarityReportMedia
      */
     'id': string;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityReportShared
- */
 export interface FacialSimilarityReportShared {
     /**
      * Array of objects with document ids that were used in the Onfido engine.
-     * @type {Array<ReportDocument>}
-     * @memberof FacialSimilarityReportShared
      */
     'documents'?: Array<ReportDocument>;
     /**
      * Array of objects with live photo ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityReportShared
      */
     'live_photos'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with live video ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityReportShared
      */
     'live_videos'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with motion capture ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityReportShared
      */
     'motion_captures'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with id photo ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityReportShared
      */
     'id_photos'?: Array<FacialSimilarityReportMedia>;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityVideoBreakdown
- */
 export interface FacialSimilarityVideoBreakdown {
-    /**
-     * 
-     * @type {FacialSimilarityVideoBreakdownFaceComparison}
-     * @memberof FacialSimilarityVideoBreakdown
-     */
     'face_comparison'?: FacialSimilarityVideoBreakdownFaceComparison;
-    /**
-     * 
-     * @type {FacialSimilarityVideoBreakdownImageIntegrity}
-     * @memberof FacialSimilarityVideoBreakdown
-     */
     'image_integrity'?: FacialSimilarityVideoBreakdownImageIntegrity;
-    /**
-     * 
-     * @type {FacialSimilarityVideoBreakdownVisualAuthenticity}
-     * @memberof FacialSimilarityVideoBreakdown
-     */
     'visual_authenticity'?: FacialSimilarityVideoBreakdownVisualAuthenticity;
 }
 /**
  * Asserts whether the face in the document matches the face in the live video.
- * @export
- * @interface FacialSimilarityVideoBreakdownFaceComparison
  */
 export interface FacialSimilarityVideoBreakdownFaceComparison {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityVideoBreakdownFaceComparison
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownFaceComparisonBreakdown}
-     * @memberof FacialSimilarityVideoBreakdownFaceComparison
-     */
     'breakdown'?: FacialSimilarityPhotoBreakdownFaceComparisonBreakdown;
 }
 /**
  * Asserts whether the quality and integrity of the uploaded files were sufficient to perform a face comparison.
- * @export
- * @interface FacialSimilarityVideoBreakdownImageIntegrity
  */
 export interface FacialSimilarityVideoBreakdownImageIntegrity {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityVideoBreakdownImageIntegrity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {FacialSimilarityVideoBreakdownImageIntegrityBreakdown}
-     * @memberof FacialSimilarityVideoBreakdownImageIntegrity
-     */
     'breakdown'?: FacialSimilarityVideoBreakdownImageIntegrityBreakdown;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityVideoBreakdownImageIntegrityBreakdown
- */
 export interface FacialSimilarityVideoBreakdownImageIntegrityBreakdown {
-    /**
-     * 
-     * @type {FacialSimilarityVideoBreakdownImageIntegrityBreakdownFaceDetected}
-     * @memberof FacialSimilarityVideoBreakdownImageIntegrityBreakdown
-     */
     'face_detected'?: FacialSimilarityVideoBreakdownImageIntegrityBreakdownFaceDetected;
-    /**
-     * 
-     * @type {FacialSimilarityVideoBreakdownImageIntegrityBreakdownSourceIntegrity}
-     * @memberof FacialSimilarityVideoBreakdownImageIntegrityBreakdown
-     */
     'source_integrity'?: FacialSimilarityVideoBreakdownImageIntegrityBreakdownSourceIntegrity;
 }
 /**
  * Asserts a single face of good enough quality has been found in both the document image and the live video.
- * @export
- * @interface FacialSimilarityVideoBreakdownImageIntegrityBreakdownFaceDetected
  */
 export interface FacialSimilarityVideoBreakdownImageIntegrityBreakdownFaceDetected {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityVideoBreakdownImageIntegrityBreakdownFaceDetected
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof FacialSimilarityVideoBreakdownImageIntegrityBreakdownFaceDetected
-     */
     'properties'?: object;
 }
 /**
  * Asserts whether the live video is trustworthy - e.g. not from a fake webcam.
- * @export
- * @interface FacialSimilarityVideoBreakdownImageIntegrityBreakdownSourceIntegrity
  */
 export interface FacialSimilarityVideoBreakdownImageIntegrityBreakdownSourceIntegrity {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityVideoBreakdownImageIntegrityBreakdownSourceIntegrity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {VideoReasons}
-     * @memberof FacialSimilarityVideoBreakdownImageIntegrityBreakdownSourceIntegrity
-     */
     'properties'?: VideoReasons;
 }
 /**
  * Asserts whether the person in the live video is real (not a spoof) and live.
- * @export
- * @interface FacialSimilarityVideoBreakdownVisualAuthenticity
  */
 export interface FacialSimilarityVideoBreakdownVisualAuthenticity {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityVideoBreakdownVisualAuthenticity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {FacialSimilarityVideoBreakdownVisualAuthenticityBreakdown}
-     * @memberof FacialSimilarityVideoBreakdownVisualAuthenticity
-     */
     'breakdown'?: FacialSimilarityVideoBreakdownVisualAuthenticityBreakdown;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityVideoBreakdownVisualAuthenticityBreakdown
- */
 export interface FacialSimilarityVideoBreakdownVisualAuthenticityBreakdown {
-    /**
-     * 
-     * @type {FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownLivenessDetected}
-     * @memberof FacialSimilarityVideoBreakdownVisualAuthenticityBreakdown
-     */
     'liveness_detected'?: FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownLivenessDetected;
-    /**
-     * 
-     * @type {FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownSpoofingDetection}
-     * @memberof FacialSimilarityVideoBreakdownVisualAuthenticityBreakdown
-     */
     'spoofing_detection'?: FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownSpoofingDetection;
 }
 /**
  * Asserts whether the numbers and head movements were correctly executed.
- * @export
- * @interface FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownLivenessDetected
  */
 export interface FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownLivenessDetected {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownLivenessDetected
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownLivenessDetected
-     */
     'properties'?: object;
 }
 /**
  * Asserts whether the live video is not a spoof (such as videos of digital screens).
- * @export
- * @interface FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownSpoofingDetection
  */
 export interface FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownSpoofingDetection {
-    /**
-     * 
-     * @type {string}
-     * @memberof FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownSpoofingDetection
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetectionProperties}
-     * @memberof FacialSimilarityVideoBreakdownVisualAuthenticityBreakdownSpoofingDetection
-     */
     'properties'?: FacialSimilarityPhotoBreakdownVisualAuthenticityBreakdownSpoofingDetectionProperties;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityVideoProperties
- */
 export interface FacialSimilarityVideoProperties {
     /**
      * A floating point number between 0 and 1. The closer the score is to 0, the more likely it is to be a spoof (i.e. videos of digital screens, masks or print-outs). Conversely, the closer it is to 1, the less likely it is to be a spoof. 
-     * @type {number}
-     * @memberof FacialSimilarityVideoProperties
      */
     'score'?: number;
 }
-/**
- * 
- * @export
- * @interface FacialSimilarityVideoReport
- */
 export interface FacialSimilarityVideoReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityVideoReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityVideoReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityVideoReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof FacialSimilarityVideoReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof FacialSimilarityVideoReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof FacialSimilarityVideoReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof FacialSimilarityVideoReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof FacialSimilarityVideoReport
-     */
     'name': ReportName;
     /**
      * Array of objects with document ids that were used in the Onfido engine.
-     * @type {Array<ReportDocument>}
-     * @memberof FacialSimilarityVideoReport
      */
     'documents'?: Array<ReportDocument>;
     /**
      * Array of objects with live photo ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityVideoReport
      */
     'live_photos'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with live video ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityVideoReport
      */
     'live_videos'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with motion capture ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityVideoReport
      */
     'motion_captures'?: Array<FacialSimilarityReportMedia>;
     /**
      * Array of objects with id photo ids that were used in the Onfido engine.
-     * @type {Array<FacialSimilarityReportMedia>}
-     * @memberof FacialSimilarityVideoReport
      */
     'id_photos'?: Array<FacialSimilarityReportMedia>;
-    /**
-     * 
-     * @type {FacialSimilarityVideoBreakdown}
-     * @memberof FacialSimilarityVideoReport
-     */
     'breakdown'?: FacialSimilarityVideoBreakdown;
-    /**
-     * 
-     * @type {FacialSimilarityVideoProperties}
-     * @memberof FacialSimilarityVideoReport
-     */
     'properties'?: FacialSimilarityVideoProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface IdNumber
- */
 export interface IdNumber {
     /**
      * Type of ID number.
-     * @type {string}
-     * @memberof IdNumber
      */
     'type'?: IdNumberTypeEnum;
     /**
      * Value of ID number
-     * @type {string}
-     * @memberof IdNumber
      */
     'value'?: string;
     /**
      * Two letter code of issuing state (state-issued driving licenses only)
-     * @type {string}
-     * @memberof IdNumber
      */
     'state_code'?: string;
 }
@@ -6610,1284 +2889,545 @@ export const IdNumberTypeEnum = {
 
 export type IdNumberTypeEnum = typeof IdNumberTypeEnum[keyof typeof IdNumberTypeEnum];
 
-/**
- * 
- * @export
- * @interface IdPhoto
- */
 export interface IdPhoto {
     /**
      * The unique identifier for the photo.
-     * @type {string}
-     * @memberof IdPhoto
      */
     'id': string;
     /**
      * The date and time at which the photo was uploaded.
-     * @type {string}
-     * @memberof IdPhoto
      */
     'created_at'?: string;
     /**
      * The uri of this resource.
-     * @type {string}
-     * @memberof IdPhoto
      */
     'href'?: string;
     /**
      * The uri that can be used to download the photo.
-     * @type {string}
-     * @memberof IdPhoto
      */
     'download_href'?: string;
     /**
      * The name of the uploaded file.
-     * @type {string}
-     * @memberof IdPhoto
      */
     'file_name'?: string;
     /**
      * The file type of the uploaded file.
-     * @type {string}
-     * @memberof IdPhoto
      */
     'file_type'?: string;
     /**
      * The size of the file in bytes.
-     * @type {number}
-     * @memberof IdPhoto
      */
     'file_size'?: number;
 }
-/**
- * 
- * @export
- * @interface IdPhotoResponse
- */
 export interface IdPhotoResponse {
     /**
      * The unique identifier for the photo.
-     * @type {string}
-     * @memberof IdPhotoResponse
      */
     'id': string;
     /**
      * The date and time at which the photo was uploaded.
-     * @type {string}
-     * @memberof IdPhotoResponse
      */
     'created_at'?: string;
     /**
      * The uri of this resource.
-     * @type {string}
-     * @memberof IdPhotoResponse
      */
     'href'?: string;
     /**
      * The uri that can be used to download the photo.
-     * @type {string}
-     * @memberof IdPhotoResponse
      */
     'download_href'?: string;
     /**
      * The name of the uploaded file.
-     * @type {string}
-     * @memberof IdPhotoResponse
      */
     'file_name'?: string;
     /**
      * The file type of the uploaded file.
-     * @type {string}
-     * @memberof IdPhotoResponse
      */
     'file_type'?: string;
     /**
      * The size of the file in bytes.
-     * @type {number}
-     * @memberof IdPhotoResponse
      */
     'file_size'?: number;
 }
-/**
- * 
- * @export
- * @interface IdPhotosList
- */
 export interface IdPhotosList {
-    /**
-     * 
-     * @type {Array<IdPhoto>}
-     * @memberof IdPhotosList
-     */
     'id_photos': Array<IdPhoto>;
 }
-/**
- * 
- * @export
- * @interface IdentityEnhancedBreakdown
- */
 export interface IdentityEnhancedBreakdown {
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownSources}
-     * @memberof IdentityEnhancedBreakdown
-     */
     'sources'?: IdentityEnhancedBreakdownSources;
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownAddress}
-     * @memberof IdentityEnhancedBreakdown
-     */
     'address'?: IdentityEnhancedBreakdownAddress;
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownDateOfBirth}
-     * @memberof IdentityEnhancedBreakdown
-     */
     'date_of_birth'?: IdentityEnhancedBreakdownDateOfBirth;
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownMortality}
-     * @memberof IdentityEnhancedBreakdown
-     */
     'mortality'?: IdentityEnhancedBreakdownMortality;
-    /**
-     * 
-     * @type {IdrSsnBreakdown}
-     * @memberof IdentityEnhancedBreakdown
-     */
     'ssn'?: IdrSsnBreakdown;
-    /**
-     * 
-     * @type {IdrSsnBreakdown}
-     * @memberof IdentityEnhancedBreakdown
-     */
     'ssn1'?: IdrSsnBreakdown;
 }
 /**
  * Asserts if the applicant\'s address matches any sources.
- * @export
- * @interface IdentityEnhancedBreakdownAddress
  */
 export interface IdentityEnhancedBreakdownAddress {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdentityEnhancedBreakdownAddress
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownAddressBreakdown}
-     * @memberof IdentityEnhancedBreakdownAddress
-     */
     'breakdown'?: IdentityEnhancedBreakdownAddressBreakdown;
 }
-/**
- * 
- * @export
- * @interface IdentityEnhancedBreakdownAddressBreakdown
- */
 export interface IdentityEnhancedBreakdownAddressBreakdown {
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownAddressBreakdownCreditAgencies}
-     * @memberof IdentityEnhancedBreakdownAddressBreakdown
-     */
     'credit_agencies'?: IdentityEnhancedBreakdownAddressBreakdownCreditAgencies;
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownAddressBreakdownTelephoneDatabase}
-     * @memberof IdentityEnhancedBreakdownAddressBreakdown
-     */
     'telephone_database'?: IdentityEnhancedBreakdownAddressBreakdownTelephoneDatabase;
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownAddressBreakdownVotingRegister}
-     * @memberof IdentityEnhancedBreakdownAddressBreakdown
-     */
     'voting_register'?: IdentityEnhancedBreakdownAddressBreakdownVotingRegister;
 }
 /**
  * The number of address matches against credit agencies.
- * @export
- * @interface IdentityEnhancedBreakdownAddressBreakdownCreditAgencies
  */
 export interface IdentityEnhancedBreakdownAddressBreakdownCreditAgencies {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdentityEnhancedBreakdownAddressBreakdownCreditAgencies
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownAddressBreakdownCreditAgenciesProperties}
-     * @memberof IdentityEnhancedBreakdownAddressBreakdownCreditAgencies
-     */
     'properties'?: IdentityEnhancedBreakdownAddressBreakdownCreditAgenciesProperties;
 }
-/**
- * 
- * @export
- * @interface IdentityEnhancedBreakdownAddressBreakdownCreditAgenciesProperties
- */
 export interface IdentityEnhancedBreakdownAddressBreakdownCreditAgenciesProperties {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdentityEnhancedBreakdownAddressBreakdownCreditAgenciesProperties
-     */
     'number_of_matches'?: string;
 }
 /**
  * Address match against telephone database.
- * @export
- * @interface IdentityEnhancedBreakdownAddressBreakdownTelephoneDatabase
  */
 export interface IdentityEnhancedBreakdownAddressBreakdownTelephoneDatabase {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdentityEnhancedBreakdownAddressBreakdownTelephoneDatabase
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof IdentityEnhancedBreakdownAddressBreakdownTelephoneDatabase
-     */
     'properties'?: object;
 }
 /**
  * Address match against voting register.
- * @export
- * @interface IdentityEnhancedBreakdownAddressBreakdownVotingRegister
  */
 export interface IdentityEnhancedBreakdownAddressBreakdownVotingRegister {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdentityEnhancedBreakdownAddressBreakdownVotingRegister
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof IdentityEnhancedBreakdownAddressBreakdownVotingRegister
-     */
     'properties'?: object;
 }
 /**
  * Asserts if the applicant\'s date of birth matches any sources.
- * @export
- * @interface IdentityEnhancedBreakdownDateOfBirth
  */
 export interface IdentityEnhancedBreakdownDateOfBirth {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdentityEnhancedBreakdownDateOfBirth
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownDateOfBirthBreakdown}
-     * @memberof IdentityEnhancedBreakdownDateOfBirth
-     */
     'breakdown'?: IdentityEnhancedBreakdownDateOfBirthBreakdown;
 }
-/**
- * 
- * @export
- * @interface IdentityEnhancedBreakdownDateOfBirthBreakdown
- */
 export interface IdentityEnhancedBreakdownDateOfBirthBreakdown {
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownDateOfBirthBreakdownCreditAgencies}
-     * @memberof IdentityEnhancedBreakdownDateOfBirthBreakdown
-     */
     'credit_agencies'?: IdentityEnhancedBreakdownDateOfBirthBreakdownCreditAgencies;
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownDateOfBirthBreakdownVotingRegister}
-     * @memberof IdentityEnhancedBreakdownDateOfBirthBreakdown
-     */
     'voting_register'?: IdentityEnhancedBreakdownDateOfBirthBreakdownVotingRegister;
 }
 /**
  * Date of birth match against credit agencies.
- * @export
- * @interface IdentityEnhancedBreakdownDateOfBirthBreakdownCreditAgencies
  */
 export interface IdentityEnhancedBreakdownDateOfBirthBreakdownCreditAgencies {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdentityEnhancedBreakdownDateOfBirthBreakdownCreditAgencies
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof IdentityEnhancedBreakdownDateOfBirthBreakdownCreditAgencies
-     */
     'properties'?: object;
 }
 /**
  * Date of birth match against voting register.
- * @export
- * @interface IdentityEnhancedBreakdownDateOfBirthBreakdownVotingRegister
  */
 export interface IdentityEnhancedBreakdownDateOfBirthBreakdownVotingRegister {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdentityEnhancedBreakdownDateOfBirthBreakdownVotingRegister
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof IdentityEnhancedBreakdownDateOfBirthBreakdownVotingRegister
-     */
     'properties'?: object;
 }
 /**
  * Asserts if the applicant\'s details match any death records.
- * @export
- * @interface IdentityEnhancedBreakdownMortality
  */
 export interface IdentityEnhancedBreakdownMortality {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdentityEnhancedBreakdownMortality
-     */
     'result'?: string;
 }
 /**
  * Asserts if any sources that an applicant\'s details have been verified against have produced a match.
- * @export
- * @interface IdentityEnhancedBreakdownSources
  */
 export interface IdentityEnhancedBreakdownSources {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdentityEnhancedBreakdownSources
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownSourcesBreakdown}
-     * @memberof IdentityEnhancedBreakdownSources
-     */
     'breakdown'?: IdentityEnhancedBreakdownSourcesBreakdown;
 }
-/**
- * 
- * @export
- * @interface IdentityEnhancedBreakdownSourcesBreakdown
- */
 export interface IdentityEnhancedBreakdownSourcesBreakdown {
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownSourcesBreakdownTotalSources}
-     * @memberof IdentityEnhancedBreakdownSourcesBreakdown
-     */
     'total_sources'?: IdentityEnhancedBreakdownSourcesBreakdownTotalSources;
 }
 /**
  * The number of sources which produced a match to applicant details.
- * @export
- * @interface IdentityEnhancedBreakdownSourcesBreakdownTotalSources
  */
 export interface IdentityEnhancedBreakdownSourcesBreakdownTotalSources {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdentityEnhancedBreakdownSourcesBreakdownTotalSources
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdownSourcesBreakdownTotalSourcesProperties}
-     * @memberof IdentityEnhancedBreakdownSourcesBreakdownTotalSources
-     */
     'properties'?: IdentityEnhancedBreakdownSourcesBreakdownTotalSourcesProperties;
 }
-/**
- * 
- * @export
- * @interface IdentityEnhancedBreakdownSourcesBreakdownTotalSourcesProperties
- */
 export interface IdentityEnhancedBreakdownSourcesBreakdownTotalSourcesProperties {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdentityEnhancedBreakdownSourcesBreakdownTotalSourcesProperties
-     */
     'total_number_of_sources'?: string;
 }
-/**
- * 
- * @export
- * @interface IdentityEnhancedProperties
- */
 export interface IdentityEnhancedProperties {
     /**
      * Returns address number which has been matched.
-     * @type {number}
-     * @memberof IdentityEnhancedProperties
      */
     'matched_address'?: number;
     /**
      * Returns array of sources which contain matched addresses for the corresponding address number.
-     * @type {Array<IdentityEnhancedPropertiesMatchedAddressesInner>}
-     * @memberof IdentityEnhancedProperties
      */
     'matched_addresses'?: Array<IdentityEnhancedPropertiesMatchedAddressesInner>;
 }
-/**
- * 
- * @export
- * @interface IdentityEnhancedPropertiesMatchedAddressesInner
- */
 export interface IdentityEnhancedPropertiesMatchedAddressesInner {
     /**
      * The address number.
-     * @type {number}
-     * @memberof IdentityEnhancedPropertiesMatchedAddressesInner
      */
     'id'?: number;
     /**
      * Sources which contain matched addresses.
-     * @type {Array<string>}
-     * @memberof IdentityEnhancedPropertiesMatchedAddressesInner
      */
     'match_types'?: Array<string>;
 }
-/**
- * 
- * @export
- * @interface IdentityEnhancedReport
- */
 export interface IdentityEnhancedReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof IdentityEnhancedReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof IdentityEnhancedReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof IdentityEnhancedReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof IdentityEnhancedReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof IdentityEnhancedReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof IdentityEnhancedReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof IdentityEnhancedReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof IdentityEnhancedReport
-     */
     'name': ReportName;
-    /**
-     * 
-     * @type {IdentityEnhancedBreakdown}
-     * @memberof IdentityEnhancedReport
-     */
     'breakdown'?: IdentityEnhancedBreakdown;
-    /**
-     * 
-     * @type {IdentityEnhancedProperties}
-     * @memberof IdentityEnhancedReport
-     */
     'properties'?: IdentityEnhancedProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface IdrSsnBreakdown
- */
 export interface IdrSsnBreakdown {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdrSsnBreakdown
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {IdrSsnBreakdownBreakdown}
-     * @memberof IdrSsnBreakdown
-     */
     'breakdown'?: IdrSsnBreakdownBreakdown;
 }
-/**
- * 
- * @export
- * @interface IdrSsnBreakdownBreakdown
- */
 export interface IdrSsnBreakdownBreakdown {
-    /**
-     * 
-     * @type {IdrSsnBreakdownBreakdownLast4DigitsMatch}
-     * @memberof IdrSsnBreakdownBreakdown
-     */
     'last_4_digits_match'?: IdrSsnBreakdownBreakdownLast4DigitsMatch;
-    /**
-     * 
-     * @type {IdrSsnBreakdownBreakdownFullMatch}
-     * @memberof IdrSsnBreakdownBreakdown
-     */
     'full_match'?: IdrSsnBreakdownBreakdownFullMatch;
 }
 /**
  * Social security number fully matches
- * @export
- * @interface IdrSsnBreakdownBreakdownFullMatch
  */
 export interface IdrSsnBreakdownBreakdownFullMatch {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdrSsnBreakdownBreakdownFullMatch
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof IdrSsnBreakdownBreakdownFullMatch
-     */
     'properties'?: object;
 }
 /**
  * Last 4 digits of social security number match
- * @export
- * @interface IdrSsnBreakdownBreakdownLast4DigitsMatch
  */
 export interface IdrSsnBreakdownBreakdownLast4DigitsMatch {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdrSsnBreakdownBreakdownLast4DigitsMatch
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {object}
-     * @memberof IdrSsnBreakdownBreakdownLast4DigitsMatch
-     */
     'properties'?: object;
 }
-/**
- * 
- * @export
- * @interface IndiaPanReport
- */
 export interface IndiaPanReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof IndiaPanReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof IndiaPanReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof IndiaPanReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof IndiaPanReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof IndiaPanReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof IndiaPanReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof IndiaPanReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof IndiaPanReport
-     */
     'name': ReportName;
-    /**
-     * 
-     * @type {IndiaPanReportAllOfBreakdown}
-     * @memberof IndiaPanReport
-     */
     'breakdown'?: IndiaPanReportAllOfBreakdown;
-    /**
-     * 
-     * @type {IndiaPanReportAllOfProperties}
-     * @memberof IndiaPanReport
-     */
     'properties'?: IndiaPanReportAllOfProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface IndiaPanReportAllOfBreakdown
- */
 export interface IndiaPanReportAllOfBreakdown {
-    /**
-     * 
-     * @type {IndiaPanReportAllOfBreakdownDevice}
-     * @memberof IndiaPanReportAllOfBreakdown
-     */
     'device'?: IndiaPanReportAllOfBreakdownDevice;
 }
-/**
- * 
- * @export
- * @interface IndiaPanReportAllOfBreakdownDevice
- */
 export interface IndiaPanReportAllOfBreakdownDevice {
-    /**
-     * 
-     * @type {IndiaPanReportAllOfBreakdownDeviceBreakdown}
-     * @memberof IndiaPanReportAllOfBreakdownDevice
-     */
     'breakdown'?: IndiaPanReportAllOfBreakdownDeviceBreakdown;
 }
-/**
- * 
- * @export
- * @interface IndiaPanReportAllOfBreakdownDeviceBreakdown
- */
 export interface IndiaPanReportAllOfBreakdownDeviceBreakdown {
-    /**
-     * 
-     * @type {IndiaPanReportAllOfBreakdownDeviceBreakdownPanValid}
-     * @memberof IndiaPanReportAllOfBreakdownDeviceBreakdown
-     */
     'pan_valid'?: IndiaPanReportAllOfBreakdownDeviceBreakdownPanValid;
-    /**
-     * 
-     * @type {IndiaPanReportAllOfBreakdownDeviceBreakdownPanValid}
-     * @memberof IndiaPanReportAllOfBreakdownDeviceBreakdown
-     */
     'name_match'?: IndiaPanReportAllOfBreakdownDeviceBreakdownPanValid;
 }
-/**
- * 
- * @export
- * @interface IndiaPanReportAllOfBreakdownDeviceBreakdownPanValid
- */
 export interface IndiaPanReportAllOfBreakdownDeviceBreakdownPanValid {
-    /**
-     * 
-     * @type {string}
-     * @memberof IndiaPanReportAllOfBreakdownDeviceBreakdownPanValid
-     */
     'result'?: string;
 }
-/**
- * 
- * @export
- * @interface IndiaPanReportAllOfProperties
- */
 export interface IndiaPanReportAllOfProperties {
-    /**
-     * 
-     * @type {IndiaPanReportAllOfPropertiesDevice}
-     * @memberof IndiaPanReportAllOfProperties
-     */
     'device'?: IndiaPanReportAllOfPropertiesDevice;
 }
-/**
- * 
- * @export
- * @interface IndiaPanReportAllOfPropertiesDevice
- */
 export interface IndiaPanReportAllOfPropertiesDevice {
     /**
      * The applicant\'s PAN (10 digit alphanumeric number).
-     * @type {string}
-     * @memberof IndiaPanReportAllOfPropertiesDevice
      */
     'pan'?: string;
     /**
      * The applicant\'s full name.
-     * @type {string}
-     * @memberof IndiaPanReportAllOfPropertiesDevice
      */
     'full_name'?: string;
 }
-/**
- * 
- * @export
- * @interface KnownFacesBreakdown
- */
 export interface KnownFacesBreakdown {
-    /**
-     * 
-     * @type {KnownFacesBreakdownPreviouslySeenFaces}
-     * @memberof KnownFacesBreakdown
-     */
     'previously_seen_faces'?: KnownFacesBreakdownPreviouslySeenFaces;
-    /**
-     * 
-     * @type {KnownFacesBreakdownImageIntegrity}
-     * @memberof KnownFacesBreakdown
-     */
     'image_integrity'?: KnownFacesBreakdownImageIntegrity;
 }
 /**
  * Asserts whether the uploaded live photo or live video and the content contained within it were of sufficient quality to perform a face comparison.
- * @export
- * @interface KnownFacesBreakdownImageIntegrity
  */
 export interface KnownFacesBreakdownImageIntegrity {
-    /**
-     * 
-     * @type {string}
-     * @memberof KnownFacesBreakdownImageIntegrity
-     */
     'result'?: string;
 }
 /**
  * Asserts whether the applicant\'s most recent facial media (live photo or live video) matches any other live photos or live videos already in your Onfido account database.
- * @export
- * @interface KnownFacesBreakdownPreviouslySeenFaces
  */
 export interface KnownFacesBreakdownPreviouslySeenFaces {
-    /**
-     * 
-     * @type {string}
-     * @memberof KnownFacesBreakdownPreviouslySeenFaces
-     */
     'result'?: string;
 }
-/**
- * 
- * @export
- * @interface KnownFacesProperties
- */
 export interface KnownFacesProperties {
     /**
      * Returns any matching applicant IDs as entries inside a matches array under a properties bag.
-     * @type {Array<KnownFacesPropertiesMatchesInner>}
-     * @memberof KnownFacesProperties
      */
     'matches'?: Array<KnownFacesPropertiesMatchesInner>;
 }
-/**
- * 
- * @export
- * @interface KnownFacesPropertiesMatchesInner
- */
 export interface KnownFacesPropertiesMatchesInner {
     /**
      * The applicant ID of the matched applicant.
-     * @type {string}
-     * @memberof KnownFacesPropertiesMatchesInner
      */
     'applicant_id'?: string;
     /**
      * A floating point number between 0 and 1 that expresses how similar the two faces are, where 1 is a perfect match.
-     * @type {number}
-     * @memberof KnownFacesPropertiesMatchesInner
      */
     'score'?: number;
     /**
      * The corresponding UUID for the media type.
-     * @type {string}
-     * @memberof KnownFacesPropertiesMatchesInner
      */
     'media_id'?: string;
     /**
      * The media type (for example live_photos or live_videos).
-     * @type {string}
-     * @memberof KnownFacesPropertiesMatchesInner
      */
     'media_type'?: string;
     /**
      * Indicates if match is suspected based on fuzzy name matching feature. Dependent on feature being active for account, otherwise defaults to true.
-     * @type {boolean}
-     * @memberof KnownFacesPropertiesMatchesInner
      */
     'suspected'?: boolean;
 }
-/**
- * 
- * @export
- * @interface KnownFacesReport
- */
 export interface KnownFacesReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof KnownFacesReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof KnownFacesReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof KnownFacesReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof KnownFacesReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof KnownFacesReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof KnownFacesReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof KnownFacesReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof KnownFacesReport
-     */
     'name': ReportName;
-    /**
-     * 
-     * @type {KnownFacesBreakdown}
-     * @memberof KnownFacesReport
-     */
     'breakdown'?: KnownFacesBreakdown;
-    /**
-     * 
-     * @type {KnownFacesProperties}
-     * @memberof KnownFacesReport
-     */
     'properties'?: KnownFacesProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface LivePhoto
- */
 export interface LivePhoto {
     /**
      * The unique identifier for the photo.
-     * @type {string}
-     * @memberof LivePhoto
      */
     'id': string;
     /**
      * The date and time at which the photo was uploaded.
-     * @type {string}
-     * @memberof LivePhoto
      */
     'created_at'?: string;
     /**
      * The uri of this resource.
-     * @type {string}
-     * @memberof LivePhoto
      */
     'href'?: string;
     /**
      * The uri that can be used to download the photo.
-     * @type {string}
-     * @memberof LivePhoto
      */
     'download_href'?: string;
     /**
      * The name of the uploaded file.
-     * @type {string}
-     * @memberof LivePhoto
      */
     'file_name'?: string;
     /**
      * The file type of the uploaded file.
-     * @type {string}
-     * @memberof LivePhoto
      */
     'file_type'?: string;
     /**
      * The size of the file in bytes.
-     * @type {number}
-     * @memberof LivePhoto
      */
     'file_size'?: number;
 }
-/**
- * 
- * @export
- * @interface LivePhotoResponse
- */
 export interface LivePhotoResponse {
     /**
      * The unique identifier for the photo.
-     * @type {string}
-     * @memberof LivePhotoResponse
      */
     'id': string;
     /**
      * The date and time at which the photo was uploaded.
-     * @type {string}
-     * @memberof LivePhotoResponse
      */
     'created_at'?: string;
     /**
      * The uri of this resource.
-     * @type {string}
-     * @memberof LivePhotoResponse
      */
     'href'?: string;
     /**
      * The uri that can be used to download the photo.
-     * @type {string}
-     * @memberof LivePhotoResponse
      */
     'download_href'?: string;
     /**
      * The name of the uploaded file.
-     * @type {string}
-     * @memberof LivePhotoResponse
      */
     'file_name'?: string;
     /**
      * The file type of the uploaded file.
-     * @type {string}
-     * @memberof LivePhotoResponse
      */
     'file_type'?: string;
     /**
      * The size of the file in bytes.
-     * @type {number}
-     * @memberof LivePhotoResponse
      */
     'file_size'?: number;
 }
-/**
- * 
- * @export
- * @interface LivePhotosList
- */
 export interface LivePhotosList {
-    /**
-     * 
-     * @type {Array<LivePhoto>}
-     * @memberof LivePhotosList
-     */
     'live_photos': Array<LivePhoto>;
 }
-/**
- * 
- * @export
- * @interface LiveVideo
- */
 export interface LiveVideo {
     /**
      * The unique identifier for the video.
-     * @type {string}
-     * @memberof LiveVideo
      */
     'id'?: string;
     /**
      * The date and time at which the video was uploaded.
-     * @type {string}
-     * @memberof LiveVideo
      */
     'created_at'?: string;
     /**
      * The uri of this resource.
-     * @type {string}
-     * @memberof LiveVideo
      */
     'href'?: string;
     /**
      * The uri that can be used to download the video.
-     * @type {string}
-     * @memberof LiveVideo
      */
     'download_href'?: string;
     /**
      * The name of the uploaded file.
-     * @type {string}
-     * @memberof LiveVideo
      */
     'file_name'?: string;
     /**
      * The size of the file in bytes.
-     * @type {number}
-     * @memberof LiveVideo
      */
     'file_size'?: number;
     /**
      * The file type of the uploaded file.
-     * @type {string}
-     * @memberof LiveVideo
      */
     'file_type'?: string;
     /**
      * Challenge the end user was asked to perform during the video recording.
-     * @type {Array<{ [key: string]: any; }>}
-     * @memberof LiveVideo
      */
     'challenge'?: Array<{ [key: string]: any; }>;
 }
-/**
- * 
- * @export
- * @interface LiveVideosList
- */
 export interface LiveVideosList {
-    /**
-     * 
-     * @type {Array<LiveVideo>}
-     * @memberof LiveVideosList
-     */
     'live_videos': Array<LiveVideo>;
 }
-/**
- * 
- * @export
- * @interface Location
- */
 export interface Location {
     /**
      * The applicant\'s ip address.
-     * @type {string}
-     * @memberof Location
      */
     'ip_address'?: string;
     /**
      * The applicant\'s country of residence in 3-letter ISO code.
-     * @type {CountryCodes}
-     * @memberof Location
      */
     'country_of_residence'?: CountryCodes;
 }
 
 
-/**
- * 
- * @export
- * @interface LocationBuilder
- */
 export interface LocationBuilder {
     /**
      * The applicant\'s ip address.
-     * @type {string}
-     * @memberof LocationBuilder
      */
     'ip_address'?: string;
     /**
      * The applicant\'s country of residence in 3-letter ISO code.
-     * @type {CountryCodes}
-     * @memberof LocationBuilder
      */
     'country_of_residence'?: CountryCodes;
 }
 
 
-/**
- * 
- * @export
- * @interface LocationShared
- */
 export interface LocationShared {
     /**
      * The applicant\'s ip address.
-     * @type {string}
-     * @memberof LocationShared
      */
     'ip_address'?: string;
     /**
      * The applicant\'s country of residence in 3-letter ISO code.
-     * @type {CountryCodes}
-     * @memberof LocationShared
      */
     'country_of_residence'?: CountryCodes;
 }
 
 
-/**
- * 
- * @export
- * @interface ModelError
- */
 export interface ModelError {
-    /**
-     * 
-     * @type {ErrorProperties}
-     * @memberof ModelError
-     */
     'error'?: ErrorProperties;
 }
-/**
- * 
- * @export
- * @interface MotionCapture
- */
 export interface MotionCapture {
     /**
      * The unique identifier for the motion capture.
-     * @type {string}
-     * @memberof MotionCapture
      */
     'id'?: string;
     /**
      * The date and time at which the motion capture was uploaded.
-     * @type {string}
-     * @memberof MotionCapture
      */
     'created_at'?: string;
     /**
      * The uri of this resource.
-     * @type {string}
-     * @memberof MotionCapture
      */
     'href'?: string;
     /**
      * The uri that can be used to download the motion capture.
-     * @type {string}
-     * @memberof MotionCapture
      */
     'download_href'?: string;
     /**
      * The name of the uploaded file.
-     * @type {string}
-     * @memberof MotionCapture
      */
     'file_name'?: string;
     /**
      * The size of the file in bytes.
-     * @type {number}
-     * @memberof MotionCapture
      */
     'file_size'?: number;
     /**
      * The file type of the uploaded file.
-     * @type {string}
-     * @memberof MotionCapture
      */
     'file_type'?: string;
 }
-/**
- * 
- * @export
- * @interface MotionCapturesList
- */
 export interface MotionCapturesList {
-    /**
-     * 
-     * @type {Array<MotionCapture>}
-     * @memberof MotionCapturesList
-     */
     'motion_captures': Array<MotionCapture>;
 }
-/**
- * 
- * @export
- * @interface Passkey
- */
 export interface Passkey {
     /**
      * Passkey identifier.
-     * @type {string}
-     * @memberof Passkey
      */
     'id': string;
     /**
      * domain that the passkey is registered to, the rpId.
-     * @type {string}
-     * @memberof Passkey
      */
     'application_domain': string;
     /**
      * Current passkey state.
-     * @type {string}
-     * @memberof Passkey
      */
     'state': PasskeyStateEnum;
     /**
      * Timestamp when the passkey was created.
-     * @type {string}
-     * @memberof Passkey
      */
     'created_at': string;
     /**
      * Timestamp when the passkey was last used.
-     * @type {string}
-     * @memberof Passkey
      */
     'last_used_at'?: string;
 }
@@ -7900,16 +3440,9 @@ export const PasskeyStateEnum = {
 
 export type PasskeyStateEnum = typeof PasskeyStateEnum[keyof typeof PasskeyStateEnum];
 
-/**
- * 
- * @export
- * @interface PasskeyUpdater
- */
 export interface PasskeyUpdater {
     /**
      * Desired passkey state value.
-     * @type {string}
-     * @memberof PasskeyUpdater
      */
     'state': PasskeyUpdaterStateEnum;
 }
@@ -7922,278 +3455,121 @@ export const PasskeyUpdaterStateEnum = {
 
 export type PasskeyUpdaterStateEnum = typeof PasskeyUpdaterStateEnum[keyof typeof PasskeyUpdaterStateEnum];
 
-/**
- * 
- * @export
- * @interface PasskeysList
- */
 export interface PasskeysList {
-    /**
-     * 
-     * @type {Array<Passkey>}
-     * @memberof PasskeysList
-     */
     'passkeys': Array<Passkey>;
 }
-/**
- * 
- * @export
- * @interface PhotoAutoReasons
- */
 export interface PhotoAutoReasons {
     /**
      * Flags when evidence is found that the image was manipulated by Photoshop, or other software.
-     * @type {string}
-     * @memberof PhotoAutoReasons
      */
     'digital_tampering'?: string;
     /**
      * Flags when evidence is found that a fake webcam was used.
-     * @type {string}
-     * @memberof PhotoAutoReasons
      */
     'fake_webcam'?: string;
     /**
      * Flags when evidence is found that the live photo was taken more than 24 hours before live photo upload.
-     * @type {string}
-     * @memberof PhotoAutoReasons
      */
     'time_of_capture'?: string;
     /**
      * Flags when evidence is found that an Android emulator was used.
-     * @type {string}
-     * @memberof PhotoAutoReasons
      */
     'emulator'?: string;
     /**
      * Additional comma separated details such as the exact digital tampering software used, or the name of the fake webcam.
-     * @type {string}
-     * @memberof PhotoAutoReasons
      */
     'reasons'?: string;
 }
-/**
- * 
- * @export
- * @interface PhotoReasons
- */
 export interface PhotoReasons {
     /**
      * Flags when evidence is found that the image was manipulated by Photoshop, or other software.
-     * @type {string}
-     * @memberof PhotoReasons
      */
     'digital_tampering'?: string;
     /**
      * Flags when evidence is found that a fake webcam was used.
-     * @type {string}
-     * @memberof PhotoReasons
      */
     'fake_webcam'?: string;
     /**
      * Flags when evidence is found that the live photo was taken more than 24 hours before live photo upload.
-     * @type {string}
-     * @memberof PhotoReasons
      */
     'time_of_capture'?: string;
     /**
      * Flags when evidence is found that an Android emulator was used.
-     * @type {string}
-     * @memberof PhotoReasons
      */
     'emulator'?: string;
     /**
      * Additional comma separated details such as the exact digital tampering software used, or the name of the fake webcam.
-     * @type {string}
-     * @memberof PhotoReasons
      */
     'reasons'?: string;
 }
-/**
- * 
- * @export
- * @interface ProofOfAddressBreakdown
- */
 export interface ProofOfAddressBreakdown {
-    /**
-     * 
-     * @type {ProofOfAddressBreakdownDataComparison}
-     * @memberof ProofOfAddressBreakdown
-     */
     'data_comparison'?: ProofOfAddressBreakdownDataComparison;
-    /**
-     * 
-     * @type {ProofOfAddressBreakdownDocumentClassification}
-     * @memberof ProofOfAddressBreakdown
-     */
     'document_classification'?: ProofOfAddressBreakdownDocumentClassification;
-    /**
-     * 
-     * @type {ProofOfAddressBreakdownImageIntegrity}
-     * @memberof ProofOfAddressBreakdown
-     */
     'image_integrity'?: ProofOfAddressBreakdownImageIntegrity;
 }
 /**
  * Asserts whether the first name, last name and address provided by the applicant match those on the PoA document.
- * @export
- * @interface ProofOfAddressBreakdownDataComparison
  */
 export interface ProofOfAddressBreakdownDataComparison {
-    /**
-     * 
-     * @type {string}
-     * @memberof ProofOfAddressBreakdownDataComparison
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {ProofOfAddressBreakdownDataComparisonBreakdown}
-     * @memberof ProofOfAddressBreakdownDataComparison
-     */
     'breakdown'?: ProofOfAddressBreakdownDataComparisonBreakdown;
 }
-/**
- * 
- * @export
- * @interface ProofOfAddressBreakdownDataComparisonBreakdown
- */
 export interface ProofOfAddressBreakdownDataComparisonBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof ProofOfAddressBreakdownDataComparisonBreakdown
-     */
     'address'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof ProofOfAddressBreakdownDataComparisonBreakdown
-     */
     'first_name'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof ProofOfAddressBreakdownDataComparisonBreakdown
-     */
     'last_name'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
 }
 /**
  * Asserts whether the document is of a valid type as PoA.
- * @export
- * @interface ProofOfAddressBreakdownDocumentClassification
  */
 export interface ProofOfAddressBreakdownDocumentClassification {
-    /**
-     * 
-     * @type {string}
-     * @memberof ProofOfAddressBreakdownDocumentClassification
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {ProofOfAddressBreakdownDocumentClassificationBreakdown}
-     * @memberof ProofOfAddressBreakdownDocumentClassification
-     */
     'breakdown'?: ProofOfAddressBreakdownDocumentClassificationBreakdown;
 }
-/**
- * 
- * @export
- * @interface ProofOfAddressBreakdownDocumentClassificationBreakdown
- */
 export interface ProofOfAddressBreakdownDocumentClassificationBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof ProofOfAddressBreakdownDocumentClassificationBreakdown
-     */
     'supported_document'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
 }
 /**
  * Asserts whether the quality of the uploaded document was sufficient to verify the address.
- * @export
- * @interface ProofOfAddressBreakdownImageIntegrity
  */
 export interface ProofOfAddressBreakdownImageIntegrity {
-    /**
-     * 
-     * @type {string}
-     * @memberof ProofOfAddressBreakdownImageIntegrity
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {ProofOfAddressBreakdownImageIntegrityBreakdown}
-     * @memberof ProofOfAddressBreakdownImageIntegrity
-     */
     'breakdown'?: ProofOfAddressBreakdownImageIntegrityBreakdown;
 }
-/**
- * 
- * @export
- * @interface ProofOfAddressBreakdownImageIntegrityBreakdown
- */
 export interface ProofOfAddressBreakdownImageIntegrityBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof ProofOfAddressBreakdownImageIntegrityBreakdown
-     */
     'image_quality'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
 }
-/**
- * 
- * @export
- * @interface ProofOfAddressProperties
- */
 export interface ProofOfAddressProperties {
     /**
      * This property provides the address on the document.
-     * @type {string}
-     * @memberof ProofOfAddressProperties
      */
     'address'?: string;
     /**
      * This property provides the document type according to the set of supported documents.
-     * @type {string}
-     * @memberof ProofOfAddressProperties
      */
     'document_type'?: ProofOfAddressPropertiesDocumentTypeEnum;
     /**
      * This property provides the first names on the document, including any initials and middle names.
-     * @type {string}
-     * @memberof ProofOfAddressProperties
      */
     'first_names'?: string;
     /**
      * This property provided the last names on the document.
-     * @type {string}
-     * @memberof ProofOfAddressProperties
      */
     'last_names'?: string;
     /**
      * This property provides the issue date of the document.
-     * @type {string}
-     * @memberof ProofOfAddressProperties
      */
     'issue_date'?: string;
     /**
      * This property provides the document issuer (e.g. HSBC, British Gas).
-     * @type {string}
-     * @memberof ProofOfAddressProperties
      */
     'issuer'?: string;
     /**
      * This property provides the summary period start date.
-     * @type {string}
-     * @memberof ProofOfAddressProperties
      */
     'summary_period_start'?: string;
     /**
      * This property provides the summary period end date.
-     * @type {string}
-     * @memberof ProofOfAddressProperties
      */
     'summary_period_end'?: string;
 }
@@ -8222,158 +3598,81 @@ export const ProofOfAddressPropertiesDocumentTypeEnum = {
 
 export type ProofOfAddressPropertiesDocumentTypeEnum = typeof ProofOfAddressPropertiesDocumentTypeEnum[keyof typeof ProofOfAddressPropertiesDocumentTypeEnum];
 
-/**
- * 
- * @export
- * @interface ProofOfAddressReport
- */
 export interface ProofOfAddressReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof ProofOfAddressReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof ProofOfAddressReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof ProofOfAddressReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof ProofOfAddressReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof ProofOfAddressReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof ProofOfAddressReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof ProofOfAddressReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof ProofOfAddressReport
-     */
     'name': ReportName;
-    /**
-     * 
-     * @type {ProofOfAddressBreakdown}
-     * @memberof ProofOfAddressReport
-     */
     'breakdown'?: ProofOfAddressBreakdown;
-    /**
-     * 
-     * @type {ProofOfAddressProperties}
-     * @memberof ProofOfAddressReport
-     */
     'properties'?: ProofOfAddressProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface RepeatAttemptsList
- */
 export interface RepeatAttemptsList {
     /**
      * The unique identifier of the completed Document report.
-     * @type {string}
-     * @memberof RepeatAttemptsList
      */
     'report_id'?: string;
     /**
      * An array of repeat attempt objects. If no repeat attempts were found, the array will be empty. The number of objects returned can increase over time if more matches are received. 
-     * @type {Array<RepeatAttemptsListRepeatAttemptsInner>}
-     * @memberof RepeatAttemptsList
      */
     'repeat_attempts': Array<RepeatAttemptsListRepeatAttemptsInner>;
     /**
      * The total number of attempts using the same document, including the current report under assessment.
-     * @type {number}
-     * @memberof RepeatAttemptsList
      */
     'attempts_count'?: number;
     /**
      * A number between 0 and 1 which indicates the proportion of attempts that have been cleared, including the current report under assessment.
-     * @type {number}
-     * @memberof RepeatAttemptsList
      */
     'attempts_clear_rate'?: number;
     /**
      * The number of unique entries in the repeat_attempts field for which at least one of the fields is a mismatch.
-     * @type {number}
-     * @memberof RepeatAttemptsList
      */
     'unique_mismatches_count'?: number;
 }
-/**
- * 
- * @export
- * @interface RepeatAttemptsListRepeatAttemptsInner
- */
 export interface RepeatAttemptsListRepeatAttemptsInner {
     /**
      * The unique identifier of the matching Document report.
-     * @type {string}
-     * @memberof RepeatAttemptsListRepeatAttemptsInner
      */
     'report_id'?: string;
     /**
      * The unique identifier of the applicant for the matching Document report.
-     * @type {string}
-     * @memberof RepeatAttemptsListRepeatAttemptsInner
      */
     'applicant_id'?: string;
     /**
      * Whether the dates of birth are exactly the same or are different.
-     * @type {string}
-     * @memberof RepeatAttemptsListRepeatAttemptsInner
      */
     'date_of_birth'?: RepeatAttemptsListRepeatAttemptsInnerDateOfBirthEnum;
     /**
      * Whether the names are exactly the same or are different.
-     * @type {string}
-     * @memberof RepeatAttemptsListRepeatAttemptsInner
      */
     'names'?: RepeatAttemptsListRepeatAttemptsInnerNamesEnum;
     /**
      * The report result of this attempt.
-     * @type {string}
-     * @memberof RepeatAttemptsListRepeatAttemptsInner
      */
     'result'?: RepeatAttemptsListRepeatAttemptsInnerResultEnum;
     /**
      * When the matching report was created.
-     * @type {string}
-     * @memberof RepeatAttemptsListRepeatAttemptsInner
      */
     'created_at'?: string;
     /**
      * When the matching report was completed.
-     * @type {string}
-     * @memberof RepeatAttemptsListRepeatAttemptsInner
      */
     'completed_at'?: string;
 }
@@ -8402,51 +3701,21 @@ export type RepeatAttemptsListRepeatAttemptsInnerResultEnum = typeof RepeatAttem
 
 /**
  * @type Report
- * @export
  */
 export type Report = { name: 'device_intelligence' } & DeviceIntelligenceReport | { name: 'document' } & DocumentReport | { name: 'document_video' } & DocumentVideoReport | { name: 'document_video_with_address_information' } & DocumentVideoWithAddressInformationReport | { name: 'document_with_address_information' } & DocumentWithAddressInformationReport | { name: 'document_with_driver_verification' } & DocumentWithDriverVerificationReport | { name: 'document_with_driving_licence_information' } & DocumentWithDrivingLicenceInformationReport | { name: 'facial_similarity_motion' } & FacialSimilarityMotionReport | { name: 'facial_similarity_photo' } & FacialSimilarityPhotoReport | { name: 'facial_similarity_photo_fully_auto' } & FacialSimilarityPhotoFullyAutoReport | { name: 'facial_similarity_video' } & FacialSimilarityVideoReport | { name: 'identity_enhanced' } & IdentityEnhancedReport | { name: 'india_pan' } & IndiaPanReport | { name: 'known_faces' } & KnownFacesReport | { name: 'proof_of_address' } & ProofOfAddressReport | { name: 'us_driving_licence' } & UsDrivingLicenceReport | { name: 'watchlist_aml' } & WatchlistAmlReport | { name: 'watchlist_enhanced' } & WatchlistEnhancedReport | { name: 'watchlist_peps_only' } & WatchlistPepsOnlyReport | { name: 'watchlist_sanctions_only' } & WatchlistSanctionsOnlyReport | { name: 'watchlist_standard' } & WatchlistStandardReport;
 
 /**
  * Defines configuration options for facial similarity checks used to distinguish between onboarding and reverification scenarios. 
- * @export
- * @interface ReportConfiguration
  */
 export interface ReportConfiguration {
-    /**
-     * 
-     * @type {ReportConfigurationFacialSimilarity}
-     * @memberof ReportConfiguration
-     */
     'facial_similarity_photo'?: ReportConfigurationFacialSimilarity;
-    /**
-     * 
-     * @type {ReportConfigurationFacialSimilarity}
-     * @memberof ReportConfiguration
-     */
     'facial_similarity_photo_fully_auto'?: ReportConfigurationFacialSimilarity;
-    /**
-     * 
-     * @type {ReportConfigurationFacialSimilarity}
-     * @memberof ReportConfiguration
-     */
     'facial_similarity_video'?: ReportConfigurationFacialSimilarity;
-    /**
-     * 
-     * @type {ReportConfigurationFacialSimilarity}
-     * @memberof ReportConfiguration
-     */
     'facial_similarity_motion'?: ReportConfigurationFacialSimilarity;
 }
-/**
- * 
- * @export
- * @interface ReportConfigurationFacialSimilarity
- */
 export interface ReportConfigurationFacialSimilarity {
     /**
      * You should set it to \"reverification\" on a post-onboarding scenario (e.g. ongoing authentication). 
-     * @type {string}
-     * @memberof ReportConfigurationFacialSimilarity
      */
     'use_case'?: ReportConfigurationFacialSimilarityUseCaseEnum;
 }
@@ -8459,24 +3728,12 @@ export const ReportConfigurationFacialSimilarityUseCaseEnum = {
 
 export type ReportConfigurationFacialSimilarityUseCaseEnum = typeof ReportConfigurationFacialSimilarityUseCaseEnum[keyof typeof ReportConfigurationFacialSimilarityUseCaseEnum];
 
-/**
- * 
- * @export
- * @interface ReportDocument
- */
 export interface ReportDocument {
     /**
      * ID of uploaded document to use.
-     * @type {string}
-     * @memberof ReportDocument
      */
     'id': string;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const ReportName = {
     Document: 'document',
@@ -8508,8 +3765,6 @@ export type ReportName = typeof ReportName[keyof typeof ReportName];
 
 /**
  * The result of the report. Read-only.
- * @export
- * @enum {string}
  */
 
 export const ReportResult = {
@@ -8522,67 +3777,32 @@ export const ReportResult = {
 export type ReportResult = typeof ReportResult[keyof typeof ReportResult];
 
 
-/**
- * 
- * @export
- * @interface ReportShared
- */
 export interface ReportShared {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof ReportShared
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof ReportShared
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof ReportShared
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof ReportShared
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof ReportShared
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof ReportShared
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof ReportShared
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof ReportShared
-     */
     'name': ReportName;
 }
 
 
 /**
  * The current state of the report in the checking process. Read-only.
- * @export
- * @enum {string}
  */
 
 export const ReportStatus = {
@@ -8599,8 +3819,6 @@ export type ReportStatus = typeof ReportStatus[keyof typeof ReportStatus];
 
 /**
  * The sub_result of the report. It gives a more detailed result for document reports only, and will be null otherwise. Read-only.
- * @export
- * @enum {string}
  */
 
 export const ReportSubResult = {
@@ -8614,47 +3832,24 @@ export const ReportSubResult = {
 export type ReportSubResult = typeof ReportSubResult[keyof typeof ReportSubResult];
 
 
-/**
- * 
- * @export
- * @interface ReportsList
- */
 export interface ReportsList {
-    /**
-     * 
-     * @type {Array<Report>}
-     * @memberof ReportsList
-     */
     'reports': Array<Report>;
 }
-/**
- * 
- * @export
- * @interface ResultsFeedback
- */
 export interface ResultsFeedback {
     /**
      * The expected result for the check or report.
-     * @type {string}
-     * @memberof ResultsFeedback
      */
     'expected_result'?: ResultsFeedbackExpectedResultEnum;
     /**
      * The ID of the check (only if report_id is not provided).
-     * @type {string}
-     * @memberof ResultsFeedback
      */
     'check_id'?: string;
     /**
      * The ID of the check (only if check_id is not provided).
-     * @type {string}
-     * @memberof ResultsFeedback
      */
     'report_id'?: string;
     /**
      * Any additional information or feedback.
-     * @type {string}
-     * @memberof ResultsFeedback
      */
     'feedback_notes'?: string;
 }
@@ -8667,694 +3862,320 @@ export const ResultsFeedbackExpectedResultEnum = {
 
 export type ResultsFeedbackExpectedResultEnum = typeof ResultsFeedbackExpectedResultEnum[keyof typeof ResultsFeedbackExpectedResultEnum];
 
-/**
- * 
- * @export
- * @interface SdkToken
- */
 export interface SdkToken {
     /**
      * The generated SDK token
-     * @type {string}
-     * @memberof SdkToken
      */
     'token': string;
 }
-/**
- * 
- * @export
- * @interface SdkTokenBuilder
- */
 export interface SdkTokenBuilder {
     /**
      * The unique identifier of the applicant
-     * @type {string}
-     * @memberof SdkTokenBuilder
      */
     'applicant_id': string;
     /**
      * The referrer URL pattern
-     * @type {string}
-     * @memberof SdkTokenBuilder
      */
     'referrer'?: string;
     /**
      * The application ID (iOS or Android)
-     * @type {string}
-     * @memberof SdkTokenBuilder
      */
     'application_id'?: string;
     /**
      * The URL to be used by the Web SDK for the cross device flow.
-     * @type {string}
-     * @memberof SdkTokenBuilder
      */
     'cross_device_url'?: string;
 }
-/**
- * 
- * @export
- * @interface SdkTokenRequest
- */
 export interface SdkTokenRequest {
     /**
      * The unique identifier of the applicant
-     * @type {string}
-     * @memberof SdkTokenRequest
      */
     'applicant_id': string;
     /**
      * The referrer URL pattern
-     * @type {string}
-     * @memberof SdkTokenRequest
      */
     'referrer'?: string;
     /**
      * The application ID (iOS or Android)
-     * @type {string}
-     * @memberof SdkTokenRequest
      */
     'application_id'?: string;
     /**
      * The URL to be used by the Web SDK for the cross device flow.
-     * @type {string}
-     * @memberof SdkTokenRequest
      */
     'cross_device_url'?: string;
 }
-/**
- * 
- * @export
- * @interface SdkTokenResponse
- */
 export interface SdkTokenResponse {
     /**
      * The generated SDK token
-     * @type {string}
-     * @memberof SdkTokenResponse
      */
     'token': string;
 }
-/**
- * 
- * @export
- * @interface SigningDocument
- */
 export interface SigningDocument {
     /**
      * The ID of the applicant whose signing document is being uploaded.
-     * @type {string}
-     * @memberof SigningDocument
      */
     'applicant_id'?: string;
     /**
      * The unique identifier for the signing document
-     * @type {string}
-     * @memberof SigningDocument
      */
     'id': string;
     /**
      * The date and time at which the signing document was uploaded
-     * @type {string}
-     * @memberof SigningDocument
      */
     'created_at'?: string;
     /**
      * The uri of this resource
-     * @type {string}
-     * @memberof SigningDocument
      */
     'href'?: string;
     /**
      * The uri that can be used to download the signing document
-     * @type {string}
-     * @memberof SigningDocument
      */
     'download_href'?: string;
     /**
      * The file type of the uploaded file
-     * @type {string}
-     * @memberof SigningDocument
      */
     'file_type'?: string;
     /**
      * The name of the uploaded file
-     * @type {string}
-     * @memberof SigningDocument
      */
     'file_name'?: string;
     /**
      * The size of the file in bytes
-     * @type {number}
-     * @memberof SigningDocument
      */
     'file_size'?: number;
 }
-/**
- * 
- * @export
- * @interface SigningDocumentResponse
- */
 export interface SigningDocumentResponse {
     /**
      * The unique identifier for the signing document
-     * @type {string}
-     * @memberof SigningDocumentResponse
      */
     'id': string;
     /**
      * The date and time at which the signing document was uploaded
-     * @type {string}
-     * @memberof SigningDocumentResponse
      */
     'created_at'?: string;
     /**
      * The uri of this resource
-     * @type {string}
-     * @memberof SigningDocumentResponse
      */
     'href'?: string;
     /**
      * The uri that can be used to download the signing document
-     * @type {string}
-     * @memberof SigningDocumentResponse
      */
     'download_href'?: string;
     /**
      * The file type of the uploaded file
-     * @type {string}
-     * @memberof SigningDocumentResponse
      */
     'file_type'?: string;
     /**
      * The name of the uploaded file
-     * @type {string}
-     * @memberof SigningDocumentResponse
      */
     'file_name'?: string;
     /**
      * The size of the file in bytes
-     * @type {number}
-     * @memberof SigningDocumentResponse
      */
     'file_size'?: number;
 }
-/**
- * 
- * @export
- * @interface SigningDocumentShared
- */
 export interface SigningDocumentShared {
     /**
      * The ID of the applicant whose signing document is being uploaded.
-     * @type {string}
-     * @memberof SigningDocumentShared
      */
     'applicant_id'?: string;
 }
-/**
- * 
- * @export
- * @interface SigningDocumentsList
- */
 export interface SigningDocumentsList {
-    /**
-     * 
-     * @type {Array<SigningDocument>}
-     * @memberof SigningDocumentsList
-     */
     'signing_documents': Array<SigningDocument>;
 }
-/**
- * 
- * @export
- * @interface Task
- */
 export interface Task {
     /**
      * The identifier for the Task.
-     * @type {string}
-     * @memberof Task
      */
     'id'?: string;
     /**
      * The workflow run id the task belongs to.
-     * @type {string}
-     * @memberof Task
      */
     'workflow_run_id'?: string;
     /**
      * The identifier for the Task Definition.
-     * @type {string}
-     * @memberof Task
      */
     'task_def_id'?: string;
     /**
      * The task definition version.
-     * @type {string}
-     * @memberof Task
      */
     'task_def_version'?: string | null;
     /**
      * Input object with the fields used by the Task to execute.
-     * @type {object}
-     * @memberof Task
      */
     'input'?: object;
     /**
      * Value field (it can be an Object, List, etc.) with the fields produced by the Task execution.
-     * @type {object}
-     * @memberof Task
      */
     'output'?: object | null;
     /**
      * The date and time when the Task was created.
-     * @type {string}
-     * @memberof Task
      */
     'created_at'?: string;
     /**
      * The date and time when the Task was last updated.
-     * @type {string}
-     * @memberof Task
      */
     'updated_at'?: string;
 }
-/**
- * 
- * @export
- * @interface TaskItem
- */
 export interface TaskItem {
     /**
      * The identifier for the Task.
-     * @type {string}
-     * @memberof TaskItem
      */
     'id'?: string;
     /**
      * The workflow run id the task belongs to.
-     * @type {string}
-     * @memberof TaskItem
      */
     'workflow_run_id'?: string;
     /**
      * The identifier for the Task Definition.
-     * @type {string}
-     * @memberof TaskItem
      */
     'task_def_id'?: string;
     /**
      * The task definition version.
-     * @type {string}
-     * @memberof TaskItem
      */
     'task_def_version'?: string | null;
     /**
      * The date and time when the Task was created.
-     * @type {string}
-     * @memberof TaskItem
      */
     'created_at'?: string;
     /**
      * The date and time when the Task was last updated.
-     * @type {string}
-     * @memberof TaskItem
      */
     'updated_at'?: string;
 }
-/**
- * 
- * @export
- * @interface TimelineFileReference
- */
 export interface TimelineFileReference {
     /**
      * The unique identifier for the Timefile File that will be created.
-     * @type {string}
-     * @memberof TimelineFileReference
      */
     'workflow_timeline_file_id': string;
     /**
      * Link to access the Timefile File that will be created.
-     * @type {string}
-     * @memberof TimelineFileReference
      */
     'href': string;
 }
-/**
- * 
- * @export
- * @interface UsDrivingLicenceBreakdown
- */
 export interface UsDrivingLicenceBreakdown {
-    /**
-     * 
-     * @type {UsDrivingLicenceBreakdownDocument}
-     * @memberof UsDrivingLicenceBreakdown
-     */
     'document'?: UsDrivingLicenceBreakdownDocument;
-    /**
-     * 
-     * @type {UsDrivingLicenceBreakdownAddress}
-     * @memberof UsDrivingLicenceBreakdown
-     */
     'address'?: UsDrivingLicenceBreakdownAddress;
-    /**
-     * 
-     * @type {UsDrivingLicenceBreakdownPersonal}
-     * @memberof UsDrivingLicenceBreakdown
-     */
     'personal'?: UsDrivingLicenceBreakdownPersonal;
 }
 /**
  * Asserts whether the address data provided matches a real driving license in the DMV driver\'s license database.
- * @export
- * @interface UsDrivingLicenceBreakdownAddress
  */
 export interface UsDrivingLicenceBreakdownAddress {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsDrivingLicenceBreakdownAddress
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {UsDrivingLicenceBreakdownAddressBreakdown}
-     * @memberof UsDrivingLicenceBreakdownAddress
-     */
     'breakdown'?: UsDrivingLicenceBreakdownAddressBreakdown;
 }
-/**
- * 
- * @export
- * @interface UsDrivingLicenceBreakdownAddressBreakdown
- */
 export interface UsDrivingLicenceBreakdownAddressBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownAddressBreakdown
-     */
     'city'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownAddressBreakdown
-     */
     'line_1'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownAddressBreakdown
-     */
     'line_2'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownAddressBreakdown
-     */
     'state_code'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownAddressBreakdown
-     */
     'zip4'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownAddressBreakdown
-     */
     'zip5'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
 }
 /**
  * Asserts whether the document data provided matches a real driving license in the DMV driver\'s license database.
- * @export
- * @interface UsDrivingLicenceBreakdownDocument
  */
 export interface UsDrivingLicenceBreakdownDocument {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsDrivingLicenceBreakdownDocument
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {UsDrivingLicenceBreakdownDocumentBreakdown}
-     * @memberof UsDrivingLicenceBreakdownDocument
-     */
     'breakdown'?: UsDrivingLicenceBreakdownDocumentBreakdown;
 }
-/**
- * 
- * @export
- * @interface UsDrivingLicenceBreakdownDocumentBreakdown
- */
 export interface UsDrivingLicenceBreakdownDocumentBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownDocumentBreakdown
-     */
     'category'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownDocumentBreakdown
-     */
     'expiration_date'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownDocumentBreakdown
-     */
     'issue_date'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownDocumentBreakdown
-     */
     'document_number'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
 }
 /**
  * Asserts whether the personal data provided matches a real driving license in the DMV driver\'s license database.
- * @export
- * @interface UsDrivingLicenceBreakdownPersonal
  */
 export interface UsDrivingLicenceBreakdownPersonal {
-    /**
-     * 
-     * @type {string}
-     * @memberof UsDrivingLicenceBreakdownPersonal
-     */
     'result'?: string;
-    /**
-     * 
-     * @type {UsDrivingLicenceBreakdownPersonalBreakdown}
-     * @memberof UsDrivingLicenceBreakdownPersonal
-     */
     'breakdown'?: UsDrivingLicenceBreakdownPersonalBreakdown;
 }
-/**
- * 
- * @export
- * @interface UsDrivingLicenceBreakdownPersonalBreakdown
- */
 export interface UsDrivingLicenceBreakdownPersonalBreakdown {
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownPersonalBreakdown
-     */
     'first_name'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownPersonalBreakdown
-     */
     'name_suffix'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownPersonalBreakdown
-     */
     'height'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownPersonalBreakdown
-     */
     'weight'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownPersonalBreakdown
-     */
     'sex_code'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownPersonalBreakdown
-     */
     'eye_color'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownPersonalBreakdown
-     */
     'date_of_birth'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownPersonalBreakdown
-     */
     'last_name'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownPersonalBreakdown
-     */
     'middle_name'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownPersonalBreakdown
-     */
     'first_name_fuzzy'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownPersonalBreakdown
-     */
     'middle_name_fuzzy'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownPersonalBreakdown
-     */
     'last_name_fuzzy'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
-    /**
-     * 
-     * @type {DocumentBreakdownDataComparisonBreakdownIssuingCountry}
-     * @memberof UsDrivingLicenceBreakdownPersonalBreakdown
-     */
     'middle_initial'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
 }
-/**
- * 
- * @export
- * @interface UsDrivingLicenceBuilder
- */
 export interface UsDrivingLicenceBuilder {
     /**
      * Driving licence ID number
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'id_number': string;
     /**
      * Two letter code of issuing state (state-issued driving licenses only)
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'issue_state': string;
     /**
      * Line 1 of the address
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'address_line_1'?: string;
     /**
      * Line 2 of the address
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'address_line_2'?: string;
     /**
      * The city of the owner\'s address
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'city'?: string;
     /**
      * Date of birth in yyyy-mm-dd format
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'date_of_birth'?: string;
     /**
      * Document category.
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'document_category'?: UsDrivingLicenceBuilderDocumentCategoryEnum;
     /**
      * Expiration date of the driving licence in yyyy-mm-dd format
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'expiration_date'?: string;
     /**
      * Eye color code.
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'eye_color_code'?: UsDrivingLicenceBuilderEyeColorCodeEnum;
     /**
      * The owner\'s first name
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'first_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
-     */
     'gender'?: UsDrivingLicenceBuilderGenderEnum;
     /**
      * Issue date in yyyy-mm-dd format
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'issue_date'?: string;
     /**
      * The owner\'s surname
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'last_name'?: string;
     /**
      * The owner\'s middle name
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'middle_name'?: string;
     /**
      * The owner\'s name suffix
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'name_suffix'?: string;
     /**
      * The postcode or ZIP of the owner\'s address
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'postal_code'?: string;
     /**
      * 2-characters state code
-     * @type {string}
-     * @memberof UsDrivingLicenceBuilder
      */
     'state'?: string;
     /**
      * Weight in pounds
-     * @type {number}
-     * @memberof UsDrivingLicenceBuilder
      */
     'weight_measure'?: number;
 }
@@ -9389,187 +4210,103 @@ export const UsDrivingLicenceBuilderGenderEnum = {
 
 export type UsDrivingLicenceBuilderGenderEnum = typeof UsDrivingLicenceBuilderGenderEnum[keyof typeof UsDrivingLicenceBuilderGenderEnum];
 
-/**
- * 
- * @export
- * @interface UsDrivingLicenceReport
- */
 export interface UsDrivingLicenceReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof UsDrivingLicenceReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof UsDrivingLicenceReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof UsDrivingLicenceReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof UsDrivingLicenceReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof UsDrivingLicenceReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof UsDrivingLicenceReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof UsDrivingLicenceReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof UsDrivingLicenceReport
-     */
     'name': ReportName;
-    /**
-     * 
-     * @type {UsDrivingLicenceBreakdown}
-     * @memberof UsDrivingLicenceReport
-     */
     'breakdown'?: UsDrivingLicenceBreakdown;
-    /**
-     * 
-     * @type {DocumentProperties}
-     * @memberof UsDrivingLicenceReport
-     */
     'properties'?: DocumentProperties;
 }
 
 
 /**
  * An object that contains all accepted fields for the Driver\'s License Data Verification report.
- * @export
- * @interface UsDrivingLicenceShared
  */
 export interface UsDrivingLicenceShared {
     /**
      * Driving licence ID number
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'id_number': string;
     /**
      * Two letter code of issuing state (state-issued driving licenses only)
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'issue_state': string;
     /**
      * Line 1 of the address
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'address_line_1'?: string;
     /**
      * Line 2 of the address
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'address_line_2'?: string;
     /**
      * The city of the owner\'s address
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'city'?: string;
     /**
      * Date of birth in yyyy-mm-dd format
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'date_of_birth'?: string;
     /**
      * Document category.
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'document_category'?: UsDrivingLicenceSharedDocumentCategoryEnum;
     /**
      * Expiration date of the driving licence in yyyy-mm-dd format
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'expiration_date'?: string;
     /**
      * Eye color code.
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'eye_color_code'?: UsDrivingLicenceSharedEyeColorCodeEnum;
     /**
      * The owner\'s first name
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'first_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
-     */
     'gender'?: UsDrivingLicenceSharedGenderEnum;
     /**
      * Issue date in yyyy-mm-dd format
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'issue_date'?: string;
     /**
      * The owner\'s surname
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'last_name'?: string;
     /**
      * The owner\'s middle name
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'middle_name'?: string;
     /**
      * The owner\'s name suffix
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'name_suffix'?: string;
     /**
      * The postcode or ZIP of the owner\'s address
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'postal_code'?: string;
     /**
      * 2-characters state code
-     * @type {string}
-     * @memberof UsDrivingLicenceShared
      */
     'state'?: string;
     /**
      * Weight in pounds
-     * @type {number}
-     * @memberof UsDrivingLicenceShared
      */
     'weight_measure'?: number;
 }
@@ -9604,630 +4341,232 @@ export const UsDrivingLicenceSharedGenderEnum = {
 
 export type UsDrivingLicenceSharedGenderEnum = typeof UsDrivingLicenceSharedGenderEnum[keyof typeof UsDrivingLicenceSharedGenderEnum];
 
-/**
- * 
- * @export
- * @interface VideoReasons
- */
 export interface VideoReasons {
     /**
      * Flags when evidence is found that a fake webcam was used.
-     * @type {string}
-     * @memberof VideoReasons
      */
     'fake_webcam'?: string;
     /**
      * Flags when evidence is found that the video was uploaded in an attempt to circumvent the randomness of the speaking and head turn challenges
-     * @type {string}
-     * @memberof VideoReasons
      */
     'challenge_reuse'?: string;
     /**
      * Flags when evidence is found that an Android emulator was used.
-     * @type {string}
-     * @memberof VideoReasons
      */
     'emulator'?: string;
     /**
      * Additional comma separated details such as the name of the fake webcam.
-     * @type {string}
-     * @memberof VideoReasons
      */
     'reasons'?: string;
 }
-/**
- * 
- * @export
- * @interface WatchlistAmlBreakdown
- */
 export interface WatchlistAmlBreakdown {
-    /**
-     * 
-     * @type {WatchlistAmlBreakdownSanction}
-     * @memberof WatchlistAmlBreakdown
-     */
     'sanction'?: WatchlistAmlBreakdownSanction;
-    /**
-     * 
-     * @type {WatchlistAmlBreakdownPoliticallyExposedPerson}
-     * @memberof WatchlistAmlBreakdown
-     */
     'politically_exposed_person'?: WatchlistAmlBreakdownPoliticallyExposedPerson;
-    /**
-     * 
-     * @type {WatchlistAmlBreakdownLegalAndRegulatoryWarnings}
-     * @memberof WatchlistAmlBreakdown
-     */
     'legal_and_regulatory_warnings'?: WatchlistAmlBreakdownLegalAndRegulatoryWarnings;
-    /**
-     * 
-     * @type {WatchlistAmlBreakdownAdverseMedia}
-     * @memberof WatchlistAmlBreakdown
-     */
     'adverse_media'?: WatchlistAmlBreakdownAdverseMedia;
 }
 /**
  * Asserts if there are any records found of negative events reported by publicly and generally available media sources.
- * @export
- * @interface WatchlistAmlBreakdownAdverseMedia
  */
 export interface WatchlistAmlBreakdownAdverseMedia {
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistAmlBreakdownAdverseMedia
-     */
     'result'?: string;
 }
 /**
  * Asserts if there are any records found in Law-Enforcement and Regulatory bodies Monitored Lists (including Terrorism, Money Laundering and Most Wanted lists).
- * @export
- * @interface WatchlistAmlBreakdownLegalAndRegulatoryWarnings
  */
 export interface WatchlistAmlBreakdownLegalAndRegulatoryWarnings {
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistAmlBreakdownLegalAndRegulatoryWarnings
-     */
     'result'?: string;
 }
 /**
  * Asserts if there are any records found in the proprietary database of Politically Exposed Persons sourced from government lists, websites and other media sources.
- * @export
- * @interface WatchlistAmlBreakdownPoliticallyExposedPerson
  */
 export interface WatchlistAmlBreakdownPoliticallyExposedPerson {
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistAmlBreakdownPoliticallyExposedPerson
-     */
     'result'?: string;
 }
 /**
  * Asserts if there are any records found in Government and International Organisations Sanctions Lists.
- * @export
- * @interface WatchlistAmlBreakdownSanction
  */
 export interface WatchlistAmlBreakdownSanction {
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistAmlBreakdownSanction
-     */
     'result'?: string;
 }
-/**
- * 
- * @export
- * @interface WatchlistAmlProperties
- */
 export interface WatchlistAmlProperties {
     /**
      * Returns any matches including, but not limited to, name and date of birth of match, aliases and associates, and relevant events and sources.
-     * @type {Array<object>}
-     * @memberof WatchlistAmlProperties
      * @deprecated
      */
     'records'?: Array<object>;
 }
-/**
- * 
- * @export
- * @interface WatchlistAmlReport
- */
 export interface WatchlistAmlReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof WatchlistAmlReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof WatchlistAmlReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof WatchlistAmlReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof WatchlistAmlReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof WatchlistAmlReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof WatchlistAmlReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof WatchlistAmlReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof WatchlistAmlReport
-     */
     'name': ReportName;
-    /**
-     * 
-     * @type {WatchlistAmlBreakdown}
-     * @memberof WatchlistAmlReport
-     */
     'breakdown'?: WatchlistAmlBreakdown;
-    /**
-     * 
-     * @type {WatchlistAmlProperties}
-     * @memberof WatchlistAmlReport
-     */
     'properties'?: WatchlistAmlProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface WatchlistEnhancedBreakdown
- */
 export interface WatchlistEnhancedBreakdown {
-    /**
-     * 
-     * @type {WatchlistAmlBreakdownPoliticallyExposedPerson}
-     * @memberof WatchlistEnhancedBreakdown
-     */
     'politically_exposed_person'?: WatchlistAmlBreakdownPoliticallyExposedPerson;
-    /**
-     * 
-     * @type {WatchlistAmlBreakdownSanction}
-     * @memberof WatchlistEnhancedBreakdown
-     */
     'sanction'?: WatchlistAmlBreakdownSanction;
-    /**
-     * 
-     * @type {WatchlistAmlBreakdownAdverseMedia}
-     * @memberof WatchlistEnhancedBreakdown
-     */
     'adverse_media'?: WatchlistAmlBreakdownAdverseMedia;
-    /**
-     * 
-     * @type {WatchlistAmlBreakdownLegalAndRegulatoryWarnings}
-     * @memberof WatchlistEnhancedBreakdown
-     */
     'monitored_lists'?: WatchlistAmlBreakdownLegalAndRegulatoryWarnings;
 }
-/**
- * 
- * @export
- * @interface WatchlistEnhancedProperties
- */
 export interface WatchlistEnhancedProperties {
     /**
      * Returns any matches including, but not limited to, name and date of birth of match, aliases and associates, and relevant events and sources.
-     * @type {Array<WatchlistEnhancedPropertiesRecordsInner>}
-     * @memberof WatchlistEnhancedProperties
      */
     'records'?: Array<WatchlistEnhancedPropertiesRecordsInner>;
 }
-/**
- * 
- * @export
- * @interface WatchlistEnhancedPropertiesRecordsInner
- */
 export interface WatchlistEnhancedPropertiesRecordsInner {
     /**
      * All addresses on file.
-     * @type {Array<WatchlistEnhancedPropertiesRecordsInnerAddressInner>}
-     * @memberof WatchlistEnhancedPropertiesRecordsInner
      */
     'address'?: Array<WatchlistEnhancedPropertiesRecordsInnerAddressInner>;
     /**
      * Any names that the person is also known as.
-     * @type {Array<WatchlistEnhancedPropertiesRecordsInnerAliasInner>}
-     * @memberof WatchlistEnhancedPropertiesRecordsInner
      */
     'alias'?: Array<WatchlistEnhancedPropertiesRecordsInnerAliasInner>;
     /**
      * Any linked persons, for example family relatives or business partners.
-     * @type {Array<WatchlistEnhancedPropertiesRecordsInnerAssociateInner>}
-     * @memberof WatchlistEnhancedPropertiesRecordsInner
      */
     'associate'?: Array<WatchlistEnhancedPropertiesRecordsInnerAssociateInner>;
     /**
      * Information about the person, for example hair color or nationality.
-     * @type {Array<WatchlistEnhancedPropertiesRecordsInnerAttributeInner>}
-     * @memberof WatchlistEnhancedPropertiesRecordsInner
      */
     'attribute'?: Array<WatchlistEnhancedPropertiesRecordsInnerAttributeInner>;
     /**
      * All the date of births on file.
-     * @type {Array<string>}
-     * @memberof WatchlistEnhancedPropertiesRecordsInner
      */
     'date_of_birth'?: Array<string>;
     /**
      * Information about events that have occurred to the person, for example deportation or arrest.
-     * @type {Array<WatchlistEnhancedPropertiesRecordsInnerEventInner>}
-     * @memberof WatchlistEnhancedPropertiesRecordsInner
      */
     'event'?: Array<WatchlistEnhancedPropertiesRecordsInnerEventInner>;
     /**
      * The name on file
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInner
      */
     'full_name'?: string;
     /**
      * The role, country and date of each position.
-     * @type {Array<string>}
-     * @memberof WatchlistEnhancedPropertiesRecordsInner
      */
     'position'?: Array<string>;
     /**
      * Details about where the information was obtained.
-     * @type {Array<WatchlistEnhancedPropertiesRecordsInnerSourceInner>}
-     * @memberof WatchlistEnhancedPropertiesRecordsInner
      */
     'source'?: Array<WatchlistEnhancedPropertiesRecordsInnerSourceInner>;
 }
-/**
- * 
- * @export
- * @interface WatchlistEnhancedPropertiesRecordsInnerAddressInner
- */
 export interface WatchlistEnhancedPropertiesRecordsInnerAddressInner {
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerAddressInner
-     */
     'address_line1'?: string;
-    /**
-     * 
-     * @type {CountryCodes}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerAddressInner
-     */
     'country'?: CountryCodes;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerAddressInner
-     */
     'postal_code'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerAddressInner
-     */
     'state_province'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerAddressInner
-     */
     'town'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerAddressInner
-     */
     'locator_type'?: string;
 }
 
 
-/**
- * 
- * @export
- * @interface WatchlistEnhancedPropertiesRecordsInnerAliasInner
- */
 export interface WatchlistEnhancedPropertiesRecordsInnerAliasInner {
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerAliasInner
-     */
     'alias_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerAliasInner
-     */
     'alias_type'?: string;
 }
-/**
- * 
- * @export
- * @interface WatchlistEnhancedPropertiesRecordsInnerAssociateInner
- */
 export interface WatchlistEnhancedPropertiesRecordsInnerAssociateInner {
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerAssociateInner
-     */
     'entity_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerAssociateInner
-     */
     'relationship_direction'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerAssociateInner
-     */
     'relationship_type'?: string;
 }
-/**
- * 
- * @export
- * @interface WatchlistEnhancedPropertiesRecordsInnerAttributeInner
- */
 export interface WatchlistEnhancedPropertiesRecordsInnerAttributeInner {
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerAttributeInner
-     */
     'attribute_type'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerAttributeInner
-     */
     'attribute_value'?: string;
 }
-/**
- * 
- * @export
- * @interface WatchlistEnhancedPropertiesRecordsInnerEventInner
- */
 export interface WatchlistEnhancedPropertiesRecordsInnerEventInner {
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInner
-     */
     'category'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInner
-     */
     'event_date'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInner
-     */
     'event_description'?: string;
-    /**
-     * 
-     * @type {WatchlistEnhancedPropertiesRecordsInnerEventInnerSource}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInner
-     */
     'source'?: WatchlistEnhancedPropertiesRecordsInnerEventInnerSource;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInner
-     */
     'sub_category'?: string;
 }
-/**
- * 
- * @export
- * @interface WatchlistEnhancedPropertiesRecordsInnerEventInnerSource
- */
 export interface WatchlistEnhancedPropertiesRecordsInnerEventInnerSource {
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInnerSource
-     */
     'source_date'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInnerSource
-     */
     'source_format'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInnerSource
-     */
     'source_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerEventInnerSource
-     */
     'source_url'?: string;
 }
-/**
- * 
- * @export
- * @interface WatchlistEnhancedPropertiesRecordsInnerSourceInner
- */
 export interface WatchlistEnhancedPropertiesRecordsInnerSourceInner {
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerSourceInner
-     */
     'source_headline'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerSourceInner
-     */
     'source_name'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerSourceInner
-     */
     'source_url'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WatchlistEnhancedPropertiesRecordsInnerSourceInner
-     */
     'source_format'?: string;
 }
-/**
- * 
- * @export
- * @interface WatchlistEnhancedReport
- */
 export interface WatchlistEnhancedReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof WatchlistEnhancedReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof WatchlistEnhancedReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof WatchlistEnhancedReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof WatchlistEnhancedReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof WatchlistEnhancedReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof WatchlistEnhancedReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof WatchlistEnhancedReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof WatchlistEnhancedReport
-     */
     'name': ReportName;
-    /**
-     * 
-     * @type {WatchlistEnhancedBreakdown}
-     * @memberof WatchlistEnhancedReport
-     */
     'breakdown'?: WatchlistEnhancedBreakdown;
-    /**
-     * 
-     * @type {WatchlistEnhancedProperties}
-     * @memberof WatchlistEnhancedReport
-     */
     'properties'?: WatchlistEnhancedProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface WatchlistMonitor
- */
 export interface WatchlistMonitor {
     /**
      * The ID for the applicant associated with the monitor.
-     * @type {string}
-     * @memberof WatchlistMonitor
      */
     'applicant_id': string;
     /**
      * The name of the report type the monitor creates.
-     * @type {string}
-     * @memberof WatchlistMonitor
      */
     'report_name': WatchlistMonitorReportNameEnum;
     /**
      * A list of tags associated with this monitor. These tags will be applied to each check this monitor creates.
-     * @type {Array<string>}
-     * @memberof WatchlistMonitor
      */
     'tags'?: Array<string>;
     /**
      * The unique identifier for the monitor.
-     * @type {string}
-     * @memberof WatchlistMonitor
      */
     'id': string;
     /**
      * The date and time at which the monitor was created.
-     * @type {string}
-     * @memberof WatchlistMonitor
      */
     'created_at'?: string;
     /**
      * The date and time at which the monitor was deleted. If the monitor is still active, this field will be null.
-     * @type {string}
-     * @memberof WatchlistMonitor
      */
     'deleted_at'?: string;
     /**
      * Indicates whether the object was created in the sandbox or not.
-     * @type {boolean}
-     * @memberof WatchlistMonitor
      */
     'is_sandbox'?: boolean;
 }
@@ -10240,28 +4579,17 @@ export const WatchlistMonitorReportNameEnum = {
 
 export type WatchlistMonitorReportNameEnum = typeof WatchlistMonitorReportNameEnum[keyof typeof WatchlistMonitorReportNameEnum];
 
-/**
- * 
- * @export
- * @interface WatchlistMonitorBuilder
- */
 export interface WatchlistMonitorBuilder {
     /**
      * The ID for the applicant associated with the monitor.
-     * @type {string}
-     * @memberof WatchlistMonitorBuilder
      */
     'applicant_id': string;
     /**
      * The name of the report type the monitor creates.
-     * @type {string}
-     * @memberof WatchlistMonitorBuilder
      */
     'report_name': WatchlistMonitorBuilderReportNameEnum;
     /**
      * A list of tags associated with this monitor. These tags will be applied to each check this monitor creates.
-     * @type {Array<string>}
-     * @memberof WatchlistMonitorBuilder
      */
     'tags'?: Array<string>;
 }
@@ -10274,110 +4602,52 @@ export const WatchlistMonitorBuilderReportNameEnum = {
 
 export type WatchlistMonitorBuilderReportNameEnum = typeof WatchlistMonitorBuilderReportNameEnum[keyof typeof WatchlistMonitorBuilderReportNameEnum];
 
-/**
- * 
- * @export
- * @interface WatchlistMonitorMatch
- */
 export interface WatchlistMonitorMatch {
     /**
      * Monitor ID
-     * @type {string}
-     * @memberof WatchlistMonitorMatch
      */
     'id'?: string;
     /**
      * Monitor status
-     * @type {boolean}
-     * @memberof WatchlistMonitorMatch
      */
     'enabled'?: boolean;
 }
-/**
- * 
- * @export
- * @interface WatchlistMonitorMatchesList
- */
 export interface WatchlistMonitorMatchesList {
-    /**
-     * 
-     * @type {Array<WatchlistMonitorMatch>}
-     * @memberof WatchlistMonitorMatchesList
-     */
     'matches': Array<WatchlistMonitorMatch>;
 }
-/**
- * 
- * @export
- * @interface WatchlistMonitorMatchesUpdater
- */
 export interface WatchlistMonitorMatchesUpdater {
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof WatchlistMonitorMatchesUpdater
-     */
     'enable'?: Array<string>;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof WatchlistMonitorMatchesUpdater
-     */
     'disable'?: Array<string>;
 }
-/**
- * 
- * @export
- * @interface WatchlistMonitorResponse
- */
 export interface WatchlistMonitorResponse {
     /**
      * The unique identifier for the monitor.
-     * @type {string}
-     * @memberof WatchlistMonitorResponse
      */
     'id': string;
     /**
      * The date and time at which the monitor was created.
-     * @type {string}
-     * @memberof WatchlistMonitorResponse
      */
     'created_at'?: string;
     /**
      * The date and time at which the monitor was deleted. If the monitor is still active, this field will be null.
-     * @type {string}
-     * @memberof WatchlistMonitorResponse
      */
     'deleted_at'?: string;
     /**
      * Indicates whether the object was created in the sandbox or not.
-     * @type {boolean}
-     * @memberof WatchlistMonitorResponse
      */
     'is_sandbox'?: boolean;
 }
-/**
- * 
- * @export
- * @interface WatchlistMonitorShared
- */
 export interface WatchlistMonitorShared {
     /**
      * The ID for the applicant associated with the monitor.
-     * @type {string}
-     * @memberof WatchlistMonitorShared
      */
     'applicant_id': string;
     /**
      * The name of the report type the monitor creates.
-     * @type {string}
-     * @memberof WatchlistMonitorShared
      */
     'report_name': WatchlistMonitorSharedReportNameEnum;
     /**
      * A list of tags associated with this monitor. These tags will be applied to each check this monitor creates.
-     * @type {Array<string>}
-     * @memberof WatchlistMonitorShared
      */
     'tags'?: Array<string>;
 }
@@ -10390,447 +4660,206 @@ export const WatchlistMonitorSharedReportNameEnum = {
 
 export type WatchlistMonitorSharedReportNameEnum = typeof WatchlistMonitorSharedReportNameEnum[keyof typeof WatchlistMonitorSharedReportNameEnum];
 
-/**
- * 
- * @export
- * @interface WatchlistMonitorsList
- */
 export interface WatchlistMonitorsList {
-    /**
-     * 
-     * @type {Array<WatchlistMonitor>}
-     * @memberof WatchlistMonitorsList
-     */
     'monitors': Array<WatchlistMonitor>;
 }
-/**
- * 
- * @export
- * @interface WatchlistPepsOnlyReport
- */
 export interface WatchlistPepsOnlyReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof WatchlistPepsOnlyReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof WatchlistPepsOnlyReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof WatchlistPepsOnlyReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof WatchlistPepsOnlyReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof WatchlistPepsOnlyReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof WatchlistPepsOnlyReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof WatchlistPepsOnlyReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof WatchlistPepsOnlyReport
-     */
     'name': ReportName;
-    /**
-     * 
-     * @type {WatchlistStandardBreakdown}
-     * @memberof WatchlistPepsOnlyReport
-     */
     'breakdown'?: WatchlistStandardBreakdown;
-    /**
-     * 
-     * @type {WatchlistStandardProperties}
-     * @memberof WatchlistPepsOnlyReport
-     */
     'properties'?: WatchlistStandardProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface WatchlistSanctionsOnlyReport
- */
 export interface WatchlistSanctionsOnlyReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof WatchlistSanctionsOnlyReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof WatchlistSanctionsOnlyReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof WatchlistSanctionsOnlyReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof WatchlistSanctionsOnlyReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof WatchlistSanctionsOnlyReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof WatchlistSanctionsOnlyReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof WatchlistSanctionsOnlyReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof WatchlistSanctionsOnlyReport
-     */
     'name': ReportName;
-    /**
-     * 
-     * @type {WatchlistStandardBreakdown}
-     * @memberof WatchlistSanctionsOnlyReport
-     */
     'breakdown'?: WatchlistStandardBreakdown;
-    /**
-     * 
-     * @type {WatchlistStandardProperties}
-     * @memberof WatchlistSanctionsOnlyReport
-     */
     'properties'?: WatchlistStandardProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface WatchlistStandardBreakdown
- */
 export interface WatchlistStandardBreakdown {
-    /**
-     * 
-     * @type {WatchlistAmlBreakdownSanction}
-     * @memberof WatchlistStandardBreakdown
-     */
     'sanction'?: WatchlistAmlBreakdownSanction;
-    /**
-     * 
-     * @type {WatchlistAmlBreakdownPoliticallyExposedPerson}
-     * @memberof WatchlistStandardBreakdown
-     */
     'politically_exposed_person'?: WatchlistAmlBreakdownPoliticallyExposedPerson;
-    /**
-     * 
-     * @type {WatchlistAmlBreakdownLegalAndRegulatoryWarnings}
-     * @memberof WatchlistStandardBreakdown
-     */
     'legal_and_regulatory_warnings'?: WatchlistAmlBreakdownLegalAndRegulatoryWarnings;
 }
-/**
- * 
- * @export
- * @interface WatchlistStandardProperties
- */
 export interface WatchlistStandardProperties {
     /**
      * Returns any matches including, but not limited to, name and date of birth of match, aliases and associates, and relevant events and sources.
-     * @type {Array<object>}
-     * @memberof WatchlistStandardProperties
      * @deprecated
      */
     'records'?: Array<object>;
 }
-/**
- * 
- * @export
- * @interface WatchlistStandardReport
- */
 export interface WatchlistStandardReport {
     /**
      * The unique identifier for the report. Read-only.
-     * @type {string}
-     * @memberof WatchlistStandardReport
      */
     'id': string;
     /**
      * The date and time at which the report was first initiated. Read-only.
-     * @type {string}
-     * @memberof WatchlistStandardReport
      */
     'created_at'?: string;
     /**
      * The API endpoint to retrieve the report. Read-only.
-     * @type {string}
-     * @memberof WatchlistStandardReport
      */
     'href'?: string;
-    /**
-     * 
-     * @type {ReportStatus}
-     * @memberof WatchlistStandardReport
-     */
     'status'?: ReportStatus;
-    /**
-     * 
-     * @type {ReportResult}
-     * @memberof WatchlistStandardReport
-     */
     'result'?: ReportResult;
-    /**
-     * 
-     * @type {ReportSubResult}
-     * @memberof WatchlistStandardReport
-     */
     'sub_result'?: ReportSubResult;
     /**
      * The ID of the check to which the report belongs. Read-only.
-     * @type {string}
-     * @memberof WatchlistStandardReport
      */
     'check_id'?: string;
-    /**
-     * 
-     * @type {ReportName}
-     * @memberof WatchlistStandardReport
-     */
     'name': ReportName;
-    /**
-     * 
-     * @type {WatchlistStandardBreakdown}
-     * @memberof WatchlistStandardReport
-     */
     'breakdown'?: WatchlistStandardBreakdown;
-    /**
-     * 
-     * @type {WatchlistStandardProperties}
-     * @memberof WatchlistStandardReport
-     */
     'properties'?: WatchlistStandardProperties;
 }
 
 
-/**
- * 
- * @export
- * @interface Webhook
- */
 export interface Webhook {
     /**
      * Determine if the webhook is active.
-     * @type {boolean}
-     * @memberof Webhook
      */
     'enabled'?: boolean;
     /**
      * The events that will be published to the webhook. If the events parameter is omitted all the events will be subscribed. 
-     * @type {Array<WebhookEventType>}
-     * @memberof Webhook
      */
     'events'?: Array<WebhookEventType>;
     /**
      * The environments from which the webhook will receive events. Allowed values are “sandbox” and “live”. If the environments parameter is omitted the webhook will receive events from both environments. 
-     * @type {Array<string>}
-     * @memberof Webhook
      */
     'environments'?: Array<string>;
     /**
      * Webhook version used to control the payload object when sending webhooks.
-     * @type {number}
-     * @memberof Webhook
      */
     'payload_version'?: number;
     /**
      * Determines if the webhook will fetch OAuth access tokens to send in the Authorization header.
-     * @type {boolean}
-     * @memberof Webhook
      */
     'oauth_enabled'?: boolean;
     /**
      * The url to fetch the OAuth access token using client credentials grant.
-     * @type {string}
-     * @memberof Webhook
      */
     'oauth_server_url'?: string;
     /**
      * The client id to authenticate the client credentials grant.
-     * @type {string}
-     * @memberof Webhook
      */
     'oauth_server_client_id'?: string;
     /**
      * The client secret to authenticate the client credentials grant.
-     * @type {string}
-     * @memberof Webhook
      */
     'oauth_server_client_secret'?: string;
     /**
      * The scopes to be sent when requesting the access token.
-     * @type {string}
-     * @memberof Webhook
      */
     'oauth_server_scope'?: string;
     /**
      * The unique identifier of the webhook.
-     * @type {string}
-     * @memberof Webhook
      */
     'id': string;
     /**
      * The url that will listen to notifications (must be https).
-     * @type {string}
-     * @memberof Webhook
      */
     'url'?: string;
     /**
      * Webhook secret token used to sign the webhook\'s payload.
-     * @type {string}
-     * @memberof Webhook
      */
     'token'?: string;
     /**
      * The API endpoint to retrieve the webhook.
-     * @type {string}
-     * @memberof Webhook
      */
     'href'?: string;
 }
-/**
- * 
- * @export
- * @interface WebhookBuilder
- */
 export interface WebhookBuilder {
     /**
      * Determine if the webhook is active.
-     * @type {boolean}
-     * @memberof WebhookBuilder
      */
     'enabled'?: boolean;
     /**
      * The events that will be published to the webhook. If the events parameter is omitted all the events will be subscribed. 
-     * @type {Array<WebhookEventType>}
-     * @memberof WebhookBuilder
      */
     'events'?: Array<WebhookEventType>;
     /**
      * The environments from which the webhook will receive events. Allowed values are “sandbox” and “live”. If the environments parameter is omitted the webhook will receive events from both environments. 
-     * @type {Array<string>}
-     * @memberof WebhookBuilder
      */
     'environments'?: Array<string>;
     /**
      * Webhook version used to control the payload object when sending webhooks.
-     * @type {number}
-     * @memberof WebhookBuilder
      */
     'payload_version'?: number;
     /**
      * Determines if the webhook will fetch OAuth access tokens to send in the Authorization header.
-     * @type {boolean}
-     * @memberof WebhookBuilder
      */
     'oauth_enabled'?: boolean;
     /**
      * The url to fetch the OAuth access token using client credentials grant.
-     * @type {string}
-     * @memberof WebhookBuilder
      */
     'oauth_server_url'?: string;
     /**
      * The client id to authenticate the client credentials grant.
-     * @type {string}
-     * @memberof WebhookBuilder
      */
     'oauth_server_client_id'?: string;
     /**
      * The client secret to authenticate the client credentials grant.
-     * @type {string}
-     * @memberof WebhookBuilder
      */
     'oauth_server_client_secret'?: string;
     /**
      * The scopes to be sent when requesting the access token.
-     * @type {string}
-     * @memberof WebhookBuilder
      */
     'oauth_server_scope'?: string;
     /**
      * The url that will listen to notifications (must be https).
-     * @type {string}
-     * @memberof WebhookBuilder
      */
     'url': string;
 }
-/**
- * 
- * @export
- * @interface WebhookCreate
- */
 export interface WebhookCreate {
     /**
      * The url that will listen to notifications (must be https).
-     * @type {string}
-     * @memberof WebhookCreate
      */
     'url': string;
 }
-/**
- * 
- * @export
- * @interface WebhookEvent
- */
 export interface WebhookEvent {
-    /**
-     * 
-     * @type {WebhookEventPayload}
-     * @memberof WebhookEvent
-     */
     'payload'?: WebhookEventPayload;
 }
 /**
  * The current state of the object, if available.
- * @export
- * @enum {string}
  */
 
 export const WebhookEventObjectStatus = {
@@ -10859,73 +4888,39 @@ export const WebhookEventObjectStatus = {
 export type WebhookEventObjectStatus = typeof WebhookEventObjectStatus[keyof typeof WebhookEventObjectStatus];
 
 
-/**
- * 
- * @export
- * @interface WebhookEventPayload
- */
 export interface WebhookEventPayload {
     /**
      * Indicates the resource affected by this event.
-     * @type {WebhookEventResourceType}
-     * @memberof WebhookEventPayload
      */
     'resource_type': WebhookEventResourceType;
     /**
      * The event that triggered this webhook.
-     * @type {WebhookEventType}
-     * @memberof WebhookEventPayload
      */
     'action'?: WebhookEventType;
-    /**
-     * 
-     * @type {WebhookEventPayloadObject}
-     * @memberof WebhookEventPayload
-     */
     'object'?: WebhookEventPayloadObject;
-    /**
-     * 
-     * @type {WebhookEventPayloadResource}
-     * @memberof WebhookEventPayload
-     */
     'resource'?: WebhookEventPayloadResource;
 }
 
 
 /**
  * The object affected by this event.
- * @export
- * @interface WebhookEventPayloadObject
  */
 export interface WebhookEventPayloadObject {
     /**
      * The unique identifier of the resource.
-     * @type {string}
-     * @memberof WebhookEventPayloadObject
      */
     'id': string;
-    /**
-     * 
-     * @type {WebhookEventObjectStatus}
-     * @memberof WebhookEventPayloadObject
-     */
     'status'?: WebhookEventObjectStatus;
     /**
      * The date and time when the operation was started, if available.
-     * @type {string}
-     * @memberof WebhookEventPayloadObject
      */
     'started_at_iso8601'?: string;
     /**
      * The date and time when the operation was completed, if available.
-     * @type {string}
-     * @memberof WebhookEventPayloadObject
      */
     'completed_at_iso8601'?: string;
     /**
      * The uri of the resource.
-     * @type {string}
-     * @memberof WebhookEventPayloadObject
      */
     'href'?: string;
 }
@@ -10933,124 +4928,78 @@ export interface WebhookEventPayloadObject {
 
 /**
  * The resource affected by this event.
- * @export
- * @interface WebhookEventPayloadResource
  */
 export interface WebhookEventPayloadResource {
     /**
      * The identifier of the resource.
-     * @type {string}
-     * @memberof WebhookEventPayloadResource
      */
     'id'?: string;
     /**
      * The unique identifier for the Applicant.
-     * @type {string}
-     * @memberof WebhookEventPayloadResource
      */
     'applicant_id'?: string;
     /**
      * The date and time when the resource was created.
-     * @type {string}
-     * @memberof WebhookEventPayloadResource
      */
     'created_at'?: string;
     /**
      * The date and time when the resource was last updated.
-     * @type {string}
-     * @memberof WebhookEventPayloadResource
      */
     'updated_at'?: string;
     /**
      * The URL for viewing the resource on Onfido Dashboard.
-     * @type {string}
-     * @memberof WebhookEventPayloadResource
      */
     'dashboard_url'?: string;
     /**
      * The unique identifier for the Workflow.
-     * @type {string}
-     * @memberof WebhookEventPayloadResource
      */
     'workflow_id'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof WebhookEventPayloadResource
-     */
     'workflow_run_id'?: string;
     /**
      * The identifier for the Workflow version.
-     * @type {number}
-     * @memberof WebhookEventPayloadResource
      */
     'workflow_version_id'?: number;
     /**
      * The identifier for the Task Definition.
-     * @type {string}
-     * @memberof WebhookEventPayloadResource
      */
     'task_def_id'?: string;
     /**
      * The task definition version.
-     * @type {string}
-     * @memberof WebhookEventPayloadResource
      */
     'task_def_version'?: string | null;
     /**
      * Input object with the fields used by the Task execution.
-     * @type {object}
-     * @memberof WebhookEventPayloadResource
      */
     'input'?: object;
     /**
      * Value field (it can be an Object, List, etc.) with the fields produced by the Task execution.
-     * @type {object}
-     * @memberof WebhookEventPayloadResource
      */
     'output'?: object | null;
     /**
      * The reasons the Workflow Run outcome was reached. Configurable when creating the Workflow Version.
-     * @type {Array<string>}
-     * @memberof WebhookEventPayloadResource
      */
     'reasons'?: Array<string>;
     /**
      * A list of tags associated with the Workflow Run.
-     * @type {Array<string>}
-     * @memberof WebhookEventPayloadResource
      */
     'tags'?: Array<string>;
     /**
      * Object for the configuration of the Workflow Run link.
-     * @type {WorkflowRunLink}
-     * @memberof WebhookEventPayloadResource
      */
     'link'?: WorkflowRunLink;
     /**
      * Error object that details why a Workflow Run is in Error status.
-     * @type {WorkflowRunError}
-     * @memberof WebhookEventPayloadResource
      */
     'error'?: WorkflowRunError;
     /**
      * Customer-provided user identifier.
-     * @type {string}
-     * @memberof WebhookEventPayloadResource
      */
     'customer_user_id'?: string;
     /**
      * Pre-signed URL to download the timeline file for the Workflow Run.
-     * @type {string}
-     * @memberof WebhookEventPayloadResource
      */
     'timeline_file_download_url'?: string;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const WebhookEventResourceType = {
     Check: 'check',
@@ -11067,11 +5016,6 @@ export const WebhookEventResourceType = {
 export type WebhookEventResourceType = typeof WebhookEventResourceType[keyof typeof WebhookEventResourceType];
 
 
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const WebhookEventType = {
     AuditLogCreated: 'audit_log.created',
@@ -11097,432 +5041,255 @@ export const WebhookEventType = {
 export type WebhookEventType = typeof WebhookEventType[keyof typeof WebhookEventType];
 
 
-/**
- * 
- * @export
- * @interface WebhookResend
- */
 export interface WebhookResend {
-    /**
-     * 
-     * @type {Array<WebhooksResendItem>}
-     * @memberof WebhookResend
-     */
     'data'?: Array<WebhooksResendItem>;
 }
-/**
- * 
- * @export
- * @interface WebhookResponse
- */
 export interface WebhookResponse {
     /**
      * The unique identifier of the webhook.
-     * @type {string}
-     * @memberof WebhookResponse
      */
     'id': string;
     /**
      * The url that will listen to notifications (must be https).
-     * @type {string}
-     * @memberof WebhookResponse
      */
     'url'?: string;
     /**
      * Webhook secret token used to sign the webhook\'s payload.
-     * @type {string}
-     * @memberof WebhookResponse
      */
     'token'?: string;
     /**
      * The API endpoint to retrieve the webhook.
-     * @type {string}
-     * @memberof WebhookResponse
      */
     'href'?: string;
 }
-/**
- * 
- * @export
- * @interface WebhookShared
- */
 export interface WebhookShared {
     /**
      * Determine if the webhook is active.
-     * @type {boolean}
-     * @memberof WebhookShared
      */
     'enabled'?: boolean;
     /**
      * The events that will be published to the webhook. If the events parameter is omitted all the events will be subscribed. 
-     * @type {Array<WebhookEventType>}
-     * @memberof WebhookShared
      */
     'events'?: Array<WebhookEventType>;
     /**
      * The environments from which the webhook will receive events. Allowed values are “sandbox” and “live”. If the environments parameter is omitted the webhook will receive events from both environments. 
-     * @type {Array<string>}
-     * @memberof WebhookShared
      */
     'environments'?: Array<string>;
     /**
      * Webhook version used to control the payload object when sending webhooks.
-     * @type {number}
-     * @memberof WebhookShared
      */
     'payload_version'?: number;
     /**
      * Determines if the webhook will fetch OAuth access tokens to send in the Authorization header.
-     * @type {boolean}
-     * @memberof WebhookShared
      */
     'oauth_enabled'?: boolean;
     /**
      * The url to fetch the OAuth access token using client credentials grant.
-     * @type {string}
-     * @memberof WebhookShared
      */
     'oauth_server_url'?: string;
     /**
      * The client id to authenticate the client credentials grant.
-     * @type {string}
-     * @memberof WebhookShared
      */
     'oauth_server_client_id'?: string;
     /**
      * The client secret to authenticate the client credentials grant.
-     * @type {string}
-     * @memberof WebhookShared
      */
     'oauth_server_client_secret'?: string;
     /**
      * The scopes to be sent when requesting the access token.
-     * @type {string}
-     * @memberof WebhookShared
      */
     'oauth_server_scope'?: string;
 }
-/**
- * 
- * @export
- * @interface WebhookUpdate
- */
 export interface WebhookUpdate {
     /**
      * The url that will listen to notifications (must be https).
-     * @type {string}
-     * @memberof WebhookUpdate
      */
     'url'?: string;
 }
-/**
- * 
- * @export
- * @interface WebhookUpdater
- */
 export interface WebhookUpdater {
     /**
      * Determine if the webhook is active.
-     * @type {boolean}
-     * @memberof WebhookUpdater
      */
     'enabled'?: boolean;
     /**
      * The events that will be published to the webhook. If the events parameter is omitted all the events will be subscribed. 
-     * @type {Array<WebhookEventType>}
-     * @memberof WebhookUpdater
      */
     'events'?: Array<WebhookEventType>;
     /**
      * The environments from which the webhook will receive events. Allowed values are “sandbox” and “live”. If the environments parameter is omitted the webhook will receive events from both environments. 
-     * @type {Array<string>}
-     * @memberof WebhookUpdater
      */
     'environments'?: Array<string>;
     /**
      * Webhook version used to control the payload object when sending webhooks.
-     * @type {number}
-     * @memberof WebhookUpdater
      */
     'payload_version'?: number;
     /**
      * Determines if the webhook will fetch OAuth access tokens to send in the Authorization header.
-     * @type {boolean}
-     * @memberof WebhookUpdater
      */
     'oauth_enabled'?: boolean;
     /**
      * The url to fetch the OAuth access token using client credentials grant.
-     * @type {string}
-     * @memberof WebhookUpdater
      */
     'oauth_server_url'?: string;
     /**
      * The client id to authenticate the client credentials grant.
-     * @type {string}
-     * @memberof WebhookUpdater
      */
     'oauth_server_client_id'?: string;
     /**
      * The client secret to authenticate the client credentials grant.
-     * @type {string}
-     * @memberof WebhookUpdater
      */
     'oauth_server_client_secret'?: string;
     /**
      * The scopes to be sent when requesting the access token.
-     * @type {string}
-     * @memberof WebhookUpdater
      */
     'oauth_server_scope'?: string;
     /**
      * The url that will listen to notifications (must be https).
-     * @type {string}
-     * @memberof WebhookUpdater
      */
     'url'?: string;
 }
-/**
- * 
- * @export
- * @interface WebhooksList
- */
 export interface WebhooksList {
-    /**
-     * 
-     * @type {Array<Webhook>}
-     * @memberof WebhooksList
-     */
     'webhooks': Array<Webhook>;
 }
-/**
- * 
- * @export
- * @interface WebhooksResendItem
- */
 export interface WebhooksResendItem {
     /**
      * ID of the resource whose webhooks are to be retriggered.
-     * @type {string}
-     * @memberof WebhooksResendItem
      */
     'resource_id': string;
     /**
      * The events that should retrigger webhooks. Accepts values check.completed.
-     * @type {WebhookEventType}
-     * @memberof WebhooksResendItem
      */
     'event': WebhookEventType;
 }
 
 
-/**
- * 
- * @export
- * @interface WorkflowRun
- */
 export interface WorkflowRun {
     /**
      * The unique identifier for the Applicant.
-     * @type {string}
-     * @memberof WorkflowRun
      */
     'applicant_id': string;
     /**
      * The unique identifier for the Workflow.
-     * @type {string}
-     * @memberof WorkflowRun
      */
     'workflow_id': string;
     /**
      * Tags or labels assigned to the workflow run.
-     * @type {Array<string>}
-     * @memberof WorkflowRun
      */
     'tags'?: Array<string> | null;
     /**
      * Customer-provided user identifier.
-     * @type {string}
-     * @memberof WorkflowRun
      */
     'customer_user_id'?: string;
     /**
      * Object for the configuration of the Workflow Run link.
-     * @type {WorkflowRunLink}
-     * @memberof WorkflowRun
      */
     'link'?: WorkflowRunLink;
     /**
      * The date and time when the Workflow Run was created.
-     * @type {string}
-     * @memberof WorkflowRun
      */
     'created_at'?: string;
     /**
      * The date and time when the Workflow Run was last updated.
-     * @type {string}
-     * @memberof WorkflowRun
      */
     'updated_at'?: string;
     /**
      * The unique identifier for the Workflow Run.
-     * @type {string}
-     * @memberof WorkflowRun
      */
     'id': string;
     /**
      * The identifier for the Workflow version.
-     * @type {number}
-     * @memberof WorkflowRun
      */
     'workflow_version_id'?: number;
     /**
      * The URL for viewing the Workflow Run results on your Onfido Dashboard.
-     * @type {string}
-     * @memberof WorkflowRun
      */
     'dashboard_url'?: string;
     /**
      * The status of the Workflow Run.
-     * @type {WorkflowRunStatus}
-     * @memberof WorkflowRun
      */
     'status'?: WorkflowRunStatus;
     /**
      * Output object contains all of the properties configured on the Workflow version.
-     * @type {object}
-     * @memberof WorkflowRun
      */
     'output'?: object;
     /**
      * The reasons the Workflow Run outcome was reached. Configurable when creating the Workflow version.
-     * @type {Array<string>}
-     * @memberof WorkflowRun
      */
     'reasons'?: Array<string>;
     /**
      * Error object. Only set when the Workflow Run status is \'error\'.
-     * @type {WorkflowRunError}
-     * @memberof WorkflowRun
      */
     'error'?: WorkflowRunError;
     /**
      * Client token to use when loading this workflow run in the Onfido SDK.
-     * @type {string}
-     * @memberof WorkflowRun
      */
     'sdk_token'?: string | null;
 }
 
 
-/**
- * 
- * @export
- * @interface WorkflowRunBuilder
- */
 export interface WorkflowRunBuilder {
     /**
      * The unique identifier for the Applicant.
-     * @type {string}
-     * @memberof WorkflowRunBuilder
      */
     'applicant_id': string;
     /**
      * The unique identifier for the Workflow.
-     * @type {string}
-     * @memberof WorkflowRunBuilder
      */
     'workflow_id': string;
     /**
      * Tags or labels assigned to the workflow run.
-     * @type {Array<string>}
-     * @memberof WorkflowRunBuilder
      */
     'tags'?: Array<string> | null;
     /**
      * Customer-provided user identifier.
-     * @type {string}
-     * @memberof WorkflowRunBuilder
      */
     'customer_user_id'?: string;
     /**
      * Object for the configuration of the Workflow Run link.
-     * @type {WorkflowRunLink}
-     * @memberof WorkflowRunBuilder
      */
     'link'?: WorkflowRunLink;
     /**
      * The date and time when the Workflow Run was created.
-     * @type {string}
-     * @memberof WorkflowRunBuilder
      */
     'created_at'?: string;
     /**
      * The date and time when the Workflow Run was last updated.
-     * @type {string}
-     * @memberof WorkflowRunBuilder
      */
     'updated_at'?: string;
     /**
      * Object with Custom Input Data to be used in the Workflow Run.
-     * @type {{ [key: string]: any; }}
-     * @memberof WorkflowRunBuilder
      */
     'custom_data'?: { [key: string]: any; };
 }
-/**
- * 
- * @export
- * @interface WorkflowRunError
- */
 export interface WorkflowRunError {
     /**
      * The type of error.
-     * @type {string}
-     * @memberof WorkflowRunError
      */
     'type'?: string;
     /**
      * A textual description of the error.
-     * @type {string}
-     * @memberof WorkflowRunError
      */
     'message'?: string;
 }
-/**
- * 
- * @export
- * @interface WorkflowRunLink
- */
 export interface WorkflowRunLink {
     /**
      * Link to access the Workflow Run without the need to integrate with Onfido\'s SDKs.
-     * @type {string}
-     * @memberof WorkflowRunLink
      */
     'url'?: string;
     /**
      * When the interactive section of the Workflow Run has completed successfully, the user will be redirected to this URL instead of seeing the default Onfido \'thank you\' page.
-     * @type {string}
-     * @memberof WorkflowRunLink
      */
     'completed_redirect_url'?: string | null;
     /**
      * When the link has expired, the user will be immediately redirected to this URL instead of seeing the default Onfido error message.
-     * @type {string}
-     * @memberof WorkflowRunLink
      */
     'expired_redirect_url'?: string | null;
     /**
      * Date and time when the link will expire.
-     * @type {string}
-     * @memberof WorkflowRunLink
      */
     'expires_at'?: string | null;
     /**
      * The code for the language when the workflow run is acessed using the link.
-     * @type {string}
-     * @memberof WorkflowRunLink
      */
     'language'?: WorkflowRunLinkLanguageEnum | null;
 }
@@ -11540,130 +5307,78 @@ export const WorkflowRunLinkLanguageEnum = {
 
 export type WorkflowRunLinkLanguageEnum = typeof WorkflowRunLinkLanguageEnum[keyof typeof WorkflowRunLinkLanguageEnum];
 
-/**
- * 
- * @export
- * @interface WorkflowRunRequest
- */
 export interface WorkflowRunRequest {
     /**
      * Object with Custom Input Data to be used in the Workflow Run.
-     * @type {{ [key: string]: any; }}
-     * @memberof WorkflowRunRequest
      */
     'custom_data'?: { [key: string]: any; };
 }
-/**
- * 
- * @export
- * @interface WorkflowRunResponse
- */
 export interface WorkflowRunResponse {
     /**
      * The unique identifier for the Workflow Run.
-     * @type {string}
-     * @memberof WorkflowRunResponse
      */
     'id': string;
     /**
      * The identifier for the Workflow version.
-     * @type {number}
-     * @memberof WorkflowRunResponse
      */
     'workflow_version_id'?: number;
     /**
      * The URL for viewing the Workflow Run results on your Onfido Dashboard.
-     * @type {string}
-     * @memberof WorkflowRunResponse
      */
     'dashboard_url'?: string;
     /**
      * The status of the Workflow Run.
-     * @type {WorkflowRunStatus}
-     * @memberof WorkflowRunResponse
      */
     'status'?: WorkflowRunStatus;
     /**
      * Output object contains all of the properties configured on the Workflow version.
-     * @type {object}
-     * @memberof WorkflowRunResponse
      */
     'output'?: object;
     /**
      * The reasons the Workflow Run outcome was reached. Configurable when creating the Workflow version.
-     * @type {Array<string>}
-     * @memberof WorkflowRunResponse
      */
     'reasons'?: Array<string>;
     /**
      * Error object. Only set when the Workflow Run status is \'error\'.
-     * @type {WorkflowRunError}
-     * @memberof WorkflowRunResponse
      */
     'error'?: WorkflowRunError;
     /**
      * Client token to use when loading this workflow run in the Onfido SDK.
-     * @type {string}
-     * @memberof WorkflowRunResponse
      */
     'sdk_token'?: string | null;
 }
 
 
-/**
- * 
- * @export
- * @interface WorkflowRunShared
- */
 export interface WorkflowRunShared {
     /**
      * The unique identifier for the Applicant.
-     * @type {string}
-     * @memberof WorkflowRunShared
      */
     'applicant_id': string;
     /**
      * The unique identifier for the Workflow.
-     * @type {string}
-     * @memberof WorkflowRunShared
      */
     'workflow_id': string;
     /**
      * Tags or labels assigned to the workflow run.
-     * @type {Array<string>}
-     * @memberof WorkflowRunShared
      */
     'tags'?: Array<string> | null;
     /**
      * Customer-provided user identifier.
-     * @type {string}
-     * @memberof WorkflowRunShared
      */
     'customer_user_id'?: string;
     /**
      * Object for the configuration of the Workflow Run link.
-     * @type {WorkflowRunLink}
-     * @memberof WorkflowRunShared
      */
     'link'?: WorkflowRunLink;
     /**
      * The date and time when the Workflow Run was created.
-     * @type {string}
-     * @memberof WorkflowRunShared
      */
     'created_at'?: string;
     /**
      * The date and time when the Workflow Run was last updated.
-     * @type {string}
-     * @memberof WorkflowRunShared
      */
     'updated_at'?: string;
 }
-/**
- * 
- * @export
- * @enum {string}
- */
 
 export const WorkflowRunStatus = {
     Processing: 'processing',
@@ -11683,7 +5398,6 @@ export type WorkflowRunStatus = typeof WorkflowRunStatus[keyof typeof WorkflowRu
 
 /**
  * DefaultApi - axios parameter creator
- * @export
  */
 export const DefaultApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
@@ -14875,7 +8589,6 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
 
 /**
  * DefaultApi - functional programming interface
- * @export
  */
 export const DefaultApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = DefaultApiAxiosParamCreator(configuration)
@@ -15944,7 +9657,6 @@ export const DefaultApiFp = function(configuration?: Configuration) {
 
 /**
  * DefaultApi - factory interface
- * @export
  */
 export const DefaultApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     const localVarFp = DefaultApiFp(configuration)
@@ -16776,9 +10488,6 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
 
 /**
  * DefaultApi - object-oriented interface
- * @export
- * @class DefaultApi
- * @extends {BaseAPI}
  */
 export class DefaultApi extends BaseAPI {
     /**
@@ -16787,7 +10496,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} reportId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public cancelReport(reportId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).cancelReport(reportId, options).then((request) => request(this.axios, this.basePath));
@@ -16801,7 +10509,6 @@ export class DefaultApi extends BaseAPI {
      * @param {CompleteTaskBuilder} completeTaskBuilder 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public completeTask(workflowRunId: string, taskId: string, completeTaskBuilder: CompleteTaskBuilder, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).completeTask(workflowRunId, taskId, completeTaskBuilder, options).then((request) => request(this.axios, this.basePath));
@@ -16813,7 +10520,6 @@ export class DefaultApi extends BaseAPI {
      * @param {ApplicantBuilder} applicantBuilder 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public createApplicant(applicantBuilder: ApplicantBuilder, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).createApplicant(applicantBuilder, options).then((request) => request(this.axios, this.basePath));
@@ -16825,7 +10531,6 @@ export class DefaultApi extends BaseAPI {
      * @param {CheckBuilder} checkBuilder 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public createCheck(checkBuilder: CheckBuilder, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).createCheck(checkBuilder, options).then((request) => request(this.axios, this.basePath));
@@ -16837,7 +10542,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} workflowRunId The unique identifier of the Workflow Run.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public createTimelineFile(workflowRunId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).createTimelineFile(workflowRunId, options).then((request) => request(this.axios, this.basePath));
@@ -16849,7 +10553,6 @@ export class DefaultApi extends BaseAPI {
      * @param {WatchlistMonitorBuilder} watchlistMonitorBuilder 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public createWatchlistMonitor(watchlistMonitorBuilder: WatchlistMonitorBuilder, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).createWatchlistMonitor(watchlistMonitorBuilder, options).then((request) => request(this.axios, this.basePath));
@@ -16861,7 +10564,6 @@ export class DefaultApi extends BaseAPI {
      * @param {WebhookBuilder} webhookBuilder 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public createWebhook(webhookBuilder: WebhookBuilder, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).createWebhook(webhookBuilder, options).then((request) => request(this.axios, this.basePath));
@@ -16873,7 +10575,6 @@ export class DefaultApi extends BaseAPI {
      * @param {WorkflowRunBuilder} workflowRunBuilder 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public createWorkflowRun(workflowRunBuilder: WorkflowRunBuilder, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).createWorkflowRun(workflowRunBuilder, options).then((request) => request(this.axios, this.basePath));
@@ -16885,7 +10586,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} applicantId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public deleteApplicant(applicantId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).deleteApplicant(applicantId, options).then((request) => request(this.axios, this.basePath));
@@ -16898,7 +10598,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} passkeyId Passkey ID.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public deletePasskey(username: string, passkeyId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).deletePasskey(username, passkeyId, options).then((request) => request(this.axios, this.basePath));
@@ -16910,7 +10609,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} username Username whose passkeys will be deleted.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public deletePasskeys(username: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).deletePasskeys(username, options).then((request) => request(this.axios, this.basePath));
@@ -16922,7 +10620,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} monitorId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public deleteWatchlistMonitor(monitorId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).deleteWatchlistMonitor(monitorId, options).then((request) => request(this.axios, this.basePath));
@@ -16934,7 +10631,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} webhookId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public deleteWebhook(webhookId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).deleteWebhook(webhookId, options).then((request) => request(this.axios, this.basePath));
@@ -16947,7 +10643,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} id The unique identifier of the file which you want to retrieve.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadAesDocument(workflowRunId: string, id: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadAesDocument(workflowRunId, id, options).then((request) => request(this.axios, this.basePath));
@@ -16959,7 +10654,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} checkId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadCheck(checkId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadCheck(checkId, options).then((request) => request(this.axios, this.basePath));
@@ -16971,7 +10665,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} documentId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadDocument(documentId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadDocument(documentId, options).then((request) => request(this.axios, this.basePath));
@@ -16983,7 +10676,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} documentId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadDocumentVideo(documentId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadDocumentVideo(documentId, options).then((request) => request(this.axios, this.basePath));
@@ -16995,7 +10687,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} workflowRunId Workflow Run ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadEvidenceFolder(workflowRunId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadEvidenceFolder(workflowRunId, options).then((request) => request(this.axios, this.basePath));
@@ -17007,7 +10698,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} idPhotoId The ID photo\&#39;s unique identifier.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadIdPhoto(idPhotoId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadIdPhoto(idPhotoId, options).then((request) => request(this.axios, this.basePath));
@@ -17019,7 +10709,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} livePhotoId The live photo\&#39;s unique identifier.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadLivePhoto(livePhotoId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadLivePhoto(livePhotoId, options).then((request) => request(this.axios, this.basePath));
@@ -17031,7 +10720,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} liveVideoId The live video\&#39;s unique identifier.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadLiveVideo(liveVideoId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadLiveVideo(liveVideoId, options).then((request) => request(this.axios, this.basePath));
@@ -17043,7 +10731,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} liveVideoId The live video\&#39;s unique identifier.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadLiveVideoFrame(liveVideoId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadLiveVideoFrame(liveVideoId, options).then((request) => request(this.axios, this.basePath));
@@ -17055,7 +10742,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} motionCaptureId The motion capture\&#39;s unique identifier.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadMotionCapture(motionCaptureId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadMotionCapture(motionCaptureId, options).then((request) => request(this.axios, this.basePath));
@@ -17067,7 +10753,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} motionCaptureId The motion capture\&#39;s unique identifier.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadMotionCaptureFrame(motionCaptureId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadMotionCaptureFrame(motionCaptureId, options).then((request) => request(this.axios, this.basePath));
@@ -17079,7 +10764,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} documentId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadNfcFace(documentId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadNfcFace(documentId, options).then((request) => request(this.axios, this.basePath));
@@ -17092,7 +10776,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} fileId The unique identifier of the file which you want to retrieve.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadQesDocument(workflowRunId: string, fileId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadQesDocument(workflowRunId, fileId, options).then((request) => request(this.axios, this.basePath));
@@ -17105,7 +10788,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} id The unique identifier of the file which you want to retrieve.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadSesDocument(workflowRunId: string, id: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadSesDocument(workflowRunId, id, options).then((request) => request(this.axios, this.basePath));
@@ -17117,7 +10799,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} workflowRunId Workflow Run ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadSignedEvidenceFile(workflowRunId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadSignedEvidenceFile(workflowRunId, options).then((request) => request(this.axios, this.basePath));
@@ -17129,7 +10810,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} signingDocumentId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public downloadSigningDocument(signingDocumentId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).downloadSigningDocument(signingDocumentId, options).then((request) => request(this.axios, this.basePath));
@@ -17141,7 +10821,6 @@ export class DefaultApi extends BaseAPI {
      * @param {ExtractRequest} extractRequest 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public extract(extractRequest: ExtractRequest, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).extract(extractRequest, options).then((request) => request(this.axios, this.basePath));
@@ -17153,7 +10832,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} postcode 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findAddresses(postcode: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findAddresses(postcode, options).then((request) => request(this.axios, this.basePath));
@@ -17165,7 +10843,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} applicantId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findApplicant(applicantId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findApplicant(applicantId, options).then((request) => request(this.axios, this.basePath));
@@ -17177,7 +10854,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} applicantId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findApplicantConsents(applicantId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findApplicantConsents(applicantId, options).then((request) => request(this.axios, this.basePath));
@@ -17189,7 +10865,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} checkId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findCheck(checkId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findCheck(checkId, options).then((request) => request(this.axios, this.basePath));
@@ -17201,7 +10876,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} documentId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findDocument(documentId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findDocument(documentId, options).then((request) => request(this.axios, this.basePath));
@@ -17213,7 +10887,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} idPhotoId The ID photo\&#39;s unique identifier.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findIdPhoto(idPhotoId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findIdPhoto(idPhotoId, options).then((request) => request(this.axios, this.basePath));
@@ -17225,7 +10898,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} livePhotoId The live photo\&#39;s unique identifier.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findLivePhoto(livePhotoId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findLivePhoto(livePhotoId, options).then((request) => request(this.axios, this.basePath));
@@ -17237,7 +10909,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} liveVideoId The live video\&#39;s unique identifier.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findLiveVideo(liveVideoId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findLiveVideo(liveVideoId, options).then((request) => request(this.axios, this.basePath));
@@ -17249,7 +10920,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} motionCaptureId The motion capture\&#39;s unique identifier.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findMotionCapture(motionCaptureId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findMotionCapture(motionCaptureId, options).then((request) => request(this.axios, this.basePath));
@@ -17262,7 +10932,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} passkeyId Passkey ID.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findPasskey(username: string, passkeyId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findPasskey(username, passkeyId, options).then((request) => request(this.axios, this.basePath));
@@ -17274,7 +10943,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} reportId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findReport(reportId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findReport(reportId, options).then((request) => request(this.axios, this.basePath));
@@ -17286,7 +10954,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} signingDocumentId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findSigningDocument(signingDocumentId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findSigningDocument(signingDocumentId, options).then((request) => request(this.axios, this.basePath));
@@ -17299,7 +10966,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} taskId The identifier of the Task you want to retrieve.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findTask(workflowRunId: string, taskId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findTask(workflowRunId, taskId, options).then((request) => request(this.axios, this.basePath));
@@ -17312,7 +10978,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} timelineFileId The unique identifier for the Timefile File.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findTimelineFile(workflowRunId: string, timelineFileId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findTimelineFile(workflowRunId, timelineFileId, options).then((request) => request(this.axios, this.basePath));
@@ -17324,7 +10989,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} monitorId The watchlist monitor\&#39;s unique identifier.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findWatchlistMonitor(monitorId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findWatchlistMonitor(monitorId, options).then((request) => request(this.axios, this.basePath));
@@ -17336,7 +11000,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} webhookId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findWebhook(webhookId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findWebhook(webhookId, options).then((request) => request(this.axios, this.basePath));
@@ -17348,7 +11011,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} workflowRunId The unique identifier of the Workflow Run.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public findWorkflowRun(workflowRunId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).findWorkflowRun(workflowRunId, options).then((request) => request(this.axios, this.basePath));
@@ -17360,7 +11022,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} monitorId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public forceReportCreationFromWatchlistMonitor(monitorId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).forceReportCreationFromWatchlistMonitor(monitorId, options).then((request) => request(this.axios, this.basePath));
@@ -17372,7 +11033,6 @@ export class DefaultApi extends BaseAPI {
      * @param {SdkTokenBuilder} sdkTokenBuilder 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public generateSdkToken(sdkTokenBuilder: SdkTokenBuilder, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).generateSdkToken(sdkTokenBuilder, options).then((request) => request(this.axios, this.basePath));
@@ -17386,7 +11046,6 @@ export class DefaultApi extends BaseAPI {
      * @param {boolean} [includeDeleted] Whether to also include applicants scheduled for deletion.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listApplicants(page?: number, perPage?: number, includeDeleted?: boolean, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listApplicants(page, perPage, includeDeleted, options).then((request) => request(this.axios, this.basePath));
@@ -17398,7 +11057,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} applicantId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listChecks(applicantId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listChecks(applicantId, options).then((request) => request(this.axios, this.basePath));
@@ -17410,7 +11068,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} applicantId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listDocuments(applicantId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listDocuments(applicantId, options).then((request) => request(this.axios, this.basePath));
@@ -17422,7 +11079,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} applicantId The id of the applicant the ID photos belong to.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listIdPhotos(applicantId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listIdPhotos(applicantId, options).then((request) => request(this.axios, this.basePath));
@@ -17434,7 +11090,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} applicantId The id of the applicant the live photos belong to.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listLivePhotos(applicantId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listLivePhotos(applicantId, options).then((request) => request(this.axios, this.basePath));
@@ -17446,7 +11101,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} applicantId The id of the applicant the live videos belong to.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listLiveVideos(applicantId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listLiveVideos(applicantId, options).then((request) => request(this.axios, this.basePath));
@@ -17458,7 +11112,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} applicantId The id of the applicant the motion captures belong to.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listMotionCaptures(applicantId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listMotionCaptures(applicantId, options).then((request) => request(this.axios, this.basePath));
@@ -17470,7 +11123,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} username Username that owns the passkeys.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listPasskeys(username: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listPasskeys(username, options).then((request) => request(this.axios, this.basePath));
@@ -17482,7 +11134,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} reportId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listRepeatAttempts(reportId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listRepeatAttempts(reportId, options).then((request) => request(this.axios, this.basePath));
@@ -17494,7 +11145,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} checkId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listReports(checkId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listReports(checkId, options).then((request) => request(this.axios, this.basePath));
@@ -17506,7 +11156,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} applicantId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listSigningDocuments(applicantId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listSigningDocuments(applicantId, options).then((request) => request(this.axios, this.basePath));
@@ -17518,7 +11167,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} workflowRunId The unique identifier of the Workflow Run to which the Tasks belong.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listTasks(workflowRunId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listTasks(workflowRunId, options).then((request) => request(this.axios, this.basePath));
@@ -17530,7 +11178,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} monitorId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listWatchlistMonitorMatches(monitorId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listWatchlistMonitorMatches(monitorId, options).then((request) => request(this.axios, this.basePath));
@@ -17543,7 +11190,6 @@ export class DefaultApi extends BaseAPI {
      * @param {boolean} [includeDeleted] Whether to also include deleted (inactive) monitors.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listWatchlistMonitors(applicantId: string, includeDeleted?: boolean, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listWatchlistMonitors(applicantId, includeDeleted, options).then((request) => request(this.axios, this.basePath));
@@ -17554,7 +11200,6 @@ export class DefaultApi extends BaseAPI {
      * @summary List webhooks
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listWebhooks(options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listWebhooks(options).then((request) => request(this.axios, this.basePath));
@@ -17572,7 +11217,6 @@ export class DefaultApi extends BaseAPI {
      * @param {Array<string>} [tags] A list of tags to filter the results.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public listWorkflowRuns(page?: number, status?: string, createdAtGt?: string, createdAtLt?: string, sort?: ListWorkflowRunsSortEnum, applicantId?: string, tags?: Array<string>, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listWorkflowRuns(page, status, createdAtGt, createdAtLt, sort, applicantId, tags, options).then((request) => request(this.axios, this.basePath));
@@ -17583,7 +11227,6 @@ export class DefaultApi extends BaseAPI {
      * @summary Ping
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public ping(options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).ping(options).then((request) => request(this.axios, this.basePath));
@@ -17595,7 +11238,6 @@ export class DefaultApi extends BaseAPI {
      * @param {ResultsFeedback} resultsFeedback 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public postResultsFeedback(resultsFeedback: ResultsFeedback, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).postResultsFeedback(resultsFeedback, options).then((request) => request(this.axios, this.basePath));
@@ -17607,7 +11249,6 @@ export class DefaultApi extends BaseAPI {
      * @param {WebhookResend} webhookResend 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public resendWebhooks(webhookResend: WebhookResend, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).resendWebhooks(webhookResend, options).then((request) => request(this.axios, this.basePath));
@@ -17619,7 +11260,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} applicantId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public restoreApplicant(applicantId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).restoreApplicant(applicantId, options).then((request) => request(this.axios, this.basePath));
@@ -17631,7 +11271,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} checkId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public resumeCheck(checkId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).resumeCheck(checkId, options).then((request) => request(this.axios, this.basePath));
@@ -17643,7 +11282,6 @@ export class DefaultApi extends BaseAPI {
      * @param {string} reportId 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public resumeReport(reportId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).resumeReport(reportId, options).then((request) => request(this.axios, this.basePath));
@@ -17656,7 +11294,6 @@ export class DefaultApi extends BaseAPI {
      * @param {ApplicantUpdater} applicantUpdater 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public updateApplicant(applicantId: string, applicantUpdater: ApplicantUpdater, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).updateApplicant(applicantId, applicantUpdater, options).then((request) => request(this.axios, this.basePath));
@@ -17670,7 +11307,6 @@ export class DefaultApi extends BaseAPI {
      * @param {PasskeyUpdater} passkeyUpdater Passkey update payload.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public updatePasskey(username: string, passkeyId: string, passkeyUpdater: PasskeyUpdater, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).updatePasskey(username, passkeyId, passkeyUpdater, options).then((request) => request(this.axios, this.basePath));
@@ -17683,7 +11319,6 @@ export class DefaultApi extends BaseAPI {
      * @param {WatchlistMonitorMatchesUpdater} watchlistMonitorMatchesUpdater 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public updateWatchlistMonitorMatch(monitorId: string, watchlistMonitorMatchesUpdater: WatchlistMonitorMatchesUpdater, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).updateWatchlistMonitorMatch(monitorId, watchlistMonitorMatchesUpdater, options).then((request) => request(this.axios, this.basePath));
@@ -17696,7 +11331,6 @@ export class DefaultApi extends BaseAPI {
      * @param {WebhookUpdater} webhookUpdater 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public updateWebhook(webhookId: string, webhookUpdater: WebhookUpdater, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).updateWebhook(webhookId, webhookUpdater, options).then((request) => request(this.axios, this.basePath));
@@ -17715,7 +11349,6 @@ export class DefaultApi extends BaseAPI {
      * @param {LocationBuilder} [location] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public uploadDocument(type: DocumentTypes, applicantId: string, file: FileTransfer, fileType?: string, side?: UploadDocumentSideEnum, issuingCountry?: CountryCodes, validateImageQuality?: boolean, location?: LocationBuilder, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).uploadDocument(type, applicantId, file, fileType, side, issuingCountry, validateImageQuality, location, options).then((request) => request(this.axios, this.basePath));
@@ -17728,7 +11361,6 @@ export class DefaultApi extends BaseAPI {
      * @param {FileTransfer} [file] The file to be uploaded.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public uploadIdPhoto(applicantId?: string, file?: FileTransfer, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).uploadIdPhoto(applicantId, file, options).then((request) => request(this.axios, this.basePath));
@@ -17742,7 +11374,6 @@ export class DefaultApi extends BaseAPI {
      * @param {boolean} [advancedValidation] Validates that the live photo contains exactly one face.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public uploadLivePhoto(applicantId?: string, file?: FileTransfer, advancedValidation?: boolean, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).uploadLivePhoto(applicantId, file, advancedValidation, options).then((request) => request(this.axios, this.basePath));
@@ -17755,25 +11386,18 @@ export class DefaultApi extends BaseAPI {
      * @param {FileTransfer} file The file to be uploaded.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof DefaultApi
      */
     public uploadSigningDocument(applicantId: string, file: FileTransfer, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).uploadSigningDocument(applicantId, file, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
-/**
- * @export
- */
 export const ListWorkflowRunsSortEnum = {
     Desc: 'desc',
     Asc: 'asc',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 export type ListWorkflowRunsSortEnum = typeof ListWorkflowRunsSortEnum[keyof typeof ListWorkflowRunsSortEnum];
-/**
- * @export
- */
 export const UploadDocumentSideEnum = {
     Front: 'front',
     Back: 'back',
