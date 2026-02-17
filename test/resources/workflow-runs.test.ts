@@ -140,10 +140,12 @@ it("downloads a timeline file", async () => {
   const timelineFileId = (await onfido.createTimelineFile(workflowRunId)).data
     .workflow_timeline_file_id;
 
-  const file = await repeatRequestUntilHttpCodeChanges("findTimelineFile", [
-    workflowRunId,
-    timelineFileId,
-  ]);
+  const file = await repeatRequestUntilHttpCodeChanges(
+    "findTimelineFile",
+    [workflowRunId, timelineFileId],
+    15,
+    2000,
+  );
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toEqual("application/pdf");
@@ -163,6 +165,8 @@ it("downloads an evidence folder", async () => {
   const file = await repeatRequestUntilHttpCodeChanges(
     "downloadEvidenceFolder",
     [workflowRunId],
+    15,
+    2000,
   );
 
   expect(file.status).toEqual(200);

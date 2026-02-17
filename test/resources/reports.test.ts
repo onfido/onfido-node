@@ -44,9 +44,13 @@ const exampleReport: Report = {
 };
 
 it("finds a report", async () => {
+  const reports = (await onfido.listReports(check.id)).data.reports.sort(
+    sortByReportName,
+  );
+
   const report: Report = await repeatRequestUntilStatusChanges(
     "findReport",
-    [check.report_ids[1]],
+    [reports[0].id],
     "complete",
   );
 
