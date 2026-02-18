@@ -924,10 +924,6 @@ export type CountryCodes = typeof CountryCodes[keyof typeof CountryCodes];
 
 export interface DeviceIntelligenceBreakdown {
     'device'?: DeviceIntelligenceBreakdownDevice;
-    /**
-     * @deprecated
-     */
-    'properties'?: DeviceIntelligenceBreakdownProperties;
 }
 /**
  * Asserts whether the device used to upload the media is trustworthy, i.e. it is a real, physical device.
@@ -940,12 +936,12 @@ export interface DeviceIntelligenceBreakdownDeviceBreakdown {
     'device_integrity'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
     'device_reputation'?: DocumentBreakdownDataComparisonBreakdownIssuingCountry;
 }
-export interface DeviceIntelligenceBreakdownProperties {
-    'device'?: DeviceIntelligenceBreakdownPropertiesDevice;
-    'ip'?: DeviceIntelligenceBreakdownPropertiesIp;
-    'geolocation'?: DeviceIntelligenceBreakdownPropertiesGeolocation;
+export interface DeviceIntelligenceProperties {
+    'device'?: DeviceIntelligencePropertiesDevice;
+    'ip'?: DeviceIntelligencePropertiesIp;
+    'geolocation'?: DeviceIntelligencePropertiesGeolocation;
 }
-export interface DeviceIntelligenceBreakdownPropertiesDevice {
+export interface DeviceIntelligencePropertiesDevice {
     /**
      * The SDK version that was used.
      */
@@ -953,11 +949,11 @@ export interface DeviceIntelligenceBreakdownPropertiesDevice {
     /**
      * The SDK used to upload the media.
      */
-    'sdk_source'?: DeviceIntelligenceBreakdownPropertiesDeviceSdkSourceEnum;
+    'sdk_source'?: DeviceIntelligencePropertiesDeviceSdkSourceEnum;
     /**
      * The token used to authenticate the request.
      */
-    'authentication_type'?: DeviceIntelligenceBreakdownPropertiesDeviceAuthenticationTypeEnum;
+    'authentication_type'?: DeviceIntelligencePropertiesDeviceAuthenticationTypeEnum;
     /**
      * The model as set by the phone manufacturer (for Android and iOS) or the browser manufacturer (for Web). The model can be presented in name or number form depending on each manufacturer implementation.
      */
@@ -985,7 +981,7 @@ export interface DeviceIntelligenceBreakdownPropertiesDevice {
     /**
      * Whether there is highly suspicious traffic related to the IP address. The risk depends on the overall ratio of clear checks on a given IP.
      */
-    'ip_reputation'?: DeviceIntelligenceBreakdownPropertiesDeviceIpReputationEnum;
+    'ip_reputation'?: DeviceIntelligencePropertiesDeviceIpReputationEnum;
     /**
      * The number of times the device was used to create a report for a new applicant. A value greater than 1 indicates potential device reuse.
      */
@@ -997,53 +993,53 @@ export interface DeviceIntelligenceBreakdownPropertiesDevice {
     /**
      * Whether the document media were live captured from the device camera.
      */
-    'document_capture'?: DeviceIntelligenceBreakdownPropertiesDeviceDocumentCaptureEnum;
+    'document_capture'?: DeviceIntelligencePropertiesDeviceDocumentCaptureEnum;
     /**
      * Whether the biometric media were live captured from the device camera.
      */
-    'biometric_capture'?: DeviceIntelligenceBreakdownPropertiesDeviceBiometricCaptureEnum;
+    'biometric_capture'?: DeviceIntelligencePropertiesDeviceBiometricCaptureEnum;
 }
 
-export const DeviceIntelligenceBreakdownPropertiesDeviceSdkSourceEnum = {
+export const DeviceIntelligencePropertiesDeviceSdkSourceEnum = {
     AndroidSdk: 'onfido-android-sdk',
     IosSdk: 'onfido-ios-sdk',
     WebSdk: 'onfido-web-sdk',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 
-export type DeviceIntelligenceBreakdownPropertiesDeviceSdkSourceEnum = typeof DeviceIntelligenceBreakdownPropertiesDeviceSdkSourceEnum[keyof typeof DeviceIntelligenceBreakdownPropertiesDeviceSdkSourceEnum];
-export const DeviceIntelligenceBreakdownPropertiesDeviceAuthenticationTypeEnum = {
+export type DeviceIntelligencePropertiesDeviceSdkSourceEnum = typeof DeviceIntelligencePropertiesDeviceSdkSourceEnum[keyof typeof DeviceIntelligencePropertiesDeviceSdkSourceEnum];
+export const DeviceIntelligencePropertiesDeviceAuthenticationTypeEnum = {
     SdkToken: 'sdk_token',
     MobileToken: 'mobile_token',
     ApiToken: 'api_token',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 
-export type DeviceIntelligenceBreakdownPropertiesDeviceAuthenticationTypeEnum = typeof DeviceIntelligenceBreakdownPropertiesDeviceAuthenticationTypeEnum[keyof typeof DeviceIntelligenceBreakdownPropertiesDeviceAuthenticationTypeEnum];
-export const DeviceIntelligenceBreakdownPropertiesDeviceIpReputationEnum = {
+export type DeviceIntelligencePropertiesDeviceAuthenticationTypeEnum = typeof DeviceIntelligencePropertiesDeviceAuthenticationTypeEnum[keyof typeof DeviceIntelligencePropertiesDeviceAuthenticationTypeEnum];
+export const DeviceIntelligencePropertiesDeviceIpReputationEnum = {
     NotEnoughData: 'NOT_ENOUGH_DATA',
     HighRisk: 'HIGH_RISK',
     LowRisk: 'LOW_RISK',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 
-export type DeviceIntelligenceBreakdownPropertiesDeviceIpReputationEnum = typeof DeviceIntelligenceBreakdownPropertiesDeviceIpReputationEnum[keyof typeof DeviceIntelligenceBreakdownPropertiesDeviceIpReputationEnum];
-export const DeviceIntelligenceBreakdownPropertiesDeviceDocumentCaptureEnum = {
+export type DeviceIntelligencePropertiesDeviceIpReputationEnum = typeof DeviceIntelligencePropertiesDeviceIpReputationEnum[keyof typeof DeviceIntelligencePropertiesDeviceIpReputationEnum];
+export const DeviceIntelligencePropertiesDeviceDocumentCaptureEnum = {
     Live: 'live',
     UnknownMethod: 'unknown_method',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 
-export type DeviceIntelligenceBreakdownPropertiesDeviceDocumentCaptureEnum = typeof DeviceIntelligenceBreakdownPropertiesDeviceDocumentCaptureEnum[keyof typeof DeviceIntelligenceBreakdownPropertiesDeviceDocumentCaptureEnum];
-export const DeviceIntelligenceBreakdownPropertiesDeviceBiometricCaptureEnum = {
+export type DeviceIntelligencePropertiesDeviceDocumentCaptureEnum = typeof DeviceIntelligencePropertiesDeviceDocumentCaptureEnum[keyof typeof DeviceIntelligencePropertiesDeviceDocumentCaptureEnum];
+export const DeviceIntelligencePropertiesDeviceBiometricCaptureEnum = {
     Live: 'live',
     UnknownMethod: 'unknown_method',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 
-export type DeviceIntelligenceBreakdownPropertiesDeviceBiometricCaptureEnum = typeof DeviceIntelligenceBreakdownPropertiesDeviceBiometricCaptureEnum[keyof typeof DeviceIntelligenceBreakdownPropertiesDeviceBiometricCaptureEnum];
+export type DeviceIntelligencePropertiesDeviceBiometricCaptureEnum = typeof DeviceIntelligencePropertiesDeviceBiometricCaptureEnum[keyof typeof DeviceIntelligencePropertiesDeviceBiometricCaptureEnum];
 
-export interface DeviceIntelligenceBreakdownPropertiesGeolocation {
+export interface DeviceIntelligencePropertiesGeolocation {
     /**
      * City location of the IP address.
      */
@@ -1059,16 +1055,11 @@ export interface DeviceIntelligenceBreakdownPropertiesGeolocation {
 }
 
 
-export interface DeviceIntelligenceBreakdownPropertiesIp {
+export interface DeviceIntelligencePropertiesIp {
     /**
      * The IP address that uploaded the media.
      */
     'address'?: string;
-}
-export interface DeviceIntelligenceProperties {
-    'device'?: DeviceIntelligenceBreakdownPropertiesDevice;
-    'ip'?: DeviceIntelligenceBreakdownPropertiesIp;
-    'geolocation'?: DeviceIntelligenceBreakdownPropertiesGeolocation;
 }
 export interface DeviceIntelligenceReport {
     /**
@@ -4938,6 +4929,7 @@ export interface WebhookEventPayloadResource {
      * The unique identifier for the Applicant.
      */
     'applicant_id'?: string;
+    'status'?: WebhookEventResourceStatus;
     /**
      * The date and time when the resource was created.
      */
@@ -5000,6 +4992,30 @@ export interface WebhookEventPayloadResource {
      */
     'timeline_file_download_url'?: string;
 }
+
+
+/**
+ * The current state of the reference, if available.
+ */
+
+export const WebhookEventResourceStatus = {
+    Processing: 'processing',
+    AwaitingInput: 'awaiting_input',
+    AwaitingClientInput: 'awaiting_client_input',
+    Approved: 'approved',
+    Declined: 'declined',
+    Review: 'review',
+    Abandoned: 'abandoned',
+    Error: 'error',
+    Started: 'started',
+    Cancelled: 'cancelled',
+    Completed: 'completed',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type WebhookEventResourceStatus = typeof WebhookEventResourceStatus[keyof typeof WebhookEventResourceStatus];
+
+
 
 export const WebhookEventResourceType = {
     Check: 'check',
