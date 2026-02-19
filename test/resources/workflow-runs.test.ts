@@ -103,7 +103,12 @@ it("lists workflow runs", async () => {
 it("downloads a signed evidence file", async () => {
   const workflowRun = await createWorkflowRun(applicant, workflow_id);
 
-  const file = await onfido.downloadSignedEvidenceFile(workflowRun.data.id);
+  const file = await repeatRequestUntilHttpCodeChanges(
+    "downloadSignedEvidenceFile",
+    [workflowRun.data.id],
+    15,
+    2000,
+  );
 
   expect(file.status).toEqual(200);
   expect(file.headers["content-type"]).toEqual("application/pdf");
