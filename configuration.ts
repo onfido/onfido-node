@@ -13,6 +13,7 @@
  */
 
 import { BASE_PATH } from "./base";
+import axios from 'axios';
 
 export enum Region{
     EU,
@@ -22,6 +23,8 @@ export enum Region{
 
 export interface ConfigurationParameters {
     apiToken?: string;
+    oauthClientId?: string;
+    oauthClientSecret?: string;
     region?: Region;
     basePath?: string;
     baseOptions?: any;
@@ -69,17 +72,46 @@ export class Configuration {
      */
     formDataCtor?: new () => any;
 
+    private _oauthTokenUrl?: string;
+    private _oauthClientId?: string;
+    private _oauthClientSecret?: string;
+    private _cachedAccessToken?: string;
+    private _tokenExpiresAt?: number;
+    private _tokenRefreshPromise?: Promise<string>;
+
     constructor(param: ConfigurationParameters = {}) {
-        if (!param.apiToken) {
-            throw new Error("No apiToken provided");
+        const hasApiToken = !!param.apiToken;
+        const hasPartialOAuth = !!(param.oauthClientId || param.oauthClientSecret);
+        const hasOAuth = !!(param.oauthClientId && param.oauthClientSecret);
+
+        if (hasPartialOAuth && !hasOAuth) {
+            throw new Error("Both oauthClientId and oauthClientSecret must be provided together");
+        }
+
+        if (!hasApiToken && !hasOAuth) {
+            throw new Error("No apiToken or OAuth credentials (oauthClientId + oauthClientSecret) provided");
+        }
+
+        if (hasApiToken && hasOAuth) {
+            throw new Error("Provide either apiToken or OAuth credentials (oauthClientId + oauthClientSecret), not both");
         }
 
         if (param.region && !Object.values(Region).includes(param.region)) {
             throw new Error(`Unknown or missing region '${param.region}'`);
         }
 
-        this.apiKey = 'Token token=' + param.apiToken;
-        this.basePath = param.basePath || BASE_PATH.replace('.eu.', `.${Region[param.region || Region.EU].toLowerCase()}.`);
+        const regionStr = Region[param.region || Region.EU].toLowerCase();
+        this.basePath = param.basePath || BASE_PATH.replace('.eu.', `.${regionStr}.`)
+
+        if (hasApiToken) {
+            this.apiKey = 'Token token=' + param.apiToken;
+        } else {
+            this._oauthClientId = param.oauthClientId;
+            this._oauthClientSecret = param.oauthClientSecret;
+            this._oauthTokenUrl = this.basePath + '/oauth/token';
+            this.accessToken = async () => this._getOAuthAccessToken();
+        }
+
         this.baseOptions = {...{ timeout: 30_000 },
                             ...param.baseOptions,
             headers: {...param.baseOptions?.headers,
@@ -87,6 +119,55 @@ export class Configuration {
             },
         };
         this.formDataCtor = param.formDataCtor || require('form-data');         // Injiect form data constructor (if needed)
+    }
+
+    /**
+     * Fetches and caches an OAuth2 access token using the client credentials flow.
+     * Automatically refreshes the token when it expires (with a 30-second buffer).
+     */
+    private async _getOAuthAccessToken(): Promise<string> {
+        const now = Date.now();
+        if (this._cachedAccessToken && this._tokenExpiresAt && now < this._tokenExpiresAt) {
+            return this._cachedAccessToken;
+        }
+
+        if (this._tokenRefreshPromise) {
+            return this._tokenRefreshPromise;
+        }
+
+        this._tokenRefreshPromise = this._fetchOAuthToken();
+        try {
+            return await this._tokenRefreshPromise;
+        } finally {
+            this._tokenRefreshPromise = undefined;
+        }
+    }
+
+    /**
+     * Performs the actual token exchange via POST to the OAuth2 token endpoint.
+     */
+    private async _fetchOAuthToken(): Promise<string> {
+        const response = await axios.post(
+            this._oauthTokenUrl!,
+            new URLSearchParams({
+                grant_type: 'client_credentials',
+                client_id: this._oauthClientId!,
+                client_secret: this._oauthClientSecret!,
+            }).toString(),
+            {
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                timeout: 30_000,
+            },
+        );
+
+        const { access_token, expires_in } = response.data;
+        if (!access_token) {
+            throw new Error('OAuth2 token response did not contain an access_token');
+        }
+
+        this._cachedAccessToken = access_token;
+        this._tokenExpiresAt = Date.now() + ((expires_in || 3600) - 30) * 1000;
+        return access_token;
     }
 
     /**

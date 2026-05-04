@@ -4,6 +4,7 @@ The official Node.js library for integrating with the Onfido API.
 
 Documentation is available at <https://documentation.onfido.com>.
 
+
 This library is for backend use only, as it requires secret Onfido API tokens and should not be used in the frontend due to security reasons.
 
 If you need to collect applicant data in the frontend of your application, we recommend that you use the Onfido SDKs:
@@ -72,6 +73,23 @@ const onfido = new DefaultApi(
 ```
 
 NB: by default, timeout is set to 30 seconds.
+
+### Using OAuth2 (client credentials)
+
+Alternatively, you can authenticate using OAuth2 client credentials. The SDK will automatically exchange your credentials for an access token and refresh it when it expires:
+
+```js
+const onfido = new DefaultApi(
+  new Configuration({
+    oauthClientId: process.env.ONFIDO_OAUTH_CLIENT_ID,
+    oauthClientSecret: process.env.ONFIDO_OAUTH_CLIENT_SECRET,
+    region: Region.EU, // Supports Region.EU (Europe), Region.US (United States), and Region.CA (Canada)
+    baseOptions: { timeout: 60_000 }, // Additional Axios options (timeout, etc.)
+  }),
+);
+```
+
+Note: `apiToken` and OAuth credentials (`oauthClientId` + `oauthClientSecret`) are mutually exclusive — provide one or the other, not both.
 
 ### Making a call to the API
 
