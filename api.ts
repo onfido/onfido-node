@@ -26,30 +26,7 @@ import type { RequestArgs } from './base';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerMap } from './base';
 
-import { FileTransfer } from './file-transfer';
-import { AxiosHeaders } from 'axios';
-
-globalAxios.interceptors.response.use(async (response) => {
-    if (response.headers instanceof AxiosHeaders && response.headers['content-type']) {
-        if ( ! response.headers['content-type'].toString().includes('application/json') ) {
-            const contentDisposition = response.headers['content-disposition'];
-            var filename = "";
-
-            if (contentDisposition && contentDisposition != "") {
-                const matcher = contentDisposition.match(/filename=['\"]?([^'\"\s]+)['\"]?/);
-
-                if (matcher != null) {
-                  filename = matcher[1].replace(/.*[/\\\\]/g, "");
-                }
-            }
-
-            response.data = new FileTransfer(response.data, filename);
-        }
-    }
-
-    return response;
-  });
-
+import { FileTransfer } from './file-transfer';    
 
 export interface Address {
     /**
@@ -974,6 +951,14 @@ export interface DeviceIntelligencePropertiesDevice {
      * Whether the device is providing false randomized device and network information.
      */
     'randomized_device'?: boolean;
+    /**
+     * Counts the number of distinct document reports submitted in the last 24 hours that are associated with the applicant’s IP address.
+     */
+    'number_of_ip_reuse_reports'?: number;
+    /**
+     * Counts the number of distinct document reports from the last 24 hours associated with the applicant’s IP address that have a result of suspected and other document integrity or authenticity signals have been flagged.
+     */
+    'number_of_suspected_ip_reuse_reports'?: number;
     /**
      * Whether device is using stolen security tokens to send the network information.
      */
