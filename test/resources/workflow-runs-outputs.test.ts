@@ -61,7 +61,7 @@ describe("workflow runs outputs", () => {
   });
 
   it("allows profile data capture as output", async () => {
-    const workflow_id = "d27e510b-27a8-44c3-a3cc-bf4c0648a4ba";
+    const workflow_id = process.env.ONFIDO_SAMPLE_WORKFLOW_ID_PROFILE_DATA_CAPTURE_OUTCOME || "d27e510b-27a8-44c3-a3cc-bf4c0648a4ba";
     const workflowRunId = (await createWorkflowRun(applicant, workflow_id)).data
       .id;
 
@@ -124,7 +124,7 @@ describe("workflow runs outputs", () => {
   });
 
   it("allows document and facial similarity photo reports as outputs", async () => {
-    const workflow_id = "5025d9fd-7842-4805-bce1-a7bfd7131b4e";
+    const workflow_id = process.env.ONFIDO_SAMPLE_WORKFLOW_ID_DOC_SELFIE_OUTCOME || "5025d9fd-7842-4805-bce1-a7bfd7131b4e";
     const workflowRunId = (await createWorkflowRun(applicant, workflow_id)).data
       .id;
 

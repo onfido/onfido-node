@@ -42,8 +42,8 @@ function getExpectedWorkflowRun(
 }
 
 let applicant: Applicant;
-const workflow_id = "e8c921eb-0495-44fe-b655-bcdcaffdafe5";
-const workflowIdTimeline = "221f9d24-cf72-4762-ac4a-01bf3ccc09dd";
+const workflow_id = process.env.ONFIDO_SAMPLE_WORKFLOW_ID || "e8c921eb-0495-44fe-b655-bcdcaffdafe5";
+const workflowIdTimeline = process.env.ONFIDO_SAMPLE_WORKFLOW_ID_TIMELINE || "221f9d24-cf72-4762-ac4a-01bf3ccc09dd";
 
 beforeEach(async () => {
   applicant = (await createApplicant()).data;
@@ -60,7 +60,7 @@ it("creates a workflow run", async () => {
 });
 
 it("creates a workflow run with custom inputs", async () => {
-  const workflow_id_with_custom_inputs = "45092b29-f220-479e-aa6f-a6f989baac4c";
+  const workflow_id_with_custom_inputs = process.env.ONFIDO_SAMPLE_WORKFLOW_ID_CUSTOM_INPUTS || "45092b29-f220-479e-aa6f-a6f989baac4c";
   const workflowRunBuilder: WorkflowRunBuilder = {
     applicant_id: applicant.id,
     workflow_id: workflow_id_with_custom_inputs,

@@ -23,7 +23,7 @@ function getExpectedTask(exampleTask: Task, overrideProperties = {}) {
   });
 }
 
-const workflow_id = "e8c921eb-0495-44fe-b655-bcdcaffdafe5";
+const workflow_id = process.env.ONFIDO_SAMPLE_WORKFLOW_ID || "e8c921eb-0495-44fe-b655-bcdcaffdafe5";
 let applicant: Applicant;
 let workflowRunId: string;
 
