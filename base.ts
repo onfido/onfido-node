@@ -18,8 +18,11 @@ import type { Configuration } from './configuration';
 // @ts-ignore
 import type { AxiosPromise, AxiosInstance, RawAxiosRequestConfig } from 'axios';
 import globalAxios from 'axios';
+import { attachFileTransferInterceptor } from './file-transfer';    
 
 export const BASE_PATH = "https://api.eu.onfido.com/v3.6".replace(/\/+$/, "");
+
+const sdkAxios: AxiosInstance = globalAxios.create();    
 
 export const COLLECTION_FORMATS = {
     csv: ",",
@@ -36,11 +39,12 @@ export interface RequestArgs {
 export class BaseAPI {
     protected configuration: Configuration | undefined;
 
-    constructor(configuration?: Configuration, protected basePath: string = BASE_PATH, protected axios: AxiosInstance = globalAxios) {
+    constructor(configuration?: Configuration, protected basePath: string = BASE_PATH, protected axios: AxiosInstance = sdkAxios) {    
         if (configuration) {
             this.configuration = configuration;
             this.basePath = configuration.basePath ?? basePath;
         }
+        attachFileTransferInterceptor(this.axios);    
     }
 };
 
