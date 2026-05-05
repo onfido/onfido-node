@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 21.x, 22.x]
+        node-version: [20.x, 22.x, 24.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
       - uses: actions/checkout@v4
@@ -42,7 +42,7 @@ jobs:
       - name: Run linter over tests
         run: npx prettier -c test/**/*.ts
       - name: Run integration tests with NPM
-        if: ${{ matrix.node-version == '18.x' &&
+        if: ${{ matrix.node-version == '20.x' &&
           github.repository_owner == 'onfido' &&
           (github.event_name == 'pull_request' ||
            github.event_name == 'release' ||
@@ -71,7 +71,7 @@ jobs:
           ref: master
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.x
+          node-version: 24.x
           registry-url: https://registry.npmjs.org/
           cache: npm
           cache-dependency-path: package-lock.json
