@@ -4,8 +4,7 @@
   "description": "Node.js library for the Onfido API",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
-    "type": "git",
-    "url": "https://github.com/onfido/onfido-node.git"
+    "url": "git+https://github.com/onfido/onfido-node.git"
   },
   "keywords": [
     "axios",
