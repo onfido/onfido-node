@@ -22,7 +22,13 @@ import {
 
 export const onfido = new DefaultApi(
   new Configuration({
-    apiToken: process.env.ONFIDO_API_TOKEN,
+    ...(process.env.ONFIDO_OAUTH_CLIENT_ID
+      ? {
+          oauthClientId: process.env.ONFIDO_OAUTH_CLIENT_ID,
+          oauthClientSecret: process.env.ONFIDO_OAUTH_CLIENT_SECRET,
+        }
+      : { apiToken: process.env.ONFIDO_API_TOKEN }),
+    basePath: process.env.ONFIDO_BASE_PATH,
     baseOptions: { timeout: 60_000 },
   }),
 );
