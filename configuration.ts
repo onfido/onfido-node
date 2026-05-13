@@ -150,13 +150,15 @@ export class Configuration {
         const response = await axios.post(
             this._oauthTokenUrl!,
             new URLSearchParams({
-                grant_type: 'client_credentials',
                 client_id: this._oauthClientId!,
                 client_secret: this._oauthClientSecret!,
             }).toString(),
             {
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                timeout: 30_000,
+                ...this.baseOptions,
+                headers: {
+                    ...this.baseOptions?.headers,
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
             },
         );
 
@@ -166,7 +168,7 @@ export class Configuration {
         }
 
         this._cachedAccessToken = access_token;
-        this._tokenExpiresAt = Date.now() + ((expires_in || 3600) - 30) * 1000;
+        this._tokenExpiresAt = Date.now() + ((expires_in) - 30) * 1000;
         return access_token;
     }
 
