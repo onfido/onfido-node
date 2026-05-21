@@ -5425,6 +5425,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -5469,6 +5473,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -5508,6 +5516,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -5546,6 +5558,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -5587,6 +5603,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -5622,6 +5642,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -5662,6 +5686,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -5700,6 +5728,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -5740,6 +5772,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -5782,6 +5818,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -5818,6 +5858,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -5856,6 +5900,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -5892,6 +5940,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -5931,6 +5983,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -5977,6 +6033,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -6013,6 +6073,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -6051,6 +6115,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -6087,6 +6155,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -6125,6 +6197,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -6161,6 +6237,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -6199,6 +6279,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -6235,6 +6319,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -6273,6 +6361,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -6310,6 +6402,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -6346,6 +6442,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -6385,6 +6485,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -6433,6 +6537,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -6478,6 +6586,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -6515,6 +6627,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -6550,6 +6666,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -6589,6 +6709,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -6631,6 +6755,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -6667,6 +6795,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -6705,6 +6837,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -6741,6 +6877,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -6779,6 +6919,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -6815,6 +6959,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -6853,6 +7001,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -6889,6 +7041,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -6931,6 +7087,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -6968,6 +7128,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -7004,6 +7168,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -7046,6 +7214,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -7087,6 +7259,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -7123,6 +7299,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -7161,6 +7341,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -7197,6 +7381,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -7235,6 +7423,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -7270,6 +7462,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -7309,6 +7505,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -7358,6 +7558,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -7397,6 +7601,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -7438,6 +7646,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -7477,6 +7689,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -7518,6 +7734,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -7557,6 +7777,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -7599,6 +7823,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -7636,6 +7864,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -7671,6 +7903,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -7711,6 +7947,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -7753,6 +7993,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -7790,6 +8034,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -7826,6 +8074,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -7868,6 +8120,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -7907,6 +8163,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -7973,6 +8233,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -8008,6 +8272,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -8047,6 +8315,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -8088,6 +8360,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -8125,6 +8401,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -8161,6 +8441,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -8201,6 +8485,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -8249,6 +8537,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -8292,6 +8584,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -8334,6 +8630,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -8385,6 +8685,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
             const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -8457,6 +8761,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarQueryParameter = {} as any;
             const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
 
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
@@ -8504,6 +8812,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
             const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
@@ -8559,6 +8871,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
             const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
 
             // authentication Token required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
