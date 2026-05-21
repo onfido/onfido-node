@@ -1,10 +1,11 @@
 {
   "name": "@onfido/api",
-  "version": "6.1.0",
+  "version": "6.2.0",
   "description": "Node.js library for the Onfido API",
   "author": "OpenAPI-Generator Contributors",
   "repository": {
-    "url": "git+https://github.com/onfido/onfido-node.git"
+    "type": "git",
+    "url": "https://github.com/onfido/onfido-node.git"
   },
   "keywords": [
     "axios",
