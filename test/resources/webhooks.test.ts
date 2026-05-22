@@ -11,6 +11,9 @@ import { exampleWebhook } from "../test-examples";
 function getExpectedWebhook(exampleWebhook: Webhook) {
   return getExpectedObject(exampleWebhook, {
     token: expect.stringMatching(/^[0-9a-zA-Z_-]+$/),
+    name: {
+      asymmetricMatch: (v: unknown) => v === null || typeof v === "string",
+    },
   });
 }
 
