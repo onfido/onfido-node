@@ -389,6 +389,58 @@ export interface ApplicantUpdater {
 export interface ApplicantsList {
     'applicants': Array<Applicant>;
 }
+export interface BiometricToken {
+    'biometric_token': BiometricToken;
+}
+/**
+ * Token metadata.
+ */
+export interface BiometricTokenData {
+    /**
+     * Timestamp indicating when the biometric token was created.
+     */
+    'inserted_at': string;
+    /**
+     * Type of media associated with the biometric token.
+     */
+    'media_type': string;
+    /**
+     * Current biometric token status.
+     */
+    'status': BiometricTokenDataStatusEnum;
+}
+
+export const BiometricTokenDataStatusEnum = {
+    AwaitingInput: 'awaiting_input',
+    Processing: 'processing',
+    Error: 'error',
+    Abandoned: 'abandoned',
+    Review: 'review',
+    Declined: 'declined',
+    Approved: 'approved',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type BiometricTokenDataStatusEnum = typeof BiometricTokenDataStatusEnum[keyof typeof BiometricTokenDataStatusEnum];
+
+export interface BiometricTokenUpdater {
+    /**
+     * Desired biometric token status value.
+     */
+    'status': BiometricTokenUpdaterStatusEnum;
+}
+
+export const BiometricTokenUpdaterStatusEnum = {
+    Approved: 'approved',
+    Declined: 'declined',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type BiometricTokenUpdaterStatusEnum = typeof BiometricTokenUpdaterStatusEnum[keyof typeof BiometricTokenUpdaterStatusEnum];
+
+export interface BiometricTokensList {
+    'biometric_tokens': Array<BiometricToken>;
+}
 export interface Check {
     /**
      * An array of webhook ids describing which webhooks to trigger for this check.
@@ -3143,6 +3195,21 @@ export interface IndiaPanReportAllOfPropertiesDevice {
      */
     'full_name'?: string;
 }
+export interface InvalidatedBiometricTokenSummary {
+    'biometric_token': InvalidatedBiometricTokenSummary;
+}
+/**
+ * Summary of invalidated biometric token items.
+ */
+export interface InvalidatedBiometricTokenSummaryDeletedItems {
+    /**
+     * Number of invalidated biometric tokens.
+     */
+    'count': number;
+}
+export interface InvalidatedBiometricTokensSummary {
+    'biometric_tokens': InvalidatedBiometricTokenSummary;
+}
 export interface KnownFacesBreakdown {
     'previously_seen_faces'?: KnownFacesBreakdownPreviouslySeenFaces;
     'image_integrity'?: KnownFacesBreakdownImageIntegrity;
@@ -4029,6 +4096,9 @@ export interface TimelineFileReference {
      */
     'href': string;
 }
+export interface UpdateBiometricToken200Response {
+    'biometric_token': BiometricToken;
+}
 export interface UsDrivingLicenceBreakdown {
     'document'?: UsDrivingLicenceBreakdownDocument;
     'address'?: UsDrivingLicenceBreakdownAddress;
@@ -4771,6 +4841,10 @@ export interface Webhook {
      */
     'id': string;
     /**
+     * Name of the webhook.
+     */
+    'name'?: string;
+    /**
      * The url that will listen to notifications (must be https).
      */
     'url'?: string;
@@ -4821,11 +4895,19 @@ export interface WebhookBuilder {
      */
     'oauth_server_scope'?: string;
     /**
+     * Name of the webhook.
+     */
+    'name'?: string;
+    /**
      * The url that will listen to notifications (must be https).
      */
     'url': string;
 }
 export interface WebhookCreate {
+    /**
+     * Name of the webhook.
+     */
+    'name'?: string;
     /**
      * The url that will listen to notifications (must be https).
      */
@@ -5051,6 +5133,10 @@ export interface WebhookResponse {
      */
     'id': string;
     /**
+     * Name of the webhook.
+     */
+    'name'?: string;
+    /**
      * The url that will listen to notifications (must be https).
      */
     'url'?: string;
@@ -5103,6 +5189,10 @@ export interface WebhookShared {
 }
 export interface WebhookUpdate {
     /**
+     * Name of the webhook.
+     */
+    'name'?: string;
+    /**
      * The url that will listen to notifications (must be https).
      */
     'url'?: string;
@@ -5144,6 +5234,10 @@ export interface WebhookUpdater {
      * The scopes to be sent when requesting the access token.
      */
     'oauth_server_scope'?: string;
+    /**
+     * Name of the webhook.
+     */
+    'name'?: string;
     /**
      * The url that will listen to notifications (must be https).
      */
@@ -6815,6 +6909,51 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Returns a biometric token\'s details. 
+         * @summary Retrieve biometric token
+         * @param {string} userId Customer user ID that owns the biometric token.
+         * @param {string} tokenUuid Biometric token UUID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findBiometricToken: async (userId: string, tokenUuid: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('findBiometricToken', 'userId', userId)
+            // verify required parameter 'tokenUuid' is not null or undefined
+            assertParamExists('findBiometricToken', 'tokenUuid', tokenUuid)
+            const localVarPath = `/biometric_tokens/{user_id}/{token_uuid}`
+                .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)))
+                .replace(`{${"token_uuid"}}`, encodeURIComponent(String(tokenUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Retrieves a single check. Returns a check object. 
          * @summary Retrieve a Check
          * @param {string} checkId 
@@ -7485,6 +7624,92 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Invalidates a biometric token. 
+         * @summary Invalidate biometric token
+         * @param {string} userId Customer user ID that owns the biometric token.
+         * @param {string} tokenUuid Biometric token UUID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        invalidateBiometricToken: async (userId: string, tokenUuid: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('invalidateBiometricToken', 'userId', userId)
+            // verify required parameter 'tokenUuid' is not null or undefined
+            assertParamExists('invalidateBiometricToken', 'tokenUuid', tokenUuid)
+            const localVarPath = `/biometric_tokens/{user_id}/{token_uuid}`
+                .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)))
+                .replace(`{${"token_uuid"}}`, encodeURIComponent(String(tokenUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Invalidates every biometric token associated with the supplied customer user ID. 
+         * @summary Invalidate biometric tokens
+         * @param {string} userId Customer user ID whose biometric tokens will be invalidated.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        invalidateBiometricTokens: async (userId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('invalidateBiometricTokens', 'userId', userId)
+            const localVarPath = `/biometric_tokens/{user_id}`
+                .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Lists all applicants you\'ve created, sorted by creation date in descending order. 
          * @summary List Applicants
          * @param {number} [page] The page to return. The first page is &#x60;page&#x3D;1&#x60;
@@ -7524,6 +7749,47 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             if (includeDeleted !== undefined) {
                 localVarQueryParameter['include_deleted'] = includeDeleted;
             }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Returns the biometric tokens associated with the supplied customer user ID. 
+         * @summary List biometric tokens
+         * @param {string} userId Customer user ID that owns the biometric tokens.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBiometricTokens: async (userId: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('listBiometricTokens', 'userId', userId)
+            const localVarPath = `/biometric_tokens/{user_id}`
+                .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
 
 
     
@@ -8508,6 +8774,57 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Updates a biometric token\'s status. 
+         * @summary Update biometric token
+         * @param {string} userId Customer user ID that owns the biometric token.
+         * @param {string} tokenUuid Biometric token UUID.
+         * @param {BiometricTokenUpdater} biometricTokenUpdater Biometric token update payload.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateBiometricToken: async (userId: string, tokenUuid: string, biometricTokenUpdater: BiometricTokenUpdater, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'userId' is not null or undefined
+            assertParamExists('updateBiometricToken', 'userId', userId)
+            // verify required parameter 'tokenUuid' is not null or undefined
+            assertParamExists('updateBiometricToken', 'tokenUuid', tokenUuid)
+            // verify required parameter 'biometricTokenUpdater' is not null or undefined
+            assertParamExists('updateBiometricToken', 'biometricTokenUpdater', biometricTokenUpdater)
+            const localVarPath = `/biometric_tokens/{user_id}/{token_uuid}`
+                .replace(`{${"user_id"}}`, encodeURIComponent(String(userId)))
+                .replace(`{${"token_uuid"}}`, encodeURIComponent(String(tokenUuid)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(biometricTokenUpdater, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Updates a passkey\'s state. 
          * @summary Update passkey
          * @param {string} username Username that owns the passkey.
@@ -9346,6 +9663,20 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Returns a biometric token\'s details. 
+         * @summary Retrieve biometric token
+         * @param {string} userId Customer user ID that owns the biometric token.
+         * @param {string} tokenUuid Biometric token UUID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async findBiometricToken(userId: string, tokenUuid: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BiometricToken>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.findBiometricToken(userId, tokenUuid, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.findBiometricToken']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Retrieves a single check. Returns a check object. 
          * @summary Retrieve a Check
          * @param {string} checkId 
@@ -9557,6 +9888,33 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Invalidates a biometric token. 
+         * @summary Invalidate biometric token
+         * @param {string} userId Customer user ID that owns the biometric token.
+         * @param {string} tokenUuid Biometric token UUID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async invalidateBiometricToken(userId: string, tokenUuid: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvalidatedBiometricTokenSummary>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.invalidateBiometricToken(userId, tokenUuid, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.invalidateBiometricToken']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Invalidates every biometric token associated with the supplied customer user ID. 
+         * @summary Invalidate biometric tokens
+         * @param {string} userId Customer user ID whose biometric tokens will be invalidated.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async invalidateBiometricTokens(userId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvalidatedBiometricTokensSummary>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.invalidateBiometricTokens(userId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.invalidateBiometricTokens']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Lists all applicants you\'ve created, sorted by creation date in descending order. 
          * @summary List Applicants
          * @param {number} [page] The page to return. The first page is &#x60;page&#x3D;1&#x60;
@@ -9569,6 +9927,19 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listApplicants(page, perPage, includeDeleted, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listApplicants']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Returns the biometric tokens associated with the supplied customer user ID. 
+         * @summary List biometric tokens
+         * @param {string} userId Customer user ID that owns the biometric tokens.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listBiometricTokens(userId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BiometricTokensList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listBiometricTokens(userId, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.listBiometricTokens']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -9861,6 +10232,21 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateApplicant(applicantId, applicantUpdater, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateApplicant']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Updates a biometric token\'s status. 
+         * @summary Update biometric token
+         * @param {string} userId Customer user ID that owns the biometric token.
+         * @param {string} tokenUuid Biometric token UUID.
+         * @param {BiometricTokenUpdater} biometricTokenUpdater Biometric token update payload.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async updateBiometricToken(userId: string, tokenUuid: string, biometricTokenUpdater: BiometricTokenUpdater, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateBiometricToken200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateBiometricToken(userId, tokenUuid, biometricTokenUpdater, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateBiometricToken']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -10315,6 +10701,17 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.findApplicantConsents(applicantId, options).then((request) => request(axios, basePath));
         },
         /**
+         * Returns a biometric token\'s details. 
+         * @summary Retrieve biometric token
+         * @param {string} userId Customer user ID that owns the biometric token.
+         * @param {string} tokenUuid Biometric token UUID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        findBiometricToken(userId: string, tokenUuid: string, options?: RawAxiosRequestConfig): AxiosPromise<BiometricToken> {
+            return localVarFp.findBiometricToken(userId, tokenUuid, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Retrieves a single check. Returns a check object. 
          * @summary Retrieve a Check
          * @param {string} checkId 
@@ -10478,6 +10875,27 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.generateSdkToken(sdkTokenBuilder, options).then((request) => request(axios, basePath));
         },
         /**
+         * Invalidates a biometric token. 
+         * @summary Invalidate biometric token
+         * @param {string} userId Customer user ID that owns the biometric token.
+         * @param {string} tokenUuid Biometric token UUID.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        invalidateBiometricToken(userId: string, tokenUuid: string, options?: RawAxiosRequestConfig): AxiosPromise<InvalidatedBiometricTokenSummary> {
+            return localVarFp.invalidateBiometricToken(userId, tokenUuid, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Invalidates every biometric token associated with the supplied customer user ID. 
+         * @summary Invalidate biometric tokens
+         * @param {string} userId Customer user ID whose biometric tokens will be invalidated.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        invalidateBiometricTokens(userId: string, options?: RawAxiosRequestConfig): AxiosPromise<InvalidatedBiometricTokensSummary> {
+            return localVarFp.invalidateBiometricTokens(userId, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Lists all applicants you\'ve created, sorted by creation date in descending order. 
          * @summary List Applicants
          * @param {number} [page] The page to return. The first page is &#x60;page&#x3D;1&#x60;
@@ -10488,6 +10906,16 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         listApplicants(page?: number, perPage?: number, includeDeleted?: boolean, options?: RawAxiosRequestConfig): AxiosPromise<ApplicantsList> {
             return localVarFp.listApplicants(page, perPage, includeDeleted, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Returns the biometric tokens associated with the supplied customer user ID. 
+         * @summary List biometric tokens
+         * @param {string} userId Customer user ID that owns the biometric tokens.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listBiometricTokens(userId: string, options?: RawAxiosRequestConfig): AxiosPromise<BiometricTokensList> {
+            return localVarFp.listBiometricTokens(userId, options).then((request) => request(axios, basePath));
         },
         /**
          * Retrieves a single check. Returns a check object. 
@@ -10714,6 +11142,18 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         updateApplicant(applicantId: string, applicantUpdater: ApplicantUpdater, options?: RawAxiosRequestConfig): AxiosPromise<Applicant> {
             return localVarFp.updateApplicant(applicantId, applicantUpdater, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Updates a biometric token\'s status. 
+         * @summary Update biometric token
+         * @param {string} userId Customer user ID that owns the biometric token.
+         * @param {string} tokenUuid Biometric token UUID.
+         * @param {BiometricTokenUpdater} biometricTokenUpdater Biometric token update payload.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        updateBiometricToken(userId: string, tokenUuid: string, biometricTokenUpdater: BiometricTokenUpdater, options?: RawAxiosRequestConfig): AxiosPromise<UpdateBiometricToken200Response> {
+            return localVarFp.updateBiometricToken(userId, tokenUuid, biometricTokenUpdater, options).then((request) => request(axios, basePath));
         },
         /**
          * Updates a passkey\'s state. 
@@ -11177,6 +11617,18 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * Returns a biometric token\'s details. 
+     * @summary Retrieve biometric token
+     * @param {string} userId Customer user ID that owns the biometric token.
+     * @param {string} tokenUuid Biometric token UUID.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public findBiometricToken(userId: string, tokenUuid: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).findBiometricToken(userId, tokenUuid, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Retrieves a single check. Returns a check object. 
      * @summary Retrieve a Check
      * @param {string} checkId 
@@ -11356,6 +11808,29 @@ export class DefaultApi extends BaseAPI {
     }
 
     /**
+     * Invalidates a biometric token. 
+     * @summary Invalidate biometric token
+     * @param {string} userId Customer user ID that owns the biometric token.
+     * @param {string} tokenUuid Biometric token UUID.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public invalidateBiometricToken(userId: string, tokenUuid: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).invalidateBiometricToken(userId, tokenUuid, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Invalidates every biometric token associated with the supplied customer user ID. 
+     * @summary Invalidate biometric tokens
+     * @param {string} userId Customer user ID whose biometric tokens will be invalidated.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public invalidateBiometricTokens(userId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).invalidateBiometricTokens(userId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * Lists all applicants you\'ve created, sorted by creation date in descending order. 
      * @summary List Applicants
      * @param {number} [page] The page to return. The first page is &#x60;page&#x3D;1&#x60;
@@ -11366,6 +11841,17 @@ export class DefaultApi extends BaseAPI {
      */
     public listApplicants(page?: number, perPage?: number, includeDeleted?: boolean, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listApplicants(page, perPage, includeDeleted, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Returns the biometric tokens associated with the supplied customer user ID. 
+     * @summary List biometric tokens
+     * @param {string} userId Customer user ID that owns the biometric tokens.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public listBiometricTokens(userId: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).listBiometricTokens(userId, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -11614,6 +12100,19 @@ export class DefaultApi extends BaseAPI {
      */
     public updateApplicant(applicantId: string, applicantUpdater: ApplicantUpdater, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).updateApplicant(applicantId, applicantUpdater, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Updates a biometric token\'s status. 
+     * @summary Update biometric token
+     * @param {string} userId Customer user ID that owns the biometric token.
+     * @param {string} tokenUuid Biometric token UUID.
+     * @param {BiometricTokenUpdater} biometricTokenUpdater Biometric token update payload.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public updateBiometricToken(userId: string, tokenUuid: string, biometricTokenUpdater: BiometricTokenUpdater, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).updateBiometricToken(userId, tokenUuid, biometricTokenUpdater, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
