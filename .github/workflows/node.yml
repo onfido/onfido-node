@@ -50,7 +50,8 @@ jobs:
         if: steps.should-run-integration-tests.outputs.result == 'true'
         uses: onfido/onfido-actions/lock/acquire@add-lock-action
         with:
-          github-token: ${{ secrets.CI_LOCK_TOKEN }}
+          app-id: ${{ secrets.ONFIDO_CI_LOCK_APP_ID }}
+          app-private-key: ${{ secrets.ONFIDO_CI_LOCK_PRIVATE_KEY }}
       - name: Run integration tests with API token auth
         if: steps.should-run-integration-tests.outputs.result == 'true'
         run: npm test -- -i
@@ -77,7 +78,8 @@ jobs:
         if: always() && steps.should-run-integration-tests.outputs.result == 'true'
         uses: onfido/onfido-actions/lock/release@add-lock-action
         with:
-          github-token: ${{ secrets.CI_LOCK_TOKEN }}
+          app-id: ${{ secrets.ONFIDO_CI_LOCK_APP_ID }}
+          app-private-key: ${{ secrets.ONFIDO_CI_LOCK_PRIVATE_KEY }}
 
   publish:
     runs-on: ubuntu-latest
