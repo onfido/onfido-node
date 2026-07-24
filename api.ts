@@ -389,8 +389,15 @@ export interface ApplicantUpdater {
 export interface ApplicantsList {
     'applicants': Array<Applicant>;
 }
+/**
+ * Biometric token.
+ */
 export interface BiometricToken {
-    'biometric_token': BiometricToken;
+    /**
+     * The biometric token\'s unique identifier.
+     */
+    'uuid': string;
+    'data': BiometricTokenData;
 }
 /**
  * Token metadata.
@@ -423,6 +430,9 @@ export const BiometricTokenDataStatusEnum = {
 
 export type BiometricTokenDataStatusEnum = typeof BiometricTokenDataStatusEnum[keyof typeof BiometricTokenDataStatusEnum];
 
+export interface BiometricTokenResponse {
+    'biometric_token': BiometricToken;
+}
 export interface BiometricTokenUpdater {
     /**
      * Desired biometric token status value.
@@ -438,7 +448,7 @@ export const BiometricTokenUpdaterStatusEnum = {
 
 export type BiometricTokenUpdaterStatusEnum = typeof BiometricTokenUpdaterStatusEnum[keyof typeof BiometricTokenUpdaterStatusEnum];
 
-export interface BiometricTokensList {
+export interface BiometricTokensResponse {
     'biometric_tokens': Array<BiometricToken>;
 }
 export interface Check {
@@ -1931,6 +1941,8 @@ export const DocumentTypes = {
     IdentityDocumentWithAddress: 'identity_document_with_address',
     ExchangeHouseStatement: 'exchange_house_statement',
     AccommodationTenancyCertificate: 'accommodation_tenancy_certificate',
+    DiplomaticId: 'diplomatic_id',
+    TravelDocument: 'travel_document',
     UnknownDefaultOpenApi: '11184809'
 } as const;
 
@@ -3195,8 +3207,14 @@ export interface IndiaPanReportAllOfPropertiesDevice {
      */
     'full_name'?: string;
 }
-export interface InvalidatedBiometricTokenSummary {
+export interface InvalidatedBiometricTokenResponse {
     'biometric_token': InvalidatedBiometricTokenSummary;
+}
+/**
+ * Invalidated biometric tokens response payload.
+ */
+export interface InvalidatedBiometricTokenSummary {
+    'deleted_items': InvalidatedBiometricTokenSummaryDeletedItems;
 }
 /**
  * Summary of invalidated biometric token items.
@@ -3207,7 +3225,7 @@ export interface InvalidatedBiometricTokenSummaryDeletedItems {
      */
     'count': number;
 }
-export interface InvalidatedBiometricTokensSummary {
+export interface InvalidatedBiometricTokensResponse {
     'biometric_tokens': InvalidatedBiometricTokenSummary;
 }
 export interface KnownFacesBreakdown {
@@ -4096,7 +4114,7 @@ export interface TimelineFileReference {
      */
     'href': string;
 }
-export interface UpdateBiometricToken200Response {
+export interface UpdatedBiometricTokenResponse {
     'biometric_token': BiometricToken;
 }
 export interface UsDrivingLicenceBreakdown {
@@ -9670,7 +9688,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async findBiometricToken(userId: string, tokenUuid: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BiometricToken>> {
+        async findBiometricToken(userId: string, tokenUuid: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BiometricTokenResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.findBiometricToken(userId, tokenUuid, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.findBiometricToken']?.[localVarOperationServerIndex]?.url;
@@ -9895,7 +9913,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async invalidateBiometricToken(userId: string, tokenUuid: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvalidatedBiometricTokenSummary>> {
+        async invalidateBiometricToken(userId: string, tokenUuid: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvalidatedBiometricTokenResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.invalidateBiometricToken(userId, tokenUuid, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.invalidateBiometricToken']?.[localVarOperationServerIndex]?.url;
@@ -9908,7 +9926,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async invalidateBiometricTokens(userId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvalidatedBiometricTokensSummary>> {
+        async invalidateBiometricTokens(userId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InvalidatedBiometricTokensResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.invalidateBiometricTokens(userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.invalidateBiometricTokens']?.[localVarOperationServerIndex]?.url;
@@ -9936,7 +9954,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async listBiometricTokens(userId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BiometricTokensList>> {
+        async listBiometricTokens(userId: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<BiometricTokensResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.listBiometricTokens(userId, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.listBiometricTokens']?.[localVarOperationServerIndex]?.url;
@@ -10243,7 +10261,7 @@ export const DefaultApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateBiometricToken(userId: string, tokenUuid: string, biometricTokenUpdater: BiometricTokenUpdater, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdateBiometricToken200Response>> {
+        async updateBiometricToken(userId: string, tokenUuid: string, biometricTokenUpdater: BiometricTokenUpdater, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpdatedBiometricTokenResponse>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateBiometricToken(userId, tokenUuid, biometricTokenUpdater, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.updateBiometricToken']?.[localVarOperationServerIndex]?.url;
@@ -10708,7 +10726,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        findBiometricToken(userId: string, tokenUuid: string, options?: RawAxiosRequestConfig): AxiosPromise<BiometricToken> {
+        findBiometricToken(userId: string, tokenUuid: string, options?: RawAxiosRequestConfig): AxiosPromise<BiometricTokenResponse> {
             return localVarFp.findBiometricToken(userId, tokenUuid, options).then((request) => request(axios, basePath));
         },
         /**
@@ -10882,7 +10900,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        invalidateBiometricToken(userId: string, tokenUuid: string, options?: RawAxiosRequestConfig): AxiosPromise<InvalidatedBiometricTokenSummary> {
+        invalidateBiometricToken(userId: string, tokenUuid: string, options?: RawAxiosRequestConfig): AxiosPromise<InvalidatedBiometricTokenResponse> {
             return localVarFp.invalidateBiometricToken(userId, tokenUuid, options).then((request) => request(axios, basePath));
         },
         /**
@@ -10892,7 +10910,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        invalidateBiometricTokens(userId: string, options?: RawAxiosRequestConfig): AxiosPromise<InvalidatedBiometricTokensSummary> {
+        invalidateBiometricTokens(userId: string, options?: RawAxiosRequestConfig): AxiosPromise<InvalidatedBiometricTokensResponse> {
             return localVarFp.invalidateBiometricTokens(userId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -10914,7 +10932,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        listBiometricTokens(userId: string, options?: RawAxiosRequestConfig): AxiosPromise<BiometricTokensList> {
+        listBiometricTokens(userId: string, options?: RawAxiosRequestConfig): AxiosPromise<BiometricTokensResponse> {
             return localVarFp.listBiometricTokens(userId, options).then((request) => request(axios, basePath));
         },
         /**
@@ -11152,7 +11170,7 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateBiometricToken(userId: string, tokenUuid: string, biometricTokenUpdater: BiometricTokenUpdater, options?: RawAxiosRequestConfig): AxiosPromise<UpdateBiometricToken200Response> {
+        updateBiometricToken(userId: string, tokenUuid: string, biometricTokenUpdater: BiometricTokenUpdater, options?: RawAxiosRequestConfig): AxiosPromise<UpdatedBiometricTokenResponse> {
             return localVarFp.updateBiometricToken(userId, tokenUuid, biometricTokenUpdater, options).then((request) => request(axios, basePath));
         },
         /**
