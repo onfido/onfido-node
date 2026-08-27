@@ -4604,6 +4604,205 @@ export interface WatchlistEnhancedReport {
 }
 
 
+export interface WatchlistMeshAddedMentions {
+    'added_aml_types'?: Array<string> | null;
+    'added_snippets'?: Array<string> | null;
+    'added_listings'?: Array<string> | null;
+}
+export interface WatchlistMeshAlertRisk {
+    /**
+     * The date and time at which the risk record was created.
+     */
+    'created_at'?: string;
+    /**
+     * The review decision currently applied to the risk.
+     */
+    'decision'?: WatchlistMeshRiskDecision;
+    /**
+     * The previous review decision, if one exists.
+     */
+    'previous_decision'?: WatchlistMeshRiskDecision | null;
+    /**
+     * Additional details about the risk.
+     */
+    'detail'?: WatchlistMeshRiskDetail;
+    /**
+     * The unique identifier of the risk record.
+     */
+    'identifier'?: string;
+    /**
+     * The type of risk returned for the alert.
+     */
+    'type'?: string;
+    /**
+     * The identifier of the user or system that last updated the risk decision.
+     */
+    'updated_by'?: string | null;
+    /**
+     * The date and time at which the risk record was last updated.
+     */
+    'updated_at'?: string | null;
+}
+
+
+export interface WatchlistMeshAlertRisk1 {
+    /**
+     * The date and time at which the risk record was created.
+     */
+    'created_at'?: string;
+    /**
+     * The review decision currently applied to the risk.
+     */
+    'decision'?: WatchlistMeshRiskDecision;
+    /**
+     * The previous review decision, if one exists.
+     */
+    'previous_decision'?: WatchlistMeshRiskDecision | null;
+    /**
+     * Additional details about the risk.
+     */
+    'detail'?: WatchlistMeshRiskDetail;
+    /**
+     * The unique identifier of the risk record.
+     */
+    'identifier'?: string;
+    /**
+     * The type of risk returned for the alert.
+     */
+    'type'?: string;
+    /**
+     * The identifier of the user or system that last updated the risk decision.
+     */
+    'updated_by'?: string | null;
+    /**
+     * The date and time at which the risk record was last updated.
+     */
+    'updated_at'?: string | null;
+}
+
+
+export interface WatchlistMeshAssociate {
+    'name'?: string | null;
+    'type'?: string | null;
+}
+export interface WatchlistMeshDateValue {
+    'source'?: string | null;
+    'value'?: string | null;
+}
+export interface WatchlistMeshField {
+    'name'?: string | null;
+    'tag'?: string | null;
+    'value'?: string | null;
+}
+export interface WatchlistMeshImage {
+    'source'?: string | null;
+    'url'?: string | null;
+}
+export interface WatchlistMeshLists {
+    'aml_types'?: Array<string> | null;
+    'country_codes'?: Array<string> | null;
+    'fields'?: Array<WatchlistMeshField> | null;
+    'identifier'?: string | null;
+    'listing_ended_utc'?: string | null;
+    'listing_started_utc'?: string | null;
+    'name'?: string | null;
+    'related_urls'?: Array<string> | null;
+    'url'?: string | null;
+}
+export interface WatchlistMeshMedia {
+    'identifier'?: string | null;
+    'publishing_date'?: string | null;
+    'snippet'?: string | null;
+    'title'?: string | null;
+    'url'?: string | null;
+}
+export interface WatchlistMeshName {
+    'name'?: string | null;
+    'type'?: string | null;
+}
+export interface WatchlistMeshPep {
+    'aml_types'?: Array<string> | null;
+    'active_end_dates'?: Array<string> | null;
+    'active_start_dates'?: Array<string> | null;
+    'country_codes'?: Array<string> | null;
+    'fields'?: Array<WatchlistMeshField> | null;
+    'identifier'?: string | null;
+    'listing_ended_utc'?: string | null;
+    'listing_started_utc'?: string | null;
+    'name'?: string | null;
+    'political_parties'?: Array<string> | null;
+    'political_positions'?: Array<string> | null;
+    'political_regions'?: Array<string> | null;
+    'related_urls'?: Array<string> | null;
+    'url'?: string | null;
+}
+export interface WatchlistMeshPerson {
+    'associates'?: Array<WatchlistMeshAssociate> | null;
+    'dates_of_birth'?: Array<WatchlistMeshDateValue> | null;
+    'dates_of_death'?: Array<WatchlistMeshDateValue> | null;
+    'images'?: Array<WatchlistMeshImage> | null;
+    'names'?: Array<WatchlistMeshName> | null;
+    'places_of_birth'?: Array<string> | null;
+}
+export interface WatchlistMeshProfile {
+    'identifier'?: string | null;
+    'match_types'?: Array<string> | null;
+    /**
+     * The match score assigned to the profile.
+     */
+    'match_score'?: number;
+    'matching_name'?: string | null;
+    'person'?: WatchlistMeshPerson | null;
+    'risk_indicators'?: WatchlistMeshRiskIndicators | null;
+}
+
+export const WatchlistMeshRiskDecision = {
+    NotReviewed: 'NOT_REVIEWED',
+    InReview: 'IN_REVIEW',
+    FalsePositive: 'FALSE_POSITIVE',
+    TruePositive: 'TRUE_POSITIVE',
+    UnknownDefaultOpenApi: '11184809'
+} as const;
+
+export type WatchlistMeshRiskDecision = typeof WatchlistMeshRiskDecision[keyof typeof WatchlistMeshRiskDecision];
+
+
+export interface WatchlistMeshRiskDetail {
+    /**
+     * The type of change that triggered the risk, if available.
+     */
+    'change_type'?: string | null;
+    /**
+     * The identifier of the screening configuration associated with the risk.
+     */
+    'configuration_identifier'?: string | null;
+    /**
+     * The matched profile associated with the risk.
+     */
+    'profile'?: WatchlistMeshProfile | null;
+    /**
+     * Newly added mentions associated with the risk.
+     */
+    'added_mentions'?: WatchlistMeshAddedMentions | null;
+}
+export interface WatchlistMeshRiskIndicators {
+    'aml_types'?: Array<string> | null;
+    'lists'?: Array<WatchlistMeshLists> | null;
+    'media'?: Array<WatchlistMeshMedia> | null;
+    'peps'?: Array<WatchlistMeshPep> | null;
+    'sanctions'?: Array<WatchlistMeshSanctions> | null;
+}
+export interface WatchlistMeshSanctions {
+    'aml_types'?: Array<string> | null;
+    'country_codes'?: Array<string> | null;
+    'fields'?: Array<WatchlistMeshField> | null;
+    'identifier'?: string | null;
+    'listing_ended_utc'?: string | null;
+    'listing_started_utc'?: string | null;
+    'name'?: string | null;
+    'related_urls'?: Array<string> | null;
+    'url'?: string | null;
+}
 export interface WatchlistMonitor {
     /**
      * The ID for the applicant associated with the monitor.
@@ -8296,6 +8495,57 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Retrieves the detailed risks associated with a watchlist mesh alert. 
+         * @summary Retrieve watchlist mesh alert risks
+         * @param {string} alertId The unique identifier of the alert whose risks you want to retrieve.
+         * @param {number} [page] The page of results to retrieve.
+         * @param {number} [perPage] The number of risks to return per page.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listWatchlistMeshAlertRisks: async (alertId: string, page?: number, perPage?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'alertId' is not null or undefined
+            assertParamExists('listWatchlistMeshAlertRisks', 'alertId', alertId)
+            const localVarPath = `/complyadvantage_watchlists/alerts/{alert_id}/risks`
+                .replace(`{${"alert_id"}}`, encodeURIComponent(String(alertId)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication OAuth2ClientCredentials required
+            // oauth required
+            await setOAuthToObject(localVarHeaderParameter, "OAuth2ClientCredentials", [], configuration)
+
+            // authentication Token required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (page !== undefined) {
+                localVarQueryParameter['page'] = page;
+            }
+
+            if (perPage !== undefined) {
+                localVarQueryParameter['per_page'] = perPage;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * List match IDs on this monitor, as well as their enabled/disabled status 
          * @summary List matches (BETA)
          * @param {string} monitorId 
@@ -10104,6 +10354,21 @@ export const DefaultApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Retrieves the detailed risks associated with a watchlist mesh alert. 
+         * @summary Retrieve watchlist mesh alert risks
+         * @param {string} alertId The unique identifier of the alert whose risks you want to retrieve.
+         * @param {number} [page] The page of results to retrieve.
+         * @param {number} [perPage] The number of risks to return per page.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async listWatchlistMeshAlertRisks(alertId: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<WatchlistMeshAlertRisk>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.listWatchlistMeshAlertRisks(alertId, page, perPage, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.listWatchlistMeshAlertRisks']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * List match IDs on this monitor, as well as their enabled/disabled status 
          * @summary List matches (BETA)
          * @param {string} monitorId 
@@ -11044,6 +11309,18 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         listTasks(workflowRunId: string, options?: RawAxiosRequestConfig): AxiosPromise<Array<TaskItem>> {
             return localVarFp.listTasks(workflowRunId, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Retrieves the detailed risks associated with a watchlist mesh alert. 
+         * @summary Retrieve watchlist mesh alert risks
+         * @param {string} alertId The unique identifier of the alert whose risks you want to retrieve.
+         * @param {number} [page] The page of results to retrieve.
+         * @param {number} [perPage] The number of risks to return per page.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        listWatchlistMeshAlertRisks(alertId: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig): AxiosPromise<Array<WatchlistMeshAlertRisk>> {
+            return localVarFp.listWatchlistMeshAlertRisks(alertId, page, perPage, options).then((request) => request(axios, basePath));
         },
         /**
          * List match IDs on this monitor, as well as their enabled/disabled status 
@@ -11991,6 +12268,19 @@ export class DefaultApi extends BaseAPI {
      */
     public listTasks(workflowRunId: string, options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).listTasks(workflowRunId, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Retrieves the detailed risks associated with a watchlist mesh alert. 
+     * @summary Retrieve watchlist mesh alert risks
+     * @param {string} alertId The unique identifier of the alert whose risks you want to retrieve.
+     * @param {number} [page] The page of results to retrieve.
+     * @param {number} [perPage] The number of risks to return per page.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    public listWatchlistMeshAlertRisks(alertId: string, page?: number, perPage?: number, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).listWatchlistMeshAlertRisks(alertId, page, perPage, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
