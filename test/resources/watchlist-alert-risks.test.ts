@@ -48,9 +48,8 @@ it("lists watchlist mesh alert risks", async () => {
       nationality: "PRT",
     },
   };
-  const workflowRun = await createWorkflowRunWithCustomInputs(
-    workflowRunBuilder,
-  );
+  const workflowRun =
+    await createWorkflowRunWithCustomInputs(workflowRunBuilder);
   const task = (await onfido.listTasks(workflowRun.data.id)).data.find(
     (workflowTask) =>
       workflowTask.task_def_id === "query_watchlists_complyadvantage_mesh",
@@ -64,9 +63,11 @@ it("lists watchlist mesh alert risks", async () => {
     30,
     2000,
   );
-  const alertIdentifier = (watchlistTask.output as {
-    properties: { alert_identifier: string };
-  }).properties.alert_identifier;
+  const alertIdentifier = (
+    watchlistTask.output as {
+      properties: { alert_identifier: string };
+    }
+  ).properties.alert_identifier;
 
   expect(alertIdentifier).toBeDefined();
 
