@@ -3208,7 +3208,7 @@ export interface IndiaPanReportAllOfPropertiesDevice {
     'full_name'?: string;
 }
 export interface InvalidatedBiometricTokenResponse {
-    'biometric_token': InvalidatedBiometricTokenSummary;
+    'biometric_tokens': InvalidatedBiometricTokenSummary;
 }
 /**
  * Invalidated biometric tokens response payload.
