@@ -335,16 +335,16 @@ export async function repeatRequestUntilHttpCodeChanges(
   sleepTime: number = 1000,
 ): Promise<any> {
   let iteration = 0;
-  let instance: any;
+  let lastError: unknown;
 
   while (iteration <= maxRetries) {
     try {
-      instance = await onfido[fn](...params);
-      break;
+      return await onfido[fn](...params);
     } catch (error) {
+      lastError = error;
       await sleep(sleepTime);
       iteration += 1;
     }
   }
-  return instance;
+  throw lastError;
 }
